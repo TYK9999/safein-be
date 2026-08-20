@@ -1,0 +1,12 @@
+---
+description: Prefer LSP (go-to-definition / references / rename) over blind search
+alwaysApply: true
+---
+
+# Code navigation
+
+| # | Rule |
+|---|------|
+| F1 | LSP is mandatory. Use go-to-definition, find-references, and rename-symbol for symbols. |
+
+If TypeScript language service is unavailable, fix that before large refactors. Use Grep/Glob only for string literals, path patterns, and docs — not as a substitute for symbol navigation.

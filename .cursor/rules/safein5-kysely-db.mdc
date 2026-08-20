@@ -1,0 +1,17 @@
+---
+description: Kysely APP_DB access and schema sync rules
+globs: src/database/**/*.ts,src/modules/**/*.service.ts,db/**/*
+alwaysApply: false
+---
+
+# Kysely / database
+
+- Inject `@Inject(APP_DB) private readonly db: Kysely<DB>`
+- Types: `src/database/schema.ts` must match `db/schema/schema.sql`
+- SQL lives under `db/`, never under `src/`
+- No TypeORM / Prisma / query builders other than Kysely
+- Always filter tenant-scoped tables by `tenant_id`
+- Apply schema with `psql` per `db/README.md` — no in-app migrator yet
+- Do not treat `docs/db/migrations/` as the live schema (future RLS)
+
+When changing tables: update `db/schema/schema.sql` and `src/database/schema.ts` together. Use the `kysely-schema-sync` skill.

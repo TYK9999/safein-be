@@ -1,0 +1,31 @@
+---
+description: SafeIn5 backend stack, authoritative paths, and hard MVP constraints
+alwaysApply: true
+---
+
+# SafeIn5 backend core
+
+NestJS 11 + Fastify + Kysely/Postgres + Zod (nestjs-zod) + nestjs-pino + jose JWT. Global prefix `api`, URI version `v1`.
+
+## Authoritative paths
+
+- Live features: `src/modules/*` only (wired in `src/app.module.ts`)
+- Live SQL: `db/schema/schema.sql` ↔ types in `src/database/schema.ts`
+- Env: `src/config/env.schema.ts` + `configuration.ts` + `.env.example`
+- Architecture: `docs/SafeIn5-Backend-Plan.md`, `docs/SafeIn5-MVP-Architecture.md`, phase docs
+- API contracts: `api/BACKEND_*_SPEC.md`, `docs/md/BACKEND_UPLOAD_SPEC.md`
+
+Ignore Nest starter fluff in root `README.md`. `docs/db/migrations/` is future RLS — not live schema.
+
+## Hard constraints
+
+- Do **not** import or extend legacy `src/qrcode/` or `src/uploads/`
+- Do **not** add Kafka / Nest microservices (deps are unused; MVP uses schedule sweepers / planned outbox)
+- Auth code lives in `src/modules/auth/` — never `identity/`
+- No silent env defaults; no logging OTP/tokens/emails/bodies
+- Tenant queries always filter `tenant_id`
+- Media: presigned S3 to the browser — API does not proxy bytes
+
+## Cursor assets
+
+Follow `.cursor/rules/*` and use `.cursor/skills/*` for scaffolding, env, schema sync, and API-spec work.

@@ -1,0 +1,39 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "S3Objects",
+      "Effect": "Allow",
+      "Action": [
+        "s3:GetObject",
+        "s3:PutObject",
+        "s3:DeleteObject",
+        "s3:AbortMultipartUpload",
+        "s3:ListMultipartUploadParts"
+      ],
+      "Resource": "arn:aws:s3:::safein5-prod-media/*"
+    },
+    {
+      "Sid": "S3Bucket",
+      "Effect": "Allow",
+      "Action": ["s3:ListBucket", "s3:ListBucketMultipartUploads"],
+      "Resource": "arn:aws:s3:::safein5-prod-media"
+    },
+    {
+      "Sid": "Transcribe",
+      "Effect": "Allow",
+      "Action": [
+        "transcribe:StartTranscriptionJob",
+        "transcribe:GetTranscriptionJob",
+        "transcribe:DeleteTranscriptionJob"
+      ],
+      "Resource": "*"
+    },
+    {
+      "Sid": "RdsIamConnect",
+      "Effect": "Allow",
+      "Action": "rds-db:connect",
+      "Resource": "arn:aws:rds-db:us-east-1:ACCOUNT_ID:dbuser:CLUSTER_RESOURCE_ID/DB_USERNAME"
+    }
+  ]
+}

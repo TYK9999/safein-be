@@ -1,0 +1,134 @@
+Page / Section,Field,Example (from MVP),Required,Client value (fill here),Notes
+Tenant,Organisation Name,Meldon,Must,,
+Tenant,Administrator Name,Dan Reilly,Must,,
+Tenant,Administrator Email,dan.reilly@meldon.co.uk,Must,,
+Tenant,Status,Live,Must,,Live / Invited / Suspended
+Tenant,Live Since,12 June,Nice,,
+Tenant,Seed Routing Rules,Yes,Must,,Yes / No
+Tenant,Require Review Before Sharing Needs Attention Now on High Energy,Yes,Must,,Yes / No
+Tenant · Sites on detail,Site Name,Plant A,Must,,Repeat per site under tenant
+Tenant · Sites on detail,Site In-Charge,Priya Shah,Must,,
+Tenant · Back office accounts,Name,Dan Reilly,Must,,
+Tenant · Back office accounts,Access,Tenant Admin,Must,,
+Tenant · Back office accounts,Email,dan.reilly@meldon.co.uk,Must,,
+Sign-in,Work Email,tom.wilson@meldon.co.uk,Must,,One row per demo account
+Sign-in,Display Name,Tom Wilson,Must,,
+Sign-in,Role Label,Supervisor,Must,,SafeIn5 Admin / Tenant Admin / Supervisor
+Sign-in,Scope,Meldon · Plant A · Silo Rd,Must,,Shown in sidebar
+Sites,Site Name,Plant A,Must,,Need ~3 sites
+Sites,Site In-Charge,Priya Shah,Must,,
+Sites,Default Supervisor,Tom Wilson,Must,,
+Sites,Require Review Before Sharing Needs Attention Now on High Energy,Yes,Must,,Yes / No
+Routing Rule,Hazard Category,Confined space,Must,,12 categories per site
+Routing Rule,Energy,High Energy,Must,,High Energy / Standard
+Routing Rule,Owner Role,Supervisor,Must,,
+Routing Rule,Named Owner,Tom Wilson,Must,,
+Routing Rule,Review If Needs Attention Now,Site In-Charge,Must,,Site In-Charge / Not Needed
+Hazard Category,Category Name,Confined space,Must,,Confirm all 12 names
+Hazard Category,Energy,High Energy,Must,,
+Hazard Category,Short Description,Toxic atmosphere; engulfment,Nice,,
+Spaces,Space Name,Tank 3A,Must,,Need 4–6 spaces
+Spaces,Site Name,Plant A,Must,,
+Spaces,Location,North tank farm,Must,,
+Spaces,Task Type,Confined space entry,Must,,
+Spaces,Permit Required,Yes,Must,,Yes / No
+Spaces,Holds Rescue Plan,Yes,Must,,Yes / No
+Spaces,QR Code ID,SIS-QR-0031,Must,,Or ask us to generate
+Spaces,Content Owner,EHS · D. Reilly,Must,,
+Spaces,Owner Rule Role,Supervisor; Plant A,Must,,
+Spaces,Take 5 Version,v4,Nice,,
+Spaces,Learn 5 Version,v2 / None,Nice,,
+Take 5,Take 5 Template Name,Confined space entry,Must,,
+Take 5,Task Type,Confined space entry,Must,,
+Take 5,Space Name,Tank 3A,Must,,
+Take 5,Prompt 1,Has anything changed at this entry since the last shift?,Must,,
+Take 5,Prompt 2,Is the rescue set staged at the hatch — tripod; winch and bag?,Must,,
+Take 5,Prompt 3,Who is your top man; and can they see you from where they are standing?,Must,,
+Take 5,Prompt 4,Is the atmosphere test in date and recorded on the permit?,Must,,
+Take 5,Prompt 5,The access ladder is tagged out of use. Are you using the scaffold stair instead?,Nice,,
+Take 5,Version,v4,Nice,,
+Take 5,Status,Published,Must,,Draft / Published
+Take 5,Published Date,2 Aug 09:10,Nice,,
+Take 5,Last Edited By,D. Reilly,Nice,,
+Learn 5,Set Name,Confined space entry basics,Must,,
+Learn 5,Task Type,Confined space,Must,,
+Learn 5,Card 1,Test the atmosphere; then enter. In that order; every time.,Must,,
+Learn 5,Card 2,The rescue set is staged at the hatch before anyone breaks the plane of the opening.,Must,,
+Learn 5,Card 3,Your top man does not leave; does not help; does not go for tools.,Must,,
+Learn 5,Card 4,A permit signed this morning is not a permit for this afternoon’s conditions.,Must,,
+Learn 5,Card 5,If you are talking yourself into it; that is the moment to stop.,Must,,
+Learn 5,Rescue Plan Step 1,Raise the alarm on channel 3 and call the top man out. Do not enter to retrieve.,If needed,,
+Learn 5,Rescue Plan Step 2,Winch recovery from the hatch — tripod is rated for one person only.,If needed,,
+Learn 5,Rescue Plan Step 3,Stretcher stays at the hatch. Nearest muster point is the Silo Rd gate.,If needed,,
+Learn 5,Version,v2,Nice,,
+Learn 5,Status,Published,Must,,
+Learn 5,Source,Authored / From Echo 4471-03,Nice,,
+Learn 5,Owned By,D. Reilly,Nice,,
+Users,Name,Tom Wilson,Must,,~10 people for seed
+Users,Email or Mobile,tom.wilson@meldon.co.uk,Must,,
+Users,Role On Site,Supervisor,Must,,Operative / Community Worker / Supervisor / Site In-Charge / EHS Lead / Tenant Admin
+Users,Site,Plant A,Must,,Or All Sites
+Users,Back Office Access,Supervisor,Must,,Phone Only / Supervisor / Tenant Admin
+Users,Can Be Assigned,Yes,Must,,Community Worker = No
+Users,Status,Active,Must,,Active / Invited / Suspended
+Jobs,Job Reference,PTW-4471,Must,,
+Jobs,Work Description,Tank cleaning,Must,,
+Jobs,Space Name,Tank 3A,Must,,
+Jobs,Site Name,Plant A,Must,,
+Jobs,Trigger Type,Task PULSE · QR,Must,,Task PULSE · QR / Observation PULSE
+Jobs,Owner,T. Wilson,Must,,
+Jobs,Start Date,Today 07:00,Must,,
+Jobs,Duration or End Date,3 days / Closed 27 Jul,Must,,
+Jobs,Permit Required,Yes,Must,,Yes / No
+Jobs,Permit Valid To,19:00,If permit,,
+Jobs · Space history,Previous Job Reference,PTW-4462,Nice,,
+Jobs · Space history,Echo Title,Ladder rung cracked; second rung down,Nice,,
+Jobs · Space history,Closed As,Rung replaced,Nice,,
+Jobs · Space history,Owner,T. Wilson,Nice,,
+Jobs · Space history,Date,27 Jul,Nice,,
+Jobs · Pattern,Emerging Pattern Note,Rescue equipment not staged on 2 of last 3 permits,Nice,,
+Echoes,Echo ID,4471-03,Must,,Need 5–7 demo echoes
+Echoes,Pulse ID,PULSE 4471,Must,,
+Echoes,Job Reference,PTW-4471,Must,,
+Echoes,Title,Rescue equipment not present at a confined space entry,Must,,
+Echoes,What The AI Reads,Rescue equipment not present at a confined space entry — job closed by the worker,Must,,
+Echoes,Response Type,Needs Attention Now,Must,,Needs Attention Now / Be Aware / Good Practice
+Echoes,AI Suggested Response,Needs Attention Now,Nice,,Include one case where AI and worker differ
+Echoes,Hazard Category,Confined space,Must,,
+Echoes,Energy,High Energy,Must,,
+Echoes,AI Summary,The worker reached the entry point…,Must,,
+Echoes,Space Name,Tank 3A,Must,,
+Echoes,Site Name,Plant A,Must,,
+Echoes,Permit Reference,PTW-4471,If permit,,
+Echoes,Permit Valid To,19:00,If permit,,
+Echoes,Trigger,Task PULSE · QR scanned,Must,,
+Echoes,From,Alex M. / Anonymous,Must,,
+Echoes,Captured At,07:42,Must,,
+Echoes,Owner,Unassigned / T. Wilson,Must,,
+Echoes,Suggested Assignee,Tom Wilson,Must,,
+Echoes,Assignee Options,Tom Wilson; Priya Shah; Dan Reilly,Must,,
+Echoes,Photos,Entry point; empty store,Must,,Attach files in sample pack
+Echoes,Video,Walk around entry · 12s,Nice,,
+Echoes,Voice Note,9s recording,Nice,,
+Echoes,Voice Transcript,“There’s no tripod or winch here at all…”,If voice,,
+Echoes,Status Timeline,Received 07:42; Viewed 07:43; Actioned 08:26; Closed 08:31,Must for 1 full loop,,
+Echoes,Acknowledgement Messages,Got it…; Someone is looking…; Tom is acting…,Must,,Or confirm use our templates
+Echoes,Supervisor Review Note,Reviewed by Priya Shah at 07:44,Must for SIF,,
+Echoes,What Was Done,Rescue set staged; permit re-briefed…,Must for close path,,
+Echoes,After Photo,Tripod and winch staged at entry,Nice,,
+Echoes,Closing Message To Reporter,“Alex — the rescue set is now staged…”,Must,,
+Echoes,Hold Reason,Needs a supervisor look,Nice,,
+Take 5 Completions,Space Name,Tank 3A,Must,,
+Take 5 Completions,Task,Confined space entry,Must,,
+Take 5 Completions,From,Alex M. / Anonymous,Must,,
+Take 5 Completions,Time,07:42,Must,,
+Take 5 Completions,Outcome,Stopped The Job,Must,,Carried On / Changed The Plan / Stopped The Job
+Take 5 Completions,Linked Echo ID,4471-03 / None,Must,,
+Media,Sample Photo Files,2 photos for main Echo,Must,,No faces if possible
+Media,Sample Video File,~8–12 seconds,Nice,,
+Media,Sample Voice Note + Transcript,~9–11 seconds,Must if voice path,,
+Policy (confirm),Worker Response Type Never Overridden By AI,Yes,Must,,
+Policy (confirm),SIF / HE Markers Never Shown To Worker,Yes,Must,,
+Policy (confirm),Learning Never Names Reporter,Yes,Must,,
+Policy (confirm),Community Workers Cannot Be Assigned Actions,Yes,Must,,
+Policy (confirm),Acknowledgement On Every Status Change,Yes,Must,,

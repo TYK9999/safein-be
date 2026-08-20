@@ -1,0 +1,24 @@
+---
+description: Zod request schemas and createZodDto conventions
+globs: src/**/*.schema.ts,src/**/*.controller.ts
+alwaysApply: false
+---
+
+# Zod schemas
+
+- Put request bodies in `*.schema.ts` next to the feature
+- Use Zod + `createZodDto` from `nestjs-zod`
+- CamelCase fields (`bodyText`, `closeNote`, `qrToken`)
+- Rely on the global `ZodValidationPipe` in `main.ts` — do not add class-validator or per-route validation pipes
+
+```typescript
+import { createZodDto } from 'nestjs-zod';
+import { z } from 'zod';
+
+export const CreateThingSchema = z.object({
+  bodyText: z.string().trim().min(1).max(2000),
+});
+export class CreateThingDto extends createZodDto(CreateThingSchema) {}
+```
+
+Unit-test schemas with `safeParse` in `tests/*.spec.ts`.

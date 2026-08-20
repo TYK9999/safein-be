@@ -1,0 +1,425 @@
+// ============================================================
+// SafeIn5 MVP - Signal Core, Media & Learning
+// Generated from the live PostgreSQL 16 schema (db/migrations/0001-0008).
+// Import at https://dbdiagram.io  ->  paste, or File > Import > DBML
+// Context tables (shown for their relationships, owned by another subsystem): learn5_item, rescue_plan, qr_code, site, sub_site, asset
+// ============================================================
+Project SafeIn5_04_signal {
+  database_type: 'PostgreSQL'
+  Note: 'SafeIn5 MVP - Signal Core, Media & Learning'
+}
+
+TableGroup "Signal Core, Media & Learning" {
+  classification
+  pulse_session
+  behaviour_signal
+  signal_media
+  signal_classification_event
+  signal_read_state
+  learn5_binding
+  learn5_view
+}
+
+TableGroup "Context (owned elsewhere)" {
+  learn5_item
+  rescue_plan
+  qr_code
+  site
+  sub_site
+  asset
+}
+
+Table asset {
+  id uuid [pk, default: `gen_random_uuid()`]
+  tenant_id uuid [not null]
+  site_id uuid [not null, note: 'Required. Every asset belongs to a site even when it is not pinned to a sub-site, so site-scoped feeds and RLS-adjacent scoping never need a NULL branch.']
+  sub_site_id uuid [note: 'Optional. An asset may hang directly off a site (mobile plant that moves between zones) or off a specific sub-site. Must belong to the same tenant; agreement between asset.site_id and sub_site.site_id is enforced by trg_asset_sub_site_site_match.']
+  external_ref text [note: '''The client's own asset/tag ID (e.g. "SB-14"). Free text because every quarry numbers its plant differently; unique per tenant when present so grouped insight queries do not split.''']
+  name text [not null]
+  asset_type text [not null, default: 'other', note: 'fixed_plant | mobile_plant | fixture | access_structure | other. Structured so "custom lifting fixtures" is a filter, not a text search.']
+  status text [not null, default: 'active', note: 'one of: active | inactive | decommissioned']
+  created_at timestamptz [not null, default: `now()`]
+  updated_at timestamptz
+  deleted_at timestamptz
+
+  indexes {
+    (id, tenant_id) [unique, name: 'uq_asset_id_tenant']
+  }
+
+  Note: 'A physical asset: fixed or mobile plant, a lifting fixture, an access structure. Deliberately a real table, not a free-text field: the flagship supervisor insight -- "3 similar Be Aware signals in 2 weeks, all on custom lifting fixtures" -- is a GROUP BY asset_id over behaviour_signal, and string matching would make that demo unreliable. Admin UX keeps assets optional.'
+}
+
+Table behaviour_signal {
+  id uuid [pk, default: `gen_random_uuid()`, note: 'Client-generated UUIDv7, minted on-device before the first network call, which is what makes POST /v1/signals/draft idempotent under retry. The gen_random_uuid() default is a fallback for server-side/admin inserts only.']
+  tenant_id uuid [not null]
+  status text [not null, default: 'draft', note: 'draft -> classified -> final, plus terminal discarded. Enforced here by CHECK, in the Signal facade by a transition guard, and on the wire by an optimistic UPDATE ... WHERE status = $expected. Three layers because a signal that regresses to draft mid-pilot is an unrecoverable data-integrity story. text + CHECK, never a PG ENUM.']
+  visibility text [not null, default: 'site', note: '''site | tenant | public. The column DEFAULT is 'site' for every tenant, including Community -- there is no per-tenant default resolution in the schema. pol_community_public_read requires visibility = 'public', so a Community capture left on the default will NOT appear on the unauthenticated Community feed: the application must set visibility = 'public' explicitly when the capturing tenant is kind = 'community'. This is deliberate (fail closed, never leak), but it means the Community feed is empty until that write path exists. SCP-024: corporate content must never leak into the community feed, and this column plus pol_community_public_read is where that is enforced.''']
+  author_token character(32) [not null, note: 'ALWAYS populated, anonymous or not. Deterministic one-way per-user-per-tenant HMAC pseudonym (Architecture Sec 4.2). This is what keeps repeat usage (the primary success measure), rate limiting, abuse blocking and closure notification working on anonymous signals. The same person is a different token in the Community tenant than in their employer tenant, so a corporate admin cannot correlate the two.']
+  author_user_id uuid [note: 'NULL when the signal is anonymous. This single nullable FK IS the Dev Pack Sec 7 "strip user metadata at the DB level" requirement, made real: for an anonymous signal there is no user metadata on the row to strip. Guarded by ck_behaviour_signal_anonymity so the anonymity promise is a database invariant, not an application convention.']
+  is_anonymous bool [not null, default: false, note: 'Materialised at capture time from the account-level setting (PRD Sec 5.5). Deliberately NOT read live from app_user.default_anonymous: the account setting may be flipped later, but the promise made to the worker at the moment of capture must be immutable.']
+  guest_session_id uuid [note: 'Set for unauthenticated QR journeys (WRK-003). When a guest later registers, guest_session.promoted_user_id attaches their prior activity without re-keying any signal.']
+  pulse_session_id uuid [note: 'Links Echo -> Signal. NULL for feed-entry captures that skip PULSE entirely.']
+  qr_code_id uuid
+  entry_point text [note: '[SIGNAL] qr | direct | feed | notification. Nullable because capture must never block on it.']
+  classification_code text [note: 'NULL while draft -- classification is a separate tap in the flow and must not be a mandatory field at row creation.']
+  classified_at timestamptz
+  classification_latency_ms integer [note: '[SIGNAL] Client-measured milliseconds from the classification screen appearing to the tile being tapped. This is how the "<10s to classify" NFR is PROVEN AT UAT with real production data across every capture, instead of by stopwatch on a demo device. Backfill is impossible; drop this column and the NFR becomes an opinion.']
+  capture_latency_ms integer [note: '[SIGNAL] Client-measured milliseconds from first tap to finalise. This is how the "<60s end-to-end capture" acceptance criterion is PROVEN AT UAT with real production data. Unreconstructable retrospectively, and it is the single number the pilot is judged on.']
+  body_text text [note: 'Nullable. Zero mandatory fields at capture -- a photo and a classification is a complete, valuable signal.']
+  body_source text [not null, default: 'none', note: 'typed | voice_transcript | none. CQA-006 wants evidence that voice-first is actually used rather than merely offered; this column is that evidence.']
+  transcript_confidence numeric(4,3) [note: '[SIGNAL] 0..1 ASR confidence for voice_transcript bodies. Lets a future pass identify text that should be treated as unreliable.']
+  site_id uuid [note: 'Denormalised from the resolved context so the feed filter (WRK-013/014) is one index scan with no join. context_snapshot remains the historical truth.']
+  sub_site_id uuid [note: '''Denormalised from the resolved context. Drives WRK-013 auto-filter to the worker's current zone.''']
+  asset_id uuid [note: 'Denormalised from the resolved context. The supervisor insight the product is sold on -- "3 similar Be Aware signals in 2 weeks, all on custom lifting fixtures" -- is a GROUP BY on this column, which is why asset is a real entity and not free text.']
+  context_snapshot jsonb [not null, default: '{}', note: 'Immutable denormalised copy of the resolved context at capture time, including qr_context.context_version. Never updated. Lets a six-month-old signal be interpreted against the context definition that was in force when it was captured.']
+  task_type_code text [note: '[SIGNAL] Structured, seeded vocabulary (heavy_lift, confined_space_entry, isolation, ...) copied from the QR context and FK-enforced against task_type. One of the two axes the future Identify/Gather pattern detection groups on -- deliberately NOT free text, because string matching would make the flagship analysis unreliable.']
+  risk_type_code text [note: '[SIGNAL] Structured, seeded vocabulary (suspended_load, confined_space, dropped_object, ...) copied from the QR context and FK-enforced against risk_type. The second pattern-detection axis.']
+  geo_lat numeric(9,6) [note: 'Optional, permission-gated. Rounded to 3 decimal places (~110 m) by the application before storage on anonymous signals: a precise fix on a specific work position identifies its author to anyone holding the crew roster, whatever is_anonymous says (Architecture Sec 4.3).']
+  geo_lon numeric(9,6)
+  geo_accuracy_m numeric(7,2)
+  occurred_at timestamptz [not null, default: `now()`, note: 'When the observation happened. Defaults to capture time; a separate column because Phase 2 may allow backdating and retrofitting that distinction later is impossible.']
+  finalised_at timestamptz
+  media_state text [not null, default: 'none', note: 'none | pending | partial | ready | failed. DENORMALISED from signal_media and maintained by the media worker so the feed decides what to render (thumbnail / skeleton / nothing) without a join or subquery -- one index scan per feed page (Architecture Sec 5.4). The feed never waits for media and never hides a signal because its media is not ready.']
+  moderation_state text [not null, default: 'visible', note: 'visible | hidden | removed | under_review. First-ever submission from a token in the Community tenant starts under_review. removed is a moderation outcome, not a delete -- the row survives for audit.']
+  workflow_state text [note: 'NULL until a review_task exists. Denormalised from review_task.state (open | acknowledged | closed) for feed badges. MVP supervisor workflow is Acknowledge + Close only (PRD Sec 5.4).']
+  search_vector tsvector [default: `to_tsvector('english'::regconfig, COALESCE(body_text, ''::text))`, note: 'Generated STORED tsvector over body_text. A generated column may only reference columns of the same row and its expression must be IMMUTABLE, which is why the regconfig is the literal english cast rather than a search_path-dependent lookup. Context terms are deliberately NOT concatenated in: they live in FK columns that are already indexed, and pulling them in would need a non-immutable join.']
+  duplicate_of_id uuid [note: '[SIGNAL] Self-FK, tenant-composite. Dev Pack Sec 17.2 duplicate detection. MVP writes it only via an explicit moderator "mark duplicate" action; automated detection is Phase 2 against this same column.']
+  similarity_group_id uuid [note: '[SIGNAL] Pure placeholder for Phase-2 clustering. Costs one nullable column now and a full backfill that can never be done later.']
+  created_at timestamptz [not null, default: `now()`]
+  updated_at timestamptz
+  deleted_at timestamptz [note: 'Soft delete (ADM-034). Never hard delete: GDPR erasure tombstones the user and destroys the token mapping, leaving the signal as genuinely anonymous safety knowledge (Architecture Sec 4.4).']
+
+  indexes {
+    (id, tenant_id) [unique, name: 'uq_behaviour_signal_id_tenant']
+  }
+
+  Note: 'The core object. Draft and final are the SAME ROW with a status column, not two tables -- splitting them would force a copy-and-delete on finalisation and break the signal_media FKs already attached during the draft phase (Architecture Sec 2.4). Zero mandatory fields at capture: a draft is insertable with tenant_id + author_token + status alone.'
+}
+
+Table classification {
+  code text [pk, note: 'Stable machine code. Referenced by behaviour_signal.classification_code and carried in every outbox payload; never renamed once seeded.']
+  label text [not null, unique, note: 'Worker-facing tile label. CQA-005: the agreed labels are Good Practice / Be Aware / Needs Attention Now. "Emerging Risk" and "Stop and Act Now" were explicitly rejected by the client and must not reappear.']
+  severity_ordinal smallint [not null, unique, note: 'Ascending severity (1 = Good Practice .. 3 = Needs Attention Now). Exists so WRK-013 "red first" feed ordering happens in SQL -- ORDER BY severity_ordinal DESC, created_at DESC -- rather than being re-implemented (and drifting) in application code. UNIQUE so two tiers can never claim the same sort rank.']
+  colour_token text [not null, note: 'one of: green | amber | red. Design-system colour token, not a hex value: theming is per-tenant (tenant.theme) and the mapping token -> hex belongs in the client.']
+  sort_order integer [not null]
+  triggers_workflow bool [not null, default: false, note: 'true => the outbox consumer WorkflowTaskCreator opens a review_task on signal.finalised. Only needs_attention_now at MVP. Config-as-data: turning Be Aware into a workflow trigger is an UPDATE, not a deploy.']
+  is_active bool [not null, default: true, note: 'Soft retirement of a tier. Historic signals keep referencing an inactive code; the capture UI filters on is_active = true.']
+  created_at timestamptz [not null, default: `now()`]
+  updated_at timestamptz
+
+  Note: 'Global, seeded reference list of the three SafeIn5 signal classifications. NOT tenant-scoped and NOT RLS-protected: ADM-035 gives it no CRUD in MVP and every tenant classifies against the same three tiles, which is what makes cross-tenant benchmarking possible later. text PK (not a PG ENUM) so Phase 2 adds a tier with an INSERT, never an ALTER TYPE.'
+}
+
+Table learn5_binding {
+  id uuid [pk, default: `gen_random_uuid()`]
+  tenant_id uuid [not null, note: 'The binding is always tenant-owned even when the bound item is global. This is what lets global content be surfaced in a tenant context without duplicating the content row.']
+  learn5_item_id uuid [not null]
+  site_id uuid
+  sub_site_id uuid
+  asset_id uuid
+  qr_context_id uuid
+  pulse_template_id uuid [note: 'Template target. This is the ENFORCED way to attach learning to a PULSE template -- pulse_template.steps[].learn5_item_id is a per-step inline link only and cannot be a foreign key.']
+  risk_type_code text [note: 'Risk-type target: binds an item to every context carrying this risk type, so a new confined-space QR inherits the confined-space Learn5 with no extra admin step.']
+  priority integer [not null, default: 100, note: 'Display order within a target, ascending (0 = first). Lives on the binding, not the item, because the same item ranks differently in different contexts.']
+  created_at timestamptz [not null, default: `now()`]
+  updated_at timestamptz
+  deleted_at timestamptz [note: 'Soft delete. Unbinding must be reversible and must not cascade into learn5_view history.']
+
+  Note: 'Many-to-many attachment of a learn5_item to exactly one context target (site | sub_site | asset | qr_context | pulse_template | risk_type). One join table with a nullable-target shape beats six FK columns on the item: the relationship is many-to-many, priority is a property of the relationship, and a tenant must be able to bind SafeIn5-global content (learn5_item.tenant_id IS NULL) to its own sites without cloning it.'
+}
+
+Table learn5_item {
+  id uuid [pk, default: `gen_random_uuid()`]
+  tenant_id uuid [note: 'NULL => SafeIn5-global item, readable by all tenants. Non-null => tenant-private item. Drives the special RLS policy on this table (section 6.1).']
+  title text [not null]
+  summary text
+  body_md text [note: 'Markdown body for delivery_mode = native. Rendered client-side; no HTML is stored.']
+  media_key text [note: 'Object-store key of the primary media asset. Not a presigned URL -- URLs are minted per request with a short TTL (Architecture Sec 5).']
+  media_kind text [note: 'Kind of the asset at media_key: image | video | audio | pdf.']
+  external_url text [note: 'Target for delivery_mode = external (Dev Pack Sec 8.4 Option 1). Retained as the fallback adapter per PRD Sec 5.8.']
+  delivery_mode text [not null, default: 'native', note: 'native (content hosted in SafeIn5, PRD Sec 5.8 decision) | external (adapter fallback, Dev Pack Sec 8.4 Option 1).']
+  risk_type_code text [note: '[SIGNAL] Structured risk vocabulary, not free text -- one of the two grouping axes the future SIGNAL intelligence layer clusters on.']
+  task_type_code text [note: '[SIGNAL] Structured task vocabulary, not free text -- the second SIGNAL grouping axis.']
+  tags text[] [not null, default: '{}', note: '[SIGNAL] Free-form editorial tags. Complements, never replaces, risk_type_code/task_type_code.']
+  estimated_seconds integer [note: 'Expected consumption time, shown to the worker before opening and used as the denominator for the Learn5 completion-rate metric (Dev Pack Sec 14).']
+  version integer [not null, default: 1, note: 'Editorial version. Incremented on republish so a learn5_view recorded months ago can be read against the copy that was live at the time.']
+  status text [not null, default: 'draft', note: 'one of: draft | published | archived']
+  published_at timestamptz
+  created_at timestamptz [not null, default: `now()`]
+  updated_at timestamptz
+  deleted_at timestamptz [note: 'Soft delete. Never hard delete -- learn5_view rows reference this item and the engagement metric must survive content retirement.']
+
+  Note: 'Micro-learning content (Dev Pack Sec 8.4, Architecture Sec 2.5). tenant_id NULL means SafeIn5-global content readable by every tenant including Community (CQA-010). Because tenant_id is nullable there is no (id, tenant_id) key, so every FK pointing here is single-column and tenant agreement is enforced by the write path plus RLS.'
+}
+
+Table learn5_view {
+  id uuid [pk, default: `gen_random_uuid()`]
+  tenant_id uuid [not null]
+  learn5_item_id uuid [not null]
+  author_token character(32) [not null, note: 'Pseudonymous per-user-per-tenant HMAC (Architecture Sec 4.2). The ONLY actor key on this table. Do not add a user_id column -- that would re-identify anonymous learners and break the guest path.']
+  source text [not null, note: '[SIGNAL] Entry point that surfaced the item: qr | pulse | feed | search | notification. Feeds the learn5.viewed outbox event (Architecture Sec 8, Sense stage).']
+  qr_code_id uuid [note: '[SIGNAL] The physical code that led here, when source = qr. Ties learning engagement back to a specific sticker placement (QA-004 placement verification).']
+  started_at timestamptz [not null, default: `now()`]
+  completed_at timestamptz
+  dwell_ms integer [note: '[SIGNAL] Client-measured foreground time on the item. Clamped to 1 hour; a backgrounded PWA tab otherwise reports values that poison the average.']
+  completed bool [not null, default: false, note: 'Materialised completion flag, set when the worker reaches the end of the item. Denormalised so the completion-rate metric is a COUNT with no CASE expression.']
+  created_at timestamptz [not null, default: `now()`]
+  updated_at timestamptz
+  deleted_at timestamptz
+
+  Note: 'Learn5 engagement telemetry. Required, not optional: "Engagement with PULSE and Learn 5" is a named Phase 1 success metric (Dev Pack Sec 14) and cannot be reconstructed retrospectively. Keyed by author_token only -- there is intentionally no user_id column (Architecture Sec 4.3), so it behaves identically for guests and for anonymous account holders.'
+}
+
+Table pulse_session {
+  id uuid [pk, default: `gen_random_uuid()`]
+  tenant_id uuid [not null]
+  author_token character(32) [not null, note: 'Deterministic per-user-per-tenant pseudonym (Architecture Sec 4.2). ALWAYS populated, anonymous or not. Never a raw user id. Guests carry one too, which is what keeps repeat-usage countable across guest and registered activity.']
+  author_user_id uuid [note: 'NULL when the session was anonymous. Enforced by ck_pulse_session_anonymity -- see behaviour_signal.author_user_id for the full rationale.']
+  is_anonymous bool [not null, default: false, note: 'Materialised at session start from the account setting. The setting may change later; the promise made at capture time must not.']
+  guest_session_id uuid
+  entry_point text [not null, default: 'direct', note: '[SIGNAL] Attribution of which entry points actually drive behaviour (qr vs direct vs feed vs notification). Written at MVP, unread by MVP features.']
+  qr_code_id uuid
+  pulse_template_id uuid [note: 'The template whose prompts were actually rendered. Templates are versioned rather than mutated, so this row remains interpretable months later.']
+  context_snapshot jsonb [not null, default: '{}', note: 'Immutable denormalised copy of the resolved context at session start (site/sub_site/asset/task/risk/qr_context_version). Never updated. The FK columns beside it are for querying; this is historical truth -- a sub_site renamed six months later must not rewrite what the worker was actually standing in.']
+  site_id uuid [note: 'Denormalised from context_snapshot purely for indexed querying. context_snapshot is authoritative for what the context meant at the time.']
+  sub_site_id uuid
+  asset_id uuid
+  task_type_code text [note: '[SIGNAL] Structured task vocabulary copied from the resolved context. Same axis as behaviour_signal.task_type_code, so PULSE engagement and signal output can be grouped on identical keys.']
+  risk_type_code text [note: '[SIGNAL] Structured risk vocabulary copied from the resolved context. See task_type_code.']
+  geo_lat numeric(9,6) [note: 'Optional and permission-gated (Dev Pack Sec 5). Rounded to 3 decimal places (~110 m) by the application before storage on anonymous sessions -- Architecture Sec 4.3.']
+  geo_lon numeric(9,6)
+  geo_accuracy_m numeric(7,2)
+  started_at timestamptz [not null, default: `now()`]
+  completed_at timestamptz
+  steps_completed text[] [not null, default: '{}', note: '[SIGNAL] Which of P/U/L/S/E were actually viewed. Feeds the PULSE completion-rate success metric; unreconstructable after the fact.']
+  duration_ms integer [note: '[SIGNAL] Wall-clock session duration, client-reported.']
+  outcome text [not null, default: 'abandoned', note: 'abandoned | completed | completed_with_signal. Defaults to abandoned so a session that is never completed records the truth without a reaper having to write it.']
+  created_at timestamptz [not null, default: `now()`]
+  updated_at timestamptz
+  deleted_at timestamptz [note: 'Soft delete. Nothing in this schema is ever hard-deleted; GDPR erasure works by tombstoning the user and destroying the token mapping (Architecture Sec 4.4).']
+
+  indexes {
+    (id, tenant_id) [unique, name: 'uq_pulse_session_id_tenant']
+  }
+
+  Note: 'One PULSE (P/U/L/S/E) walkthrough. The Echo half of the Echo -> Signal pair: a session may complete without producing a behaviour_signal, and that abandonment is itself the metric (PRD Sec 5.7 repeat-scan fatigue). Anonymity shape is identical to behaviour_signal by design -- a session that could be attributed while the signal it produced could not would defeat the promise.'
+}
+
+Table qr_code {
+  id uuid [pk, default: `gen_random_uuid()`]
+  tenant_id uuid [not null]
+  token character(12) [not null, unique, note: 'THE URL PATH SEGMENT: https://s5.app/q/<token>. 12 chars of Crockford base32 (no I/L/O/U -- no ambiguity, no accidental words), 60 bits of CSPRNG entropy, case-insensitive so it doubles as a human-typed fallback. Opaque: it carries no signature and no expiry, because a token that expires is a sticker that must be reprinted. All authority lives in qr_code.status, which is server-side and instantly revocable.']
+  label text [not null, note: 'Human name in the admin list, e.g. "Lifting Zone 3 barrier".']
+  qr_context_id uuid [note: 'Nullable while status=draft (token minted before the admin binds destinations, Sec 6.3). Re-point the sticker by UPDATEing this column.']
+  status text [not null, default: 'draft', note: 'draft | active | inactive | revoked. REVOKED IS NOT DELETED. RESOLVER CONTRACT (Sec 6.2 hard rule 4): unknown token -> 200 {status:"unknown"}; inactive -> 200 {status:"inactive"}; revoked -> 200 {status:"retired", fallback:{siteName}}. Never 404 a physical safety sticker. Because unknown and revoked are distinguishable only if the row survives, revoked rows are NEVER deleted and deleted_at is never set on a revoked code that is still physically mounted.']
+  sticker_serial text [note: 'Optional physical inventory serial, matching the additive ?s=<sticker_serial> query param. Never authoritative for resolution; logged for QA-004 placement verification.']
+  verified_at timestamptz [note: 'QA-004 "QR tested/active": set when someone has physically scanned the mounted sticker and confirmed it routes correctly.']
+  verified_by_membership_id uuid [note: 'Membership that performed the physical verification. Not anonymous -- QR verification is an admin/supervisor action (Architecture Sec 4.3).']
+  printed_asset_url text [note: 'Object-store key of the generated print-ready PNG/SVG (qrcode lib, ECC level H for mud, abrasion and UV).']
+  scan_count bigint [not null, default: 0, note: 'Denormalised counter, incremented fire-and-forget on resolve. The authoritative per-scan record is qr_scan_event below.']
+  last_scanned_at timestamptz [note: 'Denormalised. Powers the admin "never scanned since printing" placement-check list.']
+  activated_at timestamptz
+  revoked_at timestamptz
+  revoked_reason text [note: 'Why the sticker was retired. Never shown publicly; shown in admin and copied into the audit_log entry.']
+  created_at timestamptz [not null, default: `now()`]
+  updated_at timestamptz
+  deleted_at timestamptz
+
+  indexes {
+    (id, tenant_id) [unique, name: 'uq_qr_code_id_tenant']
+  }
+
+  Note: 'One physical printed QR sticker (Architecture Sec 2.3 / Sec 6). Points at a qr_context, which is what makes re-pointing a sticker an UPDATE rather than a reprint. ~30 rows in the pilot.'
+}
+
+Table rescue_plan {
+  id uuid [pk, default: `gen_random_uuid()`]
+  tenant_id uuid [not null]
+  site_id uuid [note: 'Scope. Resolution order is most-specific-first: asset_id, then sub_site_id, then site_id, then tenant-wide (all three NULL).']
+  sub_site_id uuid
+  asset_id uuid
+  title text [not null]
+  location_description text [note: 'Free text describing the physical location / access point, per Dev Pack Sec 8.3 "location / asset". Supplements, never replaces, the structured site/sub_site/asset scope.']
+  immediate_actions jsonb [not null, default: '[]', note: 'ORDERED array of steps: [{"seq":1,"action":"...","detail":"..."}]. Order is safety-critical; it is carried by both array position and an explicit seq key so a reserialising client cannot silently reorder it.']
+  roles_responsibilities jsonb [not null, default: '[]', note: 'Array of [{"role":"...","responsibility":"..."}] (Dev Pack Sec 8.3 "roles and responsibilities").']
+  required_equipment jsonb [not null, default: '[]', note: 'Array of [{"item":"...","quantity":"...","location":"..."}] (Dev Pack Sec 8.3 "required equipment").']
+  escalation_contacts jsonb [not null, default: '[]', note: 'Array of [{"name":"...","role":"...","phone":"..."}] (Dev Pack Sec 8.3 "escalation contacts"). Discrete phone values so the client can render a one-tap tel: link -- the single most time-critical element on the page.']
+  version integer [not null, default: 1, note: 'Version, per Dev Pack Sec 8.3 "version / review date". Displayed to the worker so a printed copy can be reconciled against the live one.']
+  review_date date [note: 'Scheduled review date (Dev Pack Sec 8.3). OPEN SAFETY QUESTION: no source document says what an expired review date does. Recommendation, and the behaviour assumed here: an expired plan is still DISPLAYED, with a staleness banner. Never withhold emergency content. This column is deliberately not a display gate anywhere in the schema.']
+  status text [not null, default: 'draft', note: 'one of: draft | published | archived']
+  published_at timestamptz
+  created_at timestamptz [not null, default: `now()`]
+  updated_at timestamptz
+  deleted_at timestamptz
+
+  indexes {
+    (id, tenant_id) [unique, name: 'uq_rescue_plan_id_tenant']
+  }
+
+  Note: 'Task/location-specific emergency response procedure. Fields mirror Dev Pack Sec 8.3 exactly. Structured JSONB rather than a markdown blob because the mobile rendering must be scannable in an emergency -- individual actions, roles, equipment and phone numbers must be addressable UI elements, not prose the client has to parse.'
+}
+
+Table signal_classification_event {
+  id uuid [pk, default: `gen_random_uuid()`]
+  tenant_id uuid [not null]
+  signal_id uuid [not null]
+  from_code text [note: 'NULL on the first (worker) classification -- there was nothing to change from.']
+  to_code text [not null]
+  changed_by_role text [note: 'Role code at the time of the change (worker | supervisor | moderator | org_admin | platform_admin). Denormalised because roles change and this record must not.']
+  changed_by_token character(32) [note: 'author_token of the actor, never a user id -- a moderator who reclassifies an anonymous signal must not become the route by which the reporter is identified.']
+  reason text
+  source text [not null, note: '''worker | moderator | admin. Distinguishes a worker's own correction from a third-party override, which is the axis the disagreement analysis runs on.''']
+  created_at timestamptz [not null, default: `now()`]
+
+  Note: '''[SIGNAL] Append-only log of every classification set or changed. Exists because ADM-033 permits an admin to change a worker's classification and CQA-005 anticipates deeper SIF mapping later: the DISAGREEMENT between the worker who was standing there and the reviewer who was not IS training data, and it is irrecoverable if only the final value is kept. No UPDATE or DELETE grant is issued on this table.'''
+}
+
+Table signal_media {
+  id uuid [pk, default: `gen_random_uuid()`, note: 'Client-generated UUIDv7, minted alongside the signal id so that presign is idempotent under retry.']
+  tenant_id uuid [not null]
+  signal_id uuid [not null]
+  kind text [not null, note: 'one of: photo | video | audio']
+  state text [not null, default: 'reserved', note: 'reserved -> uploading -> uploaded -> processing -> ready, with terminal failed and orphaned. orphaned means the reserved row has no object in S3 after the reconciler HEADed it, or the parent draft was reaped.']
+  storage_key text [not null, note: 'Full object key, s3://bucket/{tenant_id}/{yyyy}/{mm}/{signal_id}/{media_id}.{ext}. Tenant-prefixed by constraint so retention and erasure can be executed as a prefix operation.']
+  thumb_key text [note: 'sharp-generated 400px derivative. NULL until the worker has processed the original.']
+  poster_key text [note: 'ffmpeg-extracted poster frame, video only.']
+  mime_type text
+  byte_size bigint
+  width integer [note: 'Captured client-side BEFORE upload so the feed can reserve a correctly proportioned skeleton tile while the object is still in flight (Architecture Sec 5.4) -- a mis-sized placeholder that reflows on load reads as broken.']
+  height integer
+  duration_ms integer
+  checksum_sha256 character(64) [note: 'Client-supplied lowercase hex SHA-256, verified against the stored object on finalise.']
+  upload_started_at timestamptz
+  upload_completed_at timestamptz
+  processed_at timestamptz
+  attempt_count integer [not null, default: 0, note: 'Incremented on each failed /complete or processing attempt. Feeds the 3-retry-then-failed policy; the signal itself stays visible and final when processing fails, because the observation is the value and the photo is supporting evidence.']
+  last_error text
+  exif_stripped bool [not null, default: true, note: 'Always true, by CHECK. EXIF including GPS and device serial is stripped unconditionally during derivative generation. This column exists to make that fact auditable per object, not to make it optional.']
+  transcript_text text [note: 'Audio only. Transcription is non-blocking by construction (CQA-006: voice preferred, never required) -- a provider outage sets transcript_state=failed and nothing else changes.']
+  transcript_state text [not null, default: 'none', note: 'one of: none | pending | ready | failed']
+  created_at timestamptz [not null, default: `now()`]
+  updated_at timestamptz
+  deleted_at timestamptz [note: 'Soft delete. Object deletion in S3 is a separate, audited retention job.']
+
+  Note: 'One uploaded artefact per row. Bytes never traverse the API container: the browser PUTs directly to S3 via a presigned URL, so this row is created (state=reserved) before the object exists and is promoted asynchronously. The reconciler depends on the timing columns to close the "upload succeeded but /complete never arrived" hole (Architecture Sec 5.3).'
+}
+
+Table signal_read_state {
+  tenant_id uuid [not null, note: 'Present for RLS and for retention scoping; it is not part of the PK because a token is already tenant-scoped by derivation (per-tenant salt).']
+  author_token character(32) [not null, note: '''The READER's token, not the author's. Guests carry a token too, which is the only reason guest read state works at all.''']
+  signal_id uuid [not null]
+  seen_at timestamptz [not null, default: `now()`, note: 'Card scrolled into view. This is the value the "caught up" boundary is computed against.']
+  opened_at timestamptz [note: 'Card actually opened. NULL means seen but not read -- the difference between the two is the feed engagement metric.']
+  created_at timestamptz [not null, default: `now()`]
+  updated_at timestamptz
+
+  indexes {
+    (author_token, signal_id) [pk]
+  }
+
+  Note: '''Per-reader read state. Powers WRK-013's "You are caught up!" boundary in the feed. Deliberately has NO user_id column of any kind: it is keyed by author_token ONLY, so read state behaves identically for guests, anonymous users and attributed users, and destroying the token mapping at GDPR erasure clears attributability by construction. Composite PK (author_token, signal_id) -- one row per reader per signal, upserted on view.'''
+}
+
+Table site {
+  id uuid [pk, default: `gen_random_uuid()`]
+  tenant_id uuid [not null]
+  name text [not null]
+  city text
+  country_code character(2)
+  timezone text [not null, default: 'Europe/London', note: '[SIGNAL] IANA timezone name. Shift and time-of-day pattern analysis requires local time, and this is uncorrectable retrospectively once signals have been captured against a wrong or absent zone.']
+  centroid_lat numeric(9,6) [note: '[SIGNAL] Site centroid latitude, numeric(9,6) (~0.1 m precision). Feeds geo clustering and proximity context resolution (ADM-006).']
+  centroid_lon numeric(9,6) [note: '[SIGNAL] Site centroid longitude. See centroid_lat.']
+  status text [not null, default: 'active', note: 'one of: active | inactive']
+  created_at timestamptz [not null, default: `now()`]
+  updated_at timestamptz
+  deleted_at timestamptz [note: 'Soft delete. Sub-sites, assets, QR contexts and signals reference this row.']
+
+  indexes {
+    (id, tenant_id) [unique, name: 'uq_site_id_tenant']
+  }
+
+  Note: 'A physical site (e.g. a quarry) belonging to a tenant (= one client organisation). Top of the context hierarchy used by QR resolution, feed scoping and user_site_assignment.'
+}
+
+Table sub_site {
+  id uuid [pk, default: `gen_random_uuid()`]
+  tenant_id uuid [not null]
+  site_id uuid [not null]
+  parent_sub_site_id uuid [note: 'Optional parent sub-site, same site and same tenant. Nullable self-FK: SafeIn5 explicitly warned against complex hierarchy (WRK-013 amendment), so MVP caps depth at 1 -- but the column costs nothing now and avoids a migration if Phase 2 needs depth.']
+  name text [not null]
+  kind text [not null, default: 'area', note: 'area | zone | task_zone | asset_group. Structured rather than free text because these are grouping keys the future SIGNAL layer depends on (Open-Questions: hierarchy model).']
+  centroid_lat numeric(9,6) [note: '[SIGNAL] Zone centroid latitude; geo-based context resolution and clustering.']
+  centroid_lon numeric(9,6) [note: '[SIGNAL] Zone centroid longitude.']
+  status text [not null, default: 'active', note: 'one of: active | inactive']
+  created_at timestamptz [not null, default: `now()`]
+  updated_at timestamptz
+  deleted_at timestamptz
+
+  indexes {
+    (id, tenant_id) [unique, name: 'uq_sub_site_id_tenant']
+  }
+
+  Note: 'A named area/zone within a site -- the level at which QR codes, feeds and Learn5 bindings are usually scoped. Self-nesting is permitted structurally but capped at one level of nesting in MVP by trg_sub_site_depth_cap.'
+}
+
+// ---------- Relationships ----------
+Ref fk_asset_site: asset.(site_id, tenant_id) > site.(id, tenant_id)
+Ref fk_asset_sub_site: asset.(sub_site_id, tenant_id) > sub_site.(id, tenant_id)
+Ref fk_behaviour_signal_asset: behaviour_signal.(asset_id, tenant_id) > asset.(id, tenant_id)
+Ref fk_behaviour_signal_classification: behaviour_signal.classification_code > classification.code
+Ref fk_behaviour_signal_duplicate_of: behaviour_signal.(duplicate_of_id, tenant_id) > behaviour_signal.(id, tenant_id)
+Ref fk_behaviour_signal_pulse_session: behaviour_signal.(pulse_session_id, tenant_id) > pulse_session.(id, tenant_id)
+Ref fk_behaviour_signal_qr_code: behaviour_signal.(qr_code_id, tenant_id) > qr_code.(id, tenant_id)
+Ref fk_behaviour_signal_site: behaviour_signal.(site_id, tenant_id) > site.(id, tenant_id)
+Ref fk_behaviour_signal_sub_site: behaviour_signal.(sub_site_id, tenant_id) > sub_site.(id, tenant_id)
+Ref fk_learn5_binding_asset: learn5_binding.(asset_id, tenant_id) > asset.(id, tenant_id)
+Ref fk_learn5_binding_item: learn5_binding.learn5_item_id > learn5_item.id
+Ref fk_learn5_binding_site: learn5_binding.(site_id, tenant_id) > site.(id, tenant_id)
+Ref fk_learn5_binding_sub_site: learn5_binding.(sub_site_id, tenant_id) > sub_site.(id, tenant_id)
+Ref fk_learn5_view_item: learn5_view.learn5_item_id > learn5_item.id
+Ref fk_learn5_view_qr_code: learn5_view.(qr_code_id, tenant_id) > qr_code.(id, tenant_id)
+Ref fk_pulse_session_asset: pulse_session.(asset_id, tenant_id) > asset.(id, tenant_id)
+Ref fk_pulse_session_qr_code: pulse_session.(qr_code_id, tenant_id) > qr_code.(id, tenant_id)
+Ref fk_pulse_session_site: pulse_session.(site_id, tenant_id) > site.(id, tenant_id)
+Ref fk_pulse_session_sub_site: pulse_session.(sub_site_id, tenant_id) > sub_site.(id, tenant_id)
+Ref fk_rescue_plan_asset: rescue_plan.(asset_id, tenant_id) > asset.(id, tenant_id)
+Ref fk_rescue_plan_site: rescue_plan.(site_id, tenant_id) > site.(id, tenant_id)
+Ref fk_rescue_plan_sub_site: rescue_plan.(sub_site_id, tenant_id) > sub_site.(id, tenant_id)
+Ref fk_signal_classification_event_from_code: signal_classification_event.from_code > classification.code
+Ref fk_signal_classification_event_signal: signal_classification_event.(signal_id, tenant_id) > behaviour_signal.(id, tenant_id)
+Ref fk_signal_classification_event_to_code: signal_classification_event.to_code > classification.code
+Ref fk_signal_media_signal: signal_media.(signal_id, tenant_id) > behaviour_signal.(id, tenant_id)
+Ref fk_signal_read_state_signal: signal_read_state.(signal_id, tenant_id) > behaviour_signal.(id, tenant_id)
+Ref fk_sub_site_parent: sub_site.(parent_sub_site_id, tenant_id) > sub_site.(id, tenant_id)
+Ref fk_sub_site_site: sub_site.(site_id, tenant_id) > site.(id, tenant_id)
+
+// ---------- Relationships to other subsystems (omitted here) ----------
+// out of scope: asset.tenant_id -> tenant
+// out of scope: behaviour_signal.author_user_id -> app_user
+// out of scope: behaviour_signal.guest_session_id+tenant_id -> guest_session
+// out of scope: behaviour_signal.risk_type_code -> risk_type
+// out of scope: behaviour_signal.task_type_code -> task_type
+// out of scope: behaviour_signal.tenant_id -> tenant
+// out of scope: learn5_binding.pulse_template_id -> pulse_template
+// out of scope: learn5_binding.qr_context_id+tenant_id -> qr_context
+// out of scope: learn5_binding.risk_type_code -> risk_type
+// out of scope: learn5_binding.tenant_id -> tenant
+// out of scope: learn5_item.risk_type_code -> risk_type
+// out of scope: learn5_item.task_type_code -> task_type
+// out of scope: learn5_item.tenant_id -> tenant
+// out of scope: learn5_view.tenant_id -> tenant
+// out of scope: pulse_session.author_user_id -> app_user
+// out of scope: pulse_session.guest_session_id+tenant_id -> guest_session
+// out of scope: pulse_session.pulse_template_id -> pulse_template
+// out of scope: pulse_session.risk_type_code -> risk_type
+// out of scope: pulse_session.task_type_code -> task_type
+// out of scope: pulse_session.tenant_id -> tenant
+// out of scope: qr_code.qr_context_id+tenant_id -> qr_context
+// out of scope: qr_code.tenant_id -> tenant
+// out of scope: qr_code.verified_by_membership_id -> user_tenant_membership
+// out of scope: rescue_plan.tenant_id -> tenant
+// out of scope: signal_classification_event.tenant_id -> tenant
+// out of scope: signal_media.tenant_id -> tenant
+// out of scope: signal_read_state.tenant_id -> tenant
+// out of scope: site.tenant_id -> tenant
+// out of scope: sub_site.tenant_id -> tenant

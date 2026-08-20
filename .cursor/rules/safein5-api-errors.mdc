@@ -1,0 +1,25 @@
+---
+description: Domain Nest exceptions vs media {code,message} errors
+globs: src/modules/**/*.service.ts,src/modules/**/*.controller.ts
+alwaysApply: false
+---
+
+# API errors
+
+## Domain modules (signals, auth, QR admin, pulse)
+
+Throw Nest HTTP exceptions: `BadRequestException`, `ConflictException`, `ForbiddenException`, `NotFoundException`, `UnauthorizedException`.
+
+## Media / upload / audio / STT
+
+Use stable machine codes via `fail()` (see `src/modules/audio/audio.service.ts`):
+
+```typescript
+export function fail(status: HttpStatus, code: string, message: string): never {
+  throw new HttpException({ code, message }, status);
+}
+
+// fail(HttpStatus.NOT_FOUND, 'CLIP_NOT_FOUND', 'Audio clip not found');
+```
+
+Do not invent ad-hoc envelopes. Match codes in `api/BACKEND_*_SPEC.md` when implementing those APIs.

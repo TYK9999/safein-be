@@ -1,0 +1,13 @@
+---
+description: Pino logging, PII redaction, and Fastify (not Express) usage
+globs: src/**/*.ts
+alwaysApply: false
+---
+
+# Logging, PII, Fastify
+
+- Log via nestjs-pino / `AppLoggerService` only — no `console.log` / `console.error` in app code
+- Never log OTP codes, magic-link tokens, JWTs, emails, passwords, or raw req/res bodies
+- Do not bypass pino redaction in `src/logger/`
+- Use Fastify types (`FastifyRequest` / `FastifyReply`), `@fastify/cookie`, and the octet-stream parser from `main.ts` — not Express APIs
+- CORS origins come from config (`corsOrigins`); never `*` with credentials

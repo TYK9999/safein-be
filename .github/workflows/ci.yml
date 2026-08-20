@@ -1,0 +1,73 @@
+name: Deploy to EC2
+
+# Deploy the backend to EC2 on every push to `dev` (i.e. merges into dev), or
+# manually. The GitHub runner SSHes into the instance with SAFE_IN_PEM and pipes
+# deploy/deploy.sh to it. On the box that script hard-syncs the repo to origin/dev
+# using the box's GitHub DEPLOY KEY (SSH), then rebuilds + health-checks the
+# container. Nothing is built on the runner — the box builds the image itself
+# (sharp / ffmpeg-static are per-arch).
+#
+# Required repository secrets (Settings -> Secrets and variables -> Actions):
+#   SAFE_IN_PEM       private .pem to SSH into EC2 (FULL text incl. BEGIN/END + a trailing newline)
+#   SAFE_IN_EC2_HOST  EC2 public DNS or Elastic IP
+#   SAFE_IN_USER      SSH user (ubuntu on Ubuntu, ec2-user on Amazon Linux)
+#
+# One-time on the box (see deploy/DEPLOY-EC2.md):
+#   - Docker + git installed, and a filled-in .env at ~/safein5-be/.env
+#   - a GitHub DEPLOY KEY: `ssh-keygen -t ed25519 -f ~/.ssh/id_ed25519 -N ""` on the
+#     box, then add ~/.ssh/id_ed25519.pub to the repo (Settings -> Deploy keys).
+#   - the box's security group must allow inbound SSH (22) from the runner.
+
+on:
+  push:
+    branches: [dev]
+  workflow_dispatch:
+
+# Serialize deploys so two runs never build on the box at once. Queue rather than
+# cancel — cancelling the runner would not stop an in-flight remote docker build.
+concurrency:
+  group: deploy-ec2-dev
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    name: Deploy to EC2 (dev)
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      # Checked out only to obtain deploy/deploy.sh for piping over SSH — the real
+      # repo sync happens on the box via its deploy key.
+      - uses: actions/checkout@v4
+
+      - name: SSH -> sync -> build & health-check on EC2
+        env:
+          SAFE_IN_PEM: ${{ secrets.SAFE_IN_PEM }}
+          SAFE_IN_EC2_HOST: ${{ secrets.SAFE_IN_EC2_HOST }}
+          # Hardcoded (not the SAFE_IN_USER secret) to rule out a wrong/whitespace
+          # user value while debugging. 'ubuntu' is the default user on Ubuntu AMIs
+          # and isn't sensitive. Switch back to the secret once the deploy is green.
+          SAFE_IN_USER: ubuntu
+        run: |
+          set -euo pipefail
+          printf '%s\n' "$SAFE_IN_PEM" > key.pem
+          chmod 600 key.pem
+          trap 'rm -f key.pem' EXIT
+
+          # Fail fast with a clear message if SAFE_IN_PEM is malformed (missing
+          # BEGIN/END, CRLF, passphrase-protected, or a .ppk instead of a .pem).
+          if ! ssh-keygen -y -f key.pem >/dev/null 2>&1 </dev/null; then
+            echo "::error::SAFE_IN_PEM is not a valid, passphrase-free private key. Paste the FULL .pem (BEGIN/END lines + real newlines + a trailing newline)."
+            exit 1
+          fi
+          echo "Connecting as '${SAFE_IN_USER}@${SAFE_IN_EC2_HOST}' (user must match the AMI: ubuntu / ec2-user / admin)."
+          # TEMP diagnostic: fingerprint of the key inside SAFE_IN_PEM. It MUST equal
+          # the local working key's:  ssh-keygen -lf safein5-be1.pem
+          # If they differ, SAFE_IN_PEM holds the wrong key. -v prints the auth trace
+          # (offered key vs. what the server accepts) WITHOUT leaking the private key.
+          # Remove both once the deploy works.
+          echo "SAFE_IN_PEM fingerprint:"; ssh-keygen -lf key.pem || true
+
+          ssh -v -i key.pem \
+            -o StrictHostKeyChecking=accept-new \
+            -o ConnectTimeout=20 \
+            "${SAFE_IN_USER}@${SAFE_IN_EC2_HOST}" 'bash -s' < deploy/deploy.sh

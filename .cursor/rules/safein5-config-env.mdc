@@ -1,0 +1,21 @@
+---
+description: Env schema, configuration mapping, and .env.example sync
+globs: src/config/**/*.ts,.env.example,.env*.example
+alwaysApply: false
+---
+
+# Config / env
+
+`EnvSchema` has **no hardcoded defaults** for required keys — missing values fail boot.
+
+When adding or changing an env var:
+
+1. `src/config/env.schema.ts` — Zod field
+2. `src/config/configuration.ts` — nested config mapping
+3. `.env.example` (and `.env.production.example` if prod-relevant)
+
+In services use `config.getOrThrow(...)` for required values. Optional only for genuinely mode-specific settings (e.g. S3 vs local), enforced at the active backend.
+
+Never read `process.env` directly in feature code — go through Nest `ConfigService` / `src/config`. Environments: development, staging/production via deployment `.env` (see `.env.example` / `.env.production.example`).
+
+Never commit `.env`. Use the `extend-env-config` skill for multi-file updates.

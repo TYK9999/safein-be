@@ -1,0 +1,23 @@
+---
+description: Exports, imports, commits, logging, secrets, and dependency approval
+alwaysApply: true
+---
+
+# Project conventions
+
+| # | Rule |
+|---|------|
+| S2 | Prefer named exports for modules/services/helpers. Avoid `export default` except where Nest/tooling requires it. |
+| S5 | Cross-folder imports: use `src/` path aliases from `tsconfig` when configured; otherwise clear relative imports. Within a feature folder, `./` is fine. |
+| S9 | Conventional Commits: `feat\|fix\|chore\|refactor\|test\|docs\|style\|perf\|build\|ci\|revert`. |
+| S10 | No `console.log` in production code. Use nestjs-pino / `AppLoggerService`. |
+| H6 | No hardcoded secrets. Env via `src/config` + `.env.example` only. Never commit `.env`. |
+| H7 | Do not install npm packages without explicit user approval. |
+| G* | Branch-first workflow — see `safein5-git-workflow.mdc` (G1–G4). |
+
+Auth session notes (backend implements FE cookie/session contract):
+
+- Access + refresh token issuance/rotation and logout invalidation live in `src/modules/auth/`
+- Never log tokens, OTP codes, or emails
+
+Use skills: `git-commit` for commits, `raise-pr` / `prepare-backend-pr` before opening a PR.

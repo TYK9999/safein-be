@@ -1,0 +1,54 @@
+Row	Module / area	UI / User Story	Data (paste into Core.xlsx Task sheet column I)
+15	Web - SafeIn5 Admin · Tenant Management	Tenant Summary	(Derived from Tenant list — no extra sample fields)
+16	Tenant Management	Tenant Listing	Organisation Name; Admin Contact Name; Status (Live / Invited / Suspended)
+17	Tenant Management	Tenant Detail Page	Organisation Name; Status; Live Since; Administrator Name; Administrator Email; Sites (Name, Site In-Charge); Back Office Accounts (Name, Access, Email)
+18	Tenant Management	Invite Tenant	Organisation Name; Administrator Name; Administrator Email; Seed Routing Rules (Yes / No); Require Review Before Sharing Needs Attention Now on High Energy (Yes / No)
+19	Content	Tab - Take5 Listing	Take 5 Template Name; Task Type; Space Name; Version; Published Date; Last Edited By
+20	Content	New / Edit Take5 Template	Name; Task Type; Prompt 1; Prompt 2; Prompt 3; Prompt 4; Prompt 5; Version; Status (Draft / Published); Published Date; Last Edited By
+21	Content	Tab - Learn 5 & Rescue Listing	Learn 5 Set Name; Task Type; Version; Published Date; Has Rescue Plan (Yes / No)
+22	Content	Edit Learn5	Set Name; Task Type; Card 1; Card 2; Card 3; Card 4; Card 5; Rescue Plan Step 1; Rescue Plan Step 2; Rescue Plan Step 3; Version; Status; Source (Authored / From Echo); Owned By
+23	Web - Tenant Admin · Dashboard	Three Tab	Site Filter Options; Date Range Options (Today / This Week / Last 30 Days)
+24	Dashboard	Tab - Jobs	Job Reference; Work Description; Space Name; Site Name; Trigger Type; Owner; Start Date; Duration or End Date; Permit Required (Yes / No); Permit Valid To
+25	Dashboard	Jobs > Job Detail Page	Job Reference; Space Name; Site Name; Work Description; Owner; Day Of Work; Permit Valid To; Linked Echoes; Space History (Previous Job Reference, Echo Title, Closed As, Owner, Date); Emerging Pattern Note (optional)
+26	Dashboard	Job Export Detail Page	Same as Job Detail; Media Files; Voice Transcripts; Acknowledgement Messages; Take 5 Completions; Export Format (PDF / CSV)
+27	Dashboard	Tab - Site Manager	(Derived from Echoes, Jobs, Actions, and Learning — no extra sample fields)
+28	Dashboard	Tab - Executive	(Derived from Echoes, Users, and Sites — no extra sample fields)
+29	Sites	Sites Listing & Tab Group	Site Name; Site In-Charge
+30	Sites	Add a site	Site Name; Site In-Charge; Default Supervisor; Require Review Before Sharing Needs Attention Now on High Energy (Yes / No)
+31	Sites	Tab - Routing Rule	Hazard Category; Energy (High Energy / Standard); Owner Role; Named Owner; Review If Needs Attention Now (Site In-Charge / Not Needed)
+32	Sites	Tab - People	Name; Role; Can Be Assigned (Yes / No)
+33	Sites	Tab - Hazard Category Taxonomy	Category Name; Energy (High Energy / Standard); Short Description
+34	Sites	Tab - Spaces and QR	Space Name; Location; QR Code ID; Task Type; Permit Required (Yes / No); Content Owner; Take 5 Version; Learn 5 Version (or None)
+35	Sites	Space and QR > Summary Card	Space Name; Site Name; Location; Task Type; Permit Required (Yes / No); QR Code ID; Holds Rescue Plan (Yes / No); Owner Rule Role; Content Owner; Take 5 Prompts; Learn 5 Cards; Rescue Plan Steps; Take 5 Version; Learn 5 Version
+36	User Management	User Listing	Name; Role On Site; Site; Back Office Access (Phone Only / Supervisor / Tenant Admin); Can Be Assigned (Yes / No); Status (Active / Invited / Suspended)
+37	User Management	Invite User	Name; Email or Mobile; Role On Site; Site; Back Office Access (Phone Only / Supervisor / Tenant Admin)
+38	Web - Supervisor · Dashboard	Tab group	(Navigation only — no sample fields)
+39	Supervisor Dashboard	Tab - Queue	Site Filter Options; Take 5 Completions Today (see Take 5 table); Echoes (see Echoes table)
+40	Supervisor Dashboard	Tab - Overview	(Derived from Echoes and offline sync — no extra sample fields)
+41	Supervisor Dashboard	Echoes table	Echo ID; Response Type; What The AI Reads; Space Name; Job Reference; From (Name or Anonymous); Captured At; Owner (Unassigned / Name)
+42	Supervisor Dashboard	Take 5 table	Space Name; Task; From (Name or Anonymous); Time; Outcome (Carried On / Changed The Plan / Stopped The Job); Linked Echo ID (or None)
+43	Supervisor Dashboard	Echo details page	Echo ID; Pulse ID; Job Reference; Title; Response Type (Worker Choice); AI Suggested Response; Hazard Category; Energy; AI Summary; Photos; Video; Voice Note; Voice Transcript; Space Name; Site Name; Permit Reference; Permit Valid To; Trigger; From (Named or Anonymous); Captured At; Suggested Assignee; Assignee Options; Status Timeline; Acknowledgement Messages; Supervisor Review Note; What Was Done; After Photo; Closing Message To Reporter; Hold Reason (optional)
+44	Supervisor · Jobs	Jobs	Same as Jobs listing: Job Reference; Work Description; Space Name; Site Name; Trigger Type; Owner; Start Date; Duration or End Date; Permit Required (Yes / No); Permit Valid To
+45	Supervisor · Jobs	Job Details Page	Same as Job Detail Page
+46	Supervisor · Jobs	Job Export	Same as Job Export Detail Page
+47	Supervisor · Sites	Sites Listing	Same as Sites Listing: Site Name; Site In-Charge
+48	Supervisor · Sites	Add a site	Same as Add a Site
+49	Supervisor · Sites	Tab - Routing Rule	Same as Routing Rule (read only)
+50	Supervisor · Sites	Tab - People	Same as People tab
+51	Supervisor · Sites	Tab - Hazard Category Taxonomy	Same as Hazard Category Taxonomy (read only)
+54	PWA	Login	Display Name; Role; Site; Tenant; Email or Mobile
+55	PWA	Scan QR	QR Code ID; Tenant Name; Site Name; Space Name; Location; Task Type; Permit Required (Yes / No); Take 5 Version; Learn 5 Version; Has Rescue Plan (Yes / No)
+56	PWA	Rescue	Rescue Plan Steps; Space Name; Version
+57	PWA	Take 5 (Checklist)	Prompts; Space Name; Task Type; Version; Outcome (Carried On / Changed The Plan / Stopped The Job)
+58	PWA	Evidence	Photo Files; Video Files; Audio Files; Captions; Capture Time
+59	PWA	Classification	Response Type (Needs Attention Now / Be Aware / Good Practice); AI Suggested Response (optional)
+60	PWA	Create echo	Echo ID; Pulse ID; Space; Job (or None); Response Type; Media; Voice Transcript; Capture Time; Anonymous (Yes / No); From User (or None)
+61	PWA	Feed	Echo Summaries Visible To Worker (confirm what appears)
+62	PWA	Echoes	My Echoes; Site Echoes (last week); Status; Acknowledgement Messages
+63	PWA	Learn	Learn 5 Cards For Space; Version
+68	QR	QR Creation	Space Name; QR Code ID; Location; Task Type; Permit Required (Yes / No)
+69	Scan QR	QR Utilisation	Same as Scan QR context
+70	Take 5 (Checklist)	(PWA checklist)	Same as Take 5 Checklist
+71	Learn 5	(content governance)	Who Can Author; Versioning Required (Yes / No); Multi Language Required (Yes / No)
+72	Signal	(create/lifecycle)	Allowed Media Types; Visibility Scope (Site); Draft Rules; Close Time Limit; Duplicate Handling Rules
+73	Menu Bar - Worker	Worker nav	Menu Items; Feed Visibility Scope

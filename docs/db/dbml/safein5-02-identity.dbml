@@ -1,0 +1,200 @@
+// ============================================================
+// SafeIn5 MVP - Identity, Membership & Anonymity
+// Generated from the live PostgreSQL 16 schema (db/migrations/0001-0008).
+// Import at https://dbdiagram.io  ->  paste, or File > Import > DBML
+// Context tables (shown for their relationships, owned by another subsystem): role, tenant
+// ============================================================
+Project SafeIn5_02_identity {
+  database_type: 'PostgreSQL'
+  Note: 'SafeIn5 MVP - Identity, Membership & Anonymity'
+}
+
+TableGroup "Identity, Membership & Anonymity" {
+  app_user
+  user_tenant_membership
+  user_site_assignment
+  guest_session
+  auth_token
+  tenant_secret
+}
+
+TableGroup "Context (owned elsewhere)" {
+  role
+  tenant
+}
+
+Table app_user {
+  id uuid [pk, default: `gen_random_uuid()`]
+  email citext [note: 'Nullable: guest-derived accounts have no email until they register, and GDPR erasure sets it back to NULL. citext + partial unique index gives case-insensitive uniqueness over non-null values only.']
+  email_verified_at timestamptz
+  display_name text
+  password_hash text [note: 'bcrypt. Admin/supervisor console logins only (ADM-001/002). Workers authenticate by magic link or email OTP and this stays NULL forever. SELECT on this column is withheld from safein5_app and granted only to safein5_identity (0007).']
+  default_anonymous bool [not null, default: false, note: 'Account-level anonymity toggle (PRD Sec 5.5). This is the DEFAULT applied at capture time; user_tenant_membership.anonymous_override wins per tenant. Changing it never rewrites already-captured signals -- behaviour_signal.is_anonymous is materialised at capture (Architecture Sec 2.4).']
+  locale text [not null, default: 'en-GB', note: '[SIGNAL / Phase-2 i18n] Written at MVP, unread by any MVP feature. BCP-47-ish tag, default en-GB for the UK quarry pilot.']
+  status text [not null, default: 'active', note: 'active | blocked | erased. Enumeration is text + CHECK, never a PG ENUM, so Phase 2 adds a state with an ALTER of the CHECK rather than ALTER TYPE.']
+  erased_at timestamptz [note: 'GDPR Art.17 tombstone timestamp (Architecture Sec 4.4). Erasure NEVER deletes this row: it scrubs identifiers here and DESTROYS the token mapping in user_tenant_membership, after which author_token is mathematically unresolvable and the retained safety signals cease to be personal data.']
+  last_seen_at timestamptz [note: 'Coarse activity marker for the admin user directory (ADM-024). Not an audit trail -- audit_log is.']
+  created_at timestamptz [not null, default: `now()`]
+  updated_at timestamptz
+  deleted_at timestamptz [note: 'Soft delete. Nothing in SafeIn5 hard-deletes an identity; erasure is tombstoning (status=erased) plus mapping destruction, never a DELETE.']
+
+  Note: 'Global (NOT tenant-scoped, NOT RLS-scoped) person identity. One row per human across all tenants, so a Community user can join a Corporate tenant without re-registering (CQA-001/SCP-001). Tenant-specific facts live on user_tenant_membership. Named app_user because "user" is a Postgres reserved word.'
+}
+
+Table auth_token {
+  id uuid [pk, default: `gen_random_uuid()`]
+  kind text [not null, note: 'magic_link | otp | invitation | password_reset. text + CHECK, never a PG ENUM. Different TTLs per kind are an application policy (OTP ~10 min, magic link ~15 min, invitation ~7 days), not a DB constraint.']
+  token_hash character(64) [not null, note: 'SHA-256 (lowercase hex) of the emailed token or OTP code, salted with the same KMS pepper family as author_token. The plaintext token exists only in the email and in the request that redeems it. A stolen database grants no logins.']
+  user_id uuid [note: 'NULL for an invitation to an email address that has no app_user row yet -- acceptance creates the user and the membership in one transaction.']
+  email citext [note: 'The address the token was sent to, recorded even when user_id is set, so a later email change cannot silently re-target a live token.']
+  tenant_id uuid [note: 'Required for invitations (which tenant the invitee is joining); NULL for magic link / OTP / password reset, where the tenant is only known after the user is identified and their memberships are read.']
+  role_id uuid [note: 'Invitations only: the role the accepted membership will be created with (ADM-026 role assignment).']
+  expires_at timestamptz [not null]
+  consumed_at timestamptz [note: 'Single use. Also set when a token is SUPERSEDED by a newly issued one of the same kind for the same target -- which is what makes uq_auth_token_live_* enforceable without a now() predicate.']
+  attempt_count integer [not null, default: 0, note: 'Failed redemption attempts. Guards OTP brute force: the Identity module rejects once attempt_count >= max_attempts and consumes the row.']
+  max_attempts integer [not null, default: 5]
+  ip_hash character(64) [note: 'Salted SHA-256 of the requesting address, never raw (GDPR minimisation). Abuse correlation only.']
+  created_by_membership_id uuid
+  created_at timestamptz [not null, default: `now()`]
+  updated_at timestamptz
+  deleted_at timestamptz [note: 'Soft delete for administrative revocation of an outstanding invitation. Expired/consumed rows are pruned by the retention job, not by user action.']
+
+  Note: 'Single-use credentials for magic link, email OTP, admin invitation (ADM-026) and admin password reset (ADM-003). Stores a HASH only -- never the token. Not RLS-scoped because these rows are created before any tenant context exists; see the block comment above the table for what protects them instead.'
+}
+
+Table guest_session {
+  id uuid [pk, default: `gen_random_uuid()`]
+  tenant_id uuid [not null]
+  client_token_hash character(64) [not null, note: 'SHA-256 (lowercase hex) of the opaque signed HttpOnly cookie value held by the PWA. The raw cookie value is NEVER stored, so a database dump cannot be replayed as a guest session.']
+  author_token character(32) [not null, note: 'Same shape and same role as user_tenant_membership.author_token. Not derived from a user_id (there is none): minted as 20 random bytes at session creation, base32-encoded. Unique per tenant, so every downstream table can key on author_token alone.']
+  first_seen_at timestamptz [not null, default: `now()`]
+  last_seen_at timestamptz [not null, default: `now()`]
+  scan_count integer [not null, default: 0, note: 'Anonymous engagement metric -- QR scans are a named Phase 1 success measure. Incremented by the QR resolve path; not an audit trail.']
+  promoted_user_id uuid [note: '''Set when a guest registers, so their prior guest activity attaches to the new account WITHOUT re-keying any signal, view, scan or read-state row (those stay keyed on this session's author_token). This is the single deliberate exception to the "no user_id on guest-keyed tables" rule: it lives here, on the session, and never on an activity row.''']
+  promoted_at timestamptz
+  blocked_at timestamptz [note: 'Guest abuse blocking. Blocking a guest blocks a token and a device cookie, never a person -- there is no person to know.']
+  blocked_reason text
+  user_agent_hash character(64) [note: 'Salted SHA-256 of the user agent string. Coarse device fingerprint for abuse handling; never rendered to any user.']
+  ip_hash character(64) [note: 'Salted SHA-256, never a raw address (GDPR data minimisation). Rate-limit correlation only.']
+  created_at timestamptz [not null, default: `now()`]
+  updated_at timestamptz
+  deleted_at timestamptz
+
+  indexes {
+    (id, tenant_id) [unique, name: 'uq_guest_session_id_tenant']
+  }
+
+  Note: '''Unauthenticated QR journeys (WRK-003 MUST). A guest is a first-class actor: it carries its own author_token so guest activity is countable, rate-limitable and blockable exactly like a member's, and so read state / views / scans need no user_id column at all. Almost always the Community tenant, but a Corporate QR scan by a passer-by also lands here (Architecture Sec 3.6).'''
+}
+
+Table role {
+  id uuid [pk, default: `gen_random_uuid()`]
+  code text [not null, unique, note: 'one of: worker | supervisor | org_admin | platform_admin | moderator. Stable machine identifier used in JWT claims (rol) and in guards. CHECK-constrained rather than a PG ENUM so a Phase-2 role is an ALTER ... CHECK plus one INSERT.']
+  name text [not null]
+  description text
+  permissions jsonb [not null, default: '[]', note: 'Flat JSON array of permission strings, e.g. ["signal.create","feed.read"]. No RBAC engine at MVP: the Permissions guard performs a set-membership test against this array.']
+  sort_order integer [not null, default: 0]
+  is_active bool [not null, default: true]
+  created_at timestamptz [not null, default: `now()`]
+  updated_at timestamptz
+
+  Note: 'Global reference table of the five MVP roles. Not tenant-scoped: the same role definitions apply in every tenant, and a user holds a role per membership (user_tenant_membership.role_id, migration 0002). Seeded here with fixed UUIDs so later migrations and fixtures can reference them deterministically.'
+}
+
+Table tenant {
+  id uuid [pk, default: `gen_random_uuid()`]
+  slug citext [not null, unique, note: '''URL/login-hint identifier, e.g. 'community', 'brackley-aggregates'. citext so uniqueness is case-insensitive.''']
+  kind text [not null, note: 'community | corporate. Drives visibility defaults, moderation model and guest rules.']
+  name text [not null]
+  industry_code text [note: '[SIGNAL] Written at MVP, unread by any MVP feature. Sector code (e.g. SIC/NAICS-style) that lets the Phase-2 intelligence layer benchmark behaviour patterns across comparable industries. Unrecoverable retrospectively at scale, free to capture now.']
+  country_code character(2) [note: 'ISO 3166-1 alpha-2, uppercase.']
+  is_public_readable bool [not null, default: false, note: 'true only for the Community tenant -- the single tenant whose final, visible signals are readable unauthenticated (Architecture Sec 3.3 community_public_read policy).']
+  allow_guest_submission bool [not null, default: false, note: 'Per-tenant switch resolving the open question in WRK-003. Community pilot ships false (PRD Sec 5.6 "guest reads, account writes") but is flippable without a deploy or a migration.']
+  data_region text [not null, default: 'eu-west-1', note: '''Storage/compute region for this tenant's data. EU residency NFR; default eu-west-1.''']
+  theme jsonb [not null, default: '{}', note: 'MVP theming scope is logo + colour only: {"logo_url": "...", "colour_tokens": {...}}.']
+  retention_policy jsonb [not null, default: '{"audit_days": 2555, "media_days": 365, "signals_days": 730}', note: '{signals_days, media_days, audit_days}. Read by the nightly retention job (GDPR NFR); per-tenant because corporate contracts and the Community tenant will not agree on retention.']
+  status text [not null, default: 'active', note: 'one of: active | suspended']
+  created_at timestamptz [not null, default: `now()`]
+  updated_at timestamptz
+  deleted_at timestamptz [note: 'Soft delete. Never hard delete a tenant -- its signals are referenced by audit_log and outbox_event, which are append-only.']
+
+  Note: '''The RLS anchor. Every tenant-scoped table references tenant(id) and every RLS policy keys on current_setting('app.tenant_id'). One tenant IS one client organisation: the customer-facing organisation profile (name, industry_code, country_code) lives on this row, which is why the org_admin role administers a tenant. Deliberately NOT tenant-scoped and NOT RLS-protected: it is the root of the tenancy graph, and platform-admin paths read it via runAsSystem.'''
+}
+
+Table tenant_secret {
+  tenant_id uuid [pk]
+  author_token_salt bytea [not null, note: '16 CSPRNG bytes, generated once at tenant creation and never rotated in normal operation -- rotating it would fork every existing pseudonym in the tenant and destroy repeat-usage continuity. See salt_version / rotated_at for the escape hatch.']
+  salt_version integer [not null, default: 1, note: 'Incremented only if a salt must be rotated after a suspected compromise. Bumping it deliberately invalidates every historical author_token in the tenant; the migration that does it must also decide what happens to existing signals.']
+  pepper_key_ref text [note: 'Opaque KMS key identifier (ARN / key name) naming WHICH pepper was used -- never the pepper itself. Lets the pepper be rotated in KMS without losing the ability to reproduce historical tokens.']
+  rotated_at timestamptz
+  created_at timestamptz [not null, default: `now()`]
+  updated_at timestamptz
+  deleted_at timestamptz [note: '''Soft delete. NOTE: tenant-level erasure is one of the very few operations permitted to hard-DELETE a row in SafeIn5 -- destroying the salt is what makes an entire tenant's pseudonyms permanently unresolvable. Routine deactivation soft-deletes.''']
+
+  Note: '''Per-tenant 16-byte salt used to derive author_token: base32(HMAC-SHA256(kms_pepper, author_token_salt || ':' || user_id)[0..19]) (Architecture Sec 4.2). One row per tenant, PK = tenant_id. The KMS pepper is NEVER stored here or anywhere in this database. SELECT is granted only to safein5_identity (0007).'''
+}
+
+Table user_site_assignment {
+  id uuid [pk, default: `gen_random_uuid()`]
+  tenant_id uuid [not null, note: 'RLS anchor. Denormalised from the membership; the composite FKs force it to equal user_tenant_membership.tenant_id and site.tenant_id, so a cross-tenant assignment is structurally impossible rather than merely improbable.']
+  membership_id uuid [not null]
+  site_id uuid [not null]
+  sub_site_id uuid [note: 'Optional narrowing (ADM-027/029). NULL = assigned to the whole site. A row with a sub_site_id does not imply a separate site-level row; site scope is derived from site_id either way.']
+  is_primary bool [not null, default: false, note: 'The worker home/bench site that ADM-019 and ADM-023 actually need. At most one live primary per membership (uq_user_site_assignment_one_primary). Never used to restrict where a worker may capture a signal.']
+  assignment_source text [not null, default: 'admin', note: '[SIGNAL] How the assignment arose: admin | invitation | self_service | qr_scan | import. Written at MVP, unread by MVP features. qr_scan anticipates WRK-015/016 auto-attachment when a worker repeatedly scans at a site they are not rostered to -- the contractor pattern.']
+  assigned_at timestamptz [not null, default: `now()`]
+  assigned_by_membership_id uuid
+  unassigned_at timestamptz [note: 'Soft end of an assignment. Kept rather than deleted so a signal captured six months ago can still be interpreted against the roster in force at the time.']
+  created_at timestamptz [not null, default: `now()`]
+  updated_at timestamptz
+  deleted_at timestamptz [note: 'Soft delete (data-entry correction). Ending an assignment normally sets unassigned_at, not this.']
+
+  Note: 'TRUE many-to-many join: one membership may hold MANY concurrent site/sub-site assignments. Deliberately not a site_id column on user_tenant_membership -- ADM-019/023 imply one-worker-one-site but WRK-015/016/017/018 (all MUST) require workers to move between sites, and the pilot runs contractors across 3 organisations (i.e. 3 tenants). ADM-019 is honoured as a default UI filter plus the is_primary flag. Drives default feed scope (WRK-013/014) and supervisor scope.'
+}
+
+Table user_tenant_membership {
+  id uuid [pk, default: `gen_random_uuid()`]
+  tenant_id uuid [not null]
+  user_id uuid [not null]
+  role_id uuid [not null]
+  author_token character(32) [not null, note: '''Deterministic per-user-per-tenant pseudonym: base32(HMAC-SHA256(kms_pepper, tenant_secret.author_token_salt || ':' || user_id)[0..19]), 32 chars. safein5_app is granted SELECT column-by-column on this table with author_token OMITTED, so the pseudonym mapping is a deliberate lookup (safein5_identity) rather than an ambient one. Destroying this row (GDPR erasure) makes every historical author_token permanently unresolvable.''']
+  anonymous_override bool [note: 'NULL = inherit app_user.default_anonymous. true/false = this tenant-specific choice wins. Nullable three-state on purpose: a user may post openly in their employer tenant and anonymously in Community, or the reverse.']
+  invited_at timestamptz [note: 'ADM-026 automated invitation dispatch. The invitation token itself lives in auth_token (kind=invitation) and is stored only as a hash.']
+  invited_by_membership_id uuid
+  accepted_at timestamptz [note: 'Set when the invitee first exchanges their invitation token. invited_at -> accepted_at is the ADM-026 funnel and is emitted as user.invited / user.accepted on the outbox (Architecture Sec 8, Platform events).']
+  blocked_at timestamptz [note: 'Abuse blocking (Dev Pack Sec 17.2 Scenario 4). A moderator blocks a TOKEN, never a name: the API resolves signal.author_token -> this row through the Identity module only and returns nothing about who it was (Architecture Sec 4.4).']
+  blocked_reason text [note: 'Free-text moderator justification. Mirrored into moderation_action with the token, never the identity.']
+  blocked_by_membership_id uuid
+  removed_at timestamptz
+  status text [not null, default: 'invited', note: 'invited | active | blocked | removed. text + CHECK, never a PG ENUM. removed is a soft state -- the row and its author_token survive so historical signals stay attributable to a stable pseudonym.']
+  created_at timestamptz [not null, default: `now()`]
+  updated_at timestamptz
+  deleted_at timestamptz [note: 'Soft delete. NOTE: GDPR erasure is the one path that genuinely DELETEs rows here -- destroying the token mapping is precisely what converts retained signals into non-personal data (Architecture Sec 4.4 step 2). Every other removal sets status=removed.']
+
+  indexes {
+    (id, tenant_id) [unique, name: 'uq_user_tenant_membership_id_tenant']
+  }
+
+  Note: 'Person x tenant join, and the anonymity keystone: it holds the only stored mapping from a user to their per-tenant pseudonymous author_token (Architecture Sec 2.2/4.2). Roles, invitation state, blocking and the anonymity override are all per-tenant facts and live here, not on app_user.'
+}
+
+// ---------- Relationships ----------
+Ref fk_auth_token_created_by: auth_token.created_by_membership_id > user_tenant_membership.id
+Ref fk_auth_token_role: auth_token.role_id > role.id
+Ref fk_auth_token_tenant: auth_token.tenant_id > tenant.id
+Ref fk_auth_token_user: auth_token.user_id > app_user.id
+Ref fk_guest_session_promoted_user: guest_session.promoted_user_id > app_user.id
+Ref fk_guest_session_tenant: guest_session.tenant_id > tenant.id
+Ref fk_tenant_secret_tenant: tenant_secret.tenant_id > tenant.id
+Ref fk_user_site_assignment_assigned_by: user_site_assignment.assigned_by_membership_id > user_tenant_membership.id
+Ref fk_user_site_assignment_membership: user_site_assignment.(membership_id, tenant_id) > user_tenant_membership.(id, tenant_id)
+Ref fk_user_site_assignment_tenant: user_site_assignment.tenant_id > tenant.id
+Ref fk_user_tenant_membership_blocked_by: user_tenant_membership.blocked_by_membership_id > user_tenant_membership.id
+Ref fk_user_tenant_membership_invited_by: user_tenant_membership.invited_by_membership_id > user_tenant_membership.id
+Ref fk_user_tenant_membership_role: user_tenant_membership.role_id > role.id
+Ref fk_user_tenant_membership_tenant: user_tenant_membership.tenant_id > tenant.id
+Ref fk_user_tenant_membership_user: user_tenant_membership.user_id > app_user.id
+
+// ---------- Relationships to other subsystems (omitted here) ----------
+// out of scope: user_site_assignment.site_id+tenant_id -> site
+// out of scope: user_site_assignment.sub_site_id+tenant_id -> sub_site

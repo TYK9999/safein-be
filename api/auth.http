@@ -1,0 +1,235 @@
+# SafeIn5 — Auth API (VS Code "REST Client" extension)
+# Install: search "REST Client" (humao.rest-client) in Extensions, then click
+# "Send Request" above any request below.
+#
+# OTP/magic-link codes print to the SERVER LOG (dev mailer), not the response.
+# Read the code from the log line: [DEV MAIL] OTP for <email>: NNNNNN
+# then set @otp below and Send "Verify OTP".
+
+@baseUrl = http://localhost:3000
+@api = {{baseUrl}}/api/v1
+@email = sam@example.com
+@otp = 942247
+@magicToken = nyBcvTe_Pk1b0h5OrC8LKEpVpePrwU6uQSao85cDPOw
+
+### Health — liveness
+GET {{baseUrl}}/healthz
+
+### Health — readiness (checks DB)
+GET {{baseUrl}}/readyz
+
+### 1. Register (signup) → 204, OTP printed to server log
+POST {{api}}/auth/register
+Content-Type: application/json
+
+{
+  "email": "{{email}}",
+  "firstName": "Sam",
+  "lastName": "Rivera"
+}
+
+### 2. Request OTP (login for an existing account) → 204
+POST {{api}}/auth/otp/request
+Content-Type: application/json
+
+{
+  "email": "{{email}}"
+}
+
+### 3. Verify OTP (set @otp above to the code from the log first)
+# @name verifyOtp
+POST {{api}}/auth/otp/verify
+Content-Type: application/json
+
+{
+  "email": "{{email}}",
+  "code": "{{otp}}"
+}
+
+### token captured from step 3, reused by the requests below
+@token = {{verifyOtp.response.body.$.accessToken}}
+
+### 4. Get current user (uses the token captured in step 3)
+GET {{api}}/me
+Authorization: Bearer {{token}}
+
+# ── Signals (phase 2) ────────────────────────────────────────────────
+
+### Create a signal (classification: good_practice | be_aware | needs_attention_now)
+# @name createSignal
+POST {{api}}/signals
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "classification": "needs_attention_now",
+  "bodyText": "Exposed edge on level 2, no barrier"
+}
+
+### Create an ANONYMOUS signal (author hidden in every read path)
+POST {{api}}/signals
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "classification": "be_aware",
+  "bodyText": "Someone bypassing the lockout",
+  "anonymous": true
+}
+
+### Feed — all signals, newest first
+GET {{api}}/feed
+Authorization: Bearer {{token}}
+
+### Feed — with limit
+GET {{api}}/feed?limit=10
+Authorization: Bearer {{token}}
+
+### My signals
+GET {{api}}/signals/mine
+Authorization: Bearer {{token}}
+
+### Get one signal by id (uses the id from Create Signal)
+GET {{api}}/signals/{{createSignal.response.body.$.id}}
+Authorization: Bearer {{token}}
+
+# ── Supervisor loop (phase 3) ────────────────────────────────────────
+# First make a supervisor (role is on the tenant membership), then log THAT
+# user in (steps 1-3) so {{token}} has role=supervisor:
+#   UPDATE user_tenant_membership m SET role='supervisor'
+#     FROM app_user u WHERE u.id=m.user_id AND u.email='boss@example.com';
+
+### Acknowledge (supervisor only) → 200, or 403 for a worker
+POST {{api}}/signals/{{createSignal.response.body.$.id}}/acknowledge
+Authorization: Bearer {{token}}
+
+### Close (supervisor only, note required) → 200
+POST {{api}}/signals/{{createSignal.response.body.$.id}}/close
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{ "closeNote": "Barrier reinstated, area cleared" }
+
+### Feed — only open signals (supervisor "needs response")
+GET {{api}}/feed?status=open
+Authorization: Bearer {{token}}
+
+### Negative — create without token → 401
+POST {{api}}/signals
+Content-Type: application/json
+
+{ "classification": "be_aware", "bodyText": "x" }
+
+### Negative — bad classification → 400
+POST {{api}}/signals
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{ "classification": "stop_now", "bodyText": "x" }
+
+### 5. Request magic link → 204, link printed to server log
+POST {{api}}/auth/magic-link
+Content-Type: application/json
+
+{
+  "email": "{{email}}"
+}
+
+### 6. Verify magic link (set @magicToken above to the token in the logged URL)
+# @name verifyMagic
+GET {{api}}/auth/magic/{{magicToken}}
+
+### 7. Get current user via magic-link token
+GET {{api}}/me
+Authorization: Bearer {{verifyMagic.response.body.$.accessToken}}
+
+### 8. Refresh (needs the refresh cookie set at login)
+POST {{api}}/auth/refresh
+
+### 9. Logout → 204
+POST {{api}}/auth/logout
+
+### Negative — wrong OTP → 401
+POST {{api}}/auth/otp/verify
+Content-Type: application/json
+
+{
+  "email": "{{email}}",
+  "code": "000000"
+}
+
+### Negative — invalid email → 400
+POST {{api}}/auth/register
+Content-Type: application/json
+
+{
+  "email": "not-an-email"
+}
+
+# ── Video upload (chunked, DIRECT-TO-S3) ─────────────────────────────
+# Single endpoint POST /uploads/next drives a lockstep S3 multipart upload (see
+# docs/md/BACKEND_UPLOAD_SPEC.md). Auth is OPTIONAL — uncomment Authorization to
+# tie the upload to your account; leave it off for an anonymous upload.
+#
+# IMPORTANT: the chunk BYTES go DIRECTLY to S3 via the presigned `url` in each
+# response — NOT through this API — and you must read the ETag from that S3 PUT
+# and echo it back. REST Client can't do the S3 PUT or read the ETag, so the V*
+# calls below are illustrative (paste real ETags); the negative cases are fully
+# runnable. Use the frontend (or the scripted E2E) for a real end-to-end run.
+
+### V1. Start an upload (no sessionId) -> { sessionId, status:"in_progress", nextChunkNumber:1, url }
+# @name uploadStart
+POST {{api}}/uploads/next
+# Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "filename": "clip.mp4",
+  "mime": "video/mp4",
+  "size": 6291456,
+  "chunkSize": 5242880,
+  "chunkCount": 2
+}
+
+### (out of band) PUT the chunk-1 bytes to uploadStart's `url` directly to S3,
+### then read the ETag response header. eTag must be a JSON string INCLUDING the
+### quotes S3 returns, e.g. "\"d41d8cd98f00b204e9800998ecf8427e\"".
+@sessionId = {{uploadStart.response.body.$.sessionId}}
+
+### V2. Confirm chunk 1 -> { nextChunkNumber:2, url } (paste the real chunk-1 ETag)
+POST {{api}}/uploads/next
+# Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{ "sessionId": "{{sessionId}}", "chunkNumber": 1, "eTag": "\"PASTE_CHUNK1_ETAG\"" }
+
+### V3. Resume — chunkNumber:0 re-issues the URL for the chunk still awaited
+POST {{api}}/uploads/next
+Content-Type: application/json
+
+{ "sessionId": "{{sessionId}}", "chunkNumber": 0 }
+
+### V4. Confirm the LAST chunk (chunkNumber === chunkCount) -> { status:"completed", videoId }
+POST {{api}}/uploads/next
+# Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{ "sessionId": "{{sessionId}}", "chunkNumber": 2, "eTag": "\"PASTE_CHUNK2_ETAG\"" }
+
+### Negative — unknown session → 410 { code:"EXPIRED_SESSION" }
+POST {{api}}/uploads/next
+Content-Type: application/json
+
+{ "sessionId": "sess_nope", "chunkNumber": 1, "eTag": "\"x\"" }
+
+### Negative — unsupported mime → 422 { code:"UNSUPPORTED_MIME" }
+POST {{api}}/uploads/next
+Content-Type: application/json
+
+{ "filename": "a.txt", "mime": "text/plain", "size": 100, "chunkSize": 100, "chunkCount": 1 }
+
+### Negative — inconsistent chunk plan → 422 { code:"INVALID_CHUNK_PLAN" }
+POST {{api}}/uploads/next
+Content-Type: application/json
+
+{ "filename": "a.mp4", "mime": "video/mp4", "size": 100, "chunkSize": 50, "chunkCount": 5 }

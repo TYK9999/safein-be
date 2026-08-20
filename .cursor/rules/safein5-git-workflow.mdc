@@ -1,0 +1,15 @@
+---
+description: Branch-first workflow and naming for SafeIn5 backend work
+alwaysApply: true
+---
+
+# Git workflow
+
+| # | Rule |
+|---|------|
+| G1 | On any "start a feature / bugfix / ticket" trigger, create a branch **before** writing code. |
+| G2 | Branch names: `feature/<ticket-or-desc>` or `bugfix/<ticket-or-desc>`. Keep ticket ids exact (e.g. `SAFE-123`). Description: lowercase, hyphen-separated, max 4–5 words. |
+| G3 | Always `git checkout main && git pull origin main` before branching — never branch from a stale base. |
+| G4 | If already on a non-`main` branch when a new feature is mentioned, ask whether to finish the current branch first. |
+
+Do not commit or push unless the user asks. Prefer the `git-commit` and `raise-pr` skills for those flows.

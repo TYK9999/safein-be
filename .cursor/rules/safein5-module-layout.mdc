@@ -1,0 +1,31 @@
+---
+description: NestJS feature module layout under src/modules
+globs: src/modules/**/*.ts
+alwaysApply: false
+---
+
+# Module layout
+
+New features belong in `src/modules/<feature>/`:
+
+```
+<feature>.module.ts
+<feature>.controller.ts
+<feature>.service.ts
+<feature>.schema.ts
+*.workflow.ts / *.present.ts / *.util.ts   # pure helpers when useful
+tests/*.spec.ts
+```
+
+## Rules
+
+- Controllers: `@Controller({ version: '1' })`, thin — map `@CurrentUser()` / `@OptionalUser()` to service calls
+- Services: `@Injectable()`, inject `@Inject(APP_DB) private readonly db: Kysely<DB>`
+- Keep state machines / presentation as pure functions (see `signals/signal.workflow.ts`, `signal.present.ts`)
+- Wire the module in `src/app.module.ts`
+- Never add code under legacy `src/qrcode/` or `src/uploads/`
+
+## Good references
+
+- Domain: `src/modules/signals/`
+- Media + `{code,message}` errors: `src/modules/audio/`

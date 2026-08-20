@@ -1,0 +1,27 @@
+---
+description: JWT auth, @Public, OptionalJwtGuard, and claim usage
+globs: src/modules/**/*.controller.ts,src/modules/auth/**/*.ts
+alwaysApply: false
+---
+
+# Auth guards
+
+Import from `src/modules/auth/` (`decorators`, `optional-jwt.guard`, etc.) — never `identity/`.
+
+| Intent | Pattern |
+|--------|---------|
+| Authenticated | Default (global `JwtAuthGuard`) |
+| No auth | `@Public()` |
+| Guest OK | `@Public()` + `@UseGuards(OptionalJwtGuard)` + `@OptionalUser()` |
+
+## Claims
+
+JWT carries `sub`, `email`, `tid`, `role`. The global guard re-checks membership in DB and refreshes role — do not authorize from token `role` alone.
+
+```typescript
+import { CurrentUser, Public } from '../auth/decorators';
+import { OptionalJwtGuard } from '../auth/optional-jwt.guard';
+import { OptionalUser } from '../auth/decorators';
+```
+
+Use `@CurrentUser()` when a token is required; `@OptionalUser()` only with `OptionalJwtGuard`.

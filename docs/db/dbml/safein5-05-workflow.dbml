@@ -1,0 +1,339 @@
+// ============================================================
+// SafeIn5 MVP - Workflow, Moderation, Audit & Notifications
+// Generated from the live PostgreSQL 16 schema (db/migrations/0001-0008).
+// Import at https://dbdiagram.io  ->  paste, or File > Import > DBML
+// Context tables (shown for their relationships, owned by another subsystem): behaviour_signal, user_tenant_membership
+// ============================================================
+Project SafeIn5_05_workflow {
+  database_type: 'PostgreSQL'
+  Note: 'SafeIn5 MVP - Workflow, Moderation, Audit & Notifications'
+}
+
+TableGroup "Workflow, Moderation, Audit & Notifications" {
+  workflow_state_def
+  workflow_transition_def
+  review_task
+  workflow_transition
+  evidence
+  moderation_action
+  audit_log
+  device_subscription
+  notification
+  outbox_event
+}
+
+TableGroup "Context (owned elsewhere)" {
+  behaviour_signal
+  user_tenant_membership
+}
+
+Table audit_log {
+  id bigint [not null, default: `nextval('audit_log_id_seq'::regclass)`, note: 'Monotonic ordering within the logical table. Sequence-backed rather than IDENTITY because PG16 does not allow identity columns on partitioned tables. Part of the PK together with the partition key.']
+  tenant_id uuid [not null]
+  occurred_at timestamptz [not null, default: `now()`, note: 'Partition key. Business time of the audited action, set by the caller; created_at is the row-write time. They differ when the worker back-writes an audit row for a queued event.']
+  actor_type text [not null, note: 'one of: user | guest | system | admin']
+  actor_token character(32) [note: 'The actor pseudonym (author_token), NEVER a user_id, whenever the subject is an anonymous author. This column IS the "user identity masked in audit logs" requirement (Architecture Sec 4.3, Proposal slide 18). char(32) matches user_tenant_membership.author_token / guest_session.author_token exactly; there is deliberately no author_user_id column on this table at all.']
+  actor_membership_id uuid [note: 'Populated for admin/supervisor actions, which are NOT anonymous and must be attributable. Intentionally has NO foreign key: GDPR erasure deletes user_tenant_membership rows to destroy the pseudonym mapping, and an audit trail that can be truncated by a data-subject request is not an audit trail. The id becomes a dangling reference by design.']
+  action text [not null]
+  entity_type text [not null]
+  entity_id text [note: 'text, not uuid: most entities are uuid-keyed but some are code-keyed (workflow_state_def.code, classification.code, tenant slug) and audit must cover them without a second column.']
+  before jsonb [note: 'Pre-change state, PII-redacted by the serialiser allowlist (never raw row JSON -- a raw dump would reintroduce the email/user_id that the rest of this schema removes).']
+  after jsonb [note: 'Post-change state, same allowlist as before.']
+  request_id text [note: 'Correlates an audit row with the API request log and with outbox_event rows emitted in the same transaction.']
+  ip_hash character(64) [note: 'SHA-256 of (ip || per-tenant salt). HASHED, NOT RAW -- GDPR data minimisation: enough to detect one actor hammering an endpoint, not enough to geolocate a named worker.']
+  user_agent_hash character(64) [note: 'SHA-256 of the user-agent string. Hashed for the same reason; a full UA string plus a timestamp is a strong device fingerprint and would undermine anonymity.']
+  created_at timestamptz [not null, default: `now()`]
+
+  indexes {
+    (id, occurred_at) [pk]
+  }
+
+  Note: 'APPEND-ONLY audit trail (Dev Pack Sec 7 "full audit trail maintained"). No UPDATE/DELETE grant to any runtime role (0007). Partitioned monthly by occurred_at so retention per tenant.retention_policy.audit_days is executed as DROP TABLE of a partition.'
+}
+
+Table behaviour_signal {
+  id uuid [pk, default: `gen_random_uuid()`, note: 'Client-generated UUIDv7, minted on-device before the first network call, which is what makes POST /v1/signals/draft idempotent under retry. The gen_random_uuid() default is a fallback for server-side/admin inserts only.']
+  tenant_id uuid [not null]
+  status text [not null, default: 'draft', note: 'draft -> classified -> final, plus terminal discarded. Enforced here by CHECK, in the Signal facade by a transition guard, and on the wire by an optimistic UPDATE ... WHERE status = $expected. Three layers because a signal that regresses to draft mid-pilot is an unrecoverable data-integrity story. text + CHECK, never a PG ENUM.']
+  visibility text [not null, default: 'site', note: '''site | tenant | public. The column DEFAULT is 'site' for every tenant, including Community -- there is no per-tenant default resolution in the schema. pol_community_public_read requires visibility = 'public', so a Community capture left on the default will NOT appear on the unauthenticated Community feed: the application must set visibility = 'public' explicitly when the capturing tenant is kind = 'community'. This is deliberate (fail closed, never leak), but it means the Community feed is empty until that write path exists. SCP-024: corporate content must never leak into the community feed, and this column plus pol_community_public_read is where that is enforced.''']
+  author_token character(32) [not null, note: 'ALWAYS populated, anonymous or not. Deterministic one-way per-user-per-tenant HMAC pseudonym (Architecture Sec 4.2). This is what keeps repeat usage (the primary success measure), rate limiting, abuse blocking and closure notification working on anonymous signals. The same person is a different token in the Community tenant than in their employer tenant, so a corporate admin cannot correlate the two.']
+  author_user_id uuid [note: 'NULL when the signal is anonymous. This single nullable FK IS the Dev Pack Sec 7 "strip user metadata at the DB level" requirement, made real: for an anonymous signal there is no user metadata on the row to strip. Guarded by ck_behaviour_signal_anonymity so the anonymity promise is a database invariant, not an application convention.']
+  is_anonymous bool [not null, default: false, note: 'Materialised at capture time from the account-level setting (PRD Sec 5.5). Deliberately NOT read live from app_user.default_anonymous: the account setting may be flipped later, but the promise made to the worker at the moment of capture must be immutable.']
+  guest_session_id uuid [note: 'Set for unauthenticated QR journeys (WRK-003). When a guest later registers, guest_session.promoted_user_id attaches their prior activity without re-keying any signal.']
+  pulse_session_id uuid [note: 'Links Echo -> Signal. NULL for feed-entry captures that skip PULSE entirely.']
+  qr_code_id uuid
+  entry_point text [note: '[SIGNAL] qr | direct | feed | notification. Nullable because capture must never block on it.']
+  classification_code text [note: 'NULL while draft -- classification is a separate tap in the flow and must not be a mandatory field at row creation.']
+  classified_at timestamptz
+  classification_latency_ms integer [note: '[SIGNAL] Client-measured milliseconds from the classification screen appearing to the tile being tapped. This is how the "<10s to classify" NFR is PROVEN AT UAT with real production data across every capture, instead of by stopwatch on a demo device. Backfill is impossible; drop this column and the NFR becomes an opinion.']
+  capture_latency_ms integer [note: '[SIGNAL] Client-measured milliseconds from first tap to finalise. This is how the "<60s end-to-end capture" acceptance criterion is PROVEN AT UAT with real production data. Unreconstructable retrospectively, and it is the single number the pilot is judged on.']
+  body_text text [note: 'Nullable. Zero mandatory fields at capture -- a photo and a classification is a complete, valuable signal.']
+  body_source text [not null, default: 'none', note: 'typed | voice_transcript | none. CQA-006 wants evidence that voice-first is actually used rather than merely offered; this column is that evidence.']
+  transcript_confidence numeric(4,3) [note: '[SIGNAL] 0..1 ASR confidence for voice_transcript bodies. Lets a future pass identify text that should be treated as unreliable.']
+  site_id uuid [note: 'Denormalised from the resolved context so the feed filter (WRK-013/014) is one index scan with no join. context_snapshot remains the historical truth.']
+  sub_site_id uuid [note: '''Denormalised from the resolved context. Drives WRK-013 auto-filter to the worker's current zone.''']
+  asset_id uuid [note: 'Denormalised from the resolved context. The supervisor insight the product is sold on -- "3 similar Be Aware signals in 2 weeks, all on custom lifting fixtures" -- is a GROUP BY on this column, which is why asset is a real entity and not free text.']
+  context_snapshot jsonb [not null, default: '{}', note: 'Immutable denormalised copy of the resolved context at capture time, including qr_context.context_version. Never updated. Lets a six-month-old signal be interpreted against the context definition that was in force when it was captured.']
+  task_type_code text [note: '[SIGNAL] Structured, seeded vocabulary (heavy_lift, confined_space_entry, isolation, ...) copied from the QR context and FK-enforced against task_type. One of the two axes the future Identify/Gather pattern detection groups on -- deliberately NOT free text, because string matching would make the flagship analysis unreliable.']
+  risk_type_code text [note: '[SIGNAL] Structured, seeded vocabulary (suspended_load, confined_space, dropped_object, ...) copied from the QR context and FK-enforced against risk_type. The second pattern-detection axis.']
+  geo_lat numeric(9,6) [note: 'Optional, permission-gated. Rounded to 3 decimal places (~110 m) by the application before storage on anonymous signals: a precise fix on a specific work position identifies its author to anyone holding the crew roster, whatever is_anonymous says (Architecture Sec 4.3).']
+  geo_lon numeric(9,6)
+  geo_accuracy_m numeric(7,2)
+  occurred_at timestamptz [not null, default: `now()`, note: 'When the observation happened. Defaults to capture time; a separate column because Phase 2 may allow backdating and retrofitting that distinction later is impossible.']
+  finalised_at timestamptz
+  media_state text [not null, default: 'none', note: 'none | pending | partial | ready | failed. DENORMALISED from signal_media and maintained by the media worker so the feed decides what to render (thumbnail / skeleton / nothing) without a join or subquery -- one index scan per feed page (Architecture Sec 5.4). The feed never waits for media and never hides a signal because its media is not ready.']
+  moderation_state text [not null, default: 'visible', note: 'visible | hidden | removed | under_review. First-ever submission from a token in the Community tenant starts under_review. removed is a moderation outcome, not a delete -- the row survives for audit.']
+  workflow_state text [note: 'NULL until a review_task exists. Denormalised from review_task.state (open | acknowledged | closed) for feed badges. MVP supervisor workflow is Acknowledge + Close only (PRD Sec 5.4).']
+  search_vector tsvector [default: `to_tsvector('english'::regconfig, COALESCE(body_text, ''::text))`, note: 'Generated STORED tsvector over body_text. A generated column may only reference columns of the same row and its expression must be IMMUTABLE, which is why the regconfig is the literal english cast rather than a search_path-dependent lookup. Context terms are deliberately NOT concatenated in: they live in FK columns that are already indexed, and pulling them in would need a non-immutable join.']
+  duplicate_of_id uuid [note: '[SIGNAL] Self-FK, tenant-composite. Dev Pack Sec 17.2 duplicate detection. MVP writes it only via an explicit moderator "mark duplicate" action; automated detection is Phase 2 against this same column.']
+  similarity_group_id uuid [note: '[SIGNAL] Pure placeholder for Phase-2 clustering. Costs one nullable column now and a full backfill that can never be done later.']
+  created_at timestamptz [not null, default: `now()`]
+  updated_at timestamptz
+  deleted_at timestamptz [note: 'Soft delete (ADM-034). Never hard delete: GDPR erasure tombstones the user and destroys the token mapping, leaving the signal as genuinely anonymous safety knowledge (Architecture Sec 4.4).']
+
+  indexes {
+    (id, tenant_id) [unique, name: 'uq_behaviour_signal_id_tenant']
+  }
+
+  Note: 'The core object. Draft and final are the SAME ROW with a status column, not two tables -- splitting them would force a copy-and-delete on finalisation and break the signal_media FKs already attached during the draft phase (Architecture Sec 2.4). Zero mandatory fields at capture: a draft is insertable with tenant_id + author_token + status alone.'
+}
+
+Table device_subscription {
+  id uuid [pk, default: `gen_random_uuid()`]
+  tenant_id uuid [not null]
+  user_id uuid [not null, note: 'References app_user, not a membership: a browser install belongs to a person, and the same device may serve two tenants. tenant_id records which tenant context created the subscription and scopes RLS.']
+  endpoint text [not null, unique, note: 'Push service URL returned by PushSubscription. Globally unique: the same browser must not be registered twice. Uniqueness is intentionally NOT scoped by tenant -- one physical browser is one endpoint, and a cross-tenant duplicate insert should fail loudly.']
+  p256dh_key text [not null, note: 'Client public key for payload encryption (RFC 8291). Not a secret of ours, but useless without the endpoint.']
+  auth_key text [not null, note: 'Client auth secret for payload encryption (RFC 8291).']
+  user_agent text
+  last_success_at timestamptz
+  failure_count integer [not null, default: 0, note: 'Consecutive push failures. Backoff threshold for the dispatcher.']
+  expired_at timestamptz [note: 'Set when the push service returns 404/410 (subscription gone). Row is retained and tombstoned, never hard deleted, so re-subscription churn per device stays measurable.']
+  created_at timestamptz [not null, default: `now()`]
+  updated_at timestamptz
+  deleted_at timestamptz
+
+  Note: 'Web Push (VAPID) subscriptions. One row per browser/PWA install per user. PLATFORM LIMITATION, to be stated at UAT rather than filed as a bug: on iOS, Web Push requires iOS 16.4+ AND the PWA to have been added to the Home Screen -- Safari tabs cannot subscribe at all. On a UK quarry pilot with a majority-iPhone workforce this table will be sparsely populated, so push is a best-effort enhancement and the in-app notification row (channel = in_app) is the guaranteed delivery path. Never make a safety-critical loop (e.g. closure feedback, CQA-012) depend solely on web push.'
+}
+
+Table evidence {
+  id uuid [pk, default: `gen_random_uuid()`]
+  tenant_id uuid [not null]
+  review_task_id uuid [not null]
+  kind text [not null]
+  storage_key text [note: 'Object-store key, tenant-prefixed exactly as signal_media (s3://bucket/{tenant_id}/...) so a per-tenant lifecycle or deletion policy covers evidence too.']
+  note text
+  mime_type text
+  byte_size bigint
+  checksum_sha256 character(64)
+  uploaded_by_membership_id uuid [note: 'Evidence is a supervisor artefact and is never anonymous. Nulled by GDPR erasure of that membership rather than cascading.']
+  created_at timestamptz [not null, default: `now()`]
+  updated_at timestamptz
+  deleted_at timestamptz
+
+  Note: 'Supporting evidence attached to a review task (Dev Pack Sec 7 object "Evidence"). SCHEMA EXISTS AT MVP, UI DOES NOT (PRD Sec 5.4 defers it).'
+}
+
+Table moderation_action {
+  id uuid [pk, default: `gen_random_uuid()`]
+  tenant_id uuid [not null]
+  target_type text [not null, note: 'Polymorphic discriminator: signal | media | user | comment. No FK by design -- four nullable FK columns and four partial indexes for a table read only by the admin console is not worth it. "comment" is seeded in the CHECK although comments do not exist at MVP, so Phase 2 comment moderation is not an ALTER.']
+  target_id uuid [not null, note: 'Id of the target row in the table named by target_type. uuid for all four target types at MVP.']
+  action text [not null, note: 'one of: hide | unhide | remove | edit_caption | edit_classification | block_author | mark_duplicate']
+  reason_code text [note: 'Short vocabulary held in application config, not a table, at MVP: off_topic | abusive | personal_data | duplicate | incorrect_classification | test_content | other. Free text so a moderator is never blocked from acting by a missing code.']
+  note text
+  actor_membership_id uuid [note: 'The moderator. Moderators act under their identity; the AUTHOR they act against is only ever identified by author_token (Architecture Sec 4.4: "the moderator blocks a pseudonym and never learns a name"). Never write an author user_id into this table.']
+  actor_role text
+  previous_value jsonb [note: 'JSONB snapshot of the affected fields BEFORE the action. This is what makes ADM-033 (admins may change a worker classification or caption) auditable rather than destructive: without it, an admin edit silently rewrites a worker observation and the original wording is gone forever. It is also the only source for the worker-vs-reviewer disagreement analysis CQA-005 anticipates.']
+  new_value jsonb [note: 'JSONB snapshot of the same fields AFTER the action. previous_value + new_value together make every admin edit replayable and reversible.']
+  created_at timestamptz [not null, default: `now()`]
+
+  Note: 'Polymorphic moderation/admin action log (Architecture Sec 2.6). Semantically append-only: SELECT + INSERT only to runtime roles, no UPDATE/DELETE. Reversing a hide is a new unhide row, not an edit.'
+}
+
+Table notification {
+  id uuid [pk, default: `gen_random_uuid()`]
+  tenant_id uuid [not null]
+  recipient_user_id uuid [note: 'NULL for broadcasts (zone-wide alerts, WRK-022) which target a scope rather than a person. Populated for a closure notification even when the underlying signal is anonymous: the dispatcher resolves author_token -> membership -> user through the Identity module only, so the identity appears here and NEVER on the signal (Architecture Sec 4.4).']
+  recipient_scope jsonb [note: 'Broadcast target, e.g. {"site_id": "..."} or {"sub_site_id": "..."} (WRK-022). Fan-out to devices happens at send time, not at queue time, so a worker who joins the zone after queueing is still reached.']
+  kind text [not null, note: 'one of: signal_acknowledged | signal_closed | new_needs_attention_in_zone | learn5_assigned | invitation']
+  payload jsonb [not null, default: '{}', note: '''Rendered notification content plus deep-link refs. Pseudonymised like outbox payloads: it may carry authorToken and signalId, never another worker's name.''']
+  channel text [not null, note: 'one of: web_push | email | in_app']
+  state text [not null, default: 'queued', note: 'one of: queued | sent | failed | suppressed']
+  dedupe_key text [note: 'Caller-computed idempotency key, e.g. "signal_closed:<signalId>:<userId>" or "zone_alert:<subSiteId>:<yyyymmddhh>". Enforced by uq_notification_dedupe below.']
+  outbox_event_id uuid [note: 'Logical reference to outbox_event.event_id (the event that caused this notification). Deliberately NOT a foreign key: outbox_event is range-partitioned, so its only available unique key is the composite (event_id, occurred_at), and PostgreSQL cannot FK a single column against it. Joins are by value.']
+  attempt_count integer [not null, default: 0]
+  last_error text
+  sent_at timestamptz
+  read_at timestamptz [note: 'In-app read receipt. Distinct from sent_at: sent means we delivered, read means the worker actually saw it -- the difference is the honest measure of the feedback loop.']
+  created_at timestamptz [not null, default: `now()`]
+  updated_at timestamptz
+  deleted_at timestamptz
+
+  Note: 'One row per intended delivery (recipient x channel). Rendering, sending and read state all hang off this row so "was the worker told?" is answerable from one table.'
+}
+
+Table outbox_event {
+  id bigint [not null, default: `nextval('outbox_event_id_seq'::regclass)`, note: 'Monotonic ordering within a partition. Sequence-backed, not IDENTITY (PG16 does not allow identity columns on partitioned tables). Part of the PK with the partition key.']
+  event_id uuid [not null, default: `gen_random_uuid()`, note: 'Consumer idempotency key. Every MVP consumer is idempotent on this value. Uniqueness is enforced as (event_id, occurred_at) because a unique constraint on a partitioned table must include the partition key; event_id is a random UUID, so this is uniqueness in practice as well as in intent.']
+  tenant_id uuid [not null]
+  event_type text [not null, note: 'Naming: <aggregate>.<past-tense-verb>, e.g. signal.finalised, review_task.closed, qr.scanned (Architecture Sec 8). Format enforced by CHECK so a typo cannot silently create a new event type nobody consumes.']
+  event_version integer [not null, default: 1, note: '''Schema version of payload, from 1. Present from day one on purpose: a versionless event stream is unreadable in 18 months. Never mutate an existing version's shape -- increment.''']
+  aggregate_type text [not null, note: 'Aggregate the event belongs to (behaviour_signal, review_task, qr_code, ...). With aggregate_id this reconstructs a per-object history.']
+  aggregate_id uuid
+  payload jsonb [not null, default: '{}', note: 'PSEUDONYMISED AT WRITE TIME. Carries authorToken, NEVER user_id, email or display name -- enforced structurally by ck_outbox_event_payload_pseudonymous and properly by the serialiser allowlist. This is what lets the whole stream be replayed into an analytics store without a scrubbing pass.']
+  occurred_at timestamptz [not null, default: `now()`, note: 'Partition key and business time of the event. Ordering for consumers is (occurred_at, id).']
+  published_at timestamptz [note: 'NULL means pending. Set by the flusher on successful publish; the row is retained forever afterwards.']
+  attempt_count integer [not null, default: 0]
+  last_error text [note: 'Last publish failure. Truncate before writing -- a provider stack trace loop can otherwise dominate table size.']
+  next_attempt_at timestamptz [note: 'Exponential backoff schedule for the flusher. NULL means eligible immediately.']
+  created_at timestamptz [not null, default: `now()`]
+
+  indexes {
+    (id, occurred_at) [pk]
+    (event_id, occurred_at) [unique, name: 'uq_outbox_event_event_id']
+  }
+
+  Note: 'Transactional outbox AND the SIGNAL training corpus (Architecture Sec 8). Written in the same transaction as every domain change; published asynchronously by safein5-worker. APPEND-ONLY for the application role; only the flusher may UPDATE the delivery columns. ROWS ARE NEVER DELETED AFTER PUBLISHING DURING THE PILOT -- this stream is the single most valuable artefact the MVP produces and it cannot be reconstructed after the fact.'
+}
+
+Table review_task {
+  id uuid [pk, default: `gen_random_uuid()`]
+  tenant_id uuid [not null]
+  signal_id uuid [not null, unique]
+  state text [not null, default: 'open', note: 'Text FK to workflow_state_def.code -- deliberately not a PG enum. MVP values: open | acknowledged | closed.']
+  assigned_to_membership_id uuid [note: 'Phase-2 structure (Dev Pack Sec 7 assignment step). Written at MVP only if a supervisor self-assigns; there is no assignment UI (PRD Sec 5.4). Column exists now so the Phase-2 lifecycle needs no migration against live pilot rows. ON DELETE SET NULL so GDPR erasure of a supervisor membership cannot block.']
+  assigned_at timestamptz
+  acknowledged_at timestamptz
+  acknowledged_by_membership_id uuid
+  closed_at timestamptz
+  closed_by_membership_id uuid
+  closure_note text [note: 'Publicly displayed on the signal card (PRD Sec 5.5) -- this is the "you were heard" loop that closes the report black hole. Treat as worker-visible text: no names, no PII; the moderation serialiser allowlist applies.']
+  due_at timestamptz [note: '[SIGNAL] Response-time SLA target. No MVP feature reads it; it is written so SLA breach analysis is possible retrospectively (Dev Pack Sec 17.1 Scenario 5).']
+  first_response_ms bigint [note: '[SIGNAL] Milliseconds from signal finalisation to first supervisor acknowledgement. Together with time_to_close_ms this IS the "report black hole" metric: the pilot claim is that SafeIn5 turns unanswered reports into answered ones, and these two columns are the only evidence that will exist for it. Materialised at transition time, never computed on read, because review_task rows are mutable and the source timestamps can be corrected.']
+  time_to_close_ms bigint [note: '[SIGNAL] Milliseconds from signal finalisation to closure. See first_response_ms.']
+  created_at timestamptz [not null, default: `now()`]
+  updated_at timestamptz
+  deleted_at timestamptz [note: 'Soft delete (tombstone). Review tasks are never hard deleted -- the workflow_transition log would otherwise reference a vanished aggregate.']
+
+  indexes {
+    (id, tenant_id) [unique, name: 'uq_review_task_id_tenant']
+  }
+
+  Note: 'One supervisor review task per behaviour_signal. Created by the outbox consumer WorkflowTaskCreator when classification.triggers_workflow is true (needs_attention_now), or on manual supervisor pickup. At most one per signal (uq_review_task_signal) so the feed badge join stays a 1:0..1.'
+}
+
+Table user_tenant_membership {
+  id uuid [pk, default: `gen_random_uuid()`]
+  tenant_id uuid [not null]
+  user_id uuid [not null]
+  role_id uuid [not null]
+  author_token character(32) [not null, note: '''Deterministic per-user-per-tenant pseudonym: base32(HMAC-SHA256(kms_pepper, tenant_secret.author_token_salt || ':' || user_id)[0..19]), 32 chars. safein5_app is granted SELECT column-by-column on this table with author_token OMITTED, so the pseudonym mapping is a deliberate lookup (safein5_identity) rather than an ambient one. Destroying this row (GDPR erasure) makes every historical author_token permanently unresolvable.''']
+  anonymous_override bool [note: 'NULL = inherit app_user.default_anonymous. true/false = this tenant-specific choice wins. Nullable three-state on purpose: a user may post openly in their employer tenant and anonymously in Community, or the reverse.']
+  invited_at timestamptz [note: 'ADM-026 automated invitation dispatch. The invitation token itself lives in auth_token (kind=invitation) and is stored only as a hash.']
+  invited_by_membership_id uuid
+  accepted_at timestamptz [note: 'Set when the invitee first exchanges their invitation token. invited_at -> accepted_at is the ADM-026 funnel and is emitted as user.invited / user.accepted on the outbox (Architecture Sec 8, Platform events).']
+  blocked_at timestamptz [note: 'Abuse blocking (Dev Pack Sec 17.2 Scenario 4). A moderator blocks a TOKEN, never a name: the API resolves signal.author_token -> this row through the Identity module only and returns nothing about who it was (Architecture Sec 4.4).']
+  blocked_reason text [note: 'Free-text moderator justification. Mirrored into moderation_action with the token, never the identity.']
+  blocked_by_membership_id uuid
+  removed_at timestamptz
+  status text [not null, default: 'invited', note: 'invited | active | blocked | removed. text + CHECK, never a PG ENUM. removed is a soft state -- the row and its author_token survive so historical signals stay attributable to a stable pseudonym.']
+  created_at timestamptz [not null, default: `now()`]
+  updated_at timestamptz
+  deleted_at timestamptz [note: 'Soft delete. NOTE: GDPR erasure is the one path that genuinely DELETEs rows here -- destroying the token mapping is precisely what converts retained signals into non-personal data (Architecture Sec 4.4 step 2). Every other removal sets status=removed.']
+
+  indexes {
+    (id, tenant_id) [unique, name: 'uq_user_tenant_membership_id_tenant']
+  }
+
+  Note: 'Person x tenant join, and the anonymity keystone: it holds the only stored mapping from a user to their per-tenant pseudonymous author_token (Architecture Sec 2.2/4.2). Roles, invitation state, blocking and the anonymity override are all per-tenant facts and live here, not on app_user.'
+}
+
+Table workflow_state_def {
+  code text [pk, note: 'Stable machine code. review_task.state FKs to this, which is why states are a table lookup rather than a PG enum (Phase 2 = INSERT, not ALTER TYPE).']
+  label text [not null]
+  sort_order integer [not null, unique]
+  is_terminal bool [not null, default: false, note: 'No outbound enabled transitions expected. Used by the metrics projector to stop the time_to_close clock.']
+  requires_evidence bool [not null, default: false, note: 'Dev Pack Sec 7 "evidence required before close (configurable)". Configurable is exactly this column. False at MVP because PRD Sec 5.4 ships no evidence UI -- see the evidence table below.']
+  enabled_in_mvp bool [not null, default: false, note: 'False for the Dev Pack states the MVP does not implement (assigned, actioned). The API transition guard rejects any target state where this is false, so Phase 2 enablement is a seed change plus UI, not a migration.']
+  created_at timestamptz [not null, default: `now()`]
+  updated_at timestamptz
+
+  Note: 'Config-as-data definition of the review-task state machine states. Global reference table, NOT tenant-scoped: the lifecycle is a product decision, not a per-customer setting, at MVP. Seeded with the full Dev Pack Sec 7 lifecycle; enabled_in_mvp gates the PRD Sec 5.4 subset.'
+}
+
+Table workflow_transition {
+  id uuid [pk, default: `gen_random_uuid()`]
+  tenant_id uuid [not null]
+  review_task_id uuid [not null]
+  from_state text [note: 'NULL for the creation transition (nothing -> open).']
+  to_state text [not null]
+  actor_membership_id uuid [note: 'Supervisor/admin actions are never anonymous, so a membership id is correct here (contrast audit_log.actor_token, which masks anonymous authors). NULL when the actor is the system (outbox consumer creating the task) or when the membership has since been erased.']
+  actor_role text [note: 'Role code snapshotted at transition time. Denormalised deliberately: a membership role can change, but who-did-what-under-which-role must not.']
+  note text
+  created_at timestamptz [not null, default: `now()`]
+
+  Note: 'APPEND-ONLY event log of every review_task state change. Directly satisfies Dev Pack Sec 7 rule "each state change logged". No UPDATE/DELETE grant to any runtime role (0007) -- correcting a transition means appending a compensating one. There is no updated_at column by design.'
+}
+
+Table workflow_transition_def {
+  id uuid [pk, default: `gen_random_uuid()`]
+  from_code text [not null]
+  to_code text [not null]
+  required_permission text [not null, note: 'Flat permission string checked against role.permissions jsonb (no RBAC engine at MVP -- set membership only). Values match the strings seeded into role.permissions in migration 0001.']
+  enabled bool [not null, default: false, note: 'The single switch separating PRD Sec 5.4 (MVP) from Dev Pack Sec 7 (Phase 2).']
+  note text
+  created_at timestamptz [not null, default: `now()`]
+  updated_at timestamptz
+
+  indexes {
+    (from_code, to_code) [unique, name: 'uq_workflow_transition_def_pair']
+  }
+
+  Note: 'Config-as-data edge list of the review-task state machine. The application transition guard is a single lookup against this table: a transition that is absent or enabled=false is a 409, regardless of caller role.'
+}
+
+// ---------- Relationships ----------
+Ref fk_behaviour_signal_duplicate_of: behaviour_signal.(duplicate_of_id, tenant_id) > behaviour_signal.(id, tenant_id)
+Ref fk_evidence_task: evidence.(review_task_id, tenant_id) > review_task.(id, tenant_id)
+Ref fk_evidence_uploaded_by: evidence.uploaded_by_membership_id > user_tenant_membership.id
+Ref fk_moderation_action_actor: moderation_action.actor_membership_id > user_tenant_membership.id
+Ref fk_review_task_acknowledged_by: review_task.acknowledged_by_membership_id > user_tenant_membership.id
+Ref fk_review_task_assigned_to: review_task.assigned_to_membership_id > user_tenant_membership.id
+Ref fk_review_task_closed_by: review_task.closed_by_membership_id > user_tenant_membership.id
+Ref fk_review_task_signal: review_task.(signal_id, tenant_id) > behaviour_signal.(id, tenant_id)
+Ref fk_review_task_state: review_task.state > workflow_state_def.code
+Ref fk_user_tenant_membership_blocked_by: user_tenant_membership.blocked_by_membership_id > user_tenant_membership.id
+Ref fk_user_tenant_membership_invited_by: user_tenant_membership.invited_by_membership_id > user_tenant_membership.id
+Ref fk_workflow_transition_actor: workflow_transition.actor_membership_id > user_tenant_membership.id
+Ref fk_workflow_transition_from_state: workflow_transition.from_state > workflow_state_def.code
+Ref fk_workflow_transition_task: workflow_transition.(review_task_id, tenant_id) > review_task.(id, tenant_id)
+Ref fk_workflow_transition_to_state: workflow_transition.to_state > workflow_state_def.code
+Ref fk_workflow_transition_def_from: workflow_transition_def.from_code > workflow_state_def.code
+Ref fk_workflow_transition_def_to: workflow_transition_def.to_code > workflow_state_def.code
+
+// ---------- Relationships to other subsystems (omitted here) ----------
+// out of scope: audit_log.tenant_id -> tenant
+// out of scope: behaviour_signal.asset_id+tenant_id -> asset
+// out of scope: behaviour_signal.author_user_id -> app_user
+// out of scope: behaviour_signal.classification_code -> classification
+// out of scope: behaviour_signal.guest_session_id+tenant_id -> guest_session
+// out of scope: behaviour_signal.pulse_session_id+tenant_id -> pulse_session
+// out of scope: behaviour_signal.qr_code_id+tenant_id -> qr_code
+// out of scope: behaviour_signal.risk_type_code -> risk_type
+// out of scope: behaviour_signal.site_id+tenant_id -> site
+// out of scope: behaviour_signal.sub_site_id+tenant_id -> sub_site
+// out of scope: behaviour_signal.task_type_code -> task_type
+// out of scope: behaviour_signal.tenant_id -> tenant
+// out of scope: device_subscription.tenant_id -> tenant
+// out of scope: device_subscription.user_id -> app_user
+// out of scope: evidence.tenant_id -> tenant
+// out of scope: moderation_action.tenant_id -> tenant
+// out of scope: notification.recipient_user_id -> app_user
+// out of scope: notification.tenant_id -> tenant
+// out of scope: outbox_event.tenant_id -> tenant
+// out of scope: review_task.tenant_id -> tenant
+// out of scope: user_tenant_membership.role_id -> role
+// out of scope: user_tenant_membership.tenant_id -> tenant
+// out of scope: user_tenant_membership.user_id -> app_user
+// out of scope: workflow_transition.tenant_id -> tenant

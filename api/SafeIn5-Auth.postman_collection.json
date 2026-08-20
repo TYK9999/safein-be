@@ -1,0 +1,498 @@
+{
+  "info": {
+    "name": "SafeIn5 — API (Auth · Signals · Uploads)",
+    "description": "Passwordless signup + login (email OTP + magic link), signals, and chunked video upload.\n\nBase URL: {{baseUrl}} (default http://localhost:3000). Feature routes are under /api/v1.\n\nOTP FLOW: the OTP code and magic link are printed to the SERVER LOG (dev mailer), not returned in the response. Steps:\n1. Run 'Register' (or 'Request OTP').\n2. Copy the 6-digit code from the server log line: [DEV MAIL] OTP for <email>: NNNNNN\n3. Paste it into the collection variable 'otp' (or the Verify OTP request body).\n4. Run 'Verify OTP' — it auto-saves the accessToken into the 'accessToken' variable, so everything else just works.\n\nThe refresh token is an HttpOnly cookie; Postman's cookie jar handles it automatically for 'Refresh' and 'Logout'.\n\nUPLOADS (guided flow): run '1. Initiate', then click '2. Upload next part bytes' once per part. Initiate returns the signed URL for part 1; each PUT records the part and returns the NEXT part's URL (captured into nextUrl), and the last PUT auto-assembles and returns { completed }. Just keep clicking 2 until the console logs 'UPLOAD COMPLETED'. No confirm/complete needed. The bearer token is OPTIONAL: clear the collection 'accessToken' variable (or remove the request auth) to upload anonymously.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:3000" },
+    { "key": "email", "value": "sam@example.com" },
+    { "key": "otp", "value": "" },
+    { "key": "magicToken", "value": "" },
+    { "key": "accessToken", "value": "" },
+    { "key": "signalId", "value": "" },
+    { "key": "uploadId", "value": "" },
+    { "key": "nextUrl", "value": "" },
+    { "key": "nextPart", "value": "" }
+  ],
+  "item": [
+    {
+      "name": "Health",
+      "item": [
+        {
+          "name": "Liveness (healthz)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/healthz", "host": ["{{baseUrl}}"], "path": ["healthz"] }
+          }
+        },
+        {
+          "name": "Readiness (readyz)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/readyz", "host": ["{{baseUrl}}"], "path": ["readyz"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "Register (signup)",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"{{email}}\",\n  \"firstName\": \"Sam\",\n  \"lastName\": \"Rivera\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/auth/register",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "auth", "register"]
+            },
+            "description": "Creates the account (if new) and sends an OTP. Returns 204. Read the OTP from the server log, then run Verify OTP."
+          }
+        },
+        {
+          "name": "Request OTP (login)",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"email\": \"{{email}}\"\n}" },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/auth/otp/request",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "auth", "otp", "request"]
+            },
+            "description": "Sends a fresh OTP to an existing account. Always 204 (no account enumeration)."
+          }
+        },
+        {
+          "name": "Verify OTP",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "if (pm.response.code === 200) {",
+                  "  const json = pm.response.json();",
+                  "  if (json.accessToken) {",
+                  "    pm.collectionVariables.set('accessToken', json.accessToken);",
+                  "    pm.test('saved accessToken', () => pm.expect(json.accessToken).to.be.a('string'));",
+                  "  }",
+                  "} else {",
+                  "  pm.test('verify failed: ' + pm.response.code, () => pm.expect(pm.response.code).to.eql(200));",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"{{email}}\",\n  \"code\": \"{{otp}}\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/auth/otp/verify",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "auth", "otp", "verify"]
+            },
+            "description": "Verifies the code (paste it into the 'otp' variable first). On 200, auto-saves accessToken and sets the refresh cookie."
+          }
+        },
+        {
+          "name": "Request Magic Link",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"email\": \"{{email}}\"\n}" },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/auth/magic-link",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "auth", "magic-link"]
+            },
+            "description": "Emails (logs) a magic link. Copy the token at the end of the logged URL into the 'magicToken' variable, then run Verify Magic Link."
+          }
+        },
+        {
+          "name": "Verify Magic Link",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "if (pm.response.code === 200) {",
+                  "  const json = pm.response.json();",
+                  "  if (json.accessToken) { pm.collectionVariables.set('accessToken', json.accessToken); }",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/auth/magic/{{magicToken}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "auth", "magic", "{{magicToken}}"]
+            },
+            "description": "Consumes the magic-link token. On 200, saves accessToken and sets the refresh cookie."
+          }
+        },
+        {
+          "name": "Refresh (cookie)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "if (pm.response.code === 200) {",
+                  "  const json = pm.response.json();",
+                  "  if (json.accessToken) { pm.collectionVariables.set('accessToken', json.accessToken); }",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/auth/refresh",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "auth", "refresh"]
+            },
+            "description": "Issues a new access token from the refresh cookie (set at login). Postman sends the cookie automatically."
+          }
+        },
+        {
+          "name": "Logout",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/auth/logout",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "auth", "logout"]
+            },
+            "description": "Clears the refresh cookie. Returns 204."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Me",
+      "item": [
+        {
+          "name": "Get current user",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "auth": {
+              "type": "bearer",
+              "bearer": [{ "key": "token", "value": "{{accessToken}}", "type": "string" }]
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/me",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "me"]
+            },
+            "description": "Requires a valid access token (auto-filled from Verify OTP). Returns { id, email, firstName, lastName, emailVerified, role, tenant }."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Signals",
+      "item": [
+        {
+          "name": "Create signal",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "if (pm.response.code === 201 || pm.response.code === 200) {",
+                  "  const json = pm.response.json();",
+                  "  if (json.id) { pm.collectionVariables.set('signalId', json.id); }",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "auth": {
+              "type": "bearer",
+              "bearer": [{ "key": "token", "value": "{{accessToken}}", "type": "string" }]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"classification\": \"needs_attention_now\",\n  \"bodyText\": \"Exposed edge on level 2, no barrier\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/signals",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "signals"]
+            },
+            "description": "Creates a signal for the current user. classification: good_practice | be_aware | needs_attention_now. Add \"anonymous\": true to hide the author. Saves the new id into 'signalId'."
+          }
+        },
+        {
+          "name": "Create anonymous signal",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "auth": {
+              "type": "bearer",
+              "bearer": [{ "key": "token", "value": "{{accessToken}}", "type": "string" }]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"classification\": \"be_aware\",\n  \"bodyText\": \"Someone bypassing the lockout\",\n  \"anonymous\": true\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/signals",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "signals"]
+            },
+            "description": "Anonymous report: the response and every feed/get returns author: null and isAnonymous: true."
+          }
+        },
+        {
+          "name": "Feed",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "auth": {
+              "type": "bearer",
+              "bearer": [{ "key": "token", "value": "{{accessToken}}", "type": "string" }]
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/feed?limit=50",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "feed"],
+              "query": [{ "key": "limit", "value": "50" }]
+            },
+            "description": "All signals, newest first (default 50, max 100)."
+          }
+        },
+        {
+          "name": "My signals",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "auth": {
+              "type": "bearer",
+              "bearer": [{ "key": "token", "value": "{{accessToken}}", "type": "string" }]
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/signals/mine",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "signals", "mine"]
+            },
+            "description": "The current user's own signals, newest first."
+          }
+        },
+        {
+          "name": "Get signal by id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "auth": {
+              "type": "bearer",
+              "bearer": [{ "key": "token", "value": "{{accessToken}}", "type": "string" }]
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/signals/{{signalId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "signals", "{{signalId}}"]
+            },
+            "description": "One signal by id (auto-filled from Create signal)."
+          }
+        },
+        {
+          "name": "Acknowledge (supervisor)",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "auth": {
+              "type": "bearer",
+              "bearer": [{ "key": "token", "value": "{{accessToken}}", "type": "string" }]
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/signals/{{signalId}}/acknowledge",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "signals", "{{signalId}}", "acknowledge"]
+            },
+            "description": "Supervisor only (403 for a worker). Role is on the tenant membership; make a supervisor in psql:\nUPDATE user_tenant_membership m SET role='supervisor' FROM app_user u WHERE u.id=m.user_id AND u.email='boss@example.com';\nthen log that user in so the token's role is supervisor. Only signals in the caller's own tenant are visible (cross-tenant -> 404). open -> acknowledged (idempotent)."
+          }
+        },
+        {
+          "name": "Close (supervisor)",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "auth": {
+              "type": "bearer",
+              "bearer": [{ "key": "token", "value": "{{accessToken}}", "type": "string" }]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"closeNote\": \"Barrier reinstated, area cleared\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/signals/{{signalId}}/close",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "signals", "{{signalId}}", "close"]
+            },
+            "description": "Supervisor only, note required. open/acknowledged -> closed; closing again -> 409."
+          }
+        },
+        {
+          "name": "Feed — open only",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "auth": {
+              "type": "bearer",
+              "bearer": [{ "key": "token", "value": "{{accessToken}}", "type": "string" }]
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/feed?status=open",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "feed"],
+              "query": [{ "key": "status", "value": "open" }]
+            },
+            "description": "Supervisor 'needs response' list: only open signals."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Uploads (chunked, guided)",
+      "description": "GUIDED FLOW. Run '1. Initiate', then click '2. Upload next part bytes' once per part. Each upload records the part and captures the NEXT part's signed URL (into nextUrl/nextPart), so just keep clicking 2 until the console logs 'UPLOAD COMPLETED' (the last part auto-assembles). No confirm/complete needed. The bearer token is OPTIONAL (clear the 'accessToken' variable, or remove the request auth, to upload anonymously).",
+      "item": [
+        {
+          "name": "1. Initiate upload",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "if (pm.response.code === 201 || pm.response.code === 200) {",
+                  "  const j = pm.response.json();",
+                  "  pm.collectionVariables.set('uploadId', j.id);",
+                  "  if (j.next) {",
+                  "    pm.collectionVariables.set('nextUrl', j.next.uploadUrl);",
+                  "    pm.collectionVariables.set('nextPart', j.next.partNumber);",
+                  "  }",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "auth": {
+              "type": "bearer",
+              "bearer": [{ "key": "token", "value": "{{accessToken}}", "type": "string" }]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"filename\": \"clip.mp4\",\n  \"mimeType\": \"video/mp4\",\n  \"totalParts\": 3\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/uploads/initiate",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "uploads", "initiate"]
+            },
+            "description": "Starts a 3-part upload. Optionally add \"totalBytes\" and a whole-file \"checksum\" (sha256 hex) for end-to-end verification. Saves 'uploadId' and the FIRST part's signed URL (into 'nextUrl'/'nextPart')."
+          }
+        },
+        {
+          "name": "2. Upload next part bytes (advances to the next URL)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "if (pm.response.code === 200) {",
+                  "  const j = pm.response.json();",
+                  "  if (j.completed) {",
+                  "    console.log('UPLOAD COMPLETED:', JSON.stringify(j.completed));",
+                  "  } else if (j.next) {",
+                  "    pm.collectionVariables.set('nextUrl', j.next.uploadUrl);",
+                  "    pm.collectionVariables.set('nextPart', j.next.partNumber);",
+                  "    console.log('Next part:', j.next.partNumber, 'missing:', JSON.stringify(j.missingParts));",
+                  "  }",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/octet-stream" }],
+            "auth": {
+              "type": "bearer",
+              "bearer": [{ "key": "token", "value": "{{accessToken}}", "type": "string" }]
+            },
+            "body": { "mode": "raw", "raw": "part-bytes-sample-" },
+            "url": { "raw": "{{nextUrl}}" },
+            "description": "PUT the raw part bytes to the signed URL captured from the previous step ('nextUrl'). The response records the part and returns { next } (captured into 'nextUrl'/'nextPart') OR { completed } on the LAST part (auto-assembles + deletes temp parts). Just click this once per part until the console logs 'UPLOAD COMPLETED'. Body is sample text; for a real video switch Body to 'binary' and pick a file chunk (a different one per part)."
+          }
+        },
+        {
+          "name": "Status (optional)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "auth": {
+              "type": "bearer",
+              "bearer": [{ "key": "token", "value": "{{accessToken}}", "type": "string" }]
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/uploads/{{uploadId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "uploads", "{{uploadId}}"]
+            },
+            "description": "Current status: { status, receivedCount, receivedParts, missingParts, ... }."
+          }
+        },
+        {
+          "name": "Abort a pending upload (optional)",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "auth": {
+              "type": "bearer",
+              "bearer": [{ "key": "token", "value": "{{accessToken}}", "type": "string" }]
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/uploads/{{uploadId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "uploads", "{{uploadId}}"]
+            },
+            "description": "Discards a still-pending upload and its temp parts. 200 -> { status: 'aborted' } (409 if already completed)."
+          }
+        }
+      ]
+    }
+  ]
+}
