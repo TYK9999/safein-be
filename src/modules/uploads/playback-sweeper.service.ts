@@ -2,7 +2,7 @@ import { Injectable, OnModuleInit } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { SchedulerRegistry } from '@nestjs/schedule';
 
-import { AppLoggerService } from '../../logger/app-logger.service';
+import { AppLoggerService } from '../../logging/app-logger.service';
 import { PlaybackService } from './playback.service';
 
 const INTERVAL_NAME = 'playback-sweep';
@@ -31,18 +31,25 @@ export class PlaybackSweeper implements OnModuleInit {
     if (!this.config.getOrThrow<boolean>('playback.sweepEnabled')) {
       this.logger.log(
         'Playback sweep disabled (PLAYBACK_SWEEP_ENABLED=false).',
+        `PlaybackSweeper.onModuleInit`,
       );
       return;
     }
     const ms = this.config.getOrThrow<number>('playback.sweepIntervalMs');
     const interval = setInterval(() => void this.tick(), ms);
     this.registry.addInterval(INTERVAL_NAME, interval);
-    this.logger.log(`Playback sweep every ${ms}ms.`);
+    this.logger.log(
+      `Playback sweep every ${ms}ms.`,
+      `PlaybackSweeper.onModuleInit`,
+    );
   }
 
   async tick(): Promise<void> {
     if (this.running) {
-      this.logger.warn('Playback sweep still running; skipping this tick.');
+      this.logger.warn(
+        'Playback sweep still running; skipping this tick.',
+        `PlaybackSweeper.tick`,
+      );
       return;
     }
     this.running = true;
@@ -51,11 +58,14 @@ export class PlaybackSweeper implements OnModuleInit {
       if (r.processed > 0) {
         this.logger.log(
           `Playback: ${r.ready} ready, ${r.failed} failed (${r.processed} processed).`,
+          `PlaybackSweeper.tick`,
         );
       }
     } catch (err) {
       this.logger.error(
         `Playback sweep failed: ${err instanceof Error ? err.message : String(err)}`,
+        { err },
+        `PlaybackSweeper.tick`,
       );
     } finally {
       this.running = false;

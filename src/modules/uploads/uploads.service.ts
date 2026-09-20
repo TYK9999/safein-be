@@ -19,7 +19,7 @@ import {
   type DB,
   type UploadPartRef,
 } from '../../database/schema';
-import { AppLoggerService } from '../../logger/app-logger.service';
+import { AppLoggerService } from '../../logging/app-logger.service';
 import { PlaybackService } from './playback.service';
 import { UploadNextDto } from './uploads.schema';
 import { baseMime, isAllowedVideoMime } from './uploads.util';
@@ -87,8 +87,8 @@ export class UploadsService {
   constructor(
     @Inject(APP_DB) private readonly db: Kysely<DB>,
     config: ConfigService,
-    private readonly logger: AppLoggerService,
     private readonly playback: PlaybackService,
+    private readonly logger: AppLoggerService,
   ) {
     this.logger.setContext(UploadsService.name);
     // Direct-to-S3 requires S3 config — there is no local-storage fallback here.
@@ -114,6 +114,7 @@ export class UploadsService {
     });
     this.logger.log(
       `Direct-to-S3 uploads: bucket "${this.bucket}"${endpoint ? ` @ ${endpoint}` : ''}`,
+      `UploadsService.constructor`,
     );
   }
 
@@ -129,6 +130,10 @@ export class UploadsService {
     actor: Uploader | null,
     dto: UploadNextDto,
   ): Promise<NextInProgress> {
+    this.logger.debug(
+      `Upload start userId=${actor?.userId} tenantId=${actor?.tenantId}`,
+      `UploadsService.start`,
+    );
     const { filename, mime, size, chunkSize, chunkCount } = dto;
     if (
       filename === undefined ||
@@ -175,6 +180,8 @@ export class UploadsService {
           : '';
       this.logger.error(
         `S3 CreateMultipartUpload failed for ${s3Key}: ${err instanceof Error ? err.message : String(err)}`,
+        { err },
+        `UploadsService.start`,
       );
       if (code === 'ECONNREFUSED' || code === 'ENOTFOUND' || code === 'ECONNRESET') {
         fail(
@@ -217,6 +224,10 @@ export class UploadsService {
       .execute();
 
     const url = await this.presignPart(s3Key, s3UploadId, 1);
+    this.logger.info(
+      `Upload session started sessionId=${sessionToken} tenantId=${tenantId} userId=${actor?.userId}`,
+      `UploadsService.start`,
+    );
     return {
       sessionId: sessionToken,
       status: 'in_progress',
@@ -434,6 +445,15 @@ export class UploadsService {
     // upload response isn't blocked; the sweep retries if this attempt fails.
     if ((res.numUpdatedRows ?? 0n) > 0n) {
       this.playback.transcodeNow(session.id, session.s3Key);
+      this.logger.info(
+        `Upload session completed sessionId=${session.token} videoId=${session.videoId}`,
+        `UploadsService.finalize`,
+      );
+    } else {
+      this.logger.debug(
+        `Upload session complete idempotent sessionId=${session.token}`,
+        `UploadsService.finalize`,
+      );
     }
     return completedResult(session.token, session.videoId);
   }

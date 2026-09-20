@@ -14,13 +14,13 @@ import { HttpStatus, Inject, Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import type { ExpressionBuilder, Kysely } from 'kysely';
 
-import { APP_DB } from '../../database/db.token';
+import { APP_DB } from '../../database/db.provider';
 import {
   COMMUNITY_TENANT_ID,
   type DB,
   type TranscriptionStatus,
 } from '../../database/schema';
-import { AppLoggerService } from '../../logger/app-logger.service';
+import { AppLoggerService } from '../../logging/app-logger.service';
 import { buildS3, fail, presignAudioObject } from '../audio/audio.service';
 import { SttPresignDto, StartJobDto } from './stt.schema';
 import {
@@ -92,8 +92,8 @@ export class SttService {
 
   constructor(
     config: ConfigService,
-    private readonly logger: AppLoggerService,
     @Inject(APP_DB) private readonly db: Kysely<DB>,
+    private readonly logger: AppLoggerService,
   ) {
     this.logger.setContext(SttService.name);
     this.bucket = config.getOrThrow<string>('uploads.s3Bucket');
@@ -134,6 +134,10 @@ export class SttService {
     actor: SttActor | null,
     dto: StartJobDto,
   ): Promise<JobStartResult> {
+    this.logger.debug(
+      `STT job start s3Key=${dto.s3Key} userId=${actor?.userId}`,
+      `SttService.startJob`,
+    );
     // Only transcribe objects we minted under our prefix.
     if (!dto.s3Key.startsWith(`${KEY_PREFIX}/`)) {
       fail(
@@ -177,7 +181,11 @@ export class SttService {
         }),
       );
     } catch (err) {
-      this.logger.error(`StartTranscriptionJob failed: ${msg(err)}`);
+      this.logger.error(
+        `stt.job.start failure jobId=${jobId}: ${msg(err)}`,
+        { err },
+        `SttService.startJob`,
+      );
       fail(
         HttpStatus.BAD_GATEWAY,
         'SERVER_ERROR',
@@ -201,7 +209,9 @@ export class SttService {
         .execute();
     } catch (err) {
       this.logger.error(
-        `Failed to record transcription job ${jobId}: ${msg(err)}`,
+        `stt.job.record failure jobId=${jobId}: ${msg(err)}`,
+        { err },
+        `SttService.startJob`,
       );
       try {
         await this.transcribe.send(
@@ -210,6 +220,8 @@ export class SttService {
       } catch (cleanupErr) {
         this.logger.error(
           `Failed to cancel orphaned job ${jobId}: ${msg(cleanupErr)}`,
+          { err: cleanupErr },
+          `SttService.startJob`,
         );
       }
       fail(
@@ -218,6 +230,10 @@ export class SttService {
         'Could not start transcription.',
       );
     }
+    this.logger.info(
+      `STT job started jobId=${jobId} tenantId=${actor?.tenantId ?? COMMUNITY_TENANT_ID} userId=${actor?.userId}`,
+      `SttService.startJob`,
+    );
     return { jobId, status: 'queued' };
   }
 
@@ -260,7 +276,11 @@ export class SttService {
           'No such transcription job.',
         );
       }
-      this.logger.error(`GetTranscriptionJob failed: ${msg(err)}`);
+      this.logger.error(
+        `GetTranscriptionJob failed: ${msg(err)}`,
+        { err },
+        `SttService.getJob`,
+      );
       fail(
         HttpStatus.BAD_GATEWAY,
         'SERVER_ERROR',
@@ -277,7 +297,11 @@ export class SttService {
       try {
         text = await this.fetchTranscript(jobId);
       } catch (err) {
-        this.logger.error(`fetchTranscript failed for ${jobId}: ${msg(err)}`);
+        this.logger.error(
+          `fetchTranscript failed for ${jobId}: ${msg(err)}`,
+          { err },
+          `SttService.getJob`,
+        );
         fail(
           HttpStatus.BAD_GATEWAY,
           'SERVER_ERROR',
@@ -289,6 +313,10 @@ export class SttService {
         transcript: text,
         completed_at: new Date(),
       });
+      this.logger.info(
+        `STT job completed jobId=${jobId}`,
+        `SttService.getJob`,
+      );
       return { jobId, status, text };
     }
     if (status === 'failed') {
@@ -298,11 +326,19 @@ export class SttService {
         failure_reason: reason,
         completed_at: new Date(),
       });
+      this.logger.error(
+        `STT job failed jobId=${jobId} reason=${reason}`,
+        `SttService.getJob`,
+      );
       return { jobId, status, error: reason };
     }
     // queued -> in_progress: persist the advance so history reflects it.
     if (status !== row.status) {
       await this.persist(row.id, { status });
+      this.logger.debug(
+        `STT job status jobId=${jobId} status=${status}`,
+        `SttService.getJob`,
+      );
     }
     return { jobId, status };
   }

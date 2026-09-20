@@ -1,18 +1,13 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
-
-import configuration from './configuration';
-import { EnvSchema } from './env.schema';
+import loadConfiguration from './configuration';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
-      load: [configuration],
-
-      validate: (config) => {
-        return EnvSchema.parse(config);
-      },
+      cache: true,
+      load: [loadConfiguration],
     }),
   ],
 })

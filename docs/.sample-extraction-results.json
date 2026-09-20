@@ -1,0 +1,1618 @@
+{
+  "version": 1,
+  "files": [
+    {
+      "file": "Confiend Space Check List/CS Check List Page 1.jpeg",
+      "kind": "job_checklist",
+      "promptId": "generic-job-checklist-extract",
+      "extracted": {
+        "title": "IMSF 100 - Confined Spaces Checklist",
+        "source_reference": "Confiend Space Check List/CS Check List Page 1.jpeg",
+        "page_label": "Page No 1 of 4",
+        "prompts": [
+          {
+            "sort_order": 1,
+            "priority": 1,
+            "body_text": "Can the need to enter the confined space be avoided? (Consider remote controls, video camera, or inspection hatches.)",
+            "mandatory": null
+          },
+          {
+            "sort_order": 2,
+            "priority": 2,
+            "body_text": "Can the confined space be permanently re-classified by removing the enclosed nature?",
+            "mandatory": null
+          },
+          {
+            "sort_order": 3,
+            "priority": 3,
+            "body_text": "Can the confined space be permanently re-classified by removing the specified hazard(s) that make it a confined space?",
+            "mandatory": null
+          },
+          {
+            "sort_order": 4,
+            "priority": 4,
+            "body_text": "Can the confined space be temporarily re-classified by forced ventilation at a rate that would make an unsafe atmosphere impossible?",
+            "mandatory": null
+          },
+          {
+            "sort_order": 5,
+            "priority": 5,
+            "body_text": "If forced ventilation fails, is there sufficient time for a safe evacuation?",
+            "mandatory": null
+          },
+          {
+            "sort_order": 6,
+            "priority": 6,
+            "body_text": "Has a specific risk assessment been completed for the confined space?",
+            "mandatory": null
+          },
+          {
+            "sort_order": 7,
+            "priority": 7,
+            "body_text": "Has the risk assessment considered all conditions of operation, including abnormal and temporary conditions such as welding?",
+            "mandatory": null
+          },
+          {
+            "sort_order": 8,
+            "priority": 8,
+            "body_text": "Has the risk assessment considered risks created by the planned work (e.g. burning, welding, static discharges)?",
+            "mandatory": null
+          },
+          {
+            "sort_order": 9,
+            "priority": 10,
+            "body_text": "Has a specific safe working procedure (safe system of work) been prepared and is it relevant to the planned activity?",
+            "mandatory": null
+          },
+          {
+            "sort_order": 10,
+            "priority": 11,
+            "body_text": "Does the safe working procedure specify the measures to be taken in the event of an emergency?",
+            "mandatory": null
+          },
+          {
+            "sort_order": 11,
+            "priority": 12,
+            "body_text": "Has a Confined Space Permit been raised, including any control measures specified in this checklist?",
+            "mandatory": true
+          },
+          {
+            "sort_order": 12,
+            "priority": 13,
+            "body_text": "Has a suitable warning sign been posted to identify the confined space?",
+            "mandatory": null
+          },
+          {
+            "sort_order": 13,
+            "priority": 14,
+            "body_text": "Has the confined space been secured (e.g. barrier, guard, or gate) to deter unauthorised access?",
+            "mandatory": null
+          },
+          {
+            "sort_order": 14,
+            "priority": 15,
+            "body_text": "Have fixed gas detectors or low oxygen monitors been provided and are they in a suitable location?",
+            "mandatory": null
+          }
+        ],
+        "filled_answers": [
+          {
+            "sort_order": 1,
+            "answer": "no",
+            "comment": "REPAIRS CAN ONLY BE COMPLETED INSIDE"
+          },
+          {
+            "sort_order": 2,
+            "answer": "no",
+            "comment": null
+          },
+          {
+            "sort_order": 3,
+            "answer": "no",
+            "comment": null
+          },
+          {
+            "sort_order": 4,
+            "answer": "yes",
+            "comment": null
+          },
+          {
+            "sort_order": 5,
+            "answer": "yes",
+            "comment": null
+          },
+          {
+            "sort_order": 6,
+            "answer": "yes",
+            "comment": "ATTACHED"
+          },
+          {
+            "sort_order": 7,
+            "answer": "yes",
+            "comment": null
+          },
+          {
+            "sort_order": 8,
+            "answer": "yes",
+            "comment": null
+          },
+          {
+            "sort_order": 9,
+            "answer": "yes",
+            "comment": null
+          },
+          {
+            "sort_order": 10,
+            "answer": "yes",
+            "comment": null
+          },
+          {
+            "sort_order": 11,
+            "answer": "yes",
+            "comment": null
+          },
+          {
+            "sort_order": 12,
+            "answer": "yes",
+            "comment": null
+          },
+          {
+            "sort_order": 13,
+            "answer": "yes",
+            "comment": null
+          },
+          {
+            "sort_order": 14,
+            "answer": "no",
+            "comment": "OWN GAS MONITORS USED"
+          }
+        ],
+        "unclear": [
+          "Document shows Page 1 of 4; pages 2–4 are not provided and may contain additional checklist items."
+        ]
+      },
+      "usage": {
+        "inputTokens": 3941,
+        "outputTokens": 5369,
+        "cacheWriteTokens": 0,
+        "cacheReadTokens": 13888,
+        "totalTokens": 23198
+      },
+      "extractedAt": "2026-09-08T03:43:03.747Z"
+    },
+    {
+      "file": "Confiend Space Check List/CS Check List Page 2 .jpeg",
+      "kind": "job_checklist",
+      "promptId": "generic-job-checklist-extract",
+      "extracted": {
+        "title": "Health and Safety — Confined Spaces",
+        "source_reference": "IMSF-100 | STAN-13",
+        "page_label": "Page 2 of 4",
+        "prompts": [
+          {
+            "sort_order": 1,
+            "priority": 16,
+            "body_text": "Are gas detectors adequately maintained and calibrated?",
+            "mandatory": null
+          },
+          {
+            "sort_order": 2,
+            "priority": 2,
+            "body_text": "Can the confined space be ventilated naturally to reduce unsafe atmosphere risk (e.g. by opening or removing doors or hatches)?",
+            "mandatory": null
+          },
+          {
+            "sort_order": 3,
+            "priority": 3,
+            "body_text": "Have fixed ventilation provisions been made?",
+            "mandatory": null
+          },
+          {
+            "sort_order": 4,
+            "priority": 5,
+            "body_text": "Is fixed ventilation maintained and tested periodically?",
+            "mandatory": null
+          },
+          {
+            "sort_order": 5,
+            "priority": 23,
+            "body_text": "Have cameras been fitted to monitor persons inside the confined space if identified as a control?",
+            "mandatory": null
+          },
+          {
+            "sort_order": 6,
+            "priority": 22,
+            "body_text": "Is there adequate communication between persons inside and outside the confined space?",
+            "mandatory": null
+          },
+          {
+            "sort_order": 7,
+            "priority": 4,
+            "body_text": "Is sufficient ventilation available? (Do not force oxygen into the space—it can create an explosive atmosphere.)",
+            "mandatory": null
+          },
+          {
+            "sort_order": 8,
+            "priority": 25,
+            "body_text": "Is lighting inside the confined space adequate?",
+            "mandatory": null
+          },
+          {
+            "sort_order": 9,
+            "priority": 26,
+            "body_text": "Can ambient temperature in the confined space be controlled or monitored to prevent excessive heat for operatives?",
+            "mandatory": null
+          },
+          {
+            "sort_order": 10,
+            "priority": 27,
+            "body_text": "Has adequate access been provided for safe entry into the confined space?",
+            "mandatory": null
+          },
+          {
+            "sort_order": 11,
+            "priority": 28,
+            "body_text": "Are walkways and access platforms to the confined space opening safe to use?",
+            "mandatory": null
+          },
+          {
+            "sort_order": 12,
+            "priority": 29,
+            "body_text": "Is access size sufficient for PPE and emergency BA? (Min 575mm square for BA emergencies; 457mm dia round or 457×410mm rectangular otherwise.)",
+            "mandatory": null
+          },
+          {
+            "sort_order": 13,
+            "priority": 30,
+            "body_text": "Is sufficient access equipment (tripod, full body harness, winch) available for access/egress?",
+            "mandatory": null
+          },
+          {
+            "sort_order": 14,
+            "priority": 31,
+            "body_text": "Have all persons who manage or enter the confined space received training, demonstrated competency, and been authorised?",
+            "mandatory": null
+          },
+          {
+            "sort_order": 15,
+            "priority": 32,
+            "body_text": "Are individuals of suitable build and fitness where physical constraints were highlighted in the risk assessment?",
+            "mandatory": null
+          },
+          {
+            "sort_order": 16,
+            "priority": 13,
+            "body_text": "Has the site appointed sufficient competent persons to issue permits and supervise confined space activities?",
+            "mandatory": null
+          },
+          {
+            "sort_order": 17,
+            "priority": 12,
+            "body_text": "Are all employees/contractors aware a Permit to Work is required before anyone enters?",
+            "mandatory": null
+          },
+          {
+            "sort_order": 18,
+            "priority": 33,
+            "body_text": "Are all employees/contractors aware of procedures when the task, environment, or method of work changes?",
+            "mandatory": null
+          }
+        ],
+        "filled_answers": [
+          {
+            "sort_order": 1,
+            "answer": "yes",
+            "comment": null
+          },
+          {
+            "sort_order": 2,
+            "answer": "yes",
+            "comment": null
+          },
+          {
+            "sort_order": 3,
+            "answer": "no",
+            "comment": null
+          },
+          {
+            "sort_order": 4,
+            "answer": "na",
+            "comment": null
+          },
+          {
+            "sort_order": 5,
+            "answer": "na",
+            "comment": null
+          },
+          {
+            "sort_order": 6,
+            "answer": "yes",
+            "comment": "TOP MEN AT ALL TIMES RADIO COMMUNICATION"
+          },
+          {
+            "sort_order": 7,
+            "answer": "yes",
+            "comment": null
+          },
+          {
+            "sort_order": 8,
+            "answer": "yes",
+            "comment": "PORTABLE LIGHTS USED"
+          },
+          {
+            "sort_order": 9,
+            "answer": "yes",
+            "comment": "PLANT COOLED 12 HOURS BEFORE ENTRY."
+          },
+          {
+            "sort_order": 10,
+            "answer": "yes",
+            "comment": null
+          },
+          {
+            "sort_order": 11,
+            "answer": "yes",
+            "comment": null
+          },
+          {
+            "sort_order": 12,
+            "answer": "yes",
+            "comment": "500MM X 500MM"
+          },
+          {
+            "sort_order": 13,
+            "answer": "yes",
+            "comment": null
+          },
+          {
+            "sort_order": 14,
+            "answer": "yes",
+            "comment": null
+          },
+          {
+            "sort_order": 15,
+            "answer": "yes",
+            "comment": null
+          },
+          {
+            "sort_order": 16,
+            "answer": "yes",
+            "comment": null
+          },
+          {
+            "sort_order": 17,
+            "answer": "yes",
+            "comment": null
+          },
+          {
+            "sort_order": 18,
+            "answer": "yes",
+            "comment": null
+          }
+        ],
+        "unclear": [
+          "This is page 2 of 4; pages 1, 3, and 4 are not provided—checklist items on those pages are omitted.",
+          "The top section appears to continue from page 1; its section number is not visible on this page.",
+          "Section 7 (Pre-entry safeguards) header is visible at the bottom but no questions for that section appear on this page."
+        ]
+      },
+      "usage": {
+        "inputTokens": 4021,
+        "outputTokens": 7223,
+        "cacheWriteTokens": 0,
+        "cacheReadTokens": 13888,
+        "totalTokens": 25132
+      },
+      "extractedAt": "2026-09-08T03:44:21.532Z"
+    },
+    {
+      "file": "Confiend Space Check List/CS Check List Page 3 .jpeg",
+      "kind": "job_checklist",
+      "promptId": "generic-job-checklist-extract",
+      "extracted": {
+        "title": "Health and Safety — Confined Spaces",
+        "source_reference": "Confiend Space Check List/CS Check List Page 3 .jpeg",
+        "page_label": "Page No 3 of 4",
+        "prompts": [
+          {
+            "sort_order": 1,
+            "priority": 13,
+            "body_text": "Has the confined space been emptied of its contents, including residues, where possible?",
+            "mandatory": null
+          },
+          {
+            "sort_order": 2,
+            "priority": 14,
+            "body_text": "Has the inside of the confined space been cleaned? (Cleaning methods may need to be included in the specific risk assessment.)",
+            "mandatory": null
+          },
+          {
+            "sort_order": 3,
+            "priority": 16,
+            "body_text": "Can pipe work be isolated to prevent gas, fume or vapour entering the confined space?",
+            "mandatory": null
+          },
+          {
+            "sort_order": 4,
+            "priority": 17,
+            "body_text": "Can mechanical and electrical isolation of equipment be completed to prevent inadvertently operating or discharging into the confined space?",
+            "mandatory": null
+          },
+          {
+            "sort_order": 5,
+            "priority": 18,
+            "body_text": "Are all isolations checked before work commences as part of the Permit to Work?",
+            "mandatory": null
+          },
+          {
+            "sort_order": 6,
+            "priority": 4,
+            "body_text": "Has the atmosphere in the confined space been verified as safe prior to entry?",
+            "mandatory": null
+          },
+          {
+            "sort_order": 7,
+            "priority": 19,
+            "body_text": "Are signs displayed outside the confined space notifying that work is underway and that people are inside?",
+            "mandatory": null
+          },
+          {
+            "sort_order": 8,
+            "priority": 22,
+            "body_text": "Where flammable or potentially explosive atmospheres are possible, are ignition sources removed or controlled and included in safe working procedures?",
+            "mandatory": null
+          },
+          {
+            "sort_order": 9,
+            "priority": 26,
+            "body_text": "If appropriate, have non-sparking tools been specified and provided?",
+            "mandatory": null
+          },
+          {
+            "sort_order": 10,
+            "priority": 24,
+            "body_text": "Are suitable precautions in place to prevent electric shock inside metal tanks (e.g. low voltage equipment or residual current devices)?",
+            "mandatory": null
+          },
+          {
+            "sort_order": 11,
+            "priority": 15,
+            "body_text": "Have personal air monitoring devices with current calibration certificates been provided for all persons entering the confined space?",
+            "mandatory": null
+          },
+          {
+            "sort_order": 12,
+            "priority": 16,
+            "body_text": "Have monitors and ELSA, if absolutely necessary, been checked prior to entry?",
+            "mandatory": null
+          },
+          {
+            "sort_order": 13,
+            "priority": 27,
+            "body_text": "Has the correct type of PPE been specified for each activity, including rescue equipment such as harnesses or lifelines?",
+            "mandatory": null
+          },
+          {
+            "sort_order": 14,
+            "priority": 28,
+            "body_text": "Has suitable PPE been provided for all persons entering the confined space, and is it being used?",
+            "mandatory": null
+          },
+          {
+            "sort_order": 15,
+            "priority": 29,
+            "body_text": "Is PPE in good condition and appropriate for the conditions and working activities?",
+            "mandatory": null
+          },
+          {
+            "sort_order": 16,
+            "priority": 30,
+            "body_text": "Has an emergency plan been prepared for this specific confined space?",
+            "mandatory": null
+          },
+          {
+            "sort_order": 17,
+            "priority": 31,
+            "body_text": "Has the site identified suitable emergency arrangements for the activity before work commences?",
+            "mandatory": null
+          },
+          {
+            "sort_order": 18,
+            "priority": 32,
+            "body_text": "Has a rescue procedure been defined and communicated?",
+            "mandatory": null
+          },
+          {
+            "sort_order": 19,
+            "priority": 21,
+            "body_text": "Is there a suitable method of raising the alarm?",
+            "mandatory": null
+          },
+          {
+            "sort_order": 20,
+            "priority": 33,
+            "body_text": "Has the response time of emergency services been considered?",
+            "mandatory": null
+          },
+          {
+            "sort_order": 21,
+            "priority": 34,
+            "body_text": "Has necessary rescue and resuscitation equipment been identified and provided?",
+            "mandatory": null
+          },
+          {
+            "sort_order": 22,
+            "priority": 35,
+            "body_text": "Is the first aid provision adequate?",
+            "mandatory": null
+          },
+          {
+            "sort_order": 23,
+            "priority": 36,
+            "body_text": "Are persons responsible for emergency response adequately trained and practised?",
+            "mandatory": null
+          },
+          {
+            "sort_order": 24,
+            "priority": 37,
+            "body_text": "If breathing apparatus is required, is the access a minimum of 575mm square?",
+            "mandatory": null
+          }
+        ],
+        "filled_answers": [
+          {
+            "sort_order": 1,
+            "answer": "yes",
+            "comment": null
+          },
+          {
+            "sort_order": 2,
+            "answer": "yes",
+            "comment": null
+          },
+          {
+            "sort_order": 3,
+            "answer": "yes",
+            "comment": null
+          },
+          {
+            "sort_order": 4,
+            "answer": "yes",
+            "comment": null
+          },
+          {
+            "sort_order": 5,
+            "answer": "yes",
+            "comment": null
+          },
+          {
+            "sort_order": 6,
+            "answer": "yes",
+            "comment": "GAS MONITORS BEFORE ENTRY"
+          },
+          {
+            "sort_order": 7,
+            "answer": "yes",
+            "comment": null
+          },
+          {
+            "sort_order": 8,
+            "answer": "na",
+            "comment": null
+          },
+          {
+            "sort_order": 9,
+            "answer": "na",
+            "comment": null
+          },
+          {
+            "sort_order": 10,
+            "answer": "yes",
+            "comment": null
+          },
+          {
+            "sort_order": 11,
+            "answer": "yes",
+            "comment": null
+          },
+          {
+            "sort_order": 12,
+            "answer": "yes",
+            "comment": null
+          },
+          {
+            "sort_order": 13,
+            "answer": "yes",
+            "comment": null
+          },
+          {
+            "sort_order": 14,
+            "answer": "yes",
+            "comment": null
+          },
+          {
+            "sort_order": 15,
+            "answer": "yes",
+            "comment": null
+          },
+          {
+            "sort_order": 16,
+            "answer": "yes",
+            "comment": null
+          },
+          {
+            "sort_order": 17,
+            "answer": "yes",
+            "comment": null
+          },
+          {
+            "sort_order": 18,
+            "answer": "yes",
+            "comment": "ATTACHED"
+          },
+          {
+            "sort_order": 19,
+            "answer": "yes",
+            "comment": null
+          },
+          {
+            "sort_order": 20,
+            "answer": "yes",
+            "comment": null
+          },
+          {
+            "sort_order": 21,
+            "answer": "yes",
+            "comment": null
+          },
+          {
+            "sort_order": 22,
+            "answer": "yes",
+            "comment": null
+          },
+          {
+            "sort_order": 23,
+            "answer": "yes",
+            "comment": null
+          },
+          {
+            "sort_order": 24,
+            "answer": "yes",
+            "comment": null
+          }
+        ],
+        "unclear": [
+          "Document is page 3 of 4 (IMSF-100 | STAN-13 CONFINED SPACES); checklist questions on pages 1, 2, and 4 are not included in this source."
+        ]
+      },
+      "usage": {
+        "inputTokens": 17488,
+        "outputTokens": 7738,
+        "cacheWriteTokens": 0,
+        "cacheReadTokens": 416,
+        "totalTokens": 25642
+      },
+      "extractedAt": "2026-09-08T03:45:57.850Z"
+    },
+    {
+      "file": "Confined Space Rescue Plan.pdf",
+      "kind": "job_pack",
+      "promptId": "ai-extraction-job-pack",
+      "extracted": {
+        "document_kind": "rescue_plan",
+        "client": null,
+        "site": null,
+        "space": null,
+        "task_reference": null,
+        "rams_reference": null,
+        "ms_sop_number": "13: Confined Space",
+        "work_description": null,
+        "people": [],
+        "dates": {
+          "starts": null,
+          "ends": null
+        },
+        "flags": {
+          "permit_required": null,
+          "rescue_plan": true
+        },
+        "unclear": []
+      },
+      "usage": {
+        "inputTokens": 6665,
+        "outputTokens": 1152,
+        "cacheWriteTokens": 0,
+        "cacheReadTokens": 8576,
+        "totalTokens": 16393
+      },
+      "extractedAt": "2026-09-08T02:40:52.147Z"
+    },
+    {
+      "file": "Contractor Approval/Contract Authorisation Front Page.jpeg",
+      "kind": "job_pack",
+      "promptId": "ai-extraction-job-pack",
+      "extracted": {
+        "document_kind": "contractor_clearance",
+        "client": "TARMAC (A CRH COMPANY)",
+        "site": null,
+        "space": null,
+        "task_reference": null,
+        "rams_reference": null,
+        "ms_sop_number": null,
+        "work_description": null,
+        "people": [],
+        "dates": {
+          "starts": null,
+          "ends": null
+        },
+        "flags": {
+          "permit_required": null,
+          "rescue_plan": null
+        },
+        "unclear": [
+          "Authorised by Site Manager/Supervisor — signature present but name illegible (ghosted/faint)",
+          "Reverse-side ghosting shows fields for Job Description, Dates, and safety checklists but values are not legible on this page"
+        ]
+      },
+      "usage": {
+        "inputTokens": 2960,
+        "outputTokens": 2389,
+        "cacheWriteTokens": 0,
+        "cacheReadTokens": 13888,
+        "totalTokens": 19237
+      },
+      "extractedAt": "2026-09-08T02:42:06.981Z"
+    },
+    {
+      "file": "Contractor Approval/Contractor Clearence to work main page.jpeg",
+      "kind": "job_pack",
+      "promptId": "ai-extraction-job-pack",
+      "extracted": {
+        "document_kind": "contractor_clearance",
+        "client": "Tarmac",
+        "site": "Drygrange & Strikas",
+        "space": "ASPHALT PLANT",
+        "task_reference": null,
+        "rams_reference": null,
+        "ms_sop_number": null,
+        "work_description": "REPAIRS TO HOT AGG BINS ON ASPHALT PLANT.",
+        "people": [
+          {
+            "name": "Jake Marshall",
+            "role_hint": "Supervisor"
+          },
+          {
+            "name": "T. HAMNETT",
+            "role_hint": "Engineer"
+          },
+          {
+            "name": "N. WHITTLE",
+            "role_hint": null
+          }
+        ],
+        "dates": {
+          "starts": "13.6.26",
+          "ends": "14.6.26"
+        },
+        "flags": {
+          "permit_required": true,
+          "rescue_plan": null
+        },
+        "unclear": [
+          "Site name second location may read 'Stirkas' rather than 'Strikas'"
+        ]
+      },
+      "usage": {
+        "inputTokens": 3149,
+        "outputTokens": 4118,
+        "cacheWriteTokens": 0,
+        "cacheReadTokens": 13856,
+        "totalTokens": 21123
+      },
+      "extractedAt": "2026-09-08T02:43:22.966Z"
+    },
+    {
+      "file": "Copy of A3 PTW 2020.xlsx",
+      "kind": "job_pack",
+      "promptId": "ai-extraction-job-pack",
+      "extracted": {
+        "document_kind": "permit_to_work",
+        "client": "Tarmac Cement and Lime",
+        "site": null,
+        "space": null,
+        "task_reference": null,
+        "rams_reference": null,
+        "ms_sop_number": null,
+        "work_description": null,
+        "people": [],
+        "dates": {
+          "starts": null,
+          "ends": null
+        },
+        "flags": {
+          "permit_required": null,
+          "rescue_plan": null
+        },
+        "unclear": []
+      },
+      "usage": {
+        "inputTokens": 1954,
+        "outputTokens": 1184,
+        "cacheWriteTokens": 0,
+        "cacheReadTokens": 13856,
+        "totalTokens": 16994
+      },
+      "extractedAt": "2026-09-08T02:44:42.416Z"
+    },
+    {
+      "file": "IMSF 061 - Process HIRA Master (1).docx",
+      "kind": "job_pack",
+      "promptId": "ai-extraction-job-pack",
+      "extracted": {
+        "document_kind": "other",
+        "client": null,
+        "site": null,
+        "space": null,
+        "task_reference": null,
+        "rams_reference": null,
+        "ms_sop_number": null,
+        "work_description": null,
+        "people": [],
+        "dates": {
+          "starts": null,
+          "ends": null
+        },
+        "flags": {
+          "permit_required": null,
+          "rescue_plan": null
+        },
+        "unclear": [
+          "76199 9525 (visible in header; unclear whether document/RA reference or extraction artifact)"
+        ]
+      },
+      "usage": {
+        "inputTokens": 833,
+        "outputTokens": 1202,
+        "cacheWriteTokens": 0,
+        "cacheReadTokens": 13888,
+        "totalTokens": 15923
+      },
+      "extractedAt": "2026-09-08T02:46:16.498Z"
+    },
+    {
+      "file": "IMSF 100 - Confined spaces checklist .docx",
+      "kind": "job_checklist",
+      "promptId": "generic-job-checklist-extract",
+      "extracted": {
+        "title": "IMSF 100 - Confined Spaces Checklist",
+        "source_reference": "IMSF 100 - Confined Spaces Checklist .docx",
+        "page_label": null,
+        "prompts": [
+          {
+            "sort_order": 1,
+            "body_text": "Can the need to enter the confined space be avoided? (Consider remote controls, video camera, inspection hatches)",
+            "mandatory": null
+          },
+          {
+            "sort_order": 2,
+            "body_text": "Can the confined space be permanently re-classified by removing the enclosed nature?",
+            "mandatory": null
+          },
+          {
+            "sort_order": 3,
+            "body_text": "Can the confined space be permanently re-classified by removing the specified hazard(s) that make it a confined space? (See Section 3)",
+            "mandatory": null
+          },
+          {
+            "sort_order": 4,
+            "body_text": "Can the confined space be temporarily re-classified by the introduction of forced ventilation? (See Section 5. Forced ventilation shall be at a rate that any release of gas or fumes could not create an unsafe atmosphere)",
+            "mandatory": null
+          },
+          {
+            "sort_order": 5,
+            "body_text": "In the event of forced ventilation failure, is there sufficient time for a safe evacuation to be achieved?",
+            "mandatory": null
+          },
+          {
+            "sort_order": 6,
+            "body_text": "Has a specific risk assessment been completed for the confined space?",
+            "mandatory": null
+          },
+          {
+            "sort_order": 7,
+            "body_text": "Has the risk assessment considered all conditions of operation, including abnormal and temporary conditions such as welding?",
+            "mandatory": null
+          },
+          {
+            "sort_order": 8,
+            "body_text": "Has the risk assessment considered the risks which may be created by the planned work? (e.g. burning / welding / static discharges)",
+            "mandatory": null
+          },
+          {
+            "sort_order": 9,
+            "body_text": "Has a specific safe working procedure (or 'safe system of work') been prepared, and is it relevant to the planned activity?",
+            "mandatory": null
+          },
+          {
+            "sort_order": 10,
+            "body_text": "Does the safe working procedure specify the measures to be taken in the event of an emergency?",
+            "mandatory": null
+          },
+          {
+            "sort_order": 11,
+            "body_text": "Has a Confined Space Permit been raised, including any control measures specified in this checklist?",
+            "mandatory": true
+          },
+          {
+            "sort_order": 12,
+            "body_text": "Has a suitable warning sign been posted to identify the confined space?",
+            "mandatory": null
+          },
+          {
+            "sort_order": 13,
+            "body_text": "Has the confined space been secured (e.g. with a barrier, guard or gate) to deter unauthorised access?",
+            "mandatory": null
+          },
+          {
+            "sort_order": 14,
+            "body_text": "Have fixed gas detectors or low oxygen monitors been provided, and are they in a suitable location?",
+            "mandatory": null
+          },
+          {
+            "sort_order": 15,
+            "body_text": "Are gas detectors adequately maintained and calibrated?",
+            "mandatory": null
+          },
+          {
+            "sort_order": 16,
+            "body_text": "Can the confined space be ventilated naturally to reduce the risk of an unsafe atmosphere? (e.g. by opening or removing doors or hatches)",
+            "mandatory": null
+          },
+          {
+            "sort_order": 17,
+            "body_text": "Have fixed ventilation provisions been made?",
+            "mandatory": null
+          },
+          {
+            "sort_order": 18,
+            "body_text": "Is fixed ventilation maintained and tested periodically?",
+            "mandatory": null
+          },
+          {
+            "sort_order": 19,
+            "body_text": "Have cameras been fitted if identified as a control so that persons inside the confined space can be monitored?",
+            "mandatory": null
+          },
+          {
+            "sort_order": 20,
+            "body_text": "Is there an adequate means of communication between persons inside the confined space and those outside?",
+            "mandatory": null
+          },
+          {
+            "sort_order": 21,
+            "body_text": "Is sufficient ventilation available? (Note: oxygen should not be forced into a confined space as this can create an explosive atmosphere)",
+            "mandatory": null
+          },
+          {
+            "sort_order": 22,
+            "body_text": "Is the level of lighting inside the confined space adequate?",
+            "mandatory": null
+          },
+          {
+            "sort_order": 23,
+            "body_text": "Can the ambient temperature in the confined space be controlled / monitored to prevent excessive build-up in temperature of the operatives?",
+            "mandatory": null
+          },
+          {
+            "sort_order": 24,
+            "body_text": "Has adequate access been provided for safe entry into the confined space?",
+            "mandatory": null
+          },
+          {
+            "sort_order": 25,
+            "body_text": "Can the site ensure that any walkways and access platforms to the opening of the confined space are safe to use?",
+            "mandatory": null
+          },
+          {
+            "sort_order": 26,
+            "body_text": "Is the size and configuration of access sufficient for people wearing PPE, including emergency BA? (Min. for BA emergencies: 575mm square; other activities: round hole 457mm dia., rectangular 457mm x 410mm)",
+            "mandatory": null
+          },
+          {
+            "sort_order": 27,
+            "body_text": "Is sufficient access equipment, such as a tripod, full body harness and winch, available for access/egress into the confined space?",
+            "mandatory": null
+          },
+          {
+            "sort_order": 28,
+            "body_text": "Have all persons required to manage / enter a confined space received specific training, demonstrated competency and been authorised before commencing work?",
+            "mandatory": null
+          },
+          {
+            "sort_order": 29,
+            "body_text": "Where the risk assessment has highlighted physical constraints from layout or task, are the individuals of suitable build and fitness to complete the task?",
+            "mandatory": null
+          },
+          {
+            "sort_order": 30,
+            "body_text": "Has the site appointed sufficient competent persons to issue a permit to work and supervise activities within the confined space?",
+            "mandatory": null
+          },
+          {
+            "sort_order": 31,
+            "body_text": "Are all employees/contractors aware that a Permit to Work must be issued prior to any person entering a confined space?",
+            "mandatory": null
+          },
+          {
+            "sort_order": 32,
+            "body_text": "Are all employees/contractors aware of the procedures when changes to the task, working environment or method of work occur?",
+            "mandatory": null
+          },
+          {
+            "sort_order": 33,
+            "body_text": "Has the confined space been emptied of its contents, including residues, where possible?",
+            "mandatory": null
+          },
+          {
+            "sort_order": 34,
+            "body_text": "Has the inside of the confined space been cleaned? (Note: cleaning methods may require inclusion in the specific risk assessment)",
+            "mandatory": null
+          },
+          {
+            "sort_order": 35,
+            "body_text": "Can pipe work be isolated to prevent gas, fume or vapour entering the confined space?",
+            "mandatory": null
+          },
+          {
+            "sort_order": 36,
+            "body_text": "Can mechanical and electrical isolation of equipment be completed to prevent inadvertently operating or discharging into the confined space?",
+            "mandatory": null
+          },
+          {
+            "sort_order": 37,
+            "body_text": "Are all isolations checked before work commences as part of the Permit to Work?",
+            "mandatory": null
+          },
+          {
+            "sort_order": 38,
+            "body_text": "Has the atmosphere in the confined space been verified as safe, prior to entry?",
+            "mandatory": null
+          },
+          {
+            "sort_order": 39,
+            "body_text": "Are signs displayed on the outside of the confined space notifying that work is being undertaken and that people are inside?",
+            "mandatory": null
+          },
+          {
+            "sort_order": 40,
+            "body_text": "Where flammable or potentially explosive atmospheres are possible, are sources of potential ignition removed/controlled and included in the safe working procedures?",
+            "mandatory": null
+          },
+          {
+            "sort_order": 41,
+            "body_text": "If appropriate, have non-sparking tools been specified and provided?",
+            "mandatory": null
+          },
+          {
+            "sort_order": 42,
+            "body_text": "Are suitable precautions in place to prevent electric shock inside metal tanks? (e.g. use of low voltage equipment / residual current devices)",
+            "mandatory": null
+          },
+          {
+            "sort_order": 43,
+            "body_text": "Have personal air monitoring devices (with current calibration certificate) been provided for all persons who will enter the confined space?",
+            "mandatory": null
+          },
+          {
+            "sort_order": 44,
+            "body_text": "Have monitors and ELSA, if absolutely necessary, been checked prior to entry?",
+            "mandatory": null
+          },
+          {
+            "sort_order": 45,
+            "body_text": "Has the correct type of PPE been specified for each activity? (Include rescue equipment such as harnesses/lifelines)",
+            "mandatory": null
+          },
+          {
+            "sort_order": 46,
+            "body_text": "Has suitable PPE been provided for all persons entering a confined space, and is it being used?",
+            "mandatory": null
+          },
+          {
+            "sort_order": 47,
+            "body_text": "Is PPE in good condition and appropriate for the conditions and working activities?",
+            "mandatory": null
+          },
+          {
+            "sort_order": 48,
+            "body_text": "Has an emergency plan been prepared for this specific confined space?",
+            "mandatory": null
+          },
+          {
+            "sort_order": 49,
+            "body_text": "Has the site identified suitable emergency arrangements for the activity before the work commences?",
+            "mandatory": null
+          },
+          {
+            "sort_order": 50,
+            "body_text": "Has a rescue procedure been defined and communicated?",
+            "mandatory": null
+          },
+          {
+            "sort_order": 51,
+            "body_text": "Is there a suitable method of raising the alarm?",
+            "mandatory": null
+          },
+          {
+            "sort_order": 52,
+            "body_text": "Has the response time of emergency services been considered?",
+            "mandatory": null
+          },
+          {
+            "sort_order": 53,
+            "body_text": "Has necessary rescue and resuscitation equipment been identified and provided?",
+            "mandatory": null
+          },
+          {
+            "sort_order": 54,
+            "body_text": "Is the first aid provision adequate?",
+            "mandatory": null
+          },
+          {
+            "sort_order": 55,
+            "body_text": "Are persons responsible for emergency response adequately trained and practised?",
+            "mandatory": null
+          },
+          {
+            "sort_order": 56,
+            "body_text": "If breathing apparatus is required, is the access a minimum of 575mm square?",
+            "mandatory": null
+          }
+        ],
+        "filled_answers": [],
+        "unclear": []
+      },
+      "usage": {
+        "inputTokens": 15260,
+        "outputTokens": 4273,
+        "cacheWriteTokens": 0,
+        "cacheReadTokens": 896,
+        "totalTokens": 20429
+      },
+      "extractedAt": "2026-09-08T02:47:28.676Z"
+    },
+    {
+      "file": "Permit To Work/Permit to Work Back Page.jpeg",
+      "kind": "job_pack",
+      "promptId": "ai-extraction-job-pack",
+      "extracted": {
+        "document_kind": "permit_to_work",
+        "client": "TARMAC (A CRH COMPANY)",
+        "site": null,
+        "space": "CONFINED SPACE",
+        "task_reference": null,
+        "rams_reference": null,
+        "ms_sop_number": null,
+        "work_description": null,
+        "people": [
+          {
+            "name": "NATHAN WHITTLE",
+            "role_hint": "permit worker"
+          },
+          {
+            "name": "T. HAMNETT",
+            "role_hint": "fire watch inspector"
+          }
+        ],
+        "dates": {
+          "starts": "13-6-26",
+          "ends": "14/6/26"
+        },
+        "flags": {
+          "permit_required": true,
+          "rescue_plan": null
+        },
+        "unclear": [
+          "Permit Number field is blank",
+          "Master Permit Log field is blank",
+          "Handwritten note top right reads 'CONFINED SPACE 13.6.26' — date format ambiguous"
+        ]
+      },
+      "usage": {
+        "inputTokens": 8413,
+        "outputTokens": 2848,
+        "cacheWriteTokens": 0,
+        "cacheReadTokens": 8640,
+        "totalTokens": 19901
+      },
+      "extractedAt": "2026-09-08T02:48:44.053Z"
+    },
+    {
+      "file": "Permit To Work/Permit to Work Front Page .jpeg",
+      "kind": "job_pack",
+      "promptId": "ai-extraction-job-pack",
+      "extracted": {
+        "document_kind": "permit_to_work",
+        "client": "Tarmac",
+        "site": "DOLYHIR & STRINDS",
+        "space": "ASPHALT PLANT BINS",
+        "task_reference": "098001",
+        "rams_reference": "HOTBINSRA01",
+        "ms_sop_number": null,
+        "work_description": "REPAIRS IN ASPHALT PLANT HOT AGG BINS",
+        "people": [
+          {
+            "name": "A BYRNE",
+            "role_hint": "person involved in task"
+          },
+          {
+            "name": "T HAMNETT",
+            "role_hint": "permit acceptor"
+          },
+          {
+            "name": "N WHITTLE",
+            "role_hint": "person involved in task"
+          },
+          {
+            "name": "J. A. Byrne",
+            "role_hint": "permit issuer"
+          }
+        ],
+        "dates": {
+          "starts": "13-6-26 0600",
+          "ends": "14-6-26 1900"
+        },
+        "flags": {
+          "permit_required": true,
+          "rescue_plan": true
+        },
+        "unclear": [
+          "Contractor company name handwritten as BEINGTON ENGINEERING; reading uncertain",
+          "Site name second word handwritten as STRINDS; reading uncertain"
+        ]
+      },
+      "usage": {
+        "inputTokens": 12430,
+        "outputTokens": 5963,
+        "cacheWriteTokens": 0,
+        "cacheReadTokens": 4896,
+        "totalTokens": 23289
+      },
+      "extractedAt": "2026-09-08T02:49:54.902Z"
+    },
+    {
+      "file": "RAMS/HIRA Front Page 1 .jpeg",
+      "kind": "job_pack",
+      "promptId": "ai-extraction-job-pack",
+      "extracted": {
+        "document_kind": "rams",
+        "client": "Tarmac (A CRH COMPANY)",
+        "site": "Dolyhir",
+        "space": "Asphalt plant",
+        "task_reference": "HOTBINSRA01",
+        "rams_reference": "HOTBINSRA01",
+        "ms_sop_number": "HOTBINSMS01",
+        "work_description": "Asphalt plant- Repairs to Hot bins / Chutes",
+        "people": [
+          {
+            "name": "Dave",
+            "role_hint": "Isolation owner"
+          }
+        ],
+        "dates": {
+          "starts": null,
+          "ends": null
+        },
+        "flags": {
+          "permit_required": true,
+          "rescue_plan": null
+        },
+        "unclear": [
+          "Isolation owner name (handwriting): Dave — low confidence",
+          "Date Created: 4/11/2025 (day/month order not confirmed)",
+          "Planned Review Date: 4/11/2026 (day/month order not confirmed)"
+        ]
+      },
+      "usage": {
+        "inputTokens": 8366,
+        "outputTokens": 3495,
+        "cacheWriteTokens": 0,
+        "cacheReadTokens": 8640,
+        "totalTokens": 20501
+      },
+      "extractedAt": "2026-09-08T02:52:27.747Z"
+    },
+    {
+      "file": "RAMS/HIRA Page 2.jpeg",
+      "kind": "job_pack",
+      "promptId": "ai-extraction-job-pack",
+      "extracted": {
+        "document_kind": "rams",
+        "client": null,
+        "site": null,
+        "space": null,
+        "task_reference": null,
+        "rams_reference": "HIRA v1 2013",
+        "ms_sop_number": null,
+        "work_description": null,
+        "people": [
+          {
+            "name": "J. A Byrne",
+            "role_hint": "Author / Reviewer"
+          },
+          {
+            "name": "C. Price",
+            "role_hint": "Author / Reviewer"
+          }
+        ],
+        "dates": {
+          "starts": null,
+          "ends": null
+        },
+        "flags": {
+          "permit_required": true,
+          "rescue_plan": null
+        },
+        "unclear": [
+          "Second reviewer print name may read 'C. Prem' rather than 'C. Price'",
+          "Second reviewer date written as '15-4-26.' (day-month-year assumed)"
+        ]
+      },
+      "usage": {
+        "inputTokens": 3168,
+        "outputTokens": 3321,
+        "cacheWriteTokens": 0,
+        "cacheReadTokens": 13888,
+        "totalTokens": 20377
+      },
+      "extractedAt": "2026-09-08T02:53:38.609Z"
+    },
+    {
+      "file": "RAMS/HIRA Page 3.jpeg",
+      "kind": "job_pack",
+      "promptId": "ai-extraction-job-pack",
+      "extracted": {
+        "document_kind": "rams",
+        "client": null,
+        "site": null,
+        "space": null,
+        "task_reference": null,
+        "rams_reference": "7690413.1",
+        "ms_sop_number": "SSoW v1 2013",
+        "work_description": "Confined space entry; Top Man to monitor confined space entry at all times. In emergency, contact site weighbridge to dial for emergency services and contact site first aider to assess casualty or incident.",
+        "people": [
+          {
+            "name": "J. A. Bone",
+            "role_hint": null
+          },
+          {
+            "name": "Rhodri James",
+            "role_hint": null
+          },
+          {
+            "name": "Chris Parr",
+            "role_hint": null
+          }
+        ],
+        "dates": {
+          "starts": null,
+          "ends": null
+        },
+        "flags": {
+          "permit_required": null,
+          "rescue_plan": null
+        },
+        "unclear": []
+      },
+      "usage": {
+        "inputTokens": 3120,
+        "outputTokens": 3154,
+        "cacheWriteTokens": 0,
+        "cacheReadTokens": 13888,
+        "totalTokens": 20162
+      },
+      "extractedAt": "2026-09-08T02:54:56.829Z"
+    },
+    {
+      "file": "Rescue Plan/Confined Space Rescue Plan Back page.jpeg",
+      "kind": "job_pack",
+      "promptId": "ai-extraction-job-pack",
+      "extracted": {
+        "document_kind": "rescue_plan",
+        "client": "TARMAC (A CRH COMPANY)",
+        "site": null,
+        "space": "ENTRY INTO HOT AGG BINS THROUGH SLIDE HATCH. DOOR IN MIXER HOUSE LEVEL 3. (300mm)",
+        "task_reference": null,
+        "rams_reference": null,
+        "ms_sop_number": null,
+        "work_description": "ENTRY INTO HOT AGG BINS THROUGH SLIDE HATCH. DOOR IN MIXER HOUSE LEVEL 3. (300mm). PLANT COOLED FOR 12 HOURS BEFORE ENTRY. PORTABLE LIGHTS USED. TOP MAN PRESENT AT ALL TIMES.",
+        "people": [
+          {
+            "name": "S. Alyne",
+            "role_hint": "ENGINEERING SUPERVISOR"
+          }
+        ],
+        "dates": {
+          "starts": "13.6.26",
+          "ends": null
+        },
+        "flags": {
+          "permit_required": null,
+          "rescue_plan": true
+        },
+        "unclear": [
+          "Completion date year shown as '26' (13.6.26); printed footer is 24/05/19",
+          "Meaning of '(300mm)' not stated on page"
+        ]
+      },
+      "usage": {
+        "inputTokens": 8320,
+        "outputTokens": 3602,
+        "cacheWriteTokens": 0,
+        "cacheReadTokens": 8640,
+        "totalTokens": 20562
+      },
+      "extractedAt": "2026-09-08T02:56:12.688Z"
+    },
+    {
+      "file": "Rescue Plan/Rescue Plan Front Page.jpeg",
+      "kind": "job_pack",
+      "promptId": "ai-extraction-job-pack",
+      "error": "Timed out calling Cursor (create).",
+      "extractedAt": "2026-09-08T02:57:42.715Z"
+    },
+    {
+      "file": "STAN-17E Hazard Identification Risk Assessment (1).pdf",
+      "kind": "job_pack",
+      "promptId": "ai-extraction-job-pack",
+      "extracted": {
+        "document_kind": "other",
+        "client": "Tarmac UK",
+        "site": null,
+        "space": null,
+        "task_reference": null,
+        "rams_reference": null,
+        "ms_sop_number": "STAN-17E",
+        "work_description": "Hazard Identification & Risk Assessment Standard",
+        "people": [
+          {
+            "name": "HSEQ Assurance and Governance Manager",
+            "role_hint": "Issued By"
+          }
+        ],
+        "dates": {
+          "starts": "January 2017",
+          "ends": null
+        },
+        "flags": {
+          "permit_required": null,
+          "rescue_plan": null
+        },
+        "unclear": []
+      },
+      "usage": {
+        "inputTokens": 5944,
+        "outputTokens": 999,
+        "cacheWriteTokens": 0,
+        "cacheReadTokens": 13888,
+        "totalTokens": 20831
+      },
+      "extractedAt": "2026-09-08T02:58:50.550Z"
+    },
+    {
+      "file": "Tarmac Special Permit Confined Space.pdf",
+      "kind": "job_pack",
+      "promptId": "ai-extraction-job-pack",
+      "extracted": {
+        "document_kind": "permit_to_work",
+        "client": "Tarmac",
+        "site": null,
+        "space": null,
+        "task_reference": "12345",
+        "rams_reference": null,
+        "ms_sop_number": null,
+        "work_description": null,
+        "people": [],
+        "dates": {
+          "starts": null,
+          "ends": null
+        },
+        "flags": {
+          "permit_required": null,
+          "rescue_plan": null
+        },
+        "unclear": [
+          "12345 may be permit number or pre-printed form identifier",
+          "Tick-box responses not visible in extracted text",
+          "Handwritten or filled fields (person in charge, company, location, dates, signatures) not legible or absent in extraction"
+        ]
+      },
+      "usage": {
+        "inputTokens": 1263,
+        "outputTokens": 992,
+        "cacheWriteTokens": 0,
+        "cacheReadTokens": 13856,
+        "totalTokens": 16111
+      },
+      "extractedAt": "2026-09-08T03:00:05.716Z"
+    },
+    {
+      "file": "Toolbox Talk - Confined Spaces.docx",
+      "kind": "learn5",
+      "promptId": "generic-learn5-extract",
+      "extracted": {
+        "title": "Confined Spaces",
+        "category": "Safety",
+        "duration_minutes": 10,
+        "items": [
+          {
+            "sort_order": 1,
+            "headline": "What is a confined space?",
+            "body": "Any space of an enclosed nature where there is a risk of death or injury from hazardous substances or dangerous conditions (e.g. lack of oxygen). Typical features include limited ways in and out, hazardous substances or atmosphere, and risk of being trapped, engulfed, or drowned."
+          },
+          {
+            "sort_order": 2,
+            "headline": "Examples of confined spaces",
+            "body": "Examples include grain silos, wood pellet stores, sewers, areas with intentionally reduced oxygen such as fruit stores, and storage tanks."
+          },
+          {
+            "sort_order": 3,
+            "headline": "Avoid entry unless absolutely necessary",
+            "body": "Confined spaces are not designed to be worked in for long periods. Avoid entering a confined space unless you are trained and equipped to do so and it is absolutely necessary."
+          },
+          {
+            "sort_order": 4,
+            "headline": "Hazards in confined spaces",
+            "body": "Hazards include lack of oxygen (suffocation), fire and explosion risk, build-up of toxic substances, and physical hazards such as noise, extreme temperatures, mechanical hazards, falls, electrocution, and machinery."
+          },
+          {
+            "sort_order": 5,
+            "headline": "Before entering: assessment, training, and testing",
+            "body": "Ensure a risk assessment has been carried out, you have received specific training, and atmospheric testing has been carried out."
+          },
+          {
+            "sort_order": 6,
+            "headline": "Isolate and ventilate the space",
+            "body": "Isolate the space by turning off gas, power, etc. and ventilate for at least 15 minutes. Ensure all flammable or toxic materials or substances have been safely removed."
+          },
+          {
+            "sort_order": 7,
+            "headline": "Team size and buddy system",
+            "body": "Ensure at least three people are present (buddy system) unless rescue is possible with an external winch and the person in the confined space is permanently attached to a rescue line connected to the winch, when two is acceptable."
+          },
+          {
+            "sort_order": 8,
+            "headline": "Medical fitness and permit to work",
+            "body": "Ensure you are medically fit and that a permit to work is in place and signed, authorising the type of work. Ensure you understand all precautions to be taken."
+          },
+          {
+            "sort_order": 9,
+            "headline": "Understand your permit conditions",
+            "body": "Before entry, confirm who is allowed in, what barriers, warning signs, and covers are needed, what PPE must be worn, whether ventilation and atmospheric monitoring is required, rescue and emergency procedures, means of communication, required safety and monitoring equipment, how long the permit lasts, and any special instructions or precautions."
+          },
+          {
+            "sort_order": 10,
+            "headline": "Legislation and guidance",
+            "body": "Relevant legislation includes the Health and Safety at Work etc Act 1974, the Confined Spaces Regulations 1997, the Management of Health and Safety at Work Regulations 1999, and the Personal Protective Equipment at Work Regulations 1992 (as amended). Guidance: INDG258 — Safe Working in Confined Spaces."
+          }
+        ],
+        "key_messages": [
+          "Do not enter a confined space unless you are trained, equipped, and entry is absolutely necessary.",
+          "Before entry, complete a risk assessment, atmospheric testing, isolation, and ventilation for at least 15 minutes.",
+          "Ensure a signed permit to work is in place and you understand all its conditions, including rescue and communication arrangements.",
+          "At least three people must be present unless an external winch rescue setup with a permanently attached rescue line allows two.",
+          "Confined spaces can kill through lack of oxygen, fire or explosion, toxic substances, and physical hazards — treat every entry as high risk."
+        ],
+        "unclear": []
+      },
+      "usage": {
+        "inputTokens": 6433,
+        "outputTokens": 1261,
+        "cacheWriteTokens": 0,
+        "cacheReadTokens": 8512,
+        "totalTokens": 16206
+      },
+      "extractedAt": "2026-09-08T03:02:11.799Z"
+    }
+  ]
+}

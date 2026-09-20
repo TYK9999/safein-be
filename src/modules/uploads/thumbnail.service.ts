@@ -21,7 +21,7 @@ import sharp from 'sharp';
 
 import { APP_DB } from '../../database/db.provider';
 import type { DB } from '../../database/schema';
-import { AppLoggerService } from '../../logger/app-logger.service';
+import { AppLoggerService } from '../../logging/app-logger.service';
 import type { Uploader } from './uploads.service';
 import { ffmpegThumbnailArgs, thumbnailKeyFor } from './thumbnail.util';
 
@@ -83,6 +83,7 @@ export class ThumbnailService {
     if (!this.ffmpegPath) {
       this.logger.warn(
         'No ffmpeg binary resolved (ffmpeg-static missing and FFMPEG_PATH unset); thumbnail generation will fail.',
+        `ThumbnailService.constructor`,
       );
     }
   }
@@ -139,6 +140,8 @@ export class ThumbnailService {
         .execute();
       this.logger.warn(
         `thumbnail for upload ${id} failed (attempt ${next}/${this.maxAttempts}): ${errMessage(err)}`,
+        { err },
+        `ThumbnailService.generateOne`,
       );
       return false;
     }

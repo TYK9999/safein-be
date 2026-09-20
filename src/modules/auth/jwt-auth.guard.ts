@@ -1,34 +1,26 @@
 import {
   CanActivate,
   ExecutionContext,
-  Inject,
   Injectable,
-  UnauthorizedException,
 } from '@nestjs/common';
 import { Reflector } from '@nestjs/core';
-import { Kysely } from 'kysely';
+import type { Response } from 'express';
 
-import { APP_DB } from '../../database/db.provider';
-import type { DB } from '../../database/schema';
 import { AuthedRequest } from './authed-request';
+import { AccessResolver } from './access-resolver';
 import { IS_PUBLIC_KEY } from './decorators';
-import { JwtService, type VerifiedAccess } from './jwt.service';
 
 /**
- * Global guard. Every route requires a valid EdDSA access token unless marked
- * @Public(). Beyond verifying the signature, the caller must still be a current
- * member of the tenant their token claims — the database is the source of truth,
- * so a token for a deleted user, a non-member, or an unknown tenant is rejected
- * (not just trusted because it is signed). The role is refreshed from the DB so
- * a stale token cannot retain a privilege that has since been revoked. Verified
- * claims are attached to the request as `req.user`.
+ * Global guard. Every route requires a valid session unless marked @Public().
+ * A short-lived access JWT is preferred. If it is missing or expired, a valid
+ * httpOnly refresh cookie is used to mint a new access token and the request
+ * continues — the caller is not sent back through OTP.
  */
 @Injectable()
 export class JwtAuthGuard implements CanActivate {
   constructor(
     private readonly reflector: Reflector,
-    private readonly jwt: JwtService,
-    @Inject(APP_DB) private readonly db: Kysely<DB>,
+    private readonly access: AccessResolver,
   ) {}
 
   async canActivate(context: ExecutionContext): Promise<boolean> {
@@ -39,35 +31,8 @@ export class JwtAuthGuard implements CanActivate {
     if (isPublic) return true;
 
     const req = context.switchToHttp().getRequest<AuthedRequest>();
-    const header = req.headers.authorization;
-    if (!header || !header.startsWith('Bearer ')) {
-      throw new UnauthorizedException('Missing bearer token.');
-    }
-
-    let claims: VerifiedAccess;
-    try {
-      claims = await this.jwt.verifyAccessToken(header.slice('Bearer '.length));
-    } catch {
-      throw new UnauthorizedException('Invalid or expired token.');
-    }
-
-    // The token is authentic; confirm the user is still a member of the claimed
-    // tenant. A missing membership covers a deleted user, a non-member, and an
-    // unknown tenant in one indexed lookup (UNIQUE(user_id, tenant_id)).
-    const membership = await this.db
-      .selectFrom('user_tenant_membership')
-      .select('role')
-      .where('user_id', '=', claims.sub)
-      .where('tenant_id', '=', claims.tid)
-      .executeTakeFirst();
-    if (!membership) {
-      throw new UnauthorizedException(
-        'Account is not an active member of this workspace.',
-      );
-    }
-
-    // Trust the DB for the role, not the (possibly stale) token claim.
-    req.user = { ...claims, role: membership.role };
+    const res = context.switchToHttp().getResponse<Response>();
+    await this.access.resolve(req, res, true);
     return true;
   }
 }

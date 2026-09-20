@@ -15,9 +15,9 @@ import { ConfigService } from '@nestjs/config';
 import ffmpegStatic from 'ffmpeg-static';
 import type { ExpressionBuilder, Kysely } from 'kysely';
 
-import { APP_DB } from '../../database/db.token';
+import { APP_DB } from '../../database/db.provider';
 import type { DB } from '../../database/schema';
-import { AppLoggerService } from '../../logger/app-logger.service';
+import { AppLoggerService } from '../../logging/app-logger.service';
 import { ffmpegTranscodeArgs, playbackKeyFor } from './playback.util';
 import type { Uploader } from './uploads.service';
 
@@ -80,6 +80,7 @@ export class PlaybackService {
     if (!this.ffmpegPath) {
       this.logger.warn(
         'No ffmpeg binary resolved (ffmpeg-static missing and FFMPEG_PATH unset); playback transcoding will fail.',
+        `PlaybackService.constructor`,
       );
     }
   }
@@ -127,6 +128,8 @@ export class PlaybackService {
     void this.transcodeOne(id, s3Key, 0).catch((err) => {
       this.logger.error(
         `immediate transcode kick failed for upload ${id}: ${errMessage(err)}`,
+        { err },
+        `PlaybackService.transcodeNow`,
       );
     });
   }
@@ -157,6 +160,8 @@ export class PlaybackService {
         .execute();
       this.logger.warn(
         `playback transcode for upload ${id} failed (attempt ${next}/${this.maxAttempts}): ${errMessage(err)}`,
+        { err },
+        `PlaybackService.transcodeOne`,
       );
       return false;
     }

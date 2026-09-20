@@ -1,12 +1,11 @@
 import {
   createHash,
-  randomBytes,
   randomInt,
   timingSafeEqual,
 } from 'node:crypto';
 
 /**
- * Hash a single-use credential (OTP code or magic-link token) for storage.
+ * Hash a single-use OTP code for storage.
  * Salted with the KMS pepper family so a stolen database, lacking the pepper,
  * cannot reverse a code even where the space is small (OTP brute force is
  * additionally bounded by auth_token.attempt_count / max_attempts).
@@ -33,11 +32,6 @@ export function sha256Hex(raw: string): string {
 export function generateOtp(length = 6): string {
   const max = 10 ** length;
   return String(randomInt(0, max)).padStart(length, '0');
-}
-
-/** A URL-safe opaque magic-link token (32 random bytes, base64url). */
-export function generateOpaqueToken(): string {
-  return randomBytes(32).toString('base64url');
 }
 
 /** Constant-time comparison of two equal-length hex digests. */

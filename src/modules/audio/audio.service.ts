@@ -10,13 +10,13 @@ import { HttpException, HttpStatus, Inject, Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import type { ExpressionBuilder, Kysely } from 'kysely';
 
-import { APP_DB } from '../../database/db.token';
+import { APP_DB } from '../../database/db.provider';
 import {
   type AudioClipStatus,
   COMMUNITY_TENANT_ID,
   type DB,
 } from '../../database/schema';
-import { AppLoggerService } from '../../logger/app-logger.service';
+import { AppLoggerService } from '../../logging/app-logger.service';
 import { AudioPresignDto } from './audio.schema';
 import { extForAudioMime, isAllowedAudioMime } from './audio.util';
 
@@ -65,10 +65,10 @@ export class AudioService {
 
   constructor(
     config: ConfigService,
-    logger: AppLoggerService,
     @Inject(APP_DB) private readonly db: Kysely<DB>,
+    private readonly logger: AppLoggerService,
   ) {
-    logger.setContext(AudioService.name);
+    this.logger.setContext(AudioService.name);
     this.bucket = config.getOrThrow<string>('uploads.s3Bucket');
     this.urlTtlSec = config.getOrThrow<number>('uploads.urlTtlSeconds');
     this.maxBytes = config.getOrThrow<number>('audio.maxBytes');
@@ -80,6 +80,10 @@ export class AudioService {
     dto: AudioPresignDto,
   ): Promise<AudioPresignResult> {
     const tenantId = actor?.tenantId ?? COMMUNITY_TENANT_ID;
+    this.logger.debug(
+      `Audio presign start tenantId=${tenantId} userId=${actor?.userId}`,
+      `AudioService.presign`,
+    );
     const result = await presignAudioObject(this.s3, {
       bucket: this.bucket,
       prefix: KEY_PREFIX,
@@ -102,6 +106,10 @@ export class AudioService {
         created_by: actor?.userId ?? null,
       })
       .execute();
+    this.logger.info(
+      `Audio presign success tenantId=${tenantId} userId=${actor?.userId} s3Key=${result.s3Key}`,
+      `AudioService.presign`,
+    );
     return result;
   }
 
@@ -113,6 +121,10 @@ export class AudioService {
     actor: AudioActor | null,
     s3Key: string,
   ): Promise<AudioClipView> {
+    this.logger.debug(
+      `Audio confirm start s3Key=${s3Key} userId=${actor?.userId}`,
+      `AudioService.confirm`,
+    );
     const clip = await this.db
       .selectFrom('audio_clip')
       .selectAll()
@@ -125,6 +137,10 @@ export class AudioService {
     // Idempotent: a repeat confirm replays the recorded state without re-running
     // HeadObject or re-stamping uploaded_at (mirrors the upload_session replay).
     if (clip.status === 'uploaded') {
+      this.logger.debug(
+        `Audio confirm idempotent id=${clip.id}`,
+        `AudioService.confirm`,
+      );
       return toClipView(clip);
     }
     const head = await this.headObject(s3Key);
@@ -146,6 +162,10 @@ export class AudioService {
       .where('id', '=', clip.id)
       .returningAll()
       .executeTakeFirstOrThrow();
+    this.logger.info(
+      `Audio confirm success id=${updated.id} tenantId=${updated.tenant_id} userId=${actor?.userId}`,
+      `AudioService.confirm`,
+    );
     return toClipView(updated);
   }
 

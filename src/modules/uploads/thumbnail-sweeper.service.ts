@@ -2,7 +2,7 @@ import { Injectable, OnModuleInit } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { SchedulerRegistry } from '@nestjs/schedule';
 
-import { AppLoggerService } from '../../logger/app-logger.service';
+import { AppLoggerService } from '../../logging/app-logger.service';
 import { ThumbnailService } from './thumbnail.service';
 
 const INTERVAL_NAME = 'thumbnail-sweep';
@@ -31,18 +31,25 @@ export class ThumbnailSweeper implements OnModuleInit {
     if (!this.config.getOrThrow<boolean>('thumbnail.sweepEnabled')) {
       this.logger.log(
         'Thumbnail sweep disabled (THUMBNAIL_SWEEP_ENABLED=false).',
+        `ThumbnailSweeper.onModuleInit`,
       );
       return;
     }
     const ms = this.config.getOrThrow<number>('thumbnail.sweepIntervalMs');
     const interval = setInterval(() => void this.tick(), ms);
     this.registry.addInterval(INTERVAL_NAME, interval);
-    this.logger.log(`Thumbnail sweep every ${ms}ms.`);
+    this.logger.log(
+      `Thumbnail sweep every ${ms}ms.`,
+      `ThumbnailSweeper.onModuleInit`,
+    );
   }
 
   async tick(): Promise<void> {
     if (this.running) {
-      this.logger.warn('Thumbnail sweep still running; skipping this tick.');
+      this.logger.warn(
+        'Thumbnail sweep still running; skipping this tick.',
+        `ThumbnailSweeper.tick`,
+      );
       return;
     }
     this.running = true;
@@ -51,11 +58,14 @@ export class ThumbnailSweeper implements OnModuleInit {
       if (r.processed > 0) {
         this.logger.log(
           `Thumbnails: ${r.ready} ready, ${r.failed} failed (${r.processed} processed).`,
+          `ThumbnailSweeper.tick`,
         );
       }
     } catch (err) {
       this.logger.error(
         `Thumbnail sweep failed: ${err instanceof Error ? err.message : String(err)}`,
+        { err },
+        `ThumbnailSweeper.tick`,
       );
     } finally {
       this.running = false;

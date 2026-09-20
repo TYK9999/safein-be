@@ -15,7 +15,7 @@ import { mockClient } from 'aws-sdk-client-mock';
 import type { Kysely } from 'kysely';
 
 import type { DB } from '../../../database/schema';
-import type { AppLoggerService } from '../../../logger/app-logger.service';
+import type { AppLoggerService } from '../../../logging/app-logger.service';
 import { SttService } from '../stt.service';
 
 /**
@@ -28,6 +28,15 @@ import { SttService } from '../stt.service';
  */
 const transcribeMock = mockClient(TranscribeClient);
 const s3Mock = mockClient(S3Client);
+
+const mockLogger = {
+  setContext: jest.fn(),
+  log: jest.fn(),
+  error: jest.fn(),
+  warn: jest.fn(),
+  debug: jest.fn(),
+  info: jest.fn(),
+} as unknown as AppLoggerService;
 
 const REQUIRED: Record<string, unknown> = {
   'uploads.s3Bucket': 'test-bucket',
@@ -59,13 +68,6 @@ const configWith = (extra: Record<string, unknown>) =>
     },
     get: (k: string) => ({ ...OPTIONAL, ...extra })[k],
   }) as unknown as ConfigService;
-
-const logger = {
-  setContext: jest.fn(),
-  log: jest.fn(),
-  warn: jest.fn(),
-  error: jest.fn(),
-} as unknown as AppLoggerService;
 
 /** Chainable Kysely stub: executeTakeFirst returns `row`, insert values -> onInsert. */
 interface FakeDbOpts {
@@ -104,7 +106,7 @@ function fakeDb(opts: FakeDbOpts = {}): Kysely<DB> {
 }
 
 const svc = (row?: Record<string, unknown>) =>
-  new SttService(config, logger, fakeDb({ row }));
+  new SttService(config, fakeDb({ row }), mockLogger);
 
 function bodyOf(json: string): GetObjectCommandOutput['Body'] {
   return {
@@ -173,8 +175,8 @@ describe('SttService.startJob', () => {
     transcribeMock.on(StartTranscriptionJobCommand).resolves({});
     const svcWithDefault = new SttService(
       configWith({ 'transcribe.defaultLanguage': 'en-US' }),
-      logger,
       fakeDb(),
+      mockLogger,
     );
     await svcWithDefault.startJob(null, {
       s3Key: 'transcribe-clips/1/x.webm',
@@ -190,8 +192,8 @@ describe('SttService.startJob', () => {
     transcribeMock.on(StartTranscriptionJobCommand).resolves({});
     const svcWithDefault = new SttService(
       configWith({ 'transcribe.defaultLanguage': 'en-US' }),
-      logger,
       fakeDb(),
+      mockLogger,
     );
     await svcWithDefault.startJob(null, {
       s3Key: 'transcribe-clips/1/x.webm',
@@ -208,8 +210,8 @@ describe('SttService.startJob', () => {
     let inserted: Record<string, unknown> | undefined;
     const s = new SttService(
       config,
-      logger,
       fakeDb({ onInsert: (v) => (inserted = v) }),
+      mockLogger,
     );
     const res = await s.startJob(
       { userId: 5, tenantId: 3 },
@@ -229,8 +231,8 @@ describe('SttService.startJob', () => {
     let inserted: Record<string, unknown> | undefined;
     const s = new SttService(
       config,
-      logger,
       fakeDb({ onInsert: (v) => (inserted = v) }),
+      mockLogger,
     );
     await s.startJob(null, { s3Key: 'transcribe-clips/1/x.webm' });
     expect(inserted).toMatchObject({
@@ -270,7 +272,7 @@ describe('SttService.startJob', () => {
   it('cancels the AWS job and 502s if recording it in the DB fails', async () => {
     transcribeMock.on(StartTranscriptionJobCommand).resolves({});
     transcribeMock.on(DeleteTranscriptionJobCommand).resolves({});
-    const s = new SttService(config, logger, fakeDb({ executeRejects: true }));
+    const s = new SttService(config, fakeDb({ executeRejects: true }), mockLogger);
     expect(
       await errOf(s.startJob(null, { s3Key: 'transcribe-clips/1/x.webm' })),
     ).toEqual({ status: 502, code: 'SERVER_ERROR' });
@@ -422,8 +424,8 @@ describe('SttService.list', () => {
     // fakeDb would return rows, but list() must short-circuit before querying.
     const s = new SttService(
       config,
-      logger,
       fakeDb({ rows: [{ job_name: 'x' }] }),
+      mockLogger,
     );
     expect(await s.list(null)).toEqual([]);
   });
@@ -431,7 +433,6 @@ describe('SttService.list', () => {
   it('maps rows to views for an authenticated caller', async () => {
     const s = new SttService(
       config,
-      logger,
       fakeDb({
         rows: [
           {
@@ -446,6 +447,7 @@ describe('SttService.list', () => {
           },
         ],
       }),
+      mockLogger,
     );
     expect(await s.list({ userId: 5, tenantId: 3 })).toEqual([
       {

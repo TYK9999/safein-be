@@ -1,29 +1,41 @@
 import { Injectable } from '@nestjs/common';
 
-import { AppLoggerService } from '../../logger/app-logger.service';
+import { AppLoggerService } from '../../logging/app-logger.service';
+import { EmailService } from '../messaging/email.service';
 
 /**
- * Delivers OTP codes and magic links.
- *
- * Dev implementation: writes to the log so the whole passwordless loop works
- * on localhost with no email provider. Swap for an SES/SendGrid adapter (same
- * interface) when the cloud account exists.
+ * Delivers email OTP codes for sign-up, invite activation, and sign-in via SES.
  */
 @Injectable()
 export class MailerService {
-  constructor(private readonly logger: AppLoggerService) {
+  constructor(
+    private readonly email: EmailService,
+    private readonly logger: AppLoggerService,
+  ) {
     this.logger.setContext(MailerService.name);
   }
 
-  // Return Promise<void> (not `async`) so callers keep awaiting; the real
-  // SES/SendGrid adapter that replaces this will actually be async.
-  sendOtp(email: string, code: string): Promise<void> {
-    this.logger.log(`[DEV MAIL] OTP for ${email}: ${code}`);
-    return Promise.resolve();
+  async sendOtp(email: string, code: string): Promise<void> {
+    const result = await this.email.send({
+      to: email,
+      subject: 'Your SafeIn5 sign-in code',
+      text: `Your one-time sign-in code is: ${code}\n\nThis code expires shortly. If you did not request it, you can ignore this email.`,
+    });
+    this.logger.log(
+      `OTP email sent messageId=${result.messageId}`,
+      `MailerService.sendOtp`,
+    );
   }
 
-  sendMagicLink(email: string, url: string): Promise<void> {
-    this.logger.log(`[DEV MAIL] Magic link for ${email}: ${url}`);
-    return Promise.resolve();
+  async sendInviteOtp(email: string, code: string): Promise<void> {
+    const result = await this.email.send({
+      to: email,
+      subject: 'You are invited to SafeIn5',
+      text: `You have been invited to SafeIn5.\n\nYour one-time code is: ${code}\n\nEnter this code to activate your account and sign in. The code expires shortly. If you did not expect this invite, you can ignore this email.`,
+    });
+    this.logger.log(
+      `Invite OTP email sent messageId=${result.messageId}`,
+      `MailerService.sendInviteOtp`,
+    );
   }
 }

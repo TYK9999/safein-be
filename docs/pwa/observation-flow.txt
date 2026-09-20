@@ -1,0 +1,9927 @@
+/* Observation Pulse Flow */
+
+box-sizing: border-box;
+
+position: relative;
+width: 4572px;
+height: 1385px;
+
+background: #D5D5D5;
+border: 1px solid rgba(0, 0, 0, 0.1);
+border-radius: 2px;
+
+
+/* H01 Home — full screen camera, slim band */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 0px;
+gap: 120px;
+isolation: isolate;
+
+position: relative;
+width: 390px;
+height: 844px;
+left: 277px;
+top: 315px;
+
+background: #161617;
+
+
+/* camera texture */
+
+position: absolute;
+width: 390px;
+height: 844px;
+left: 0px;
+top: 0px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+z-index: 0;
+
+
+/* Rectangle */
+
+position: absolute;
+width: 2px;
+height: 1500px;
+left: -1424.66px;
+top: -350px;
+
+background: rgba(255, 255, 255, 0.035);
+transform: rotate(45deg);
+
+
+/* Rectangle */
+
+position: absolute;
+width: 2px;
+height: 1500px;
+left: -1398.66px;
+top: -350px;
+
+background: rgba(255, 255, 255, 0.035);
+transform: rotate(45deg);
+
+
+/* Rectangle */
+
+position: absolute;
+width: 2px;
+height: 1500px;
+left: -1372.66px;
+top: -350px;
+
+background: rgba(255, 255, 255, 0.035);
+transform: rotate(45deg);
+
+
+/* Rectangle */
+
+position: absolute;
+width: 2px;
+height: 1500px;
+left: -1346.66px;
+top: -350px;
+
+background: rgba(255, 255, 255, 0.035);
+transform: rotate(45deg);
+
+
+/* Rectangle */
+
+position: absolute;
+width: 2px;
+height: 1500px;
+left: -1320.66px;
+top: -350px;
+
+background: rgba(255, 255, 255, 0.035);
+transform: rotate(45deg);
+
+
+/* Rectangle */
+
+position: absolute;
+width: 2px;
+height: 1500px;
+left: -1294.66px;
+top: -350px;
+
+background: rgba(255, 255, 255, 0.035);
+transform: rotate(45deg);
+
+
+/* Rectangle */
+
+position: absolute;
+width: 2px;
+height: 1500px;
+left: -1268.66px;
+top: -350px;
+
+background: rgba(255, 255, 255, 0.035);
+transform: rotate(45deg);
+
+
+/* Rectangle */
+
+position: absolute;
+width: 2px;
+height: 1500px;
+left: -1242.66px;
+top: -350px;
+
+background: rgba(255, 255, 255, 0.035);
+transform: rotate(45deg);
+
+
+/* Rectangle */
+
+position: absolute;
+width: 2px;
+height: 1500px;
+left: -1216.66px;
+top: -350px;
+
+background: rgba(255, 255, 255, 0.035);
+transform: rotate(45deg);
+
+
+/* Rectangle */
+
+position: absolute;
+width: 2px;
+height: 1500px;
+left: -1190.66px;
+top: -350px;
+
+background: rgba(255, 255, 255, 0.035);
+transform: rotate(45deg);
+
+
+/* Rectangle */
+
+position: absolute;
+width: 2px;
+height: 1500px;
+left: -1164.66px;
+top: -350px;
+
+background: rgba(255, 255, 255, 0.035);
+transform: rotate(45deg);
+
+
+/* Rectangle */
+
+position: absolute;
+width: 2px;
+height: 1500px;
+left: -1138.66px;
+top: -350px;
+
+background: rgba(255, 255, 255, 0.035);
+transform: rotate(45deg);
+
+
+/* Rectangle */
+
+position: absolute;
+width: 2px;
+height: 1500px;
+left: -1112.66px;
+top: -350px;
+
+background: rgba(255, 255, 255, 0.035);
+transform: rotate(45deg);
+
+
+/* Rectangle */
+
+position: absolute;
+width: 2px;
+height: 1500px;
+left: -1086.66px;
+top: -350px;
+
+background: rgba(255, 255, 255, 0.035);
+transform: rotate(45deg);
+
+
+/* Rectangle */
+
+position: absolute;
+width: 2px;
+height: 1500px;
+left: -1060.66px;
+top: -350px;
+
+background: rgba(255, 255, 255, 0.035);
+transform: rotate(45deg);
+
+
+/* Rectangle */
+
+position: absolute;
+width: 2px;
+height: 1500px;
+left: -1034.66px;
+top: -350px;
+
+background: rgba(255, 255, 255, 0.035);
+transform: rotate(45deg);
+
+
+/* Rectangle */
+
+position: absolute;
+width: 2px;
+height: 1500px;
+left: -1008.66px;
+top: -350px;
+
+background: rgba(255, 255, 255, 0.035);
+transform: rotate(45deg);
+
+
+/* Rectangle */
+
+position: absolute;
+width: 2px;
+height: 1500px;
+left: -982.66px;
+top: -350px;
+
+background: rgba(255, 255, 255, 0.035);
+transform: rotate(45deg);
+
+
+/* Rectangle */
+
+position: absolute;
+width: 2px;
+height: 1500px;
+left: -956.66px;
+top: -350px;
+
+background: rgba(255, 255, 255, 0.035);
+transform: rotate(45deg);
+
+
+/* Rectangle */
+
+position: absolute;
+width: 2px;
+height: 1500px;
+left: -930.66px;
+top: -350px;
+
+background: rgba(255, 255, 255, 0.035);
+transform: rotate(45deg);
+
+
+/* Rectangle */
+
+position: absolute;
+width: 2px;
+height: 1500px;
+left: -904.66px;
+top: -350px;
+
+background: rgba(255, 255, 255, 0.035);
+transform: rotate(45deg);
+
+
+/* Rectangle */
+
+position: absolute;
+width: 2px;
+height: 1500px;
+left: -878.66px;
+top: -350px;
+
+background: rgba(255, 255, 255, 0.035);
+transform: rotate(45deg);
+
+
+/* Rectangle */
+
+position: absolute;
+width: 2px;
+height: 1500px;
+left: -852.66px;
+top: -350px;
+
+background: rgba(255, 255, 255, 0.035);
+transform: rotate(45deg);
+
+
+/* Rectangle */
+
+position: absolute;
+width: 2px;
+height: 1500px;
+left: -826.66px;
+top: -350px;
+
+background: rgba(255, 255, 255, 0.035);
+transform: rotate(45deg);
+
+
+/* Rectangle */
+
+position: absolute;
+width: 2px;
+height: 1500px;
+left: -800.66px;
+top: -350px;
+
+background: rgba(255, 255, 255, 0.035);
+transform: rotate(45deg);
+
+
+/* Rectangle */
+
+position: absolute;
+width: 2px;
+height: 1500px;
+left: -774.66px;
+top: -350px;
+
+background: rgba(255, 255, 255, 0.035);
+transform: rotate(45deg);
+
+
+/* Rectangle */
+
+position: absolute;
+width: 2px;
+height: 1500px;
+left: -748.66px;
+top: -350px;
+
+background: rgba(255, 255, 255, 0.035);
+transform: rotate(45deg);
+
+
+/* Rectangle */
+
+position: absolute;
+width: 2px;
+height: 1500px;
+left: -722.66px;
+top: -350px;
+
+background: rgba(255, 255, 255, 0.035);
+transform: rotate(45deg);
+
+
+/* Rectangle */
+
+position: absolute;
+width: 2px;
+height: 1500px;
+left: -696.66px;
+top: -350px;
+
+background: rgba(255, 255, 255, 0.035);
+transform: rotate(45deg);
+
+
+/* Rectangle */
+
+position: absolute;
+width: 2px;
+height: 1500px;
+left: -670.66px;
+top: -350px;
+
+background: rgba(255, 255, 255, 0.035);
+transform: rotate(45deg);
+
+
+/* Rectangle */
+
+position: absolute;
+width: 2px;
+height: 1500px;
+left: -644.66px;
+top: -350px;
+
+background: rgba(255, 255, 255, 0.035);
+transform: rotate(45deg);
+
+
+/* Rectangle */
+
+position: absolute;
+width: 2px;
+height: 1500px;
+left: -618.66px;
+top: -350px;
+
+background: rgba(255, 255, 255, 0.035);
+transform: rotate(45deg);
+
+
+/* Rectangle */
+
+position: absolute;
+width: 2px;
+height: 1500px;
+left: -592.66px;
+top: -350px;
+
+background: rgba(255, 255, 255, 0.035);
+transform: rotate(45deg);
+
+
+/* Rectangle */
+
+position: absolute;
+width: 2px;
+height: 1500px;
+left: -566.66px;
+top: -350px;
+
+background: rgba(255, 255, 255, 0.035);
+transform: rotate(45deg);
+
+
+/* Rectangle */
+
+position: absolute;
+width: 2px;
+height: 1500px;
+left: -540.66px;
+top: -350px;
+
+background: rgba(255, 255, 255, 0.035);
+transform: rotate(45deg);
+
+
+/* Rectangle */
+
+position: absolute;
+width: 2px;
+height: 1500px;
+left: -514.66px;
+top: -350px;
+
+background: rgba(255, 255, 255, 0.035);
+transform: rotate(45deg);
+
+
+/* Rectangle */
+
+position: absolute;
+width: 2px;
+height: 1500px;
+left: -488.66px;
+top: -350px;
+
+background: rgba(255, 255, 255, 0.035);
+transform: rotate(45deg);
+
+
+/* Rectangle */
+
+position: absolute;
+width: 2px;
+height: 1500px;
+left: -462.66px;
+top: -350px;
+
+background: rgba(255, 255, 255, 0.035);
+transform: rotate(45deg);
+
+
+/* Rectangle */
+
+position: absolute;
+width: 2px;
+height: 1500px;
+left: -436.66px;
+top: -350px;
+
+background: rgba(255, 255, 255, 0.035);
+transform: rotate(45deg);
+
+
+/* Rectangle */
+
+position: absolute;
+width: 2px;
+height: 1500px;
+left: -410.66px;
+top: -350px;
+
+background: rgba(255, 255, 255, 0.035);
+transform: rotate(45deg);
+
+
+/* Rectangle */
+
+position: absolute;
+width: 2px;
+height: 1500px;
+left: -384.66px;
+top: -350px;
+
+background: rgba(255, 255, 255, 0.035);
+transform: rotate(45deg);
+
+
+/* Rectangle */
+
+position: absolute;
+width: 2px;
+height: 1500px;
+left: -358.66px;
+top: -350px;
+
+background: rgba(255, 255, 255, 0.035);
+transform: rotate(45deg);
+
+
+/* Rectangle */
+
+position: absolute;
+width: 2px;
+height: 1500px;
+left: -332.66px;
+top: -350px;
+
+background: rgba(255, 255, 255, 0.035);
+transform: rotate(45deg);
+
+
+/* Rectangle */
+
+position: absolute;
+width: 2px;
+height: 1500px;
+left: -306.66px;
+top: -350px;
+
+background: rgba(255, 255, 255, 0.035);
+transform: rotate(45deg);
+
+
+/* Rectangle */
+
+position: absolute;
+width: 2px;
+height: 1500px;
+left: -280.66px;
+top: -350px;
+
+background: rgba(255, 255, 255, 0.035);
+transform: rotate(45deg);
+
+
+/* Rectangle */
+
+position: absolute;
+width: 2px;
+height: 1500px;
+left: -254.66px;
+top: -350px;
+
+background: rgba(255, 255, 255, 0.035);
+transform: rotate(45deg);
+
+
+/* Rectangle */
+
+position: absolute;
+width: 2px;
+height: 1500px;
+left: -228.66px;
+top: -350px;
+
+background: rgba(255, 255, 255, 0.035);
+transform: rotate(45deg);
+
+
+/* Rectangle */
+
+position: absolute;
+width: 2px;
+height: 1500px;
+left: -202.66px;
+top: -350px;
+
+background: rgba(255, 255, 255, 0.035);
+transform: rotate(45deg);
+
+
+/* Frame 4090 */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+gap: 16px;
+
+width: 390px;
+height: 578px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+align-self: stretch;
+flex-grow: 0;
+z-index: 1;
+
+
+/* Status Bar */
+
+width: 390px;
+height: 44px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Notch */
+
+position: absolute;
+height: 30px;
+left: 0px;
+right: 0px;
+top: 0px;
+
+
+
+/* Subtract */
+
+position: absolute;
+visibility: hidden;
+width: 44px;
+height: 30px;
+left: 77px;
+top: calc(50% - 30px/2);
+
+/* System Bg Dark Base / Primary */
+background: #000000;
+
+
+/* Rectangle 11 */
+
+position: absolute;
+visibility: hidden;
+left: 121px;
+right: 121px;
+top: 0%;
+bottom: 0%;
+
+/* System Bg Dark Base / Primary */
+background: #000000;
+
+
+/* Subtract */
+
+position: absolute;
+visibility: hidden;
+width: 44px;
+height: 30px;
+right: 77px;
+top: calc(50% - 30px/2);
+
+/* System Bg Dark Base / Primary */
+background: #000000;
+transform: matrix(-1, 0, 0, 1, 0, 0);
+
+
+/* Status Icons */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 4px;
+
+position: absolute;
+width: 69px;
+height: 14px;
+right: 14px;
+top: 16px;
+
+
+
+/* Network Signal / Light
+
+Network Signal Strength • Light
+*/
+
+width: 20px;
+height: 14px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Path */
+
+position: absolute;
+left: 55%;
+right: 30%;
+top: 28.57%;
+bottom: 14.29%;
+
+background: #D1D1D6;
+
+
+/* Path */
+
+position: absolute;
+left: 32.5%;
+right: 52.5%;
+top: 42.86%;
+bottom: 14.29%;
+
+background: #D1D1D6;
+
+
+/* Path */
+
+position: absolute;
+left: 10%;
+right: 75%;
+top: 53.57%;
+bottom: 14.29%;
+
+background: #D1D1D6;
+
+
+/* Empty Bar */
+
+position: absolute;
+left: 77.5%;
+right: 7.5%;
+top: 14.29%;
+bottom: 14.29%;
+
+background: rgba(60, 60, 67, 0.18);
+
+
+/* Path */
+
+position: absolute;
+left: 55%;
+right: 30%;
+top: 28.57%;
+bottom: 14.29%;
+
+background: #000000;
+
+
+/* Path */
+
+position: absolute;
+left: 32.5%;
+right: 52.5%;
+top: 42.86%;
+bottom: 14.29%;
+
+background: #000000;
+
+
+/* Path */
+
+position: absolute;
+left: 10%;
+right: 75%;
+top: 53.57%;
+bottom: 14.29%;
+
+background: #000000;
+
+
+/* Empty Bar */
+
+position: absolute;
+visibility: hidden;
+left: 77.5%;
+right: 7.5%;
+top: 14.29%;
+bottom: 14.29%;
+
+/* Label Light / Primary */
+background: #000000;
+
+
+/* WiFi Signal / Light */
+
+width: 16px;
+height: 14px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Path */
+
+position: absolute;
+left: 37.11%;
+right: 35.56%;
+top: 63.85%;
+bottom: 14.29%;
+
+background: #000000;
+
+
+/* Path */
+
+position: absolute;
+left: 21.66%;
+right: 20.1%;
+top: 39.07%;
+bottom: 37.26%;
+
+background: #000000;
+
+
+/* Path */
+
+position: absolute;
+left: 6.25%;
+right: 4.69%;
+top: 14.29%;
+bottom: 54.84%;
+
+background: #000000;
+
+
+/* Battery / Light */
+
+width: 25px;
+height: 14px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 2;
+flex-grow: 0;
+
+
+/* 􀋦 */
+
+position: absolute;
+visibility: hidden;
+width: 8px;
+height: 12px;
+left: 8px;
+top: 1px;
+
+/* Label Dark / Primary */
+background: #FFFFFF;
+
+
+/* Subtract */
+
+position: absolute;
+visibility: hidden;
+width: 23px;
+height: 12px;
+left: 0px;
+top: 1px;
+
+/* Label Dark / Tertiary */
+background: rgba(235, 235, 245, 0.3);
+
+
+/* Rectangle 23 */
+
+position: absolute;
+width: 1px;
+height: 4px;
+left: 24px;
+top: 5px;
+
+background: rgba(60, 60, 67, 0.6);
+
+
+/* Battery */
+
+position: absolute;
+visibility: hidden;
+width: 19px;
+height: 8px;
+left: 2px;
+top: 3px;
+
+
+
+/* 100 */
+
+position: absolute;
+width: 19px;
+height: 8px;
+left: 2px;
+top: 3px;
+
+/* Color Light / Green */
+background: #34C759;
+
+
+/* 50 */
+
+position: absolute;
+visibility: hidden;
+width: 8.45px;
+height: 8px;
+left: 2px;
+top: 3px;
+
+/* Color Light / Green */
+background: #34C759;
+
+
+/* 10 */
+
+position: absolute;
+visibility: hidden;
+width: 3px;
+height: 8px;
+left: 2px;
+top: 3px;
+
+/* Color Dark / Yellow */
+background: #FFD60A;
+
+
+/* Rectangle 21 (Stroke) */
+
+position: absolute;
+width: 23px;
+height: 12px;
+left: 0px;
+top: 1px;
+
+background: rgba(60, 60, 67, 0.6);
+
+
+/* Rectangle 20 */
+
+position: absolute;
+width: 19px;
+height: 8px;
+left: 2px;
+top: calc(50% - 8px/2);
+
+background: #000000;
+border-radius: 1px;
+
+
+/* Indicator
+
+Recording Indicator
+*/
+
+position: absolute;
+width: 6px;
+height: 6px;
+right: 71px;
+top: 8px;
+
+
+
+/* Indicator */
+
+position: absolute;
+visibility: hidden;
+left: 0%;
+right: 0%;
+top: 0%;
+bottom: 0%;
+
+/* SystemGreen / Light
+
+class var systemGreen: UIColor
+*/
+background: #34C759;
+
+
+/* Time / Light */
+
+position: absolute;
+width: 54px;
+height: 21px;
+left: 21px;
+top: 12px;
+
+border-radius: 20px;
+
+
+/* 9:41 */
+
+position: absolute;
+width: 33px;
+height: 15px;
+left: calc(50% - 33px/2 + 0.5px);
+top: calc(50% - 15px/2);
+
+
+
+/* 9:41 */
+
+position: absolute;
+width: 28.43px;
+height: 11.09px;
+left: calc(50% - 28.43px/2 - 0.29px);
+top: calc(50% - 11.09px/2 + 0.04px);
+
+background: #000000;
+
+
+/* Frame 4048 */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 0px;
+gap: 86px;
+isolation: isolate;
+
+width: 390px;
+height: 518px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Frame 4088 */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 11px 10px;
+gap: 12px;
+
+width: 342px;
+height: 107px;
+
+background: rgba(17, 17, 18, 0.55);
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+z-index: 0;
+
+
+/* Frame 4089 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+padding: 4px 16px;
+
+width: 342px;
+height: 30px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Morning, Allan */
+
+width: 124px;
+height: 22px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 18px;
+line-height: 22px;
+/* identical to box height */
+letter-spacing: -0.015em;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* chevron-down 1 */
+
+width: 16px;
+height: 16px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Vector (Stroke) */
+
+position: absolute;
+left: 20.83%;
+right: 20.83%;
+top: 33.33%;
+bottom: 33.33%;
+
+background: #FFFFFF;
+
+
+/* Line 8 */
+
+width: 308px;
+height: 0px;
+
+border: 1px solid #E0E0E0;
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Frame 4083 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+padding: 8px 16px;
+gap: 10px;
+
+width: 342px;
+height: 31px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 2;
+flex-grow: 0;
+
+
+/* Pause */
+
+width: 35px;
+height: 15px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 12px;
+line-height: 15px;
+/* identical to box height */
+letter-spacing: -0.02em;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Line 4 */
+
+width: 12px;
+height: 0px;
+
+background: #FFFFFF;
+border: 1px solid #FFFFFF;
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Uncover */
+
+width: 48px;
+height: 15px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 12px;
+line-height: 15px;
+/* identical to box height */
+letter-spacing: -0.02em;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 2;
+flex-grow: 0;
+
+
+/* Line 6 */
+
+width: 12px;
+height: 0px;
+
+background: #FFFFFF;
+border: 1px solid #FFFFFF;
+
+/* Inside auto layout */
+flex: none;
+order: 3;
+flex-grow: 0;
+
+
+/* Learn */
+
+width: 33px;
+height: 15px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 12px;
+line-height: 15px;
+/* identical to box height */
+letter-spacing: -0.02em;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 4;
+flex-grow: 0;
+
+
+/* Line 7 */
+
+width: 12px;
+height: 0px;
+
+background: #FFFFFF;
+border: 1px solid #FFFFFF;
+
+/* Inside auto layout */
+flex: none;
+order: 5;
+flex-grow: 0;
+
+
+/* Shift */
+
+width: 27px;
+height: 15px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 12px;
+line-height: 15px;
+/* identical to box height */
+letter-spacing: -0.02em;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 6;
+flex-grow: 0;
+
+
+/* Line 5 */
+
+width: 12px;
+height: 0px;
+
+background: #FFFFFF;
+border: 1px solid #FFFFFF;
+
+/* Inside auto layout */
+flex: none;
+order: 7;
+flex-grow: 0;
+
+
+/* Echo */
+
+width: 29px;
+height: 15px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 12px;
+line-height: 15px;
+/* identical to box height */
+letter-spacing: -0.02em;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 8;
+flex-grow: 0;
+
+
+/* Frame 4052 */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 0px;
+gap: 16px;
+
+width: 390px;
+height: 325px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+z-index: 1;
+
+
+/* Ready to capture your safety PULSE? */
+
+width: 390px;
+height: 19px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 16px;
+line-height: 19px;
+text-align: center;
+
+color: #19AAE6;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Frame 5 */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 0px;
+gap: 100px;
+
+width: 290px;
+height: 290px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Group 1 */
+
+width: 290px;
+height: 290px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* scan reticle */
+
+position: absolute;
+width: 290px;
+height: 290px;
+left: 0px;
+top: 0px;
+
+
+
+/* Rectangle */
+
+box-sizing: border-box;
+
+position: absolute;
+width: 282px;
+height: 282px;
+left: 4px;
+top: 4px;
+
+border: 2px solid rgba(255, 255, 255, 0.26);
+
+
+/* Rectangle */
+
+position: absolute;
+width: 66px;
+height: 5px;
+left: 0px;
+top: 0px;
+
+background: #19AAE6;
+
+
+/* Rectangle */
+
+position: absolute;
+width: 5px;
+height: 66px;
+left: 0px;
+top: 0px;
+
+background: #19AAE6;
+
+
+/* Rectangle */
+
+position: absolute;
+width: 66px;
+height: 5px;
+left: 224px;
+top: 0px;
+
+background: #19AAE6;
+
+
+/* Rectangle */
+
+position: absolute;
+width: 5px;
+height: 66px;
+left: 285px;
+top: 0px;
+
+background: #19AAE6;
+
+
+/* Rectangle */
+
+position: absolute;
+width: 66px;
+height: 5px;
+left: 0px;
+top: 285px;
+
+background: #19AAE6;
+
+
+/* Rectangle */
+
+position: absolute;
+width: 5px;
+height: 66px;
+left: 0px;
+top: 224px;
+
+background: #19AAE6;
+
+
+/* Rectangle */
+
+position: absolute;
+width: 66px;
+height: 5px;
+left: 224px;
+top: 285px;
+
+background: #19AAE6;
+
+
+/* Rectangle */
+
+position: absolute;
+width: 5px;
+height: 66px;
+left: 285px;
+top: 224px;
+
+background: #19AAE6;
+
+
+/* Point to scan QR or take a picture */
+
+position: absolute;
+width: 390px;
+height: 38px;
+left: 0px;
+top: 354px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 16px;
+line-height: 19px;
+text-align: center;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 2;
+flex-grow: 0;
+z-index: 2;
+
+
+/* Frame 4051 */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+padding: 0px;
+gap: 12px;
+
+width: 342px;
+height: 122px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 2;
+flex-grow: 0;
+z-index: 2;
+
+
+/* Frame 4053 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 10px;
+gap: 10px;
+
+width: 341px;
+height: 35px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Line 1 */
+
+width: 96px;
+height: 0px;
+
+background: #FFFFFF;
+border: 1px solid #FFFFFF;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* You can also start this */
+
+width: 127px;
+height: 15px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 12px;
+line-height: 15px;
+/* identical to box height */
+text-align: center;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Line 2 */
+
+width: 96px;
+height: 0px;
+
+background: #FFFFFF;
+border: 1px solid #FFFFFF;
+
+/* Inside auto layout */
+flex: none;
+order: 2;
+flex-grow: 0;
+
+
+/* Frame 4054 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: flex-start;
+padding: 0px;
+gap: 12px;
+
+width: 342px;
+height: 75px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Frame 4050 */
+
+box-sizing: border-box;
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+padding: 10px;
+gap: 4px;
+
+width: 342px;
+height: 75px;
+
+background: #FFFFFF;
+border: 1px solid #19AAE6;
+border-radius: 8px;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 1;
+
+
+/* briefcase-business 1 */
+
+width: 16px;
+height: 16px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Vector (Stroke) */
+
+position: absolute;
+left: 45.83%;
+right: 45.79%;
+top: 45.83%;
+bottom: 45.83%;
+
+background: #000000;
+
+
+/* Vector (Stroke) */
+
+position: absolute;
+left: 29.17%;
+right: 29.17%;
+top: 4.17%;
+bottom: 70.83%;
+
+background: #000000;
+
+
+/* Vector (Stroke) */
+
+position: absolute;
+left: 4.17%;
+right: 4.17%;
+top: 50%;
+bottom: 29.16%;
+
+background: #000000;
+
+
+/* Vector (Stroke) */
+
+position: absolute;
+left: 4.17%;
+right: 4.17%;
+top: 20.83%;
+bottom: 12.5%;
+
+background: #000000;
+
+
+/* No QR? */
+
+width: 50px;
+height: 17px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 600;
+font-size: 14px;
+line-height: 17px;
+/* identical to box height */
+text-align: center;
+
+color: #19AAE6;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Start a Work Task Pulse */
+
+width: 112px;
+height: 12px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 10px;
+line-height: 12px;
+text-align: center;
+
+color: #000000;
+
+
+/* Inside auto layout */
+flex: none;
+order: 2;
+flex-grow: 0;
+
+
+/* 04 Observation — Categorise */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+
+position: relative;
+width: 390px;
+height: 844px;
+left: 2574px;
+top: 296px;
+
+background: #FFFFFF;
+
+
+/* Status Bar */
+
+width: 390px;
+height: 44px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Notch */
+
+position: absolute;
+height: 30px;
+left: 0px;
+right: 0px;
+top: 0px;
+
+
+
+/* Subtract */
+
+position: absolute;
+visibility: hidden;
+width: 44px;
+height: 30px;
+left: 77px;
+top: calc(50% - 30px/2);
+
+/* System Bg Dark Base / Primary */
+background: #000000;
+
+
+/* Rectangle 11 */
+
+position: absolute;
+visibility: hidden;
+left: 121px;
+right: 121px;
+top: 0%;
+bottom: 0%;
+
+/* System Bg Dark Base / Primary */
+background: #000000;
+
+
+/* Subtract */
+
+position: absolute;
+visibility: hidden;
+width: 44px;
+height: 30px;
+right: 77px;
+top: calc(50% - 30px/2);
+
+/* System Bg Dark Base / Primary */
+background: #000000;
+transform: matrix(-1, 0, 0, 1, 0, 0);
+
+
+/* Status Icons */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 4px;
+
+position: absolute;
+width: 69px;
+height: 14px;
+right: 14px;
+top: 16px;
+
+
+
+/* Network Signal / Light
+
+Network Signal Strength • Light
+*/
+
+width: 20px;
+height: 14px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Path */
+
+position: absolute;
+left: 55%;
+right: 30%;
+top: 28.57%;
+bottom: 14.29%;
+
+background: #D1D1D6;
+
+
+/* Path */
+
+position: absolute;
+left: 32.5%;
+right: 52.5%;
+top: 42.86%;
+bottom: 14.29%;
+
+background: #D1D1D6;
+
+
+/* Path */
+
+position: absolute;
+left: 10%;
+right: 75%;
+top: 53.57%;
+bottom: 14.29%;
+
+background: #D1D1D6;
+
+
+/* Empty Bar */
+
+position: absolute;
+left: 77.5%;
+right: 7.5%;
+top: 14.29%;
+bottom: 14.29%;
+
+background: rgba(60, 60, 67, 0.18);
+
+
+/* Path */
+
+position: absolute;
+left: 55%;
+right: 30%;
+top: 28.57%;
+bottom: 14.29%;
+
+background: #000000;
+
+
+/* Path */
+
+position: absolute;
+left: 32.5%;
+right: 52.5%;
+top: 42.86%;
+bottom: 14.29%;
+
+background: #000000;
+
+
+/* Path */
+
+position: absolute;
+left: 10%;
+right: 75%;
+top: 53.57%;
+bottom: 14.29%;
+
+background: #000000;
+
+
+/* Empty Bar */
+
+position: absolute;
+visibility: hidden;
+left: 77.5%;
+right: 7.5%;
+top: 14.29%;
+bottom: 14.29%;
+
+/* Label Light / Primary */
+background: #000000;
+
+
+/* WiFi Signal / Light */
+
+width: 16px;
+height: 14px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Path */
+
+position: absolute;
+left: 37.11%;
+right: 35.56%;
+top: 63.85%;
+bottom: 14.29%;
+
+background: #000000;
+
+
+/* Path */
+
+position: absolute;
+left: 21.66%;
+right: 20.1%;
+top: 39.07%;
+bottom: 37.26%;
+
+background: #000000;
+
+
+/* Path */
+
+position: absolute;
+left: 6.25%;
+right: 4.69%;
+top: 14.29%;
+bottom: 54.84%;
+
+background: #000000;
+
+
+/* Battery / Light */
+
+width: 25px;
+height: 14px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 2;
+flex-grow: 0;
+
+
+/* 􀋦 */
+
+position: absolute;
+visibility: hidden;
+width: 8px;
+height: 12px;
+left: 8px;
+top: 1px;
+
+/* Label Dark / Primary */
+background: #FFFFFF;
+
+
+/* Subtract */
+
+position: absolute;
+visibility: hidden;
+width: 23px;
+height: 12px;
+left: 0px;
+top: 1px;
+
+/* Label Dark / Tertiary */
+background: rgba(235, 235, 245, 0.3);
+
+
+/* Rectangle 23 */
+
+position: absolute;
+width: 1px;
+height: 4px;
+left: 24px;
+top: 5px;
+
+background: rgba(60, 60, 67, 0.6);
+
+
+/* Battery */
+
+position: absolute;
+visibility: hidden;
+width: 19px;
+height: 8px;
+left: 2px;
+top: 3px;
+
+
+
+/* 100 */
+
+position: absolute;
+width: 19px;
+height: 8px;
+left: 2px;
+top: 3px;
+
+/* Color Light / Green */
+background: #34C759;
+
+
+/* 50 */
+
+position: absolute;
+visibility: hidden;
+width: 8.45px;
+height: 8px;
+left: 2px;
+top: 3px;
+
+/* Color Light / Green */
+background: #34C759;
+
+
+/* 10 */
+
+position: absolute;
+visibility: hidden;
+width: 3px;
+height: 8px;
+left: 2px;
+top: 3px;
+
+/* Color Dark / Yellow */
+background: #FFD60A;
+
+
+/* Rectangle 21 (Stroke) */
+
+position: absolute;
+width: 23px;
+height: 12px;
+left: 0px;
+top: 1px;
+
+background: rgba(60, 60, 67, 0.6);
+
+
+/* Rectangle 20 */
+
+position: absolute;
+width: 19px;
+height: 8px;
+left: 2px;
+top: calc(50% - 8px/2);
+
+background: #000000;
+border-radius: 1px;
+
+
+/* Indicator
+
+Recording Indicator
+*/
+
+position: absolute;
+width: 6px;
+height: 6px;
+right: 71px;
+top: 8px;
+
+
+
+/* Indicator */
+
+position: absolute;
+visibility: hidden;
+left: 0%;
+right: 0%;
+top: 0%;
+bottom: 0%;
+
+/* SystemGreen / Light
+
+class var systemGreen: UIColor
+*/
+background: #34C759;
+
+
+/* Time / Light */
+
+position: absolute;
+width: 54px;
+height: 21px;
+left: 21px;
+top: 12px;
+
+border-radius: 20px;
+
+
+/* 9:41 */
+
+position: absolute;
+width: 33px;
+height: 15px;
+left: calc(50% - 33px/2 + 0.5px);
+top: calc(50% - 15px/2);
+
+
+
+/* 9:41 */
+
+position: absolute;
+width: 28.43px;
+height: 11.09px;
+left: calc(50% - 28.43px/2 - 0.29px);
+top: calc(50% - 11.09px/2 + 0.04px);
+
+background: #000000;
+
+
+/* body */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 16px 24px 24px;
+
+width: 390px;
+height: 800px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+align-self: stretch;
+flex-grow: 1;
+
+
+/* Frame */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+
+width: 342px;
+height: 89px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* assist / Take a look */
+
+box-sizing: border-box;
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: flex-start;
+padding: 17px 16px;
+gap: 9px;
+
+width: 342px;
+height: 89px;
+
+background: #FAFAFA;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Frame 4067 */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+gap: 8px;
+
+width: 209px;
+height: 55px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 1;
+
+
+/* Frame */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 8px;
+
+width: 187px;
+height: 13px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* SHARING FOR A WORK TASK? */
+
+width: 187px;
+height: 13px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 11px;
+line-height: 13px;
+letter-spacing: 0.1em;
+
+color: #0B3A82;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Choose the task and attach observation */
+
+width: 209px;
+height: 34px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 17px;
+letter-spacing: -0.01em;
+
+color: #5F606B;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Frame */
+
+box-sizing: border-box;
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 0px 8px;
+gap: 8px;
+
+width: 92px;
+height: 52px;
+
+border: 2px solid #0B3A82;
+border-radius: 8px;
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Choose Task */
+
+width: 76px;
+height: 15px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 12px;
+line-height: 15px;
+/* identical to box height */
+
+color: #5F606B;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Frame */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+gap: 8px;
+
+width: 342px;
+height: 267px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Frame */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 22px 0px 0px;
+
+width: 342px;
+height: 51px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* How would you describe this? */
+
+width: 342px;
+height: 29px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 600;
+font-size: 24px;
+line-height: 29px;
+/* identical to box height */
+letter-spacing: -0.025em;
+
+color: #111114;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Frame */
+
+box-sizing: border-box;
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 19px 16px;
+gap: 10px;
+
+width: 342px;
+height: 64px;
+min-height: 64px;
+
+background: #FFFFFF;
+border: 2px solid #DADADE;
+border-radius: 4px;
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* GOOD PRACTICE */
+
+width: 310px;
+height: 17px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 14px;
+line-height: 17px;
+/* identical to box height */
+letter-spacing: 0.04em;
+
+color: #111114;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 1;
+
+
+/* Frame */
+
+box-sizing: border-box;
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 19px 16px;
+gap: 10px;
+
+width: 342px;
+height: 64px;
+min-height: 64px;
+
+background: #FEF3C7;
+border: 1px solid #FF8000;
+border-radius: 4px;
+
+/* Inside auto layout */
+flex: none;
+order: 2;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* COULD BE A RISK */
+
+width: 310px;
+height: 17px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 14px;
+line-height: 17px;
+/* identical to box height */
+letter-spacing: 0.04em;
+
+color: #FF8000;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 1;
+
+
+/* Frame */
+
+box-sizing: border-box;
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 19px 16px;
+gap: 10px;
+
+width: 342px;
+height: 64px;
+min-height: 64px;
+
+background: #FFFFFF;
+border: 2px solid #DADADE;
+border-radius: 4px;
+
+/* Inside auto layout */
+flex: none;
+order: 3;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* NEEDS ACTION NOW */
+
+width: 310px;
+height: 17px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 14px;
+line-height: 17px;
+/* identical to box height */
+letter-spacing: 0.04em;
+
+color: #111114;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 1;
+
+
+/* Frame 4094 */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+
+width: 342px;
+height: 41px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 2;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Frame */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+padding: 10px 0px 0px;
+
+width: 342px;
+height: 16px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Frame */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 6px 0px 0px;
+
+width: 342px;
+height: 25px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* What is being shared by you */
+
+width: 342px;
+height: 19px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 600;
+font-size: 15.5px;
+line-height: 19px;
+/* identical to box height */
+letter-spacing: -0.01em;
+
+color: #5F606B;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Frame 4047 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 8px;
+
+width: 342px;
+height: 90px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 3;
+flex-grow: 0;
+
+
+/* Group 7 */
+
+width: 62px;
+height: 65px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Frame */
+
+box-sizing: border-box;
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+padding: 12px 14px;
+gap: 11px;
+
+position: absolute;
+width: 56px;
+height: 56px;
+left: 0px;
+top: 21.5px;
+
+background: #FAFAFA;
+border: 1px solid #19AAE6;
+border-radius: 8px;
+
+
+/* Photo */
+
+margin: 0 auto;
+width: 28px;
+height: 12px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 10px;
+line-height: 12px;
+letter-spacing: -0.01em;
+
+color: #111114;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* x 2 */
+
+box-sizing: border-box;
+
+position: absolute;
+width: 24px;
+height: 24px;
+left: 38px;
+top: 12.5px;
+
+background: #000000;
+border: 1px solid #111114;
+border-radius: 20px;
+
+
+/* Group 11 */
+
+position: absolute;
+width: 9px;
+height: 9px;
+left: 7.28px;
+top: 7.28px;
+
+
+
+/* Vector (Stroke) */
+
+position: absolute;
+left: 30.33%;
+right: 32.17%;
+top: 30.33%;
+bottom: 32.17%;
+
+background: #FFFFFF;
+
+
+/* Vector (Stroke) */
+
+position: absolute;
+left: 30.33%;
+right: 32.17%;
+top: 30.33%;
+bottom: 32.17%;
+
+background: #FFFFFF;
+
+
+/* Group 11 */
+
+width: 62px;
+height: 65px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Frame */
+
+box-sizing: border-box;
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+padding: 12px 14px;
+gap: 11px;
+
+position: absolute;
+width: 56px;
+height: 56px;
+left: 70px;
+top: 21.5px;
+
+background: #FAFAFA;
+border: 1px solid #19AAE6;
+border-radius: 8px;
+
+
+/* Photo */
+
+margin: 0 auto;
+width: 28px;
+height: 12px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 10px;
+line-height: 12px;
+letter-spacing: -0.01em;
+
+color: #111114;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* x 2 */
+
+box-sizing: border-box;
+
+position: absolute;
+width: 24px;
+height: 24px;
+left: 108px;
+top: 12.5px;
+
+background: #000000;
+border: 1px solid #111114;
+border-radius: 20px;
+
+
+/* Group 11 */
+
+position: absolute;
+width: 9px;
+height: 9px;
+left: 7.28px;
+top: 7.28px;
+
+
+
+/* Vector (Stroke) */
+
+position: absolute;
+left: 30.33%;
+right: 32.17%;
+top: 30.33%;
+bottom: 32.17%;
+
+background: #FFFFFF;
+
+
+/* Vector (Stroke) */
+
+position: absolute;
+left: 30.33%;
+right: 32.17%;
+top: 30.33%;
+bottom: 32.17%;
+
+background: #FFFFFF;
+
+
+/* Group 12 */
+
+width: 62px;
+height: 65px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 2;
+flex-grow: 0;
+
+
+/* Frame */
+
+box-sizing: border-box;
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+padding: 12px 14px;
+gap: 11px;
+
+position: absolute;
+width: 56px;
+height: 56px;
+left: 140px;
+top: 21.5px;
+
+background: #FAFAFA;
+border: 1px solid #19AAE6;
+border-radius: 8px;
+
+
+/* Photo */
+
+margin: 0 auto;
+width: 28px;
+height: 12px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 10px;
+line-height: 12px;
+letter-spacing: -0.01em;
+
+color: #111114;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* x 2 */
+
+box-sizing: border-box;
+
+position: absolute;
+width: 24px;
+height: 24px;
+left: 178px;
+top: 12.5px;
+
+background: #000000;
+border: 1px solid #111114;
+border-radius: 20px;
+
+
+/* Group 11 */
+
+position: absolute;
+width: 9px;
+height: 9px;
+left: 7.28px;
+top: 7.28px;
+
+
+
+/* Vector (Stroke) */
+
+position: absolute;
+left: 30.33%;
+right: 32.17%;
+top: 30.33%;
+bottom: 32.17%;
+
+background: #FFFFFF;
+
+
+/* Vector (Stroke) */
+
+position: absolute;
+left: 30.33%;
+right: 32.17%;
+top: 30.33%;
+bottom: 32.17%;
+
+background: #FFFFFF;
+
+
+/* Group 13 */
+
+width: 62px;
+height: 65px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 3;
+flex-grow: 0;
+
+
+/* Frame */
+
+box-sizing: border-box;
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+padding: 12px 14px;
+gap: 11px;
+
+position: absolute;
+width: 56px;
+height: 56px;
+left: 210px;
+top: 21.5px;
+
+background: #FAFAFA;
+border: 1px solid #19AAE6;
+border-radius: 8px;
+
+
+/* Photo */
+
+margin: 0 auto;
+width: 28px;
+height: 12px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 10px;
+line-height: 12px;
+letter-spacing: -0.01em;
+
+color: #111114;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* x 2 */
+
+box-sizing: border-box;
+
+position: absolute;
+width: 24px;
+height: 24px;
+left: 248px;
+top: 12.5px;
+
+background: #000000;
+border: 1px solid #111114;
+border-radius: 20px;
+
+
+/* Group 11 */
+
+position: absolute;
+width: 9px;
+height: 9px;
+left: 7.28px;
+top: 7.28px;
+
+
+
+/* Vector (Stroke) */
+
+position: absolute;
+left: 30.33%;
+right: 32.17%;
+top: 30.33%;
+bottom: 32.17%;
+
+background: #FFFFFF;
+
+
+/* Vector (Stroke) */
+
+position: absolute;
+left: 30.33%;
+right: 32.17%;
+top: 30.33%;
+bottom: 32.17%;
+
+background: #FFFFFF;
+
+
+/* Group 14 */
+
+width: 62px;
+height: 65px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 4;
+flex-grow: 0;
+
+
+/* Frame */
+
+box-sizing: border-box;
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+padding: 12px 14px;
+gap: 11px;
+
+position: absolute;
+width: 56px;
+height: 56px;
+left: 280px;
+top: 21.5px;
+
+background: #FAFAFA;
+border: 1px solid #19AAE6;
+border-radius: 8px;
+
+
+/* Photo */
+
+margin: 0 auto;
+width: 28px;
+height: 12px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 10px;
+line-height: 12px;
+letter-spacing: -0.01em;
+
+color: #111114;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* x 2 */
+
+box-sizing: border-box;
+
+position: absolute;
+width: 24px;
+height: 24px;
+left: 318px;
+top: 12.5px;
+
+background: #000000;
+border: 1px solid #111114;
+border-radius: 20px;
+
+
+/* Group 11 */
+
+position: absolute;
+width: 9px;
+height: 9px;
+left: 7.28px;
+top: 7.28px;
+
+
+
+/* Vector (Stroke) */
+
+position: absolute;
+left: 30.33%;
+right: 32.17%;
+top: 30.33%;
+bottom: 32.17%;
+
+background: #FFFFFF;
+
+
+/* Vector (Stroke) */
+
+position: absolute;
+left: 30.33%;
+right: 32.17%;
+top: 30.33%;
+bottom: 32.17%;
+
+background: #FFFFFF;
+
+
+/* Frame */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 8px 0px 0px;
+
+width: 342px;
+height: 81px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 4;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Frame */
+
+box-sizing: border-box;
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+padding: 20px 12px;
+gap: 16px;
+
+width: 342px;
+height: 64px;
+min-height: 64px;
+
+border: 2px solid #D1D1D6;
+border-radius: 12px;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Frame 4096 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 12px;
+
+margin: 0 auto;
+width: 218px;
+height: 40px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Group 15 */
+
+width: 40px;
+height: 40px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Ellipse */
+
+position: absolute;
+width: 40px;
+height: 40px;
+left: 0px;
+top: 0px;
+
+background: #19AAE6;
+
+
+/* play 1 */
+
+position: absolute;
+width: 16px;
+height: 16px;
+left: 12px;
+top: 12px;
+
+
+
+/* Vector (Stroke) */
+
+position: absolute;
+left: 16.67%;
+right: 8.33%;
+top: 8.33%;
+bottom: 8.33%;
+
+background: #FFFFFF;
+
+
+/* Frame 4095 */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: flex-start;
+padding: 0px;
+gap: 4px;
+
+width: 102px;
+height: 34px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Voice Note added */
+
+width: 102px;
+height: 15px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 12px;
+line-height: 15px;
+/* identical to box height */
+letter-spacing: -0.01em;
+
+color: #000000;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* 0:30 */
+
+width: 27px;
+height: 15px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 12px;
+line-height: 15px;
+/* identical to box height */
+letter-spacing: -0.01em;
+
+color: #5F606B;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* x 2 */
+
+box-sizing: border-box;
+
+margin: 0 auto;
+width: 24px;
+height: 24px;
+
+background: #000000;
+border: 1px solid #111114;
+border-radius: 20px;
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Group 11 */
+
+position: absolute;
+width: 9px;
+height: 9px;
+left: 7.28px;
+top: 7.28px;
+
+
+
+/* Vector (Stroke) */
+
+position: absolute;
+left: 30.33%;
+right: 32.17%;
+top: 30.33%;
+bottom: 32.17%;
+
+background: #FFFFFF;
+
+
+/* Vector (Stroke) */
+
+position: absolute;
+left: 30.33%;
+right: 32.17%;
+top: 30.33%;
+bottom: 32.17%;
+
+background: #FFFFFF;
+
+
+/* Frame */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 8px 0px 0px;
+
+width: 342px;
+height: 77px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 5;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Frame */
+
+box-sizing: border-box;
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+padding: 12px 14px;
+gap: 11px;
+
+width: 342px;
+height: 62px;
+
+background: linear-gradient(0deg, #FAFAFA, #FAFAFA), #FFFFFF;
+border: 1px solid #19AAE6;
+border-radius: 8px;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Video 0:15 */
+
+margin: 0 auto;
+width: 62px;
+height: 15px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 12px;
+line-height: 15px;
+/* identical to box height */
+letter-spacing: -0.01em;
+
+color: #111114;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* x 2 */
+
+box-sizing: border-box;
+
+margin: 0 auto;
+width: 24px;
+height: 24px;
+
+background: #000000;
+border: 1px solid #111114;
+border-radius: 20px;
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Group 11 */
+
+position: absolute;
+width: 9px;
+height: 9px;
+left: 7.28px;
+top: 7.28px;
+
+
+
+/* Vector (Stroke) */
+
+position: absolute;
+left: 30.33%;
+right: 32.17%;
+top: 30.33%;
+bottom: 32.17%;
+
+background: #FFFFFF;
+
+
+/* Vector (Stroke) */
+
+position: absolute;
+left: 30.33%;
+right: 32.17%;
+top: 30.33%;
+bottom: 32.17%;
+
+background: #FFFFFF;
+
+
+/* spacer */
+
+width: 342px;
+height: 39px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 6;
+align-self: stretch;
+flex-grow: 1;
+
+
+/* Frame */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: flex-start;
+padding: 0px;
+gap: 12px;
+
+width: 342px;
+height: 76px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 7;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* btn / See your shares */
+
+box-sizing: border-box;
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 24px 14px;
+
+width: 165px;
+height: 76px;
+min-height: 76px;
+
+border: 2.5px solid #5F606B;
+border-radius: 12px;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 1;
+
+
+/* Back */
+
+width: 45px;
+height: 23px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 19px;
+line-height: 23px;
+/* identical to box height */
+letter-spacing: -0.02em;
+
+color: #5F606B;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* btn / Done */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 24px 14px;
+
+width: 165px;
+height: 76px;
+min-height: 76px;
+
+background: #19AAE6;
+border-radius: 12px;
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 1;
+
+
+/* Share */
+
+width: 53px;
+height: 23px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 19px;
+line-height: 23px;
+/* identical to box height */
+letter-spacing: -0.02em;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* 04 Observation — Choose Work Task */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+
+position: relative;
+width: 390px;
+height: 844px;
+left: 3047px;
+top: 296px;
+
+background: #FFFFFF;
+
+
+/* Status Bar */
+
+width: 390px;
+height: 44px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Notch */
+
+position: absolute;
+height: 30px;
+left: 0px;
+right: 0px;
+top: 0px;
+
+
+
+/* Subtract */
+
+position: absolute;
+visibility: hidden;
+width: 44px;
+height: 30px;
+left: 77px;
+top: calc(50% - 30px/2);
+
+/* System Bg Dark Base / Primary */
+background: #000000;
+
+
+/* Rectangle 11 */
+
+position: absolute;
+visibility: hidden;
+left: 121px;
+right: 121px;
+top: 0%;
+bottom: 0%;
+
+/* System Bg Dark Base / Primary */
+background: #000000;
+
+
+/* Subtract */
+
+position: absolute;
+visibility: hidden;
+width: 44px;
+height: 30px;
+right: 77px;
+top: calc(50% - 30px/2);
+
+/* System Bg Dark Base / Primary */
+background: #000000;
+transform: matrix(-1, 0, 0, 1, 0, 0);
+
+
+/* Status Icons */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 4px;
+
+position: absolute;
+width: 69px;
+height: 14px;
+right: 14px;
+top: 16px;
+
+
+
+/* Network Signal / Light
+
+Network Signal Strength • Light
+*/
+
+width: 20px;
+height: 14px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Path */
+
+position: absolute;
+left: 55%;
+right: 30%;
+top: 28.57%;
+bottom: 14.29%;
+
+background: #D1D1D6;
+
+
+/* Path */
+
+position: absolute;
+left: 32.5%;
+right: 52.5%;
+top: 42.86%;
+bottom: 14.29%;
+
+background: #D1D1D6;
+
+
+/* Path */
+
+position: absolute;
+left: 10%;
+right: 75%;
+top: 53.57%;
+bottom: 14.29%;
+
+background: #D1D1D6;
+
+
+/* Empty Bar */
+
+position: absolute;
+left: 77.5%;
+right: 7.5%;
+top: 14.29%;
+bottom: 14.29%;
+
+background: rgba(60, 60, 67, 0.18);
+
+
+/* Path */
+
+position: absolute;
+left: 55%;
+right: 30%;
+top: 28.57%;
+bottom: 14.29%;
+
+background: #000000;
+
+
+/* Path */
+
+position: absolute;
+left: 32.5%;
+right: 52.5%;
+top: 42.86%;
+bottom: 14.29%;
+
+background: #000000;
+
+
+/* Path */
+
+position: absolute;
+left: 10%;
+right: 75%;
+top: 53.57%;
+bottom: 14.29%;
+
+background: #000000;
+
+
+/* Empty Bar */
+
+position: absolute;
+visibility: hidden;
+left: 77.5%;
+right: 7.5%;
+top: 14.29%;
+bottom: 14.29%;
+
+/* Label Light / Primary */
+background: #000000;
+
+
+/* WiFi Signal / Light */
+
+width: 16px;
+height: 14px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Path */
+
+position: absolute;
+left: 37.11%;
+right: 35.56%;
+top: 63.85%;
+bottom: 14.29%;
+
+background: #000000;
+
+
+/* Path */
+
+position: absolute;
+left: 21.66%;
+right: 20.1%;
+top: 39.07%;
+bottom: 37.26%;
+
+background: #000000;
+
+
+/* Path */
+
+position: absolute;
+left: 6.25%;
+right: 4.69%;
+top: 14.29%;
+bottom: 54.84%;
+
+background: #000000;
+
+
+/* Battery / Light */
+
+width: 25px;
+height: 14px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 2;
+flex-grow: 0;
+
+
+/* 􀋦 */
+
+position: absolute;
+visibility: hidden;
+width: 8px;
+height: 12px;
+left: 8px;
+top: 1px;
+
+/* Label Dark / Primary */
+background: #FFFFFF;
+
+
+/* Subtract */
+
+position: absolute;
+visibility: hidden;
+width: 23px;
+height: 12px;
+left: 0px;
+top: 1px;
+
+/* Label Dark / Tertiary */
+background: rgba(235, 235, 245, 0.3);
+
+
+/* Rectangle 23 */
+
+position: absolute;
+width: 1px;
+height: 4px;
+left: 24px;
+top: 5px;
+
+background: rgba(60, 60, 67, 0.6);
+
+
+/* Battery */
+
+position: absolute;
+visibility: hidden;
+width: 19px;
+height: 8px;
+left: 2px;
+top: 3px;
+
+
+
+/* 100 */
+
+position: absolute;
+width: 19px;
+height: 8px;
+left: 2px;
+top: 3px;
+
+/* Color Light / Green */
+background: #34C759;
+
+
+/* 50 */
+
+position: absolute;
+visibility: hidden;
+width: 8.45px;
+height: 8px;
+left: 2px;
+top: 3px;
+
+/* Color Light / Green */
+background: #34C759;
+
+
+/* 10 */
+
+position: absolute;
+visibility: hidden;
+width: 3px;
+height: 8px;
+left: 2px;
+top: 3px;
+
+/* Color Dark / Yellow */
+background: #FFD60A;
+
+
+/* Rectangle 21 (Stroke) */
+
+position: absolute;
+width: 23px;
+height: 12px;
+left: 0px;
+top: 1px;
+
+background: rgba(60, 60, 67, 0.6);
+
+
+/* Rectangle 20 */
+
+position: absolute;
+width: 19px;
+height: 8px;
+left: 2px;
+top: calc(50% - 8px/2);
+
+background: #000000;
+border-radius: 1px;
+
+
+/* Indicator
+
+Recording Indicator
+*/
+
+position: absolute;
+width: 6px;
+height: 6px;
+right: 71px;
+top: 8px;
+
+
+
+/* Indicator */
+
+position: absolute;
+visibility: hidden;
+left: 0%;
+right: 0%;
+top: 0%;
+bottom: 0%;
+
+/* SystemGreen / Light
+
+class var systemGreen: UIColor
+*/
+background: #34C759;
+
+
+/* Time / Light */
+
+position: absolute;
+width: 54px;
+height: 21px;
+left: 21px;
+top: 12px;
+
+border-radius: 20px;
+
+
+/* 9:41 */
+
+position: absolute;
+width: 33px;
+height: 15px;
+left: calc(50% - 33px/2 + 0.5px);
+top: calc(50% - 15px/2);
+
+
+
+/* 9:41 */
+
+position: absolute;
+width: 28.43px;
+height: 11.09px;
+left: calc(50% - 28.43px/2 - 0.29px);
+top: calc(50% - 11.09px/2 + 0.04px);
+
+background: #000000;
+
+
+/* body */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 8px 24px 16px;
+
+width: 390px;
+height: 800px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+align-self: stretch;
+flex-grow: 1;
+
+
+/* Frame */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+padding: 10px 0px 0px;
+
+width: 342px;
+height: 51px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Choose Work Task */
+
+width: 295px;
+height: 41px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 34px;
+line-height: 41px;
+letter-spacing: -0.03em;
+
+color: #111114;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Frame */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 6px 0px 0px;
+
+width: 342px;
+height: 25px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Observation will be assigned to this task */
+
+width: 342px;
+height: 19px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 600;
+font-size: 15.5px;
+line-height: 19px;
+/* identical to box height */
+letter-spacing: -0.01em;
+
+color: #5F606B;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Frame */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 16px 0px 0px;
+
+width: 342px;
+height: 304px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 2;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* check / Permit to work */
+
+box-sizing: border-box;
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 18px 0px;
+gap: 15px;
+
+width: 342px;
+height: 72px;
+min-height: 72px;
+
+border-width: 2px 0px;
+border-style: solid;
+border-color: #DADADE;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Frame */
+
+box-sizing: border-box;
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 0px;
+
+width: 29px;
+height: 29px;
+
+background: #19AAE6;
+border: 2.5px solid #19AAE6;
+border-radius: 20px;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* ✓ */
+
+width: 14px;
+height: 18px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 15px;
+line-height: 18px;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Plant A · PTW-5012 */
+
+width: 298px;
+height: 19px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 16px;
+line-height: 19px;
+letter-spacing: -0.01em;
+
+color: #111114;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 1;
+
+
+/* check / Isolation locked off */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 18px 0px;
+gap: 15px;
+
+width: 342px;
+height: 72px;
+min-height: 72px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Frame */
+
+box-sizing: border-box;
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 0px;
+
+width: 29px;
+height: 29px;
+
+background: #FFFFFF;
+border: 2.5px solid #DADADE;
+border-radius: 20px;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Plant B · PTW-5019  */
+
+width: 298px;
+height: 19px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 16px;
+line-height: 19px;
+letter-spacing: -0.01em;
+
+color: #111114;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 1;
+
+
+/* check / Atmosphere tested */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 18px 0px;
+gap: 15px;
+
+width: 342px;
+height: 72px;
+min-height: 72px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 2;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Frame */
+
+box-sizing: border-box;
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 0px;
+
+width: 29px;
+height: 29px;
+
+background: #FFFFFF;
+border: 2.5px solid #DADADE;
+border-radius: 20px;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Workshop bay · HW-2208 */
+
+width: 298px;
+height: 19px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 16px;
+line-height: 19px;
+letter-spacing: -0.01em;
+
+color: #111114;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 1;
+
+
+/* check / Atmosphere tested */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 18px 0px;
+gap: 15px;
+
+width: 342px;
+height: 72px;
+min-height: 72px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 3;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Frame */
+
+box-sizing: border-box;
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 0px;
+
+width: 29px;
+height: 29px;
+
+background: #FFFFFF;
+border: 2.5px solid #DADADE;
+border-radius: 20px;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Capture via RAMS / Permit */
+
+width: 298px;
+height: 19px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 16px;
+line-height: 19px;
+letter-spacing: -0.01em;
+
+color: #111114;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 1;
+
+
+/* spacer */
+
+width: 342px;
+height: 320px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 3;
+align-self: stretch;
+flex-grow: 1;
+
+
+/* Frame */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: flex-start;
+padding: 0px;
+gap: 12px;
+
+width: 342px;
+height: 76px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 4;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* btn / Back to the checks */
+
+box-sizing: border-box;
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 24px 14px;
+
+width: 165px;
+height: 76px;
+min-height: 76px;
+
+border: 2.5px solid #5F606B;
+border-radius: 12px;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 1;
+
+
+/* Back */
+
+width: 45px;
+height: 23px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 19px;
+line-height: 23px;
+/* identical to box height */
+letter-spacing: -0.02em;
+
+color: #5F606B;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* btn / I’ve stopped the job */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 24px 14px;
+
+width: 165px;
+height: 76px;
+min-height: 76px;
+
+background: #19AAE6;
+border-radius: 12px;
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 1;
+
+
+/* Continue */
+
+width: 83px;
+height: 23px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 19px;
+line-height: 23px;
+/* identical to box height */
+letter-spacing: -0.02em;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* 02 Observation - Voice note capture */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+
+position: relative;
+width: 390px;
+height: 844px;
+left: 1189px;
+top: 301px;
+
+background: #FFFFFF;
+
+
+/* Status Bar */
+
+width: 390px;
+height: 44px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Notch */
+
+position: absolute;
+height: 30px;
+left: 0px;
+right: 0px;
+top: 0px;
+
+
+
+/* Subtract */
+
+position: absolute;
+visibility: hidden;
+width: 44px;
+height: 30px;
+left: 77px;
+top: calc(50% - 30px/2);
+
+/* System Bg Dark Base / Primary */
+background: #000000;
+
+
+/* Rectangle 11 */
+
+position: absolute;
+visibility: hidden;
+left: 121px;
+right: 121px;
+top: 0%;
+bottom: 0%;
+
+/* System Bg Dark Base / Primary */
+background: #000000;
+
+
+/* Subtract */
+
+position: absolute;
+visibility: hidden;
+width: 44px;
+height: 30px;
+right: 77px;
+top: calc(50% - 30px/2);
+
+/* System Bg Dark Base / Primary */
+background: #000000;
+transform: matrix(-1, 0, 0, 1, 0, 0);
+
+
+/* Status Icons */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 4px;
+
+position: absolute;
+width: 69px;
+height: 14px;
+right: 14px;
+top: 16px;
+
+
+
+/* Network Signal / Light
+
+Network Signal Strength • Light
+*/
+
+width: 20px;
+height: 14px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Path */
+
+position: absolute;
+left: 55%;
+right: 30%;
+top: 28.57%;
+bottom: 14.29%;
+
+background: #D1D1D6;
+
+
+/* Path */
+
+position: absolute;
+left: 32.5%;
+right: 52.5%;
+top: 42.86%;
+bottom: 14.29%;
+
+background: #D1D1D6;
+
+
+/* Path */
+
+position: absolute;
+left: 10%;
+right: 75%;
+top: 53.57%;
+bottom: 14.29%;
+
+background: #D1D1D6;
+
+
+/* Empty Bar */
+
+position: absolute;
+left: 77.5%;
+right: 7.5%;
+top: 14.29%;
+bottom: 14.29%;
+
+background: rgba(60, 60, 67, 0.18);
+
+
+/* Path */
+
+position: absolute;
+left: 55%;
+right: 30%;
+top: 28.57%;
+bottom: 14.29%;
+
+background: #000000;
+
+
+/* Path */
+
+position: absolute;
+left: 32.5%;
+right: 52.5%;
+top: 42.86%;
+bottom: 14.29%;
+
+background: #000000;
+
+
+/* Path */
+
+position: absolute;
+left: 10%;
+right: 75%;
+top: 53.57%;
+bottom: 14.29%;
+
+background: #000000;
+
+
+/* Empty Bar */
+
+position: absolute;
+visibility: hidden;
+left: 77.5%;
+right: 7.5%;
+top: 14.29%;
+bottom: 14.29%;
+
+/* Label Light / Primary */
+background: #000000;
+
+
+/* WiFi Signal / Light */
+
+width: 16px;
+height: 14px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Path */
+
+position: absolute;
+left: 37.11%;
+right: 35.56%;
+top: 63.85%;
+bottom: 14.29%;
+
+background: #000000;
+
+
+/* Path */
+
+position: absolute;
+left: 21.66%;
+right: 20.1%;
+top: 39.07%;
+bottom: 37.26%;
+
+background: #000000;
+
+
+/* Path */
+
+position: absolute;
+left: 6.25%;
+right: 4.69%;
+top: 14.29%;
+bottom: 54.84%;
+
+background: #000000;
+
+
+/* Battery / Light */
+
+width: 25px;
+height: 14px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 2;
+flex-grow: 0;
+
+
+/* 􀋦 */
+
+position: absolute;
+visibility: hidden;
+width: 8px;
+height: 12px;
+left: 8px;
+top: 1px;
+
+/* Label Dark / Primary */
+background: #FFFFFF;
+
+
+/* Subtract */
+
+position: absolute;
+visibility: hidden;
+width: 23px;
+height: 12px;
+left: 0px;
+top: 1px;
+
+/* Label Dark / Tertiary */
+background: rgba(235, 235, 245, 0.3);
+
+
+/* Rectangle 23 */
+
+position: absolute;
+width: 1px;
+height: 4px;
+left: 24px;
+top: 5px;
+
+background: rgba(60, 60, 67, 0.6);
+
+
+/* Battery */
+
+position: absolute;
+visibility: hidden;
+width: 19px;
+height: 8px;
+left: 2px;
+top: 3px;
+
+
+
+/* 100 */
+
+position: absolute;
+width: 19px;
+height: 8px;
+left: 2px;
+top: 3px;
+
+/* Color Light / Green */
+background: #34C759;
+
+
+/* 50 */
+
+position: absolute;
+visibility: hidden;
+width: 8.45px;
+height: 8px;
+left: 2px;
+top: 3px;
+
+/* Color Light / Green */
+background: #34C759;
+
+
+/* 10 */
+
+position: absolute;
+visibility: hidden;
+width: 3px;
+height: 8px;
+left: 2px;
+top: 3px;
+
+/* Color Dark / Yellow */
+background: #FFD60A;
+
+
+/* Rectangle 21 (Stroke) */
+
+position: absolute;
+width: 23px;
+height: 12px;
+left: 0px;
+top: 1px;
+
+background: rgba(60, 60, 67, 0.6);
+
+
+/* Rectangle 20 */
+
+position: absolute;
+width: 19px;
+height: 8px;
+left: 2px;
+top: calc(50% - 8px/2);
+
+background: #000000;
+border-radius: 1px;
+
+
+/* Indicator
+
+Recording Indicator
+*/
+
+position: absolute;
+width: 6px;
+height: 6px;
+right: 71px;
+top: 8px;
+
+
+
+/* Indicator */
+
+position: absolute;
+visibility: hidden;
+left: 0%;
+right: 0%;
+top: 0%;
+bottom: 0%;
+
+/* SystemGreen / Light
+
+class var systemGreen: UIColor
+*/
+background: #34C759;
+
+
+/* Time / Light */
+
+position: absolute;
+width: 54px;
+height: 21px;
+left: 21px;
+top: 12px;
+
+border-radius: 20px;
+
+
+/* 9:41 */
+
+position: absolute;
+width: 33px;
+height: 15px;
+left: calc(50% - 33px/2 + 0.5px);
+top: calc(50% - 15px/2);
+
+
+
+/* 9:41 */
+
+position: absolute;
+width: 28.43px;
+height: 11.09px;
+left: calc(50% - 28.43px/2 - 0.29px);
+top: calc(50% - 11.09px/2 + 0.04px);
+
+background: #000000;
+
+
+/* body */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 16px 24px;
+
+width: 390px;
+height: 800px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+align-self: stretch;
+flex-grow: 1;
+
+
+/* Frame */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+padding: 8px 0px 6px;
+
+width: 342px;
+height: 70px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Voice Note */
+
+width: 133px;
+height: 31px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 26px;
+line-height: 31px;
+letter-spacing: -0.025em;
+
+color: #111114;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Frame */
+
+box-sizing: border-box;
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 0px;
+
+width: 56px;
+height: 56px;
+
+border: 2px solid #DADADE;
+border-radius: 12px;
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* ✕ */
+
+width: 18px;
+height: 24px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 20px;
+line-height: 24px;
+
+color: #111114;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* spacer */
+
+width: 342px;
+height: 76px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Group 10 */
+
+width: 342px;
+height: 58.91px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 2;
+flex-grow: 0;
+
+
+/* Frame */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 0px;
+gap: 5px;
+
+position: absolute;
+width: 341.64px;
+height: 58px;
+left: 24.36px;
+top: 162.45px;
+
+
+
+/* Group 8 */
+
+width: 113px;
+height: 58px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Rectangle */
+
+position: absolute;
+width: 3px;
+height: 14px;
+left: 114.32px;
+top: 22px;
+
+background: #19AAE6;
+border-radius: 3px;
+
+
+/* Rectangle */
+
+position: absolute;
+width: 3px;
+height: 30px;
+left: 124.32px;
+top: 14px;
+
+background: #19AAE6;
+border-radius: 3px;
+
+
+/* Rectangle */
+
+position: absolute;
+width: 3px;
+height: 52px;
+left: 134.32px;
+top: 3px;
+
+background: #19AAE6;
+border-radius: 3px;
+
+
+/* Rectangle */
+
+position: absolute;
+width: 3px;
+height: 24px;
+left: 144.32px;
+top: 17px;
+
+background: #19AAE6;
+border-radius: 3px;
+
+
+/* Rectangle */
+
+position: absolute;
+width: 3px;
+height: 44px;
+left: 154.32px;
+top: 7px;
+
+background: #19AAE6;
+border-radius: 3px;
+
+
+/* Rectangle */
+
+position: absolute;
+width: 3px;
+height: 16px;
+left: 164.32px;
+top: 21px;
+
+background: #19AAE6;
+border-radius: 3px;
+
+
+/* Rectangle */
+
+position: absolute;
+width: 3px;
+height: 36px;
+left: 174.32px;
+top: 11px;
+
+background: #19AAE6;
+border-radius: 3px;
+
+
+/* Rectangle */
+
+position: absolute;
+width: 3px;
+height: 58px;
+left: 184.32px;
+top: 0px;
+
+background: #19AAE6;
+border-radius: 3px;
+
+
+/* Rectangle */
+
+position: absolute;
+width: 3px;
+height: 20px;
+left: 194.32px;
+top: 19px;
+
+background: #19AAE6;
+border-radius: 3px;
+
+
+/* Rectangle */
+
+position: absolute;
+width: 3px;
+height: 40px;
+left: 204.32px;
+top: 9px;
+
+background: #19AAE6;
+border-radius: 3px;
+
+
+/* Rectangle */
+
+position: absolute;
+width: 3px;
+height: 18px;
+left: 214.32px;
+top: 20px;
+
+background: #19AAE6;
+border-radius: 3px;
+
+
+/* Rectangle */
+
+position: absolute;
+width: 3px;
+height: 32px;
+left: 224.32px;
+top: 13px;
+
+background: #19AAE6;
+border-radius: 3px;
+
+
+/* Group 9 */
+
+position: absolute;
+width: 291.7px;
+height: 58.91px;
+left: 24px;
+top: 162px;
+
+opacity: 0.9;
+
+
+/* Group 8 */
+
+position: absolute;
+width: 291.7px;
+height: 42.19px;
+left: 24px;
+top: 170.36px;
+
+opacity: 0.3;
+filter: blur(5px);
+
+
+/* Rectangle */
+
+position: absolute;
+width: 3.9px;
+height: 10.18px;
+left: 69.5px;
+top: 186.36px;
+
+background: #19AAE6;
+border-radius: 3px;
+
+
+/* Rectangle */
+
+position: absolute;
+width: 3.9px;
+height: 21.82px;
+left: 91.53px;
+top: 180.54px;
+
+background: #19AAE6;
+border-radius: 3px;
+
+
+/* Rectangle */
+
+position: absolute;
+width: 3.9px;
+height: 37.83px;
+left: 113.56px;
+top: 172.54px;
+
+background: #19AAE6;
+border-radius: 3px;
+
+
+/* Rectangle */
+
+position: absolute;
+width: 3.9px;
+height: 17.46px;
+left: 135.58px;
+top: 182.72px;
+
+background: #19AAE6;
+border-radius: 2px;
+
+
+/* Rectangle */
+
+position: absolute;
+width: 3.9px;
+height: 32.01px;
+left: 157.61px;
+top: 175.45px;
+
+background: #19AAE6;
+border-radius: 3px;
+
+
+/* Rectangle */
+
+position: absolute;
+width: 3.9px;
+height: 11.64px;
+left: 179.64px;
+top: 185.63px;
+
+background: #19AAE6;
+border-radius: 3px;
+
+
+/* Rectangle */
+
+position: absolute;
+width: 3.9px;
+height: 26.19px;
+left: 201.66px;
+top: 178.36px;
+
+background: #19AAE6;
+border-radius: 3px;
+
+
+/* Rectangle */
+
+position: absolute;
+width: 3.9px;
+height: 42.19px;
+left: 223.69px;
+top: 170.36px;
+
+background: #19AAE6;
+border-radius: 3px;
+
+
+/* Rectangle */
+
+position: absolute;
+width: 3.9px;
+height: 14.55px;
+left: 245.72px;
+top: 184.18px;
+
+background: #19AAE6;
+border-radius: 3px;
+
+
+/* Rectangle */
+
+position: absolute;
+width: 3.9px;
+height: 29.1px;
+left: 267.74px;
+top: 176.91px;
+
+background: #19AAE6;
+border-radius: 3px;
+
+
+/* Rectangle */
+
+position: absolute;
+width: 3.9px;
+height: 13.09px;
+left: 289.77px;
+top: 184.91px;
+
+background: #19AAE6;
+border-radius: 3px;
+
+
+/* Rectangle */
+
+position: absolute;
+width: 3.9px;
+height: 23.28px;
+left: 311.8px;
+top: 179.81px;
+
+background: #19AAE6;
+border-radius: 3px;
+
+
+/* Rectangle */
+
+position: absolute;
+width: 3.9px;
+height: 1.81px;
+left: 24px;
+top: 190.55px;
+
+background: #19AAE6;
+border-radius: 3px;
+
+
+/* Ellipse 1 */
+
+position: absolute;
+width: 57.5px;
+height: 58.91px;
+left: 166.43px;
+top: 162px;
+
+background: #19AAE6;
+filter: blur(50px);
+
+
+/* Frame */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 24px 0px 0px;
+
+width: 342px;
+height: 70px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 3;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* I moved the cable run back from the hatch edge and cable tied it to the rail */
+
+width: 342px;
+height: 46px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 600;
+font-size: 19px;
+line-height: 23px;
+text-align: center;
+letter-spacing: -0.01em;
+
+color: #111114;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Frame */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 16px 0px 0px;
+
+width: 342px;
+height: 40px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 4;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* 0:07 */
+
+width: 342px;
+height: 24px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 20px;
+line-height: 24px;
+text-align: center;
+
+color: #5F606B;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* spacer */
+
+width: 342px;
+height: 205px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 5;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Frame 4075 */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+gap: 52px;
+
+width: 342px;
+height: 241px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 6;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Frame 4074 */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+
+width: 342px;
+height: 113px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Frame */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 0px;
+
+width: 342px;
+height: 82px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Frame */
+
+box-sizing: border-box;
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 0px;
+
+width: 82px;
+height: 82px;
+
+border: 4px solid #19AAE6;
+border-radius: 99px;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Rectangle */
+
+width: 34px;
+height: 34px;
+
+background: #19AAE6;
+border-radius: 6px;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Frame */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 16px 0px 0px;
+
+width: 342px;
+height: 31px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Stops itself at 30 seconds */
+
+width: 342px;
+height: 15px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 600;
+font-size: 12px;
+line-height: 15px;
+/* identical to box height */
+text-align: center;
+
+color: #5F606B;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Frame */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: flex-start;
+padding: 0px;
+gap: 12px;
+
+width: 342px;
+height: 76px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* btn / No */
+
+box-sizing: border-box;
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 24px 14px;
+
+width: 165px;
+height: 76px;
+min-height: 76px;
+
+border: 2px solid #5F606B;
+border-radius: 12px;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 1;
+
+
+/* Clear */
+
+width: 49px;
+height: 24px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 20px;
+line-height: 24px;
+letter-spacing: -0.02em;
+
+color: #5F606B;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* btn / Yes */
+
+box-sizing: border-box;
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 24px 14px;
+
+width: 165px;
+height: 76px;
+min-height: 76px;
+
+border: 2px solid #19AAE6;
+border-radius: 12px;
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 1;
+
+
+/* Add this */
+
+width: 77px;
+height: 24px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 20px;
+line-height: 24px;
+letter-spacing: -0.02em;
+
+color: #19AAE6;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* 05 Shared */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+
+position: relative;
+width: 390px;
+height: 844px;
+left: 3520px;
+top: 296px;
+
+background: #FFFFFF;
+
+
+/* Status Bar */
+
+width: 390px;
+height: 44px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Notch */
+
+position: absolute;
+height: 30px;
+left: 0px;
+right: 0px;
+top: 0px;
+
+
+
+/* Subtract */
+
+position: absolute;
+visibility: hidden;
+width: 44px;
+height: 30px;
+left: 77px;
+top: calc(50% - 30px/2);
+
+/* System Bg Dark Base / Primary */
+background: #000000;
+
+
+/* Rectangle 11 */
+
+position: absolute;
+visibility: hidden;
+left: 121px;
+right: 121px;
+top: 0%;
+bottom: 0%;
+
+/* System Bg Dark Base / Primary */
+background: #000000;
+
+
+/* Subtract */
+
+position: absolute;
+visibility: hidden;
+width: 44px;
+height: 30px;
+right: 77px;
+top: calc(50% - 30px/2);
+
+/* System Bg Dark Base / Primary */
+background: #000000;
+transform: matrix(-1, 0, 0, 1, 0, 0);
+
+
+/* Status Icons */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 4px;
+
+position: absolute;
+width: 69px;
+height: 14px;
+right: 14px;
+top: 16px;
+
+
+
+/* Network Signal / Light
+
+Network Signal Strength • Light
+*/
+
+width: 20px;
+height: 14px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Path */
+
+position: absolute;
+left: 55%;
+right: 30%;
+top: 28.57%;
+bottom: 14.29%;
+
+background: #D1D1D6;
+
+
+/* Path */
+
+position: absolute;
+left: 32.5%;
+right: 52.5%;
+top: 42.86%;
+bottom: 14.29%;
+
+background: #D1D1D6;
+
+
+/* Path */
+
+position: absolute;
+left: 10%;
+right: 75%;
+top: 53.57%;
+bottom: 14.29%;
+
+background: #D1D1D6;
+
+
+/* Empty Bar */
+
+position: absolute;
+left: 77.5%;
+right: 7.5%;
+top: 14.29%;
+bottom: 14.29%;
+
+background: rgba(60, 60, 67, 0.18);
+
+
+/* Path */
+
+position: absolute;
+left: 55%;
+right: 30%;
+top: 28.57%;
+bottom: 14.29%;
+
+background: #000000;
+
+
+/* Path */
+
+position: absolute;
+left: 32.5%;
+right: 52.5%;
+top: 42.86%;
+bottom: 14.29%;
+
+background: #000000;
+
+
+/* Path */
+
+position: absolute;
+left: 10%;
+right: 75%;
+top: 53.57%;
+bottom: 14.29%;
+
+background: #000000;
+
+
+/* Empty Bar */
+
+position: absolute;
+visibility: hidden;
+left: 77.5%;
+right: 7.5%;
+top: 14.29%;
+bottom: 14.29%;
+
+/* Label Light / Primary */
+background: #000000;
+
+
+/* WiFi Signal / Light */
+
+width: 16px;
+height: 14px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Path */
+
+position: absolute;
+left: 37.11%;
+right: 35.56%;
+top: 63.85%;
+bottom: 14.29%;
+
+background: #000000;
+
+
+/* Path */
+
+position: absolute;
+left: 21.66%;
+right: 20.1%;
+top: 39.07%;
+bottom: 37.26%;
+
+background: #000000;
+
+
+/* Path */
+
+position: absolute;
+left: 6.25%;
+right: 4.69%;
+top: 14.29%;
+bottom: 54.84%;
+
+background: #000000;
+
+
+/* Battery / Light */
+
+width: 25px;
+height: 14px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 2;
+flex-grow: 0;
+
+
+/* 􀋦 */
+
+position: absolute;
+visibility: hidden;
+width: 8px;
+height: 12px;
+left: 8px;
+top: 1px;
+
+/* Label Dark / Primary */
+background: #FFFFFF;
+
+
+/* Subtract */
+
+position: absolute;
+visibility: hidden;
+width: 23px;
+height: 12px;
+left: 0px;
+top: 1px;
+
+/* Label Dark / Tertiary */
+background: rgba(235, 235, 245, 0.3);
+
+
+/* Rectangle 23 */
+
+position: absolute;
+width: 1px;
+height: 4px;
+left: 24px;
+top: 5px;
+
+background: rgba(60, 60, 67, 0.6);
+
+
+/* Battery */
+
+position: absolute;
+visibility: hidden;
+width: 19px;
+height: 8px;
+left: 2px;
+top: 3px;
+
+
+
+/* 100 */
+
+position: absolute;
+width: 19px;
+height: 8px;
+left: 2px;
+top: 3px;
+
+/* Color Light / Green */
+background: #34C759;
+
+
+/* 50 */
+
+position: absolute;
+visibility: hidden;
+width: 8.45px;
+height: 8px;
+left: 2px;
+top: 3px;
+
+/* Color Light / Green */
+background: #34C759;
+
+
+/* 10 */
+
+position: absolute;
+visibility: hidden;
+width: 3px;
+height: 8px;
+left: 2px;
+top: 3px;
+
+/* Color Dark / Yellow */
+background: #FFD60A;
+
+
+/* Rectangle 21 (Stroke) */
+
+position: absolute;
+width: 23px;
+height: 12px;
+left: 0px;
+top: 1px;
+
+background: rgba(60, 60, 67, 0.6);
+
+
+/* Rectangle 20 */
+
+position: absolute;
+width: 19px;
+height: 8px;
+left: 2px;
+top: calc(50% - 8px/2);
+
+background: #000000;
+border-radius: 1px;
+
+
+/* Indicator
+
+Recording Indicator
+*/
+
+position: absolute;
+width: 6px;
+height: 6px;
+right: 71px;
+top: 8px;
+
+
+
+/* Indicator */
+
+position: absolute;
+visibility: hidden;
+left: 0%;
+right: 0%;
+top: 0%;
+bottom: 0%;
+
+/* SystemGreen / Light
+
+class var systemGreen: UIColor
+*/
+background: #34C759;
+
+
+/* Time / Light */
+
+position: absolute;
+width: 54px;
+height: 21px;
+left: 21px;
+top: 12px;
+
+border-radius: 20px;
+
+
+/* 9:41 */
+
+position: absolute;
+width: 33px;
+height: 15px;
+left: calc(50% - 33px/2 + 0.5px);
+top: calc(50% - 15px/2);
+
+
+
+/* 9:41 */
+
+position: absolute;
+width: 28.43px;
+height: 11.09px;
+left: calc(50% - 28.43px/2 - 0.29px);
+top: calc(50% - 11.09px/2 + 0.04px);
+
+background: #000000;
+
+
+/* body */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 8px 24px 24px;
+
+width: 390px;
+height: 800px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+align-self: stretch;
+flex-grow: 1;
+
+
+/* spacer */
+
+width: 342px;
+height: 185px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 1;
+
+
+/* Frame */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 0px;
+
+width: 342px;
+height: 72px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Frame */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 0px;
+
+width: 72px;
+height: 72px;
+
+background: #19AAE6;
+border-radius: 16px;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* ✓ */
+
+width: 30px;
+height: 41px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 34px;
+line-height: 41px;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Frame */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 26px 0px 0px;
+
+width: 342px;
+height: 62px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 2;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* SHARED */
+
+width: 342px;
+height: 36px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 30px;
+line-height: 36px;
+text-align: center;
+letter-spacing: -0.03em;
+
+color: #111114;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Frame */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 14px 0px 0px;
+
+width: 342px;
+height: 33px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 3;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* What you shared can help the next person */
+
+width: 342px;
+height: 19px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 15.5px;
+line-height: 19px;
+/* identical to box height */
+text-align: center;
+letter-spacing: -0.01em;
+
+color: #5F606B;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Frame */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 18px 0px 0px;
+
+width: 342px;
+height: 33px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 4;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* 5 photos · 1 video · Voice Note */
+
+width: 342px;
+height: 15px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 600;
+font-size: 12.5px;
+line-height: 15px;
+text-align: center;
+
+color: #808085;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* spacer */
+
+width: 342px;
+height: 307px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 5;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Frame */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: flex-start;
+padding: 0px;
+gap: 12px;
+
+width: 342px;
+height: 76px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 6;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* btn / See your shares */
+
+box-sizing: border-box;
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 24px 14px;
+
+width: 165px;
+height: 76px;
+min-height: 76px;
+
+border: 2.5px solid #5F606B;
+border-radius: 12px;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 1;
+
+
+/* My Echo */
+
+width: 77px;
+height: 23px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 19px;
+line-height: 23px;
+/* identical to box height */
+letter-spacing: -0.02em;
+
+color: #5F606B;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* btn / Done */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 24px 14px;
+
+width: 165px;
+height: 76px;
+min-height: 76px;
+
+background: #19AAE6;
+border-radius: 12px;
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 1;
+
+
+/* Done */
+
+width: 48px;
+height: 23px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 19px;
+line-height: 23px;
+/* identical to box height */
+letter-spacing: -0.02em;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* START HERE */
+
+position: absolute;
+width: 134px;
+height: 27px;
+left: 275px;
+top: 221px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 22px;
+line-height: 27px;
+/* identical to box height */
+letter-spacing: -0.01em;
+
+color: #111114;
+
+
+
+/* Worker Selects observation */
+
+position: absolute;
+width: 285px;
+height: 27px;
+left: 329px;
+top: 1163px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 22px;
+line-height: 27px;
+/* identical to box height */
+letter-spacing: -0.01em;
+
+color: #111114;
+
+
+
+/* Voice note being added, transcript will be show to the user */
+
+position: absolute;
+width: 356px;
+height: 54px;
+left: 1189px;
+top: 1163px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 22px;
+line-height: 27px;
+letter-spacing: -0.01em;
+
+color: #111114;
+
+
+
+/* User will categorise the observation. Button text will change based on the selection. */
+
+position: absolute;
+width: 377px;
+height: 81px;
+left: 2574px;
+top: 1163px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 22px;
+line-height: 27px;
+letter-spacing: -0.01em;
+
+color: #111114;
+
+
+
+/* Observation is shared. */
+
+position: absolute;
+width: 232px;
+height: 27px;
+left: 3520px;
+top: 1163px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 22px;
+line-height: 27px;
+/* identical to box height */
+letter-spacing: -0.01em;
+
+color: #111114;
+
+
+
+/* 03 Observation — Video capture */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 0px;
+
+position: relative;
+width: 390px;
+height: 844px;
+left: 1645px;
+top: 296px;
+
+background: #FFFFFF;
+
+
+/* Status Bar */
+
+width: 390px;
+height: 44px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Notch */
+
+position: absolute;
+height: 30px;
+left: 0px;
+right: 0px;
+top: 0px;
+
+
+
+/* Subtract */
+
+position: absolute;
+visibility: hidden;
+width: 44px;
+height: 30px;
+left: 77px;
+top: calc(50% - 30px/2);
+
+/* System Bg Dark Base / Primary */
+background: #000000;
+
+
+/* Rectangle 11 */
+
+position: absolute;
+visibility: hidden;
+left: 121px;
+right: 121px;
+top: 0%;
+bottom: 0%;
+
+/* System Bg Dark Base / Primary */
+background: #000000;
+
+
+/* Subtract */
+
+position: absolute;
+visibility: hidden;
+width: 44px;
+height: 30px;
+right: 77px;
+top: calc(50% - 30px/2);
+
+/* System Bg Dark Base / Primary */
+background: #000000;
+transform: matrix(-1, 0, 0, 1, 0, 0);
+
+
+/* Status Icons */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 4px;
+
+position: absolute;
+width: 69px;
+height: 14px;
+right: 14px;
+top: 16px;
+
+
+
+/* Network Signal / Light
+
+Network Signal Strength • Light
+*/
+
+width: 20px;
+height: 14px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Path */
+
+position: absolute;
+left: 55%;
+right: 30%;
+top: 28.57%;
+bottom: 14.29%;
+
+background: #D1D1D6;
+
+
+/* Path */
+
+position: absolute;
+left: 32.5%;
+right: 52.5%;
+top: 42.86%;
+bottom: 14.29%;
+
+background: #D1D1D6;
+
+
+/* Path */
+
+position: absolute;
+left: 10%;
+right: 75%;
+top: 53.57%;
+bottom: 14.29%;
+
+background: #D1D1D6;
+
+
+/* Empty Bar */
+
+position: absolute;
+left: 77.5%;
+right: 7.5%;
+top: 14.29%;
+bottom: 14.29%;
+
+background: rgba(60, 60, 67, 0.18);
+
+
+/* Path */
+
+position: absolute;
+left: 55%;
+right: 30%;
+top: 28.57%;
+bottom: 14.29%;
+
+background: #000000;
+
+
+/* Path */
+
+position: absolute;
+left: 32.5%;
+right: 52.5%;
+top: 42.86%;
+bottom: 14.29%;
+
+background: #000000;
+
+
+/* Path */
+
+position: absolute;
+left: 10%;
+right: 75%;
+top: 53.57%;
+bottom: 14.29%;
+
+background: #000000;
+
+
+/* Empty Bar */
+
+position: absolute;
+visibility: hidden;
+left: 77.5%;
+right: 7.5%;
+top: 14.29%;
+bottom: 14.29%;
+
+/* Label Light / Primary */
+background: #000000;
+
+
+/* WiFi Signal / Light */
+
+width: 16px;
+height: 14px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Path */
+
+position: absolute;
+left: 37.11%;
+right: 35.56%;
+top: 63.85%;
+bottom: 14.29%;
+
+background: #000000;
+
+
+/* Path */
+
+position: absolute;
+left: 21.66%;
+right: 20.1%;
+top: 39.07%;
+bottom: 37.26%;
+
+background: #000000;
+
+
+/* Path */
+
+position: absolute;
+left: 6.25%;
+right: 4.69%;
+top: 14.29%;
+bottom: 54.84%;
+
+background: #000000;
+
+
+/* Battery / Light */
+
+width: 25px;
+height: 14px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 2;
+flex-grow: 0;
+
+
+/* 􀋦 */
+
+position: absolute;
+visibility: hidden;
+width: 8px;
+height: 12px;
+left: 8px;
+top: 1px;
+
+/* Label Dark / Primary */
+background: #FFFFFF;
+
+
+/* Subtract */
+
+position: absolute;
+visibility: hidden;
+width: 23px;
+height: 12px;
+left: 0px;
+top: 1px;
+
+/* Label Dark / Tertiary */
+background: rgba(235, 235, 245, 0.3);
+
+
+/* Rectangle 23 */
+
+position: absolute;
+width: 1px;
+height: 4px;
+left: 24px;
+top: 5px;
+
+background: rgba(60, 60, 67, 0.6);
+
+
+/* Battery */
+
+position: absolute;
+visibility: hidden;
+width: 19px;
+height: 8px;
+left: 2px;
+top: 3px;
+
+
+
+/* 100 */
+
+position: absolute;
+width: 19px;
+height: 8px;
+left: 2px;
+top: 3px;
+
+/* Color Light / Green */
+background: #34C759;
+
+
+/* 50 */
+
+position: absolute;
+visibility: hidden;
+width: 8.45px;
+height: 8px;
+left: 2px;
+top: 3px;
+
+/* Color Light / Green */
+background: #34C759;
+
+
+/* 10 */
+
+position: absolute;
+visibility: hidden;
+width: 3px;
+height: 8px;
+left: 2px;
+top: 3px;
+
+/* Color Dark / Yellow */
+background: #FFD60A;
+
+
+/* Rectangle 21 (Stroke) */
+
+position: absolute;
+width: 23px;
+height: 12px;
+left: 0px;
+top: 1px;
+
+background: rgba(60, 60, 67, 0.6);
+
+
+/* Rectangle 20 */
+
+position: absolute;
+width: 19px;
+height: 8px;
+left: 2px;
+top: calc(50% - 8px/2);
+
+background: #000000;
+border-radius: 1px;
+
+
+/* Indicator
+
+Recording Indicator
+*/
+
+position: absolute;
+width: 6px;
+height: 6px;
+right: 71px;
+top: 8px;
+
+
+
+/* Indicator */
+
+position: absolute;
+visibility: hidden;
+left: 0%;
+right: 0%;
+top: 0%;
+bottom: 0%;
+
+/* SystemGreen / Light
+
+class var systemGreen: UIColor
+*/
+background: #34C759;
+
+
+/* Time / Light */
+
+position: absolute;
+width: 54px;
+height: 21px;
+left: 21px;
+top: 12px;
+
+border-radius: 20px;
+
+
+/* 9:41 */
+
+position: absolute;
+width: 33px;
+height: 15px;
+left: calc(50% - 33px/2 + 0.5px);
+top: calc(50% - 15px/2);
+
+
+
+/* 9:41 */
+
+position: absolute;
+width: 28.43px;
+height: 11.09px;
+left: calc(50% - 28.43px/2 - 0.29px);
+top: calc(50% - 11.09px/2 + 0.04px);
+
+background: #000000;
+
+
+/* Frame 4045 */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 8px 16px 0px;
+gap: 4px;
+
+width: 390px;
+height: 336px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Frame */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 0px;
+
+width: 342px;
+height: 328px;
+
+background: #16161A;
+border-radius: 12px;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* photo */
+
+width: 37px;
+height: 16px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 600;
+font-size: 13px;
+line-height: 16px;
+/* identical to box height */
+
+color: #5C5C61;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Frame */
+
+box-sizing: border-box;
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: flex-start;
+padding: 0px;
+
+width: 390px;
+height: 62px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 2;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Frame */
+
+box-sizing: border-box;
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+padding: 16px 12px 13px;
+
+width: 195px;
+height: 62px;
+
+border-bottom: 1px solid #D1D1D6;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 1;
+
+
+/* PHOTO */
+
+width: 48px;
+height: 15px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 12.5px;
+line-height: 15px;
+letter-spacing: 0.06em;
+
+color: #9A9B9D;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Frame */
+
+box-sizing: border-box;
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+padding: 16px 12px 13px;
+
+width: 195px;
+height: 62px;
+
+border-bottom: 3px solid #19AAE6;
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 1;
+
+
+/* VIDEO */
+
+width: 43px;
+height: 15px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 12.5px;
+line-height: 15px;
+letter-spacing: 0.06em;
+
+color: #111114;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Frame 4048 */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+padding: 24px 0px 16px;
+gap: 8px;
+
+width: 141px;
+height: 226px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 3;
+flex-grow: 0;
+
+
+/* Frame */
+
+box-sizing: border-box;
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 0px;
+
+width: 82px;
+height: 82px;
+
+border: 4px solid #BE123C;
+border-radius: 99px;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Ellipse */
+
+width: 60px;
+height: 60px;
+
+background: #BE123C;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Frame 4047 */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 0px;
+gap: 24px;
+
+width: 342px;
+height: 152px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 4;
+flex-grow: 0;
+
+
+/* Frame 4046 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: flex-start;
+padding: 0px;
+gap: 12px;
+
+width: 342px;
+height: 52px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Frame */
+
+box-sizing: border-box;
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+padding: 12px 14px;
+gap: 11px;
+
+width: 342px;
+height: 62px;
+
+background: linear-gradient(0deg, #FAFAFA, #FAFAFA), #FFFFFF;
+border: 1px solid #19AAE6;
+border-radius: 8px;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 1;
+
+
+/* Video 0:15 */
+
+margin: 0 auto;
+width: 65px;
+height: 15px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 12.5px;
+line-height: 15px;
+letter-spacing: -0.01em;
+
+color: #111114;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* x 2 */
+
+box-sizing: border-box;
+
+margin: 0 auto;
+width: 24px;
+height: 24px;
+
+background: #000000;
+border: 1px solid #111114;
+border-radius: 20px;
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Group 11 */
+
+position: absolute;
+width: 9px;
+height: 9px;
+left: 7.28px;
+top: 7.28px;
+
+
+
+/* Vector (Stroke) */
+
+position: absolute;
+left: 30.33%;
+right: 32.17%;
+top: 30.33%;
+bottom: 32.17%;
+
+background: #FFFFFF;
+
+
+/* Vector (Stroke) */
+
+position: absolute;
+left: 30.33%;
+right: 32.17%;
+top: 30.33%;
+bottom: 32.17%;
+
+background: #FFFFFF;
+
+
+/* btn / Share */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 24px 14px;
+
+width: 342px;
+height: 76px;
+min-height: 76px;
+
+background: #19AAE6;
+border-radius: 12px;
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Continue */
+
+width: 88px;
+height: 24px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 20px;
+line-height: 24px;
+letter-spacing: -0.02em;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* 02 Observation — Image Captured */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 0px;
+
+position: relative;
+width: 390px;
+height: 844px;
+left: 733px;
+top: 301px;
+
+background: #FFFFFF;
+
+
+/* Status Bar */
+
+width: 390px;
+height: 44px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Notch */
+
+position: absolute;
+height: 30px;
+left: 0px;
+right: 0px;
+top: 0px;
+
+
+
+/* Subtract */
+
+position: absolute;
+visibility: hidden;
+width: 44px;
+height: 30px;
+left: 77px;
+top: calc(50% - 30px/2);
+
+/* System Bg Dark Base / Primary */
+background: #000000;
+
+
+/* Rectangle 11 */
+
+position: absolute;
+visibility: hidden;
+left: 121px;
+right: 121px;
+top: 0%;
+bottom: 0%;
+
+/* System Bg Dark Base / Primary */
+background: #000000;
+
+
+/* Subtract */
+
+position: absolute;
+visibility: hidden;
+width: 44px;
+height: 30px;
+right: 77px;
+top: calc(50% - 30px/2);
+
+/* System Bg Dark Base / Primary */
+background: #000000;
+transform: matrix(-1, 0, 0, 1, 0, 0);
+
+
+/* Status Icons */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 4px;
+
+position: absolute;
+width: 69px;
+height: 14px;
+right: 14px;
+top: 16px;
+
+
+
+/* Network Signal / Light
+
+Network Signal Strength • Light
+*/
+
+width: 20px;
+height: 14px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Path */
+
+position: absolute;
+left: 55%;
+right: 30%;
+top: 28.57%;
+bottom: 14.29%;
+
+background: #D1D1D6;
+
+
+/* Path */
+
+position: absolute;
+left: 32.5%;
+right: 52.5%;
+top: 42.86%;
+bottom: 14.29%;
+
+background: #D1D1D6;
+
+
+/* Path */
+
+position: absolute;
+left: 10%;
+right: 75%;
+top: 53.57%;
+bottom: 14.29%;
+
+background: #D1D1D6;
+
+
+/* Empty Bar */
+
+position: absolute;
+left: 77.5%;
+right: 7.5%;
+top: 14.29%;
+bottom: 14.29%;
+
+background: rgba(60, 60, 67, 0.18);
+
+
+/* Path */
+
+position: absolute;
+left: 55%;
+right: 30%;
+top: 28.57%;
+bottom: 14.29%;
+
+background: #000000;
+
+
+/* Path */
+
+position: absolute;
+left: 32.5%;
+right: 52.5%;
+top: 42.86%;
+bottom: 14.29%;
+
+background: #000000;
+
+
+/* Path */
+
+position: absolute;
+left: 10%;
+right: 75%;
+top: 53.57%;
+bottom: 14.29%;
+
+background: #000000;
+
+
+/* Empty Bar */
+
+position: absolute;
+visibility: hidden;
+left: 77.5%;
+right: 7.5%;
+top: 14.29%;
+bottom: 14.29%;
+
+/* Label Light / Primary */
+background: #000000;
+
+
+/* WiFi Signal / Light */
+
+width: 16px;
+height: 14px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Path */
+
+position: absolute;
+left: 37.11%;
+right: 35.56%;
+top: 63.85%;
+bottom: 14.29%;
+
+background: #000000;
+
+
+/* Path */
+
+position: absolute;
+left: 21.66%;
+right: 20.1%;
+top: 39.07%;
+bottom: 37.26%;
+
+background: #000000;
+
+
+/* Path */
+
+position: absolute;
+left: 6.25%;
+right: 4.69%;
+top: 14.29%;
+bottom: 54.84%;
+
+background: #000000;
+
+
+/* Battery / Light */
+
+width: 25px;
+height: 14px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 2;
+flex-grow: 0;
+
+
+/* 􀋦 */
+
+position: absolute;
+visibility: hidden;
+width: 8px;
+height: 12px;
+left: 8px;
+top: 1px;
+
+/* Label Dark / Primary */
+background: #FFFFFF;
+
+
+/* Subtract */
+
+position: absolute;
+visibility: hidden;
+width: 23px;
+height: 12px;
+left: 0px;
+top: 1px;
+
+/* Label Dark / Tertiary */
+background: rgba(235, 235, 245, 0.3);
+
+
+/* Rectangle 23 */
+
+position: absolute;
+width: 1px;
+height: 4px;
+left: 24px;
+top: 5px;
+
+background: rgba(60, 60, 67, 0.6);
+
+
+/* Battery */
+
+position: absolute;
+visibility: hidden;
+width: 19px;
+height: 8px;
+left: 2px;
+top: 3px;
+
+
+
+/* 100 */
+
+position: absolute;
+width: 19px;
+height: 8px;
+left: 2px;
+top: 3px;
+
+/* Color Light / Green */
+background: #34C759;
+
+
+/* 50 */
+
+position: absolute;
+visibility: hidden;
+width: 8.45px;
+height: 8px;
+left: 2px;
+top: 3px;
+
+/* Color Light / Green */
+background: #34C759;
+
+
+/* 10 */
+
+position: absolute;
+visibility: hidden;
+width: 3px;
+height: 8px;
+left: 2px;
+top: 3px;
+
+/* Color Dark / Yellow */
+background: #FFD60A;
+
+
+/* Rectangle 21 (Stroke) */
+
+position: absolute;
+width: 23px;
+height: 12px;
+left: 0px;
+top: 1px;
+
+background: rgba(60, 60, 67, 0.6);
+
+
+/* Rectangle 20 */
+
+position: absolute;
+width: 19px;
+height: 8px;
+left: 2px;
+top: calc(50% - 8px/2);
+
+background: #000000;
+border-radius: 1px;
+
+
+/* Indicator
+
+Recording Indicator
+*/
+
+position: absolute;
+width: 6px;
+height: 6px;
+right: 71px;
+top: 8px;
+
+
+
+/* Indicator */
+
+position: absolute;
+visibility: hidden;
+left: 0%;
+right: 0%;
+top: 0%;
+bottom: 0%;
+
+/* SystemGreen / Light
+
+class var systemGreen: UIColor
+*/
+background: #34C759;
+
+
+/* Time / Light */
+
+position: absolute;
+width: 54px;
+height: 21px;
+left: 21px;
+top: 12px;
+
+border-radius: 20px;
+
+
+/* 9:41 */
+
+position: absolute;
+width: 33px;
+height: 15px;
+left: calc(50% - 33px/2 + 0.5px);
+top: calc(50% - 15px/2);
+
+
+
+/* 9:41 */
+
+position: absolute;
+width: 28.43px;
+height: 11.09px;
+left: calc(50% - 28.43px/2 - 0.29px);
+top: calc(50% - 11.09px/2 + 0.04px);
+
+background: #000000;
+
+
+/* Frame 4045 */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 8px 24px 0px;
+gap: 4px;
+
+width: 390px;
+height: 336px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Frame */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 0px;
+
+width: 342px;
+height: 328px;
+
+background: #16161A;
+border-radius: 12px;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* photo */
+
+width: 37px;
+height: 16px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 600;
+font-size: 13px;
+line-height: 16px;
+/* identical to box height */
+
+color: #5C5C61;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Frame */
+
+box-sizing: border-box;
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: flex-start;
+padding: 0px;
+
+width: 390px;
+height: 62px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 2;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Frame */
+
+box-sizing: border-box;
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+padding: 16px 12px 13px;
+
+width: 195px;
+height: 62px;
+
+border-bottom: 3px solid #19AAE6;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 1;
+
+
+/* PHOTO */
+
+width: 48px;
+height: 15px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 12.5px;
+line-height: 15px;
+letter-spacing: 0.06em;
+
+color: #111114;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Frame */
+
+box-sizing: border-box;
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+padding: 16px 12px 13px;
+
+width: 195px;
+height: 62px;
+
+border-bottom: 1px solid #D1D1D6;
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 1;
+
+
+/* VIDEO */
+
+width: 43px;
+height: 15px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 12.5px;
+line-height: 15px;
+letter-spacing: 0.06em;
+
+color: #9A9B9D;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Frame 4086 */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 0px;
+gap: 82px;
+
+width: 390px;
+height: 378px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 3;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Frame 4085 */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 0px;
+
+width: 390px;
+height: 220px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Frame */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 16px 0px 0px;
+
+width: 390px;
+height: 90px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Frame */
+
+box-sizing: border-box;
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 20px 0px;
+gap: 11px;
+
+width: 342px;
+height: 64px;
+min-height: 64px;
+
+border: 2px solid #E2E4EC;
+border-radius: 12px;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* mic 1 */
+
+width: 24px;
+height: 24px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Vector (Stroke) */
+
+position: absolute;
+left: 45.83%;
+right: 45.83%;
+top: 75%;
+bottom: 4.17%;
+
+background: #19AAE6;
+
+
+/* Vector (Stroke) */
+
+position: absolute;
+left: 16.67%;
+right: 16.67%;
+top: 37.5%;
+bottom: 16.67%;
+
+background: #19AAE6;
+
+
+/* Vector (Stroke) */
+
+position: absolute;
+left: 33.33%;
+right: 33.33%;
+top: 4.17%;
+bottom: 33.33%;
+
+background: #19AAE6;
+
+
+/* Tell us what you noticed */
+
+width: 182px;
+height: 19px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 16px;
+line-height: 19px;
+letter-spacing: -0.01em;
+
+color: #5F606B;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Frame 4043 */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+padding: 12px 0px 0px;
+gap: 8px;
+
+width: 141px;
+height: 130px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Frame */
+
+box-sizing: border-box;
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 0px;
+
+width: 82px;
+height: 82px;
+
+border: 4px solid #19AAE6;
+border-radius: 99px;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Ellipse */
+
+width: 60px;
+height: 60px;
+
+background: #19AAE6;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Frame 4047 */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 0px;
+gap: 16px;
+
+width: 342px;
+height: 76px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* btn / Share */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 24px 14px;
+
+width: 342px;
+height: 76px;
+min-height: 76px;
+
+background: #19AAE6;
+border-radius: 12px;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Continue */
+
+width: 88px;
+height: 24px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 20px;
+line-height: 24px;
+letter-spacing: -0.02em;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* 02 Observation — Audio Captured */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 0px;
+
+position: relative;
+width: 390px;
+height: 844px;
+left: 2118px;
+top: 296px;
+
+background: #FFFFFF;
+
+
+/* Status Bar */
+
+width: 390px;
+height: 44px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Notch */
+
+position: absolute;
+height: 30px;
+left: 0px;
+right: 0px;
+top: 0px;
+
+
+
+/* Subtract */
+
+position: absolute;
+visibility: hidden;
+width: 44px;
+height: 30px;
+left: 77px;
+top: calc(50% - 30px/2);
+
+/* System Bg Dark Base / Primary */
+background: #000000;
+
+
+/* Rectangle 11 */
+
+position: absolute;
+visibility: hidden;
+left: 121px;
+right: 121px;
+top: 0%;
+bottom: 0%;
+
+/* System Bg Dark Base / Primary */
+background: #000000;
+
+
+/* Subtract */
+
+position: absolute;
+visibility: hidden;
+width: 44px;
+height: 30px;
+right: 77px;
+top: calc(50% - 30px/2);
+
+/* System Bg Dark Base / Primary */
+background: #000000;
+transform: matrix(-1, 0, 0, 1, 0, 0);
+
+
+/* Status Icons */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 4px;
+
+position: absolute;
+width: 69px;
+height: 14px;
+right: 14px;
+top: 16px;
+
+
+
+/* Network Signal / Light
+
+Network Signal Strength • Light
+*/
+
+width: 20px;
+height: 14px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Path */
+
+position: absolute;
+left: 55%;
+right: 30%;
+top: 28.57%;
+bottom: 14.29%;
+
+background: #D1D1D6;
+
+
+/* Path */
+
+position: absolute;
+left: 32.5%;
+right: 52.5%;
+top: 42.86%;
+bottom: 14.29%;
+
+background: #D1D1D6;
+
+
+/* Path */
+
+position: absolute;
+left: 10%;
+right: 75%;
+top: 53.57%;
+bottom: 14.29%;
+
+background: #D1D1D6;
+
+
+/* Empty Bar */
+
+position: absolute;
+left: 77.5%;
+right: 7.5%;
+top: 14.29%;
+bottom: 14.29%;
+
+background: rgba(60, 60, 67, 0.18);
+
+
+/* Path */
+
+position: absolute;
+left: 55%;
+right: 30%;
+top: 28.57%;
+bottom: 14.29%;
+
+background: #000000;
+
+
+/* Path */
+
+position: absolute;
+left: 32.5%;
+right: 52.5%;
+top: 42.86%;
+bottom: 14.29%;
+
+background: #000000;
+
+
+/* Path */
+
+position: absolute;
+left: 10%;
+right: 75%;
+top: 53.57%;
+bottom: 14.29%;
+
+background: #000000;
+
+
+/* Empty Bar */
+
+position: absolute;
+visibility: hidden;
+left: 77.5%;
+right: 7.5%;
+top: 14.29%;
+bottom: 14.29%;
+
+/* Label Light / Primary */
+background: #000000;
+
+
+/* WiFi Signal / Light */
+
+width: 16px;
+height: 14px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Path */
+
+position: absolute;
+left: 37.11%;
+right: 35.56%;
+top: 63.85%;
+bottom: 14.29%;
+
+background: #000000;
+
+
+/* Path */
+
+position: absolute;
+left: 21.66%;
+right: 20.1%;
+top: 39.07%;
+bottom: 37.26%;
+
+background: #000000;
+
+
+/* Path */
+
+position: absolute;
+left: 6.25%;
+right: 4.69%;
+top: 14.29%;
+bottom: 54.84%;
+
+background: #000000;
+
+
+/* Battery / Light */
+
+width: 25px;
+height: 14px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 2;
+flex-grow: 0;
+
+
+/* 􀋦 */
+
+position: absolute;
+visibility: hidden;
+width: 8px;
+height: 12px;
+left: 8px;
+top: 1px;
+
+/* Label Dark / Primary */
+background: #FFFFFF;
+
+
+/* Subtract */
+
+position: absolute;
+visibility: hidden;
+width: 23px;
+height: 12px;
+left: 0px;
+top: 1px;
+
+/* Label Dark / Tertiary */
+background: rgba(235, 235, 245, 0.3);
+
+
+/* Rectangle 23 */
+
+position: absolute;
+width: 1px;
+height: 4px;
+left: 24px;
+top: 5px;
+
+background: rgba(60, 60, 67, 0.6);
+
+
+/* Battery */
+
+position: absolute;
+visibility: hidden;
+width: 19px;
+height: 8px;
+left: 2px;
+top: 3px;
+
+
+
+/* 100 */
+
+position: absolute;
+width: 19px;
+height: 8px;
+left: 2px;
+top: 3px;
+
+/* Color Light / Green */
+background: #34C759;
+
+
+/* 50 */
+
+position: absolute;
+visibility: hidden;
+width: 8.45px;
+height: 8px;
+left: 2px;
+top: 3px;
+
+/* Color Light / Green */
+background: #34C759;
+
+
+/* 10 */
+
+position: absolute;
+visibility: hidden;
+width: 3px;
+height: 8px;
+left: 2px;
+top: 3px;
+
+/* Color Dark / Yellow */
+background: #FFD60A;
+
+
+/* Rectangle 21 (Stroke) */
+
+position: absolute;
+width: 23px;
+height: 12px;
+left: 0px;
+top: 1px;
+
+background: rgba(60, 60, 67, 0.6);
+
+
+/* Rectangle 20 */
+
+position: absolute;
+width: 19px;
+height: 8px;
+left: 2px;
+top: calc(50% - 8px/2);
+
+background: #000000;
+border-radius: 1px;
+
+
+/* Indicator
+
+Recording Indicator
+*/
+
+position: absolute;
+width: 6px;
+height: 6px;
+right: 71px;
+top: 8px;
+
+
+
+/* Indicator */
+
+position: absolute;
+visibility: hidden;
+left: 0%;
+right: 0%;
+top: 0%;
+bottom: 0%;
+
+/* SystemGreen / Light
+
+class var systemGreen: UIColor
+*/
+background: #34C759;
+
+
+/* Time / Light */
+
+position: absolute;
+width: 54px;
+height: 21px;
+left: 21px;
+top: 12px;
+
+border-radius: 20px;
+
+
+/* 9:41 */
+
+position: absolute;
+width: 33px;
+height: 15px;
+left: calc(50% - 33px/2 + 0.5px);
+top: calc(50% - 15px/2);
+
+
+
+/* 9:41 */
+
+position: absolute;
+width: 28.43px;
+height: 11.09px;
+left: calc(50% - 28.43px/2 - 0.29px);
+top: calc(50% - 11.09px/2 + 0.04px);
+
+background: #000000;
+
+
+/* Frame 4045 */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 8px 24px 0px;
+gap: 4px;
+
+width: 390px;
+height: 336px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Frame */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 0px;
+
+width: 342px;
+height: 328px;
+
+background: #16161A;
+border-radius: 12px;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* photo */
+
+width: 37px;
+height: 16px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 600;
+font-size: 13px;
+line-height: 16px;
+/* identical to box height */
+
+color: #5C5C61;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Frame */
+
+box-sizing: border-box;
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: flex-start;
+padding: 0px;
+
+width: 390px;
+height: 62px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 2;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Frame */
+
+box-sizing: border-box;
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+padding: 16px 12px 13px;
+
+width: 195px;
+height: 62px;
+
+border-bottom: 3px solid #19AAE6;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 1;
+
+
+/* PHOTO */
+
+width: 48px;
+height: 15px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 12.5px;
+line-height: 15px;
+letter-spacing: 0.06em;
+
+color: #111114;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Frame */
+
+box-sizing: border-box;
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+padding: 16px 12px 13px;
+
+width: 195px;
+height: 62px;
+
+border-bottom: 1px solid #D1D1D6;
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 1;
+
+
+/* VIDEO */
+
+width: 43px;
+height: 15px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 12.5px;
+line-height: 15px;
+letter-spacing: 0.06em;
+
+color: #9A9B9D;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Frame */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 16px 0px 0px;
+
+width: 390px;
+height: 90px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 3;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Frame */
+
+box-sizing: border-box;
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 20px 0px;
+gap: 16px;
+
+width: 342px;
+height: 64px;
+min-height: 64px;
+
+border: 2px solid #D1D1D6;
+border-radius: 12px;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Voice Note added */
+
+width: 134px;
+height: 19px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 16px;
+line-height: 19px;
+letter-spacing: -0.01em;
+
+color: #5F606B;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* x 2 */
+
+box-sizing: border-box;
+
+width: 24px;
+height: 24px;
+
+background: #000000;
+border: 1px solid #111114;
+border-radius: 20px;
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Group 11 */
+
+position: absolute;
+width: 9px;
+height: 9px;
+left: 7.28px;
+top: 7.28px;
+
+
+
+/* Vector (Stroke) */
+
+position: absolute;
+left: 30.33%;
+right: 32.17%;
+top: 30.33%;
+bottom: 32.17%;
+
+background: #FFFFFF;
+
+
+/* Vector (Stroke) */
+
+position: absolute;
+left: 30.33%;
+right: 32.17%;
+top: 30.33%;
+bottom: 32.17%;
+
+background: #FFFFFF;
+
+
+/* Frame 4043 */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+padding: 12px 0px 0px;
+gap: 8px;
+
+width: 141px;
+height: 130px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 4;
+flex-grow: 0;
+
+
+/* Frame */
+
+box-sizing: border-box;
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 0px;
+
+width: 82px;
+height: 82px;
+
+border: 4px solid #19AAE6;
+border-radius: 99px;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Ellipse */
+
+width: 60px;
+height: 60px;
+
+background: #19AAE6;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Frame 4047 */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 0px;
+gap: 16px;
+
+width: 342px;
+height: 157px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 5;
+flex-grow: 0;
+
+
+/* Frame 4047 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: flex-start;
+padding: 0px;
+gap: 8px;
+
+width: 342px;
+height: 65px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Group 7 */
+
+width: 62px;
+height: 65px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Frame */
+
+box-sizing: border-box;
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+padding: 12px 14px;
+gap: 11px;
+
+position: absolute;
+width: 56px;
+height: 56px;
+left: 0px;
+top: 9px;
+
+background: #FAFAFA;
+border: 1px solid #19AAE6;
+border-radius: 8px;
+
+
+/* Photo */
+
+margin: 0 auto;
+width: 28px;
+height: 12px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 10px;
+line-height: 12px;
+letter-spacing: -0.01em;
+
+color: #111114;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* x 2 */
+
+box-sizing: border-box;
+
+position: absolute;
+width: 24px;
+height: 24px;
+left: 38px;
+top: 0px;
+
+background: #000000;
+border: 1px solid #111114;
+border-radius: 20px;
+
+
+/* Group 11 */
+
+position: absolute;
+width: 9px;
+height: 9px;
+left: 7.28px;
+top: 7.28px;
+
+
+
+/* Vector (Stroke) */
+
+position: absolute;
+left: 30.33%;
+right: 32.17%;
+top: 30.33%;
+bottom: 32.17%;
+
+background: #FFFFFF;
+
+
+/* Vector (Stroke) */
+
+position: absolute;
+left: 30.33%;
+right: 32.17%;
+top: 30.33%;
+bottom: 32.17%;
+
+background: #FFFFFF;
+
+
+/* Group 11 */
+
+width: 62px;
+height: 65px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Frame */
+
+box-sizing: border-box;
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+padding: 12px 14px;
+gap: 11px;
+
+position: absolute;
+width: 56px;
+height: 56px;
+left: 70px;
+top: 9px;
+
+background: #FAFAFA;
+border: 1px solid #19AAE6;
+border-radius: 8px;
+
+
+/* Photo */
+
+margin: 0 auto;
+width: 28px;
+height: 12px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 10px;
+line-height: 12px;
+letter-spacing: -0.01em;
+
+color: #111114;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* x 2 */
+
+box-sizing: border-box;
+
+position: absolute;
+width: 24px;
+height: 24px;
+left: 108px;
+top: 0px;
+
+background: #000000;
+border: 1px solid #111114;
+border-radius: 20px;
+
+
+/* Group 11 */
+
+position: absolute;
+width: 9px;
+height: 9px;
+left: 7.28px;
+top: 7.28px;
+
+
+
+/* Vector (Stroke) */
+
+position: absolute;
+left: 30.33%;
+right: 32.17%;
+top: 30.33%;
+bottom: 32.17%;
+
+background: #FFFFFF;
+
+
+/* Vector (Stroke) */
+
+position: absolute;
+left: 30.33%;
+right: 32.17%;
+top: 30.33%;
+bottom: 32.17%;
+
+background: #FFFFFF;
+
+
+/* Group 12 */
+
+width: 62px;
+height: 65px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 2;
+flex-grow: 0;
+
+
+/* Frame */
+
+box-sizing: border-box;
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+padding: 12px 14px;
+gap: 11px;
+
+position: absolute;
+width: 56px;
+height: 56px;
+left: 140px;
+top: 9px;
+
+background: #FAFAFA;
+border: 1px solid #19AAE6;
+border-radius: 8px;
+
+
+/* Photo */
+
+margin: 0 auto;
+width: 28px;
+height: 12px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 10px;
+line-height: 12px;
+letter-spacing: -0.01em;
+
+color: #111114;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* x 2 */
+
+box-sizing: border-box;
+
+position: absolute;
+width: 24px;
+height: 24px;
+left: 178px;
+top: 0px;
+
+background: #000000;
+border: 1px solid #111114;
+border-radius: 20px;
+
+
+/* Group 11 */
+
+position: absolute;
+width: 9px;
+height: 9px;
+left: 7.28px;
+top: 7.28px;
+
+
+
+/* Vector (Stroke) */
+
+position: absolute;
+left: 30.33%;
+right: 32.17%;
+top: 30.33%;
+bottom: 32.17%;
+
+background: #FFFFFF;
+
+
+/* Vector (Stroke) */
+
+position: absolute;
+left: 30.33%;
+right: 32.17%;
+top: 30.33%;
+bottom: 32.17%;
+
+background: #FFFFFF;
+
+
+/* Group 13 */
+
+width: 62px;
+height: 65px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 3;
+flex-grow: 0;
+
+
+/* Frame */
+
+box-sizing: border-box;
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+padding: 12px 14px;
+gap: 11px;
+
+position: absolute;
+width: 56px;
+height: 56px;
+left: 210px;
+top: 9px;
+
+background: #FAFAFA;
+border: 1px solid #19AAE6;
+border-radius: 8px;
+
+
+/* Photo */
+
+margin: 0 auto;
+width: 28px;
+height: 12px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 10px;
+line-height: 12px;
+letter-spacing: -0.01em;
+
+color: #111114;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* x 2 */
+
+box-sizing: border-box;
+
+position: absolute;
+width: 24px;
+height: 24px;
+left: 248px;
+top: 0px;
+
+background: #000000;
+border: 1px solid #111114;
+border-radius: 20px;
+
+
+/* Group 11 */
+
+position: absolute;
+width: 9px;
+height: 9px;
+left: 7.28px;
+top: 7.28px;
+
+
+
+/* Vector (Stroke) */
+
+position: absolute;
+left: 30.33%;
+right: 32.17%;
+top: 30.33%;
+bottom: 32.17%;
+
+background: #FFFFFF;
+
+
+/* Vector (Stroke) */
+
+position: absolute;
+left: 30.33%;
+right: 32.17%;
+top: 30.33%;
+bottom: 32.17%;
+
+background: #FFFFFF;
+
+
+/* Group 14 */
+
+width: 62px;
+height: 65px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 4;
+flex-grow: 0;
+
+
+/* Frame */
+
+box-sizing: border-box;
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+padding: 12px 14px;
+gap: 11px;
+
+position: absolute;
+width: 56px;
+height: 56px;
+left: 280px;
+top: 9px;
+
+background: #FAFAFA;
+border: 1px solid #19AAE6;
+border-radius: 8px;
+
+
+/* Photo */
+
+margin: 0 auto;
+width: 28px;
+height: 12px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 10px;
+line-height: 12px;
+letter-spacing: -0.01em;
+
+color: #111114;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* x 2 */
+
+box-sizing: border-box;
+
+position: absolute;
+width: 24px;
+height: 24px;
+left: 318px;
+top: 0px;
+
+background: #000000;
+border: 1px solid #111114;
+border-radius: 20px;
+
+
+/* Group 11 */
+
+position: absolute;
+width: 9px;
+height: 9px;
+left: 7.28px;
+top: 7.28px;
+
+
+
+/* Vector (Stroke) */
+
+position: absolute;
+left: 30.33%;
+right: 32.17%;
+top: 30.33%;
+bottom: 32.17%;
+
+background: #FFFFFF;
+
+
+/* Vector (Stroke) */
+
+position: absolute;
+left: 30.33%;
+right: 32.17%;
+top: 30.33%;
+bottom: 32.17%;
+
+background: #FFFFFF;
+
+
+/* btn / Share */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 24px 14px;
+
+width: 342px;
+height: 76px;
+min-height: 76px;
+
+background: #19AAE6;
+border-radius: 12px;
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Continue */
+
+width: 88px;
+height: 24px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 20px;
+line-height: 24px;
+letter-spacing: -0.02em;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Capture observation using image or video, tabs to switch, preview */
+
+position: absolute;
+width: 375px;
+height: 54px;
+left: 733px;
+top: 1163px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 22px;
+line-height: 27px;
+letter-spacing: -0.01em;
+
+color: #111114;
+
+
+
+/* Capture observation using image or video, tabs to switch, preview */
+
+position: absolute;
+width: 375px;
+height: 54px;
+left: 2118px;
+top: 1163px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 22px;
+line-height: 27px;
+letter-spacing: -0.01em;
+
+color: #111114;
+
+
+
+/* Continue button enables when either a photo or video is taken. No voice note for video. */
+
+position: absolute;
+width: 407px;
+height: 81px;
+left: 1645px;
+top: 1163px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 22px;
+line-height: 27px;
+letter-spacing: -0.01em;
+
+color: #111114;
+

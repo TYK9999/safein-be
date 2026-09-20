@@ -1,15 +1,15 @@
 import { Injectable, OnModuleInit } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
-
-import { AppLoggerService } from '../../logger/app-logger.service';
 import {
   SignJWT,
   jwtVerify,
   generateKeyPair,
   importPKCS8,
   importSPKI,
-  type KeyLike,
+  type CryptoKey,
 } from 'jose';
+
+import { AppLoggerService } from '../../logging/app-logger.service';
 
 const ALG = 'EdDSA';
 
@@ -17,7 +17,7 @@ export interface AccessClaims {
   sub: number; // app_user.id
   email: string;
   tid: number; // tenant id
-  role: string; // worker | supervisor (within the tenant)
+  role: string; // tenant membership: member | tenant_admin (site roles are separate)
 }
 
 export interface VerifiedAccess extends AccessClaims {
@@ -32,8 +32,8 @@ export interface VerifiedAccess extends AccessClaims {
  */
 @Injectable()
 export class JwtService implements OnModuleInit {
-  private privateKey!: KeyLike;
-  private publicKey!: KeyLike;
+  private privateKey!: CryptoKey;
+  private publicKey!: CryptoKey;
   private issuer!: string;
   private accessTtlSec!: number;
   private refreshTtlSec!: number;
@@ -70,7 +70,12 @@ export class JwtService implements OnModuleInit {
     this.publicKey = pair.publicKey;
     this.logger.warn(
       'No JWT keypair configured; generated an ephemeral EdDSA keypair (dev only). Tokens will not survive a restart.',
+      `JwtService.onModuleInit`,
     );
+  }
+
+  get accessTtlSeconds(): number {
+    return this.accessTtlSec;
   }
 
   async issueAccessToken(claims: AccessClaims): Promise<string> {

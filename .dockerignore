@@ -1,25 +1,15 @@
-# Build-context excludes — keep the context small and never bake secrets/artifacts in.
 node_modules
 dist
 coverage
 .git
-.gitignore
 .github
-
-# Secrets — env is injected at runtime via docker compose env_file, never copied in.
+.cursor
+docs
+openspec
+*.md
 .env
 .env.*
-
-# Local-only + dev artifacts
-data
-localstack
-*.log
-docs
-api
-
-# Deploy + container meta (not needed inside the image)
-deploy
-Dockerfile
+!.env.example
+npm-debug.log*
 .dockerignore
-docker-compose*.yml
-README.md
+**/*.spec.ts

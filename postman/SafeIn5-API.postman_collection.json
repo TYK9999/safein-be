@@ -1,0 +1,456 @@
+{
+  "info": {
+    "name": "SafeIn5 API",
+    "description": "HTTP collection for SafeIn5 Nest API (`/api/v1`).\n\n**Auth flow:** Auth folder — Register → OTP Request → set `otpCode` from email/logs → OTP Verify (saves `accessToken`) → Me → Refresh → Logout.\n\n**Refresh cookie:** httpOnly cookie set on verify; enable cookies in Postman and keep `baseUrl` on the API host.\n\n**Supervisor routes:** Acknowledge/Close need membership role `supervisor` (update DB if needed).",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      { "key": "token", "value": "{{accessToken}}", "type": "string" }
+    ]
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:3000" }
+  ],
+  "item": [
+    {
+      "name": "Health",
+      "item": [
+        {
+          "name": "Health check",
+          "request": {
+            "auth": { "type": "noauth" },
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/api/v1/health",
+            "description": "Public. Returns process + database status."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Auth",
+      "description": "Passwordless OTP flow. Run in order 1→6. Paste OTP into env `otpCode` before Verify. First verify activates a new or invited account.",
+      "item": [
+        {
+          "name": "1. Register",
+          "request": {
+            "auth": { "type": "noauth" },
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"{{email}}\",\n  \"firstName\": \"{{firstName}}\",\n  \"lastName\": \"{{lastName}}\"\n}"
+            },
+            "url": "{{baseUrl}}/api/v1/auth/register",
+            "description": "204 No Content. Also mints an OTP (check mailer/SES/logs)."
+          }
+        },
+        {
+          "name": "2. OTP Request",
+          "request": {
+            "auth": { "type": "noauth" },
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"{{email}}\"\n}"
+            },
+            "url": "{{baseUrl}}/api/v1/auth/otp/request",
+            "description": "204. Set environment `otpCode` from the emailed/logged code, then run OTP Verify."
+          }
+        },
+        {
+          "name": "3. OTP Verify",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "if (pm.response.code >= 200 && pm.response.code < 300) {",
+                  "  const json = pm.response.json();",
+                  "  if (json.accessToken) {",
+                  "    pm.environment.set('accessToken', json.accessToken);",
+                  "  }",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "auth": { "type": "noauth" },
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"{{email}}\",\n  \"code\": \"{{otpCode}}\"\n}"
+            },
+            "url": "{{baseUrl}}/api/v1/auth/otp/verify",
+            "description": "Saves `accessToken` and `expiresIn`. Sets httpOnly refresh cookie (path `/api/v1`)."
+          }
+        },
+        {
+          "name": "4. Me",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/api/v1/me",
+            "description": "Requires Bearer `{{accessToken}}`."
+          }
+        },
+        {
+          "name": "5. Refresh",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "if (pm.response.code >= 200 && pm.response.code < 300) {",
+                  "  const json = pm.response.json();",
+                  "  if (json.accessToken) {",
+                  "    pm.environment.set('accessToken', json.accessToken);",
+                  "  }",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "auth": { "type": "noauth" },
+            "method": "POST",
+            "header": [],
+            "url": "{{baseUrl}}/api/v1/auth/refresh",
+            "description": "Uses refresh cookie from Verify. Returns a new accessToken, expiresIn, and rotates the cookie. Enable cookies in Postman."
+          }
+        },
+        {
+          "name": "6. Logout",
+          "request": {
+            "auth": { "type": "noauth" },
+            "method": "POST",
+            "header": [],
+            "url": "{{baseUrl}}/api/v1/auth/logout",
+            "description": "204. Clears refresh cookie."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Signals",
+      "description": "All require Bearer. Acknowledge/Close require supervisor role.",
+      "item": [
+        {
+          "name": "Create signal",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "if (pm.response.code >= 200 && pm.response.code < 300) {",
+                  "  const json = pm.response.json();",
+                  "  if (json.id != null) pm.environment.set('signalId', String(json.id));",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"classification\": \"be_aware\",\n  \"bodyText\": \"Observed loose cable near walkway\",\n  \"anonymous\": false\n}"
+            },
+            "url": "{{baseUrl}}/api/v1/signals"
+          }
+        },
+        {
+          "name": "List mine",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/signals/mine?limit=20",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "signals", "mine"],
+              "query": [{ "key": "limit", "value": "20" }]
+            }
+          }
+        },
+        {
+          "name": "Feed",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/feed?limit=20",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "feed"],
+              "query": [
+                { "key": "limit", "value": "20" },
+                { "key": "status", "value": "open", "disabled": true }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get by id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/api/v1/signals/{{signalId}}"
+          }
+        },
+        {
+          "name": "Acknowledge (supervisor)",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": "{{baseUrl}}/api/v1/signals/{{signalId}}/acknowledge",
+            "description": "Requires supervisor membership."
+          }
+        },
+        {
+          "name": "Close (supervisor)",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"closeNote\": \"{{closeNote}}\"\n}"
+            },
+            "url": "{{baseUrl}}/api/v1/signals/{{signalId}}/close",
+            "description": "Requires supervisor + non-empty closeNote."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Audio",
+      "description": "Optional JWT (guest → Community). Needs working S3 config for success.",
+      "item": [
+        {
+          "name": "Presign",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "if (pm.response.code >= 200 && pm.response.code < 300) {",
+                  "  const json = pm.response.json();",
+                  "  if (json.s3Key) pm.environment.set('s3Key', json.s3Key);",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"mime\": \"audio/webm\",\n  \"size\": 102400,\n  \"filename\": \"clip.webm\"\n}"
+            },
+            "url": "{{baseUrl}}/api/v1/audio-clips/presign",
+            "description": "Returns `{ s3Key, url }`. PUT bytes to `url`, then Confirm."
+          }
+        },
+        {
+          "name": "Confirm",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"s3Key\": \"{{s3Key}}\"\n}"
+            },
+            "url": "{{baseUrl}}/api/v1/audio-clips/confirm"
+          }
+        },
+        {
+          "name": "List clips",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/audio-clips?limit=20",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "audio-clips"],
+              "query": [{ "key": "limit", "value": "20" }]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "STT",
+      "description": "Optional JWT. Needs S3 + Transcribe for real jobs.",
+      "item": [
+        {
+          "name": "Presign",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "if (pm.response.code >= 200 && pm.response.code < 300) {",
+                  "  const json = pm.response.json();",
+                  "  if (json.s3Key) pm.environment.set('s3Key', json.s3Key);",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"mime\": \"audio/webm\",\n  \"size\": 102400\n}"
+            },
+            "url": "{{baseUrl}}/api/v1/stt/presign"
+          }
+        },
+        {
+          "name": "Start job",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "if (pm.response.code >= 200 && pm.response.code < 300) {",
+                  "  const json = pm.response.json();",
+                  "  if (json.jobId) pm.environment.set('jobId', json.jobId);",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"s3Key\": \"{{s3Key}}\",\n  \"language\": \"en-GB\"\n}"
+            },
+            "url": "{{baseUrl}}/api/v1/stt/jobs"
+          }
+        },
+        {
+          "name": "List jobs",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/stt/jobs?limit=20",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "stt", "jobs"],
+              "query": [{ "key": "limit", "value": "20" }]
+            }
+          }
+        },
+        {
+          "name": "Get job",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/api/v1/stt/jobs/{{jobId}}"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Uploads",
+      "description": "Optional JWT. Lockstep multipart via `/uploads/next`. Needs S3 (+ ffmpeg for thumbnail/playback).",
+      "item": [
+        {
+          "name": "Next — start",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "if (pm.response.code >= 200 && pm.response.code < 300) {",
+                  "  const json = pm.response.json();",
+                  "  if (json.sessionId) {",
+                  "    pm.environment.set('sessionToken', json.sessionId);",
+                  "    pm.environment.set('videoToken', json.sessionId);",
+                  "  }",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"filename\": \"clip.mp4\",\n  \"mime\": \"video/mp4\",\n  \"size\": 10485760,\n  \"chunkSize\": 5242880,\n  \"chunkCount\": 2\n}"
+            },
+            "url": "{{baseUrl}}/api/v1/uploads/next",
+            "description": "First call (no sessionId). Saves `sessionToken`. PUT chunk 1 to returned `url`."
+          }
+        },
+        {
+          "name": "Next — confirm chunk",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"sessionId\": \"{{sessionToken}}\",\n  \"chunkNumber\": 1,\n  \"eTag\": \"REPLACE_WITH_S3_ETAG\"\n}"
+            },
+            "url": "{{baseUrl}}/api/v1/uploads/next",
+            "description": "Confirm previous part ETag; repeat until complete."
+          }
+        },
+        {
+          "name": "Thumbnail URL",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/api/v1/uploads/{{videoToken}}/thumbnail",
+            "description": "404 until thumbnail ready. `videoToken` is usually session/video capability from complete."
+          }
+        },
+        {
+          "name": "Playback URL",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/api/v1/uploads/{{videoToken}}/playback",
+            "description": "404 until playback transcode ready."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Take5",
+      "item": [
+        {
+          "name": "Extract (inline text)",
+          "request": {
+            "auth": { "type": "noauth" },
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"documents\": [\n    {\n      \"fileName\": \"toolbox.txt\",\n      \"text\": \"Confined space entry requires gas test, permit, and standby person.\"\n    }\n  ]\n}"
+            },
+            "url": "{{baseUrl}}/api/v1/take5/extract",
+            "description": "Public. Needs `CURSOR_API_KEY` or returns AI not configured."
+          }
+        }
+      ]
+    }
+  ]
+}

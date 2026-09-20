@@ -1,0 +1,7200 @@
+/* Commuhnity Flow */
+
+box-sizing: border-box;
+
+position: relative;
+width: 3045px;
+height: 1385px;
+
+background: #D5D5D5;
+border: 1px solid rgba(0, 0, 0, 0.1);
+border-radius: 2px;
+
+
+/* 04 Observation — Categorise */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+
+position: relative;
+width: 390px;
+height: 844px;
+left: 2020px;
+top: 296px;
+
+background: #FFFFFF;
+
+
+/* Status Bar */
+
+width: 390px;
+height: 44px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Notch */
+
+position: absolute;
+height: 30px;
+left: 0px;
+right: 0px;
+top: 0px;
+
+
+
+/* Subtract */
+
+position: absolute;
+visibility: hidden;
+width: 44px;
+height: 30px;
+left: 77px;
+top: calc(50% - 30px/2);
+
+/* System Bg Dark Base / Primary */
+background: #000000;
+
+
+/* Rectangle 11 */
+
+position: absolute;
+visibility: hidden;
+left: 121px;
+right: 121px;
+top: 0%;
+bottom: 0%;
+
+/* System Bg Dark Base / Primary */
+background: #000000;
+
+
+/* Subtract */
+
+position: absolute;
+visibility: hidden;
+width: 44px;
+height: 30px;
+right: 77px;
+top: calc(50% - 30px/2);
+
+/* System Bg Dark Base / Primary */
+background: #000000;
+transform: matrix(-1, 0, 0, 1, 0, 0);
+
+
+/* Status Icons */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 4px;
+
+position: absolute;
+width: 69px;
+height: 14px;
+right: 14px;
+top: 16px;
+
+
+
+/* Network Signal / Light
+
+Network Signal Strength • Light
+*/
+
+width: 20px;
+height: 14px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Path */
+
+position: absolute;
+left: 55%;
+right: 30%;
+top: 28.57%;
+bottom: 14.29%;
+
+background: #D1D1D6;
+
+
+/* Path */
+
+position: absolute;
+left: 32.5%;
+right: 52.5%;
+top: 42.86%;
+bottom: 14.29%;
+
+background: #D1D1D6;
+
+
+/* Path */
+
+position: absolute;
+left: 10%;
+right: 75%;
+top: 53.57%;
+bottom: 14.29%;
+
+background: #D1D1D6;
+
+
+/* Empty Bar */
+
+position: absolute;
+left: 77.5%;
+right: 7.5%;
+top: 14.29%;
+bottom: 14.29%;
+
+background: rgba(60, 60, 67, 0.18);
+
+
+/* Path */
+
+position: absolute;
+left: 55%;
+right: 30%;
+top: 28.57%;
+bottom: 14.29%;
+
+background: #000000;
+
+
+/* Path */
+
+position: absolute;
+left: 32.5%;
+right: 52.5%;
+top: 42.86%;
+bottom: 14.29%;
+
+background: #000000;
+
+
+/* Path */
+
+position: absolute;
+left: 10%;
+right: 75%;
+top: 53.57%;
+bottom: 14.29%;
+
+background: #000000;
+
+
+/* Empty Bar */
+
+position: absolute;
+visibility: hidden;
+left: 77.5%;
+right: 7.5%;
+top: 14.29%;
+bottom: 14.29%;
+
+/* Label Light / Primary */
+background: #000000;
+
+
+/* WiFi Signal / Light */
+
+width: 16px;
+height: 14px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Path */
+
+position: absolute;
+left: 37.11%;
+right: 35.56%;
+top: 63.85%;
+bottom: 14.29%;
+
+background: #000000;
+
+
+/* Path */
+
+position: absolute;
+left: 21.66%;
+right: 20.1%;
+top: 39.07%;
+bottom: 37.26%;
+
+background: #000000;
+
+
+/* Path */
+
+position: absolute;
+left: 6.25%;
+right: 4.69%;
+top: 14.29%;
+bottom: 54.84%;
+
+background: #000000;
+
+
+/* Battery / Light */
+
+width: 25px;
+height: 14px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 2;
+flex-grow: 0;
+
+
+/* 􀋦 */
+
+position: absolute;
+visibility: hidden;
+width: 8px;
+height: 12px;
+left: 8px;
+top: 1px;
+
+/* Label Dark / Primary */
+background: #FFFFFF;
+
+
+/* Subtract */
+
+position: absolute;
+visibility: hidden;
+width: 23px;
+height: 12px;
+left: 0px;
+top: 1px;
+
+/* Label Dark / Tertiary */
+background: rgba(235, 235, 245, 0.3);
+
+
+/* Rectangle 23 */
+
+position: absolute;
+width: 1px;
+height: 4px;
+left: 24px;
+top: 5px;
+
+background: rgba(60, 60, 67, 0.6);
+
+
+/* Battery */
+
+position: absolute;
+visibility: hidden;
+width: 19px;
+height: 8px;
+left: 2px;
+top: 3px;
+
+
+
+/* 100 */
+
+position: absolute;
+width: 19px;
+height: 8px;
+left: 2px;
+top: 3px;
+
+/* Color Light / Green */
+background: #34C759;
+
+
+/* 50 */
+
+position: absolute;
+visibility: hidden;
+width: 8.45px;
+height: 8px;
+left: 2px;
+top: 3px;
+
+/* Color Light / Green */
+background: #34C759;
+
+
+/* 10 */
+
+position: absolute;
+visibility: hidden;
+width: 3px;
+height: 8px;
+left: 2px;
+top: 3px;
+
+/* Color Dark / Yellow */
+background: #FFD60A;
+
+
+/* Rectangle 21 (Stroke) */
+
+position: absolute;
+width: 23px;
+height: 12px;
+left: 0px;
+top: 1px;
+
+background: rgba(60, 60, 67, 0.6);
+
+
+/* Rectangle 20 */
+
+position: absolute;
+width: 19px;
+height: 8px;
+left: 2px;
+top: calc(50% - 8px/2);
+
+background: #000000;
+border-radius: 1px;
+
+
+/* Indicator
+
+Recording Indicator
+*/
+
+position: absolute;
+width: 6px;
+height: 6px;
+right: 71px;
+top: 8px;
+
+
+
+/* Indicator */
+
+position: absolute;
+visibility: hidden;
+left: 0%;
+right: 0%;
+top: 0%;
+bottom: 0%;
+
+/* SystemGreen / Light
+
+class var systemGreen: UIColor
+*/
+background: #34C759;
+
+
+/* Time / Light */
+
+position: absolute;
+width: 54px;
+height: 21px;
+left: 21px;
+top: 12px;
+
+border-radius: 20px;
+
+
+/* 9:41 */
+
+position: absolute;
+width: 33px;
+height: 15px;
+left: calc(50% - 33px/2 + 0.5px);
+top: calc(50% - 15px/2);
+
+
+
+/* 9:41 */
+
+position: absolute;
+width: 28.43px;
+height: 11.09px;
+left: calc(50% - 28.43px/2 - 0.29px);
+top: calc(50% - 11.09px/2 + 0.04px);
+
+background: #000000;
+
+
+/* body */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 16px 24px 24px;
+gap: 134px;
+
+width: 390px;
+height: 800px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+align-self: stretch;
+flex-grow: 1;
+
+
+/* Frame 4099 */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+gap: 16px;
+
+width: 342px;
+height: 562px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Frame */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+gap: 8px;
+
+width: 342px;
+height: 261px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Frame */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 16px 0px 0px;
+
+width: 342px;
+height: 45px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* How would you describe this? */
+
+width: 342px;
+height: 29px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 600;
+font-size: 24px;
+line-height: 29px;
+/* identical to box height */
+letter-spacing: -0.025em;
+
+color: #111114;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Frame */
+
+box-sizing: border-box;
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 19px 16px;
+gap: 10px;
+
+width: 342px;
+height: 64px;
+min-height: 64px;
+
+background: #FFFFFF;
+border: 2px solid #DADADE;
+border-radius: 4px;
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* GOOD PRACTICE */
+
+width: 310px;
+height: 17px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 14px;
+line-height: 17px;
+/* identical to box height */
+letter-spacing: 0.04em;
+
+color: #111114;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 1;
+
+
+/* Frame */
+
+box-sizing: border-box;
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 19px 16px;
+gap: 10px;
+
+width: 342px;
+height: 64px;
+min-height: 64px;
+
+background: #FEF3C7;
+border: 1px solid #FF8000;
+border-radius: 4px;
+
+/* Inside auto layout */
+flex: none;
+order: 2;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* COULD BE A RISK */
+
+width: 310px;
+height: 17px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 14px;
+line-height: 17px;
+/* identical to box height */
+letter-spacing: 0.04em;
+
+color: #FF8000;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 1;
+
+
+/* Frame */
+
+box-sizing: border-box;
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 19px 16px;
+gap: 10px;
+
+width: 342px;
+height: 64px;
+min-height: 64px;
+
+background: #FFFFFF;
+border: 2px solid #DADADE;
+border-radius: 4px;
+
+/* Inside auto layout */
+flex: none;
+order: 3;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* NEEDS ACTION NOW */
+
+width: 310px;
+height: 17px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 14px;
+line-height: 17px;
+/* identical to box height */
+letter-spacing: 0.04em;
+
+color: #111114;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 1;
+
+
+/* Frame 4100 */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+gap: 4px;
+
+width: 342px;
+height: 285px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Frame 4094 */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+
+width: 342px;
+height: 25px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Frame */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 6px 0px 0px;
+
+width: 342px;
+height: 25px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* What is being shared by you */
+
+width: 342px;
+height: 19px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 600;
+font-size: 15.5px;
+line-height: 19px;
+/* identical to box height */
+letter-spacing: -0.01em;
+
+color: #5F606B;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Frame 4047 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 8px;
+
+width: 342px;
+height: 90px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Group 7 */
+
+width: 62px;
+height: 65px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Frame */
+
+box-sizing: border-box;
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+padding: 12px 14px;
+gap: 11px;
+
+position: absolute;
+width: 56px;
+height: 56px;
+left: 0px;
+top: 21.5px;
+
+background: #FAFAFA;
+border: 1px solid #19AAE6;
+border-radius: 8px;
+
+
+/* Photo */
+
+margin: 0 auto;
+width: 28px;
+height: 12px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 10px;
+line-height: 12px;
+letter-spacing: -0.01em;
+
+color: #111114;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* x 2 */
+
+box-sizing: border-box;
+
+position: absolute;
+width: 24px;
+height: 24px;
+left: 38px;
+top: 12.5px;
+
+background: #000000;
+border: 1px solid #111114;
+border-radius: 20px;
+
+
+/* Group 11 */
+
+position: absolute;
+width: 9px;
+height: 9px;
+left: 7.28px;
+top: 7.28px;
+
+
+
+/* Vector (Stroke) */
+
+position: absolute;
+left: 30.33%;
+right: 32.17%;
+top: 30.33%;
+bottom: 32.17%;
+
+background: #FFFFFF;
+
+
+/* Vector (Stroke) */
+
+position: absolute;
+left: 30.33%;
+right: 32.17%;
+top: 30.33%;
+bottom: 32.17%;
+
+background: #FFFFFF;
+
+
+/* Group 11 */
+
+width: 62px;
+height: 65px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Frame */
+
+box-sizing: border-box;
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+padding: 12px 14px;
+gap: 11px;
+
+position: absolute;
+width: 56px;
+height: 56px;
+left: 70px;
+top: 21.5px;
+
+background: #FAFAFA;
+border: 1px solid #19AAE6;
+border-radius: 8px;
+
+
+/* Photo */
+
+margin: 0 auto;
+width: 28px;
+height: 12px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 10px;
+line-height: 12px;
+letter-spacing: -0.01em;
+
+color: #111114;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* x 2 */
+
+box-sizing: border-box;
+
+position: absolute;
+width: 24px;
+height: 24px;
+left: 108px;
+top: 12.5px;
+
+background: #000000;
+border: 1px solid #111114;
+border-radius: 20px;
+
+
+/* Group 11 */
+
+position: absolute;
+width: 9px;
+height: 9px;
+left: 7.28px;
+top: 7.28px;
+
+
+
+/* Vector (Stroke) */
+
+position: absolute;
+left: 30.33%;
+right: 32.17%;
+top: 30.33%;
+bottom: 32.17%;
+
+background: #FFFFFF;
+
+
+/* Vector (Stroke) */
+
+position: absolute;
+left: 30.33%;
+right: 32.17%;
+top: 30.33%;
+bottom: 32.17%;
+
+background: #FFFFFF;
+
+
+/* Group 12 */
+
+width: 62px;
+height: 65px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 2;
+flex-grow: 0;
+
+
+/* Frame */
+
+box-sizing: border-box;
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+padding: 12px 14px;
+gap: 11px;
+
+position: absolute;
+width: 56px;
+height: 56px;
+left: 140px;
+top: 21.5px;
+
+background: #FAFAFA;
+border: 1px solid #19AAE6;
+border-radius: 8px;
+
+
+/* Photo */
+
+margin: 0 auto;
+width: 28px;
+height: 12px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 10px;
+line-height: 12px;
+letter-spacing: -0.01em;
+
+color: #111114;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* x 2 */
+
+box-sizing: border-box;
+
+position: absolute;
+width: 24px;
+height: 24px;
+left: 178px;
+top: 12.5px;
+
+background: #000000;
+border: 1px solid #111114;
+border-radius: 20px;
+
+
+/* Group 11 */
+
+position: absolute;
+width: 9px;
+height: 9px;
+left: 7.28px;
+top: 7.28px;
+
+
+
+/* Vector (Stroke) */
+
+position: absolute;
+left: 30.33%;
+right: 32.17%;
+top: 30.33%;
+bottom: 32.17%;
+
+background: #FFFFFF;
+
+
+/* Vector (Stroke) */
+
+position: absolute;
+left: 30.33%;
+right: 32.17%;
+top: 30.33%;
+bottom: 32.17%;
+
+background: #FFFFFF;
+
+
+/* Group 13 */
+
+width: 62px;
+height: 65px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 3;
+flex-grow: 0;
+
+
+/* Frame */
+
+box-sizing: border-box;
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+padding: 12px 14px;
+gap: 11px;
+
+position: absolute;
+width: 56px;
+height: 56px;
+left: 210px;
+top: 21.5px;
+
+background: #FAFAFA;
+border: 1px solid #19AAE6;
+border-radius: 8px;
+
+
+/* Photo */
+
+margin: 0 auto;
+width: 28px;
+height: 12px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 10px;
+line-height: 12px;
+letter-spacing: -0.01em;
+
+color: #111114;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* x 2 */
+
+box-sizing: border-box;
+
+position: absolute;
+width: 24px;
+height: 24px;
+left: 248px;
+top: 12.5px;
+
+background: #000000;
+border: 1px solid #111114;
+border-radius: 20px;
+
+
+/* Group 11 */
+
+position: absolute;
+width: 9px;
+height: 9px;
+left: 7.28px;
+top: 7.28px;
+
+
+
+/* Vector (Stroke) */
+
+position: absolute;
+left: 30.33%;
+right: 32.17%;
+top: 30.33%;
+bottom: 32.17%;
+
+background: #FFFFFF;
+
+
+/* Vector (Stroke) */
+
+position: absolute;
+left: 30.33%;
+right: 32.17%;
+top: 30.33%;
+bottom: 32.17%;
+
+background: #FFFFFF;
+
+
+/* Group 14 */
+
+width: 62px;
+height: 65px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 4;
+flex-grow: 0;
+
+
+/* Frame */
+
+box-sizing: border-box;
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+padding: 12px 14px;
+gap: 11px;
+
+position: absolute;
+width: 56px;
+height: 56px;
+left: 280px;
+top: 21.5px;
+
+background: #FAFAFA;
+border: 1px solid #19AAE6;
+border-radius: 8px;
+
+
+/* Photo */
+
+margin: 0 auto;
+width: 28px;
+height: 12px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 10px;
+line-height: 12px;
+letter-spacing: -0.01em;
+
+color: #111114;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* x 2 */
+
+box-sizing: border-box;
+
+position: absolute;
+width: 24px;
+height: 24px;
+left: 318px;
+top: 12.5px;
+
+background: #000000;
+border: 1px solid #111114;
+border-radius: 20px;
+
+
+/* Group 11 */
+
+position: absolute;
+width: 9px;
+height: 9px;
+left: 7.28px;
+top: 7.28px;
+
+
+
+/* Vector (Stroke) */
+
+position: absolute;
+left: 30.33%;
+right: 32.17%;
+top: 30.33%;
+bottom: 32.17%;
+
+background: #FFFFFF;
+
+
+/* Vector (Stroke) */
+
+position: absolute;
+left: 30.33%;
+right: 32.17%;
+top: 30.33%;
+bottom: 32.17%;
+
+background: #FFFFFF;
+
+
+/* Frame */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 8px 0px 0px;
+
+width: 342px;
+height: 81px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 2;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Frame */
+
+box-sizing: border-box;
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+padding: 20px 12px;
+gap: 16px;
+
+width: 342px;
+height: 64px;
+min-height: 64px;
+
+border: 2px solid #D1D1D6;
+border-radius: 12px;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Frame 4096 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 12px;
+
+margin: 0 auto;
+width: 218px;
+height: 40px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Group 15 */
+
+width: 40px;
+height: 40px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Ellipse */
+
+position: absolute;
+width: 40px;
+height: 40px;
+left: 0px;
+top: 0px;
+
+background: #19AAE6;
+
+
+/* play 1 */
+
+position: absolute;
+width: 16px;
+height: 16px;
+left: 12px;
+top: 12px;
+
+
+
+/* Vector (Stroke) */
+
+position: absolute;
+left: 16.67%;
+right: 8.33%;
+top: 8.33%;
+bottom: 8.33%;
+
+background: #FFFFFF;
+
+
+/* Frame 4095 */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: flex-start;
+padding: 0px;
+gap: 4px;
+
+width: 102px;
+height: 34px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Voice Note added */
+
+width: 102px;
+height: 15px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 12px;
+line-height: 15px;
+/* identical to box height */
+letter-spacing: -0.01em;
+
+color: #000000;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* 0:30 */
+
+width: 27px;
+height: 15px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 12px;
+line-height: 15px;
+/* identical to box height */
+letter-spacing: -0.01em;
+
+color: #5F606B;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* x 2 */
+
+box-sizing: border-box;
+
+margin: 0 auto;
+width: 24px;
+height: 24px;
+
+background: #000000;
+border: 1px solid #111114;
+border-radius: 20px;
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Group 11 */
+
+position: absolute;
+width: 9px;
+height: 9px;
+left: 7.28px;
+top: 7.28px;
+
+
+
+/* Vector (Stroke) */
+
+position: absolute;
+left: 30.33%;
+right: 32.17%;
+top: 30.33%;
+bottom: 32.17%;
+
+background: #FFFFFF;
+
+
+/* Vector (Stroke) */
+
+position: absolute;
+left: 30.33%;
+right: 32.17%;
+top: 30.33%;
+bottom: 32.17%;
+
+background: #FFFFFF;
+
+
+/* Frame */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 8px 0px 0px;
+
+width: 342px;
+height: 77px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 3;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Frame */
+
+box-sizing: border-box;
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+padding: 12px 14px;
+gap: 11px;
+
+width: 342px;
+height: 62px;
+
+background: linear-gradient(0deg, #FAFAFA, #FAFAFA), #FFFFFF;
+border: 1px solid #19AAE6;
+border-radius: 8px;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Video 0:15 */
+
+margin: 0 auto;
+width: 62px;
+height: 15px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 12px;
+line-height: 15px;
+/* identical to box height */
+letter-spacing: -0.01em;
+
+color: #111114;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* x 2 */
+
+box-sizing: border-box;
+
+margin: 0 auto;
+width: 24px;
+height: 24px;
+
+background: #000000;
+border: 1px solid #111114;
+border-radius: 20px;
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Group 11 */
+
+position: absolute;
+width: 9px;
+height: 9px;
+left: 7.28px;
+top: 7.28px;
+
+
+
+/* Vector (Stroke) */
+
+position: absolute;
+left: 30.33%;
+right: 32.17%;
+top: 30.33%;
+bottom: 32.17%;
+
+background: #FFFFFF;
+
+
+/* Vector (Stroke) */
+
+position: absolute;
+left: 30.33%;
+right: 32.17%;
+top: 30.33%;
+bottom: 32.17%;
+
+background: #FFFFFF;
+
+
+/* btn / Share */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 24px 14px;
+
+width: 342px;
+height: 76px;
+min-height: 76px;
+
+background: #19AAE6;
+border-radius: 12px;
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Share it as a risk */
+
+width: 153px;
+height: 24px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 20px;
+line-height: 24px;
+letter-spacing: -0.02em;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* 02 Observation - Voice note capture */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+
+position: relative;
+width: 390px;
+height: 844px;
+left: 635px;
+top: 301px;
+
+background: #FFFFFF;
+
+
+/* Status Bar */
+
+width: 390px;
+height: 44px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Notch */
+
+position: absolute;
+height: 30px;
+left: 0px;
+right: 0px;
+top: 0px;
+
+
+
+/* Subtract */
+
+position: absolute;
+visibility: hidden;
+width: 44px;
+height: 30px;
+left: 77px;
+top: calc(50% - 30px/2);
+
+/* System Bg Dark Base / Primary */
+background: #000000;
+
+
+/* Rectangle 11 */
+
+position: absolute;
+visibility: hidden;
+left: 121px;
+right: 121px;
+top: 0%;
+bottom: 0%;
+
+/* System Bg Dark Base / Primary */
+background: #000000;
+
+
+/* Subtract */
+
+position: absolute;
+visibility: hidden;
+width: 44px;
+height: 30px;
+right: 77px;
+top: calc(50% - 30px/2);
+
+/* System Bg Dark Base / Primary */
+background: #000000;
+transform: matrix(-1, 0, 0, 1, 0, 0);
+
+
+/* Status Icons */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 4px;
+
+position: absolute;
+width: 69px;
+height: 14px;
+right: 14px;
+top: 16px;
+
+
+
+/* Network Signal / Light
+
+Network Signal Strength • Light
+*/
+
+width: 20px;
+height: 14px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Path */
+
+position: absolute;
+left: 55%;
+right: 30%;
+top: 28.57%;
+bottom: 14.29%;
+
+background: #D1D1D6;
+
+
+/* Path */
+
+position: absolute;
+left: 32.5%;
+right: 52.5%;
+top: 42.86%;
+bottom: 14.29%;
+
+background: #D1D1D6;
+
+
+/* Path */
+
+position: absolute;
+left: 10%;
+right: 75%;
+top: 53.57%;
+bottom: 14.29%;
+
+background: #D1D1D6;
+
+
+/* Empty Bar */
+
+position: absolute;
+left: 77.5%;
+right: 7.5%;
+top: 14.29%;
+bottom: 14.29%;
+
+background: rgba(60, 60, 67, 0.18);
+
+
+/* Path */
+
+position: absolute;
+left: 55%;
+right: 30%;
+top: 28.57%;
+bottom: 14.29%;
+
+background: #000000;
+
+
+/* Path */
+
+position: absolute;
+left: 32.5%;
+right: 52.5%;
+top: 42.86%;
+bottom: 14.29%;
+
+background: #000000;
+
+
+/* Path */
+
+position: absolute;
+left: 10%;
+right: 75%;
+top: 53.57%;
+bottom: 14.29%;
+
+background: #000000;
+
+
+/* Empty Bar */
+
+position: absolute;
+visibility: hidden;
+left: 77.5%;
+right: 7.5%;
+top: 14.29%;
+bottom: 14.29%;
+
+/* Label Light / Primary */
+background: #000000;
+
+
+/* WiFi Signal / Light */
+
+width: 16px;
+height: 14px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Path */
+
+position: absolute;
+left: 37.11%;
+right: 35.56%;
+top: 63.85%;
+bottom: 14.29%;
+
+background: #000000;
+
+
+/* Path */
+
+position: absolute;
+left: 21.66%;
+right: 20.1%;
+top: 39.07%;
+bottom: 37.26%;
+
+background: #000000;
+
+
+/* Path */
+
+position: absolute;
+left: 6.25%;
+right: 4.69%;
+top: 14.29%;
+bottom: 54.84%;
+
+background: #000000;
+
+
+/* Battery / Light */
+
+width: 25px;
+height: 14px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 2;
+flex-grow: 0;
+
+
+/* 􀋦 */
+
+position: absolute;
+visibility: hidden;
+width: 8px;
+height: 12px;
+left: 8px;
+top: 1px;
+
+/* Label Dark / Primary */
+background: #FFFFFF;
+
+
+/* Subtract */
+
+position: absolute;
+visibility: hidden;
+width: 23px;
+height: 12px;
+left: 0px;
+top: 1px;
+
+/* Label Dark / Tertiary */
+background: rgba(235, 235, 245, 0.3);
+
+
+/* Rectangle 23 */
+
+position: absolute;
+width: 1px;
+height: 4px;
+left: 24px;
+top: 5px;
+
+background: rgba(60, 60, 67, 0.6);
+
+
+/* Battery */
+
+position: absolute;
+visibility: hidden;
+width: 19px;
+height: 8px;
+left: 2px;
+top: 3px;
+
+
+
+/* 100 */
+
+position: absolute;
+width: 19px;
+height: 8px;
+left: 2px;
+top: 3px;
+
+/* Color Light / Green */
+background: #34C759;
+
+
+/* 50 */
+
+position: absolute;
+visibility: hidden;
+width: 8.45px;
+height: 8px;
+left: 2px;
+top: 3px;
+
+/* Color Light / Green */
+background: #34C759;
+
+
+/* 10 */
+
+position: absolute;
+visibility: hidden;
+width: 3px;
+height: 8px;
+left: 2px;
+top: 3px;
+
+/* Color Dark / Yellow */
+background: #FFD60A;
+
+
+/* Rectangle 21 (Stroke) */
+
+position: absolute;
+width: 23px;
+height: 12px;
+left: 0px;
+top: 1px;
+
+background: rgba(60, 60, 67, 0.6);
+
+
+/* Rectangle 20 */
+
+position: absolute;
+width: 19px;
+height: 8px;
+left: 2px;
+top: calc(50% - 8px/2);
+
+background: #000000;
+border-radius: 1px;
+
+
+/* Indicator
+
+Recording Indicator
+*/
+
+position: absolute;
+width: 6px;
+height: 6px;
+right: 71px;
+top: 8px;
+
+
+
+/* Indicator */
+
+position: absolute;
+visibility: hidden;
+left: 0%;
+right: 0%;
+top: 0%;
+bottom: 0%;
+
+/* SystemGreen / Light
+
+class var systemGreen: UIColor
+*/
+background: #34C759;
+
+
+/* Time / Light */
+
+position: absolute;
+width: 54px;
+height: 21px;
+left: 21px;
+top: 12px;
+
+border-radius: 20px;
+
+
+/* 9:41 */
+
+position: absolute;
+width: 33px;
+height: 15px;
+left: calc(50% - 33px/2 + 0.5px);
+top: calc(50% - 15px/2);
+
+
+
+/* 9:41 */
+
+position: absolute;
+width: 28.43px;
+height: 11.09px;
+left: calc(50% - 28.43px/2 - 0.29px);
+top: calc(50% - 11.09px/2 + 0.04px);
+
+background: #000000;
+
+
+/* body */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 16px 24px;
+
+width: 390px;
+height: 800px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+align-self: stretch;
+flex-grow: 1;
+
+
+/* Frame */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+padding: 8px 0px 6px;
+
+width: 342px;
+height: 70px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Voice Note */
+
+width: 153px;
+height: 36px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 30px;
+line-height: 36px;
+letter-spacing: -0.025em;
+
+color: #111114;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Frame */
+
+box-sizing: border-box;
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 0px;
+
+width: 56px;
+height: 56px;
+
+border: 2px solid #DADADE;
+border-radius: 12px;
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* ✕ */
+
+width: 18px;
+height: 24px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 20px;
+line-height: 24px;
+
+color: #111114;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* spacer */
+
+width: 342px;
+height: 76px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Frame */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 0px;
+gap: 5px;
+
+width: 342px;
+height: 58px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 2;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Rectangle */
+
+width: 5px;
+height: 14px;
+
+background: #19AAE6;
+border-radius: 3px;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Rectangle */
+
+width: 5px;
+height: 30px;
+
+background: #19AAE6;
+border-radius: 3px;
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Rectangle */
+
+width: 5px;
+height: 52px;
+
+background: #19AAE6;
+border-radius: 3px;
+
+/* Inside auto layout */
+flex: none;
+order: 2;
+flex-grow: 0;
+
+
+/* Rectangle */
+
+width: 5px;
+height: 24px;
+
+background: #19AAE6;
+border-radius: 3px;
+
+/* Inside auto layout */
+flex: none;
+order: 3;
+flex-grow: 0;
+
+
+/* Rectangle */
+
+width: 5px;
+height: 44px;
+
+background: #19AAE6;
+border-radius: 3px;
+
+/* Inside auto layout */
+flex: none;
+order: 4;
+flex-grow: 0;
+
+
+/* Rectangle */
+
+width: 5px;
+height: 16px;
+
+background: #19AAE6;
+border-radius: 3px;
+
+/* Inside auto layout */
+flex: none;
+order: 5;
+flex-grow: 0;
+
+
+/* Rectangle */
+
+width: 5px;
+height: 36px;
+
+background: #19AAE6;
+border-radius: 3px;
+
+/* Inside auto layout */
+flex: none;
+order: 6;
+flex-grow: 0;
+
+
+/* Rectangle */
+
+width: 5px;
+height: 58px;
+
+background: #19AAE6;
+border-radius: 3px;
+
+/* Inside auto layout */
+flex: none;
+order: 7;
+flex-grow: 0;
+
+
+/* Rectangle */
+
+width: 5px;
+height: 20px;
+
+background: #19AAE6;
+border-radius: 3px;
+
+/* Inside auto layout */
+flex: none;
+order: 8;
+flex-grow: 0;
+
+
+/* Rectangle */
+
+width: 5px;
+height: 40px;
+
+background: #19AAE6;
+border-radius: 3px;
+
+/* Inside auto layout */
+flex: none;
+order: 9;
+flex-grow: 0;
+
+
+/* Rectangle */
+
+width: 5px;
+height: 18px;
+
+background: #19AAE6;
+border-radius: 3px;
+
+/* Inside auto layout */
+flex: none;
+order: 10;
+flex-grow: 0;
+
+
+/* Rectangle */
+
+width: 5px;
+height: 32px;
+
+background: #19AAE6;
+border-radius: 3px;
+
+/* Inside auto layout */
+flex: none;
+order: 11;
+flex-grow: 0;
+
+
+/* Frame */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 24px 0px 0px;
+
+width: 342px;
+height: 70px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 3;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* I moved the cable run back from the hatch edge and cable tied it to the rail */
+
+width: 342px;
+height: 46px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 600;
+font-size: 19px;
+line-height: 23px;
+text-align: center;
+letter-spacing: -0.01em;
+
+color: #111114;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Frame */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 16px 0px 0px;
+
+width: 342px;
+height: 40px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 4;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* 0:07 */
+
+width: 342px;
+height: 24px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 20px;
+line-height: 24px;
+text-align: center;
+
+color: #5F606B;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* spacer */
+
+width: 342px;
+height: 205px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 5;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Frame 4075 */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+gap: 52px;
+
+width: 342px;
+height: 241px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 6;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Frame 4074 */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+
+width: 342px;
+height: 113px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Frame */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 0px;
+
+width: 342px;
+height: 82px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Frame */
+
+box-sizing: border-box;
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 0px;
+
+width: 82px;
+height: 82px;
+
+border: 4px solid #19AAE6;
+border-radius: 99px;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Rectangle */
+
+width: 34px;
+height: 34px;
+
+background: #19AAE6;
+border-radius: 6px;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Frame */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 16px 0px 0px;
+
+width: 342px;
+height: 31px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Stops itself at 30 seconds */
+
+width: 342px;
+height: 15px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 600;
+font-size: 12px;
+line-height: 15px;
+/* identical to box height */
+text-align: center;
+
+color: #5F606B;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Frame */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: flex-start;
+padding: 0px;
+gap: 12px;
+
+width: 342px;
+height: 76px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* btn / No */
+
+box-sizing: border-box;
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 24px 14px;
+
+width: 165px;
+height: 76px;
+min-height: 76px;
+
+border: 2px solid #5F606B;
+border-radius: 12px;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 1;
+
+
+/* Clear */
+
+width: 49px;
+height: 24px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 20px;
+line-height: 24px;
+letter-spacing: -0.02em;
+
+color: #5F606B;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* btn / Yes */
+
+box-sizing: border-box;
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 24px 14px;
+
+width: 165px;
+height: 76px;
+min-height: 76px;
+
+border: 2px solid #19AAE6;
+border-radius: 12px;
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 1;
+
+
+/* Add this */
+
+width: 77px;
+height: 24px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 20px;
+line-height: 24px;
+letter-spacing: -0.02em;
+
+color: #19AAE6;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* 05 Shared */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+
+position: relative;
+width: 390px;
+height: 844px;
+left: 2476px;
+top: 296px;
+
+background: #FFFFFF;
+
+
+/* Status Bar */
+
+width: 390px;
+height: 44px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Notch */
+
+position: absolute;
+height: 30px;
+left: 0px;
+right: 0px;
+top: 0px;
+
+
+
+/* Subtract */
+
+position: absolute;
+visibility: hidden;
+width: 44px;
+height: 30px;
+left: 77px;
+top: calc(50% - 30px/2);
+
+/* System Bg Dark Base / Primary */
+background: #000000;
+
+
+/* Rectangle 11 */
+
+position: absolute;
+visibility: hidden;
+left: 121px;
+right: 121px;
+top: 0%;
+bottom: 0%;
+
+/* System Bg Dark Base / Primary */
+background: #000000;
+
+
+/* Subtract */
+
+position: absolute;
+visibility: hidden;
+width: 44px;
+height: 30px;
+right: 77px;
+top: calc(50% - 30px/2);
+
+/* System Bg Dark Base / Primary */
+background: #000000;
+transform: matrix(-1, 0, 0, 1, 0, 0);
+
+
+/* Status Icons */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 4px;
+
+position: absolute;
+width: 69px;
+height: 14px;
+right: 14px;
+top: 16px;
+
+
+
+/* Network Signal / Light
+
+Network Signal Strength • Light
+*/
+
+width: 20px;
+height: 14px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Path */
+
+position: absolute;
+left: 55%;
+right: 30%;
+top: 28.57%;
+bottom: 14.29%;
+
+background: #D1D1D6;
+
+
+/* Path */
+
+position: absolute;
+left: 32.5%;
+right: 52.5%;
+top: 42.86%;
+bottom: 14.29%;
+
+background: #D1D1D6;
+
+
+/* Path */
+
+position: absolute;
+left: 10%;
+right: 75%;
+top: 53.57%;
+bottom: 14.29%;
+
+background: #D1D1D6;
+
+
+/* Empty Bar */
+
+position: absolute;
+left: 77.5%;
+right: 7.5%;
+top: 14.29%;
+bottom: 14.29%;
+
+background: rgba(60, 60, 67, 0.18);
+
+
+/* Path */
+
+position: absolute;
+left: 55%;
+right: 30%;
+top: 28.57%;
+bottom: 14.29%;
+
+background: #000000;
+
+
+/* Path */
+
+position: absolute;
+left: 32.5%;
+right: 52.5%;
+top: 42.86%;
+bottom: 14.29%;
+
+background: #000000;
+
+
+/* Path */
+
+position: absolute;
+left: 10%;
+right: 75%;
+top: 53.57%;
+bottom: 14.29%;
+
+background: #000000;
+
+
+/* Empty Bar */
+
+position: absolute;
+visibility: hidden;
+left: 77.5%;
+right: 7.5%;
+top: 14.29%;
+bottom: 14.29%;
+
+/* Label Light / Primary */
+background: #000000;
+
+
+/* WiFi Signal / Light */
+
+width: 16px;
+height: 14px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Path */
+
+position: absolute;
+left: 37.11%;
+right: 35.56%;
+top: 63.85%;
+bottom: 14.29%;
+
+background: #000000;
+
+
+/* Path */
+
+position: absolute;
+left: 21.66%;
+right: 20.1%;
+top: 39.07%;
+bottom: 37.26%;
+
+background: #000000;
+
+
+/* Path */
+
+position: absolute;
+left: 6.25%;
+right: 4.69%;
+top: 14.29%;
+bottom: 54.84%;
+
+background: #000000;
+
+
+/* Battery / Light */
+
+width: 25px;
+height: 14px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 2;
+flex-grow: 0;
+
+
+/* 􀋦 */
+
+position: absolute;
+visibility: hidden;
+width: 8px;
+height: 12px;
+left: 8px;
+top: 1px;
+
+/* Label Dark / Primary */
+background: #FFFFFF;
+
+
+/* Subtract */
+
+position: absolute;
+visibility: hidden;
+width: 23px;
+height: 12px;
+left: 0px;
+top: 1px;
+
+/* Label Dark / Tertiary */
+background: rgba(235, 235, 245, 0.3);
+
+
+/* Rectangle 23 */
+
+position: absolute;
+width: 1px;
+height: 4px;
+left: 24px;
+top: 5px;
+
+background: rgba(60, 60, 67, 0.6);
+
+
+/* Battery */
+
+position: absolute;
+visibility: hidden;
+width: 19px;
+height: 8px;
+left: 2px;
+top: 3px;
+
+
+
+/* 100 */
+
+position: absolute;
+width: 19px;
+height: 8px;
+left: 2px;
+top: 3px;
+
+/* Color Light / Green */
+background: #34C759;
+
+
+/* 50 */
+
+position: absolute;
+visibility: hidden;
+width: 8.45px;
+height: 8px;
+left: 2px;
+top: 3px;
+
+/* Color Light / Green */
+background: #34C759;
+
+
+/* 10 */
+
+position: absolute;
+visibility: hidden;
+width: 3px;
+height: 8px;
+left: 2px;
+top: 3px;
+
+/* Color Dark / Yellow */
+background: #FFD60A;
+
+
+/* Rectangle 21 (Stroke) */
+
+position: absolute;
+width: 23px;
+height: 12px;
+left: 0px;
+top: 1px;
+
+background: rgba(60, 60, 67, 0.6);
+
+
+/* Rectangle 20 */
+
+position: absolute;
+width: 19px;
+height: 8px;
+left: 2px;
+top: calc(50% - 8px/2);
+
+background: #000000;
+border-radius: 1px;
+
+
+/* Indicator
+
+Recording Indicator
+*/
+
+position: absolute;
+width: 6px;
+height: 6px;
+right: 71px;
+top: 8px;
+
+
+
+/* Indicator */
+
+position: absolute;
+visibility: hidden;
+left: 0%;
+right: 0%;
+top: 0%;
+bottom: 0%;
+
+/* SystemGreen / Light
+
+class var systemGreen: UIColor
+*/
+background: #34C759;
+
+
+/* Time / Light */
+
+position: absolute;
+width: 54px;
+height: 21px;
+left: 21px;
+top: 12px;
+
+border-radius: 20px;
+
+
+/* 9:41 */
+
+position: absolute;
+width: 33px;
+height: 15px;
+left: calc(50% - 33px/2 + 0.5px);
+top: calc(50% - 15px/2);
+
+
+
+/* 9:41 */
+
+position: absolute;
+width: 28.43px;
+height: 11.09px;
+left: calc(50% - 28.43px/2 - 0.29px);
+top: calc(50% - 11.09px/2 + 0.04px);
+
+background: #000000;
+
+
+/* body */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 8px 24px 24px;
+
+width: 390px;
+height: 800px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+align-self: stretch;
+flex-grow: 1;
+
+
+/* spacer */
+
+width: 342px;
+height: 218px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 1;
+
+
+/* Frame */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 0px;
+
+width: 342px;
+height: 72px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Frame */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 0px;
+
+width: 72px;
+height: 72px;
+
+background: #19AAE6;
+border-radius: 16px;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* ✓ */
+
+width: 30px;
+height: 41px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 34px;
+line-height: 41px;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Frame */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 26px 0px 0px;
+
+width: 342px;
+height: 62px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 2;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* SHARED */
+
+width: 342px;
+height: 36px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 30px;
+line-height: 36px;
+text-align: center;
+letter-spacing: -0.03em;
+
+color: #111114;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Frame */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 14px 0px 0px;
+
+width: 342px;
+height: 33px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 3;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* What you shared can help the next person */
+
+width: 342px;
+height: 19px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 15.5px;
+line-height: 19px;
+/* identical to box height */
+text-align: center;
+letter-spacing: -0.01em;
+
+color: #5F606B;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* spacer */
+
+width: 342px;
+height: 307px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 4;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Frame */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: flex-start;
+padding: 0px;
+gap: 12px;
+
+width: 342px;
+height: 76px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 5;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* btn / See your shares */
+
+box-sizing: border-box;
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 24px 14px;
+
+width: 165px;
+height: 76px;
+min-height: 76px;
+
+border: 2.5px solid #5F606B;
+border-radius: 12px;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 1;
+
+
+/* My Echo */
+
+width: 77px;
+height: 23px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 19px;
+line-height: 23px;
+/* identical to box height */
+letter-spacing: -0.02em;
+
+color: #5F606B;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* btn / Done */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 24px 14px;
+
+width: 165px;
+height: 76px;
+min-height: 76px;
+
+background: #19AAE6;
+border-radius: 12px;
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 1;
+
+
+/* Done */
+
+width: 48px;
+height: 23px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 19px;
+line-height: 23px;
+/* identical to box height */
+letter-spacing: -0.02em;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* START HERE */
+
+position: absolute;
+width: 134px;
+height: 27px;
+left: 179px;
+top: 221px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 22px;
+line-height: 27px;
+/* identical to box height */
+letter-spacing: -0.01em;
+
+color: #111114;
+
+
+
+/* Voice note being added, transcript will be show to the user */
+
+position: absolute;
+width: 356px;
+height: 54px;
+left: 635px;
+top: 1163px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 22px;
+line-height: 27px;
+letter-spacing: -0.01em;
+
+color: #111114;
+
+
+
+/* User will categorise the observation. Button text will change based on the selection. */
+
+position: absolute;
+width: 377px;
+height: 81px;
+left: 2020px;
+top: 1163px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 22px;
+line-height: 27px;
+letter-spacing: -0.01em;
+
+color: #111114;
+
+
+
+/* Observation is shared. */
+
+position: absolute;
+width: 232px;
+height: 27px;
+left: 2476px;
+top: 1163px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 22px;
+line-height: 27px;
+/* identical to box height */
+letter-spacing: -0.01em;
+
+color: #111114;
+
+
+
+/* 03 Observation — Video capture */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 0px;
+
+position: relative;
+width: 390px;
+height: 844px;
+left: 1091px;
+top: 296px;
+
+background: #FFFFFF;
+
+
+/* Status Bar */
+
+width: 390px;
+height: 44px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Notch */
+
+position: absolute;
+height: 30px;
+left: 0px;
+right: 0px;
+top: 0px;
+
+
+
+/* Subtract */
+
+position: absolute;
+visibility: hidden;
+width: 44px;
+height: 30px;
+left: 77px;
+top: calc(50% - 30px/2);
+
+/* System Bg Dark Base / Primary */
+background: #000000;
+
+
+/* Rectangle 11 */
+
+position: absolute;
+visibility: hidden;
+left: 121px;
+right: 121px;
+top: 0%;
+bottom: 0%;
+
+/* System Bg Dark Base / Primary */
+background: #000000;
+
+
+/* Subtract */
+
+position: absolute;
+visibility: hidden;
+width: 44px;
+height: 30px;
+right: 77px;
+top: calc(50% - 30px/2);
+
+/* System Bg Dark Base / Primary */
+background: #000000;
+transform: matrix(-1, 0, 0, 1, 0, 0);
+
+
+/* Status Icons */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 4px;
+
+position: absolute;
+width: 69px;
+height: 14px;
+right: 14px;
+top: 16px;
+
+
+
+/* Network Signal / Light
+
+Network Signal Strength • Light
+*/
+
+width: 20px;
+height: 14px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Path */
+
+position: absolute;
+left: 55%;
+right: 30%;
+top: 28.57%;
+bottom: 14.29%;
+
+background: #D1D1D6;
+
+
+/* Path */
+
+position: absolute;
+left: 32.5%;
+right: 52.5%;
+top: 42.86%;
+bottom: 14.29%;
+
+background: #D1D1D6;
+
+
+/* Path */
+
+position: absolute;
+left: 10%;
+right: 75%;
+top: 53.57%;
+bottom: 14.29%;
+
+background: #D1D1D6;
+
+
+/* Empty Bar */
+
+position: absolute;
+left: 77.5%;
+right: 7.5%;
+top: 14.29%;
+bottom: 14.29%;
+
+background: rgba(60, 60, 67, 0.18);
+
+
+/* Path */
+
+position: absolute;
+left: 55%;
+right: 30%;
+top: 28.57%;
+bottom: 14.29%;
+
+background: #000000;
+
+
+/* Path */
+
+position: absolute;
+left: 32.5%;
+right: 52.5%;
+top: 42.86%;
+bottom: 14.29%;
+
+background: #000000;
+
+
+/* Path */
+
+position: absolute;
+left: 10%;
+right: 75%;
+top: 53.57%;
+bottom: 14.29%;
+
+background: #000000;
+
+
+/* Empty Bar */
+
+position: absolute;
+visibility: hidden;
+left: 77.5%;
+right: 7.5%;
+top: 14.29%;
+bottom: 14.29%;
+
+/* Label Light / Primary */
+background: #000000;
+
+
+/* WiFi Signal / Light */
+
+width: 16px;
+height: 14px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Path */
+
+position: absolute;
+left: 37.11%;
+right: 35.56%;
+top: 63.85%;
+bottom: 14.29%;
+
+background: #000000;
+
+
+/* Path */
+
+position: absolute;
+left: 21.66%;
+right: 20.1%;
+top: 39.07%;
+bottom: 37.26%;
+
+background: #000000;
+
+
+/* Path */
+
+position: absolute;
+left: 6.25%;
+right: 4.69%;
+top: 14.29%;
+bottom: 54.84%;
+
+background: #000000;
+
+
+/* Battery / Light */
+
+width: 25px;
+height: 14px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 2;
+flex-grow: 0;
+
+
+/* 􀋦 */
+
+position: absolute;
+visibility: hidden;
+width: 8px;
+height: 12px;
+left: 8px;
+top: 1px;
+
+/* Label Dark / Primary */
+background: #FFFFFF;
+
+
+/* Subtract */
+
+position: absolute;
+visibility: hidden;
+width: 23px;
+height: 12px;
+left: 0px;
+top: 1px;
+
+/* Label Dark / Tertiary */
+background: rgba(235, 235, 245, 0.3);
+
+
+/* Rectangle 23 */
+
+position: absolute;
+width: 1px;
+height: 4px;
+left: 24px;
+top: 5px;
+
+background: rgba(60, 60, 67, 0.6);
+
+
+/* Battery */
+
+position: absolute;
+visibility: hidden;
+width: 19px;
+height: 8px;
+left: 2px;
+top: 3px;
+
+
+
+/* 100 */
+
+position: absolute;
+width: 19px;
+height: 8px;
+left: 2px;
+top: 3px;
+
+/* Color Light / Green */
+background: #34C759;
+
+
+/* 50 */
+
+position: absolute;
+visibility: hidden;
+width: 8.45px;
+height: 8px;
+left: 2px;
+top: 3px;
+
+/* Color Light / Green */
+background: #34C759;
+
+
+/* 10 */
+
+position: absolute;
+visibility: hidden;
+width: 3px;
+height: 8px;
+left: 2px;
+top: 3px;
+
+/* Color Dark / Yellow */
+background: #FFD60A;
+
+
+/* Rectangle 21 (Stroke) */
+
+position: absolute;
+width: 23px;
+height: 12px;
+left: 0px;
+top: 1px;
+
+background: rgba(60, 60, 67, 0.6);
+
+
+/* Rectangle 20 */
+
+position: absolute;
+width: 19px;
+height: 8px;
+left: 2px;
+top: calc(50% - 8px/2);
+
+background: #000000;
+border-radius: 1px;
+
+
+/* Indicator
+
+Recording Indicator
+*/
+
+position: absolute;
+width: 6px;
+height: 6px;
+right: 71px;
+top: 8px;
+
+
+
+/* Indicator */
+
+position: absolute;
+visibility: hidden;
+left: 0%;
+right: 0%;
+top: 0%;
+bottom: 0%;
+
+/* SystemGreen / Light
+
+class var systemGreen: UIColor
+*/
+background: #34C759;
+
+
+/* Time / Light */
+
+position: absolute;
+width: 54px;
+height: 21px;
+left: 21px;
+top: 12px;
+
+border-radius: 20px;
+
+
+/* 9:41 */
+
+position: absolute;
+width: 33px;
+height: 15px;
+left: calc(50% - 33px/2 + 0.5px);
+top: calc(50% - 15px/2);
+
+
+
+/* 9:41 */
+
+position: absolute;
+width: 28.43px;
+height: 11.09px;
+left: calc(50% - 28.43px/2 - 0.29px);
+top: calc(50% - 11.09px/2 + 0.04px);
+
+background: #000000;
+
+
+/* Frame 4045 */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 8px 16px 0px;
+gap: 4px;
+
+width: 390px;
+height: 336px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Frame */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 0px;
+
+width: 342px;
+height: 328px;
+
+background: #16161A;
+border-radius: 12px;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* photo */
+
+width: 37px;
+height: 16px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 600;
+font-size: 13px;
+line-height: 16px;
+/* identical to box height */
+
+color: #5C5C61;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Frame */
+
+box-sizing: border-box;
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: flex-start;
+padding: 0px;
+
+width: 390px;
+height: 62px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 2;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Frame */
+
+box-sizing: border-box;
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+padding: 16px 12px 13px;
+
+width: 195px;
+height: 62px;
+
+border-bottom: 1px solid #D1D1D6;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 1;
+
+
+/* PHOTO */
+
+width: 48px;
+height: 15px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 12.5px;
+line-height: 15px;
+letter-spacing: 0.06em;
+
+color: #9A9B9D;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Frame */
+
+box-sizing: border-box;
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+padding: 16px 12px 13px;
+
+width: 195px;
+height: 62px;
+
+border-bottom: 3px solid #19AAE6;
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 1;
+
+
+/* VIDEO */
+
+width: 43px;
+height: 15px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 12.5px;
+line-height: 15px;
+letter-spacing: 0.06em;
+
+color: #111114;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Frame 4048 */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+padding: 24px 0px 16px;
+gap: 8px;
+
+width: 141px;
+height: 229px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 3;
+flex-grow: 0;
+
+
+/* Frame */
+
+box-sizing: border-box;
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 0px;
+
+width: 82px;
+height: 82px;
+
+border: 4px solid #BE123C;
+border-radius: 99px;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Ellipse */
+
+width: 60px;
+height: 60px;
+
+background: #BE123C;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Frame 4047 */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 0px;
+gap: 24px;
+
+width: 342px;
+height: 152px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 4;
+flex-grow: 0;
+
+
+/* Frame 4046 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: flex-start;
+padding: 0px;
+gap: 12px;
+
+width: 342px;
+height: 52px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Frame */
+
+box-sizing: border-box;
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+padding: 12px 14px;
+gap: 11px;
+
+width: 342px;
+height: 62px;
+
+background: linear-gradient(0deg, #FAFAFA, #FAFAFA), #FFFFFF;
+border: 1px solid #19AAE6;
+border-radius: 8px;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 1;
+
+
+/* Video 0:15 */
+
+margin: 0 auto;
+width: 65px;
+height: 15px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 12.5px;
+line-height: 15px;
+letter-spacing: -0.01em;
+
+color: #111114;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* x 2 */
+
+box-sizing: border-box;
+
+margin: 0 auto;
+width: 24px;
+height: 24px;
+
+background: #000000;
+border: 1px solid #111114;
+border-radius: 20px;
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Group 11 */
+
+position: absolute;
+width: 9px;
+height: 9px;
+left: 7.28px;
+top: 7.28px;
+
+
+
+/* Vector (Stroke) */
+
+position: absolute;
+left: 30.33%;
+right: 32.17%;
+top: 30.33%;
+bottom: 32.17%;
+
+background: #FFFFFF;
+
+
+/* Vector (Stroke) */
+
+position: absolute;
+left: 30.33%;
+right: 32.17%;
+top: 30.33%;
+bottom: 32.17%;
+
+background: #FFFFFF;
+
+
+/* btn / Share */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 24px 14px;
+
+width: 342px;
+height: 76px;
+min-height: 76px;
+
+background: #19AAE6;
+border-radius: 12px;
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Continue */
+
+width: 88px;
+height: 24px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 20px;
+line-height: 24px;
+letter-spacing: -0.02em;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* 02 Observation — Image Captured */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 0px;
+
+position: relative;
+width: 390px;
+height: 844px;
+left: 179px;
+top: 301px;
+
+background: #FFFFFF;
+
+
+/* Status Bar */
+
+width: 390px;
+height: 44px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Notch */
+
+position: absolute;
+height: 30px;
+left: 0px;
+right: 0px;
+top: 0px;
+
+
+
+/* Subtract */
+
+position: absolute;
+visibility: hidden;
+width: 44px;
+height: 30px;
+left: 77px;
+top: calc(50% - 30px/2);
+
+/* System Bg Dark Base / Primary */
+background: #000000;
+
+
+/* Rectangle 11 */
+
+position: absolute;
+visibility: hidden;
+left: 121px;
+right: 121px;
+top: 0%;
+bottom: 0%;
+
+/* System Bg Dark Base / Primary */
+background: #000000;
+
+
+/* Subtract */
+
+position: absolute;
+visibility: hidden;
+width: 44px;
+height: 30px;
+right: 77px;
+top: calc(50% - 30px/2);
+
+/* System Bg Dark Base / Primary */
+background: #000000;
+transform: matrix(-1, 0, 0, 1, 0, 0);
+
+
+/* Status Icons */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 4px;
+
+position: absolute;
+width: 69px;
+height: 14px;
+right: 14px;
+top: 16px;
+
+
+
+/* Network Signal / Light
+
+Network Signal Strength • Light
+*/
+
+width: 20px;
+height: 14px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Path */
+
+position: absolute;
+left: 55%;
+right: 30%;
+top: 28.57%;
+bottom: 14.29%;
+
+background: #D1D1D6;
+
+
+/* Path */
+
+position: absolute;
+left: 32.5%;
+right: 52.5%;
+top: 42.86%;
+bottom: 14.29%;
+
+background: #D1D1D6;
+
+
+/* Path */
+
+position: absolute;
+left: 10%;
+right: 75%;
+top: 53.57%;
+bottom: 14.29%;
+
+background: #D1D1D6;
+
+
+/* Empty Bar */
+
+position: absolute;
+left: 77.5%;
+right: 7.5%;
+top: 14.29%;
+bottom: 14.29%;
+
+background: rgba(60, 60, 67, 0.18);
+
+
+/* Path */
+
+position: absolute;
+left: 55%;
+right: 30%;
+top: 28.57%;
+bottom: 14.29%;
+
+background: #000000;
+
+
+/* Path */
+
+position: absolute;
+left: 32.5%;
+right: 52.5%;
+top: 42.86%;
+bottom: 14.29%;
+
+background: #000000;
+
+
+/* Path */
+
+position: absolute;
+left: 10%;
+right: 75%;
+top: 53.57%;
+bottom: 14.29%;
+
+background: #000000;
+
+
+/* Empty Bar */
+
+position: absolute;
+visibility: hidden;
+left: 77.5%;
+right: 7.5%;
+top: 14.29%;
+bottom: 14.29%;
+
+/* Label Light / Primary */
+background: #000000;
+
+
+/* WiFi Signal / Light */
+
+width: 16px;
+height: 14px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Path */
+
+position: absolute;
+left: 37.11%;
+right: 35.56%;
+top: 63.85%;
+bottom: 14.29%;
+
+background: #000000;
+
+
+/* Path */
+
+position: absolute;
+left: 21.66%;
+right: 20.1%;
+top: 39.07%;
+bottom: 37.26%;
+
+background: #000000;
+
+
+/* Path */
+
+position: absolute;
+left: 6.25%;
+right: 4.69%;
+top: 14.29%;
+bottom: 54.84%;
+
+background: #000000;
+
+
+/* Battery / Light */
+
+width: 25px;
+height: 14px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 2;
+flex-grow: 0;
+
+
+/* 􀋦 */
+
+position: absolute;
+visibility: hidden;
+width: 8px;
+height: 12px;
+left: 8px;
+top: 1px;
+
+/* Label Dark / Primary */
+background: #FFFFFF;
+
+
+/* Subtract */
+
+position: absolute;
+visibility: hidden;
+width: 23px;
+height: 12px;
+left: 0px;
+top: 1px;
+
+/* Label Dark / Tertiary */
+background: rgba(235, 235, 245, 0.3);
+
+
+/* Rectangle 23 */
+
+position: absolute;
+width: 1px;
+height: 4px;
+left: 24px;
+top: 5px;
+
+background: rgba(60, 60, 67, 0.6);
+
+
+/* Battery */
+
+position: absolute;
+visibility: hidden;
+width: 19px;
+height: 8px;
+left: 2px;
+top: 3px;
+
+
+
+/* 100 */
+
+position: absolute;
+width: 19px;
+height: 8px;
+left: 2px;
+top: 3px;
+
+/* Color Light / Green */
+background: #34C759;
+
+
+/* 50 */
+
+position: absolute;
+visibility: hidden;
+width: 8.45px;
+height: 8px;
+left: 2px;
+top: 3px;
+
+/* Color Light / Green */
+background: #34C759;
+
+
+/* 10 */
+
+position: absolute;
+visibility: hidden;
+width: 3px;
+height: 8px;
+left: 2px;
+top: 3px;
+
+/* Color Dark / Yellow */
+background: #FFD60A;
+
+
+/* Rectangle 21 (Stroke) */
+
+position: absolute;
+width: 23px;
+height: 12px;
+left: 0px;
+top: 1px;
+
+background: rgba(60, 60, 67, 0.6);
+
+
+/* Rectangle 20 */
+
+position: absolute;
+width: 19px;
+height: 8px;
+left: 2px;
+top: calc(50% - 8px/2);
+
+background: #000000;
+border-radius: 1px;
+
+
+/* Indicator
+
+Recording Indicator
+*/
+
+position: absolute;
+width: 6px;
+height: 6px;
+right: 71px;
+top: 8px;
+
+
+
+/* Indicator */
+
+position: absolute;
+visibility: hidden;
+left: 0%;
+right: 0%;
+top: 0%;
+bottom: 0%;
+
+/* SystemGreen / Light
+
+class var systemGreen: UIColor
+*/
+background: #34C759;
+
+
+/* Time / Light */
+
+position: absolute;
+width: 54px;
+height: 21px;
+left: 21px;
+top: 12px;
+
+border-radius: 20px;
+
+
+/* 9:41 */
+
+position: absolute;
+width: 33px;
+height: 15px;
+left: calc(50% - 33px/2 + 0.5px);
+top: calc(50% - 15px/2);
+
+
+
+/* 9:41 */
+
+position: absolute;
+width: 28.43px;
+height: 11.09px;
+left: calc(50% - 28.43px/2 - 0.29px);
+top: calc(50% - 11.09px/2 + 0.04px);
+
+background: #000000;
+
+
+/* Frame 4045 */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 8px 24px 0px;
+gap: 4px;
+
+width: 390px;
+height: 336px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Frame */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 0px;
+
+width: 342px;
+height: 328px;
+
+background: #16161A;
+border-radius: 12px;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* photo */
+
+width: 37px;
+height: 16px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 600;
+font-size: 13px;
+line-height: 16px;
+/* identical to box height */
+
+color: #5C5C61;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Frame */
+
+box-sizing: border-box;
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: flex-start;
+padding: 0px;
+
+width: 390px;
+height: 62px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 2;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Frame */
+
+box-sizing: border-box;
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+padding: 16px 12px 13px;
+
+width: 195px;
+height: 62px;
+
+border-bottom: 3px solid #19AAE6;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 1;
+
+
+/* PHOTO */
+
+width: 48px;
+height: 15px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 12.5px;
+line-height: 15px;
+letter-spacing: 0.06em;
+
+color: #111114;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Frame */
+
+box-sizing: border-box;
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+padding: 16px 12px 13px;
+
+width: 195px;
+height: 62px;
+
+border-bottom: 1px solid #D1D1D6;
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 1;
+
+
+/* VIDEO */
+
+width: 43px;
+height: 15px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 12.5px;
+line-height: 15px;
+letter-spacing: 0.06em;
+
+color: #9A9B9D;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Frame */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 16px 0px 0px;
+
+width: 390px;
+height: 90px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 3;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Frame */
+
+box-sizing: border-box;
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 20px 0px;
+gap: 11px;
+
+width: 342px;
+height: 64px;
+min-height: 64px;
+
+border: 2px solid #E2E4EC;
+border-radius: 12px;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* mic 1 */
+
+width: 24px;
+height: 24px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Vector (Stroke) */
+
+position: absolute;
+left: 45.83%;
+right: 45.83%;
+top: 75%;
+bottom: 4.17%;
+
+background: #19AAE6;
+
+
+/* Vector (Stroke) */
+
+position: absolute;
+left: 16.67%;
+right: 16.67%;
+top: 37.5%;
+bottom: 16.67%;
+
+background: #19AAE6;
+
+
+/* Vector (Stroke) */
+
+position: absolute;
+left: 33.33%;
+right: 33.33%;
+top: 4.17%;
+bottom: 33.33%;
+
+background: #19AAE6;
+
+
+/* Tell us what you noticed */
+
+width: 182px;
+height: 19px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 16px;
+line-height: 19px;
+letter-spacing: -0.01em;
+
+color: #5F606B;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Frame 4043 */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+padding: 12px 0px 0px;
+gap: 8px;
+
+width: 141px;
+height: 130px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 4;
+flex-grow: 0;
+
+
+/* Frame */
+
+box-sizing: border-box;
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 0px;
+
+width: 82px;
+height: 82px;
+
+border: 4px solid #19AAE6;
+border-radius: 99px;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Ellipse */
+
+width: 60px;
+height: 60px;
+
+background: #19AAE6;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Frame 4047 */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 0px;
+gap: 16px;
+
+width: 342px;
+height: 157px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 5;
+flex-grow: 0;
+
+
+/* Frame 4047 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: flex-start;
+padding: 0px;
+gap: 8px;
+
+width: 342px;
+height: 65px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Group 7 */
+
+width: 62px;
+height: 65px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Frame */
+
+box-sizing: border-box;
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+padding: 12px 14px;
+gap: 11px;
+
+position: absolute;
+width: 56px;
+height: 56px;
+left: 0px;
+top: 9px;
+
+background: #FAFAFA;
+border: 1px solid #19AAE6;
+border-radius: 8px;
+
+
+/* Photo */
+
+margin: 0 auto;
+width: 28px;
+height: 12px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 10px;
+line-height: 12px;
+letter-spacing: -0.01em;
+
+color: #111114;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* x 2 */
+
+box-sizing: border-box;
+
+position: absolute;
+width: 24px;
+height: 24px;
+left: 38px;
+top: 0px;
+
+background: #000000;
+border: 1px solid #111114;
+border-radius: 20px;
+
+
+/* Group 11 */
+
+position: absolute;
+width: 9px;
+height: 9px;
+left: 7.28px;
+top: 7.28px;
+
+
+
+/* Vector (Stroke) */
+
+position: absolute;
+left: 30.33%;
+right: 32.17%;
+top: 30.33%;
+bottom: 32.17%;
+
+background: #FFFFFF;
+
+
+/* Vector (Stroke) */
+
+position: absolute;
+left: 30.33%;
+right: 32.17%;
+top: 30.33%;
+bottom: 32.17%;
+
+background: #FFFFFF;
+
+
+/* Group 11 */
+
+width: 62px;
+height: 65px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Frame */
+
+box-sizing: border-box;
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+padding: 12px 14px;
+gap: 11px;
+
+position: absolute;
+width: 56px;
+height: 56px;
+left: 70px;
+top: 9px;
+
+background: #FAFAFA;
+border: 1px solid #19AAE6;
+border-radius: 8px;
+
+
+/* Photo */
+
+margin: 0 auto;
+width: 28px;
+height: 12px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 10px;
+line-height: 12px;
+letter-spacing: -0.01em;
+
+color: #111114;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* x 2 */
+
+box-sizing: border-box;
+
+position: absolute;
+width: 24px;
+height: 24px;
+left: 108px;
+top: 0px;
+
+background: #000000;
+border: 1px solid #111114;
+border-radius: 20px;
+
+
+/* Group 11 */
+
+position: absolute;
+width: 9px;
+height: 9px;
+left: 7.28px;
+top: 7.28px;
+
+
+
+/* Vector (Stroke) */
+
+position: absolute;
+left: 30.33%;
+right: 32.17%;
+top: 30.33%;
+bottom: 32.17%;
+
+background: #FFFFFF;
+
+
+/* Vector (Stroke) */
+
+position: absolute;
+left: 30.33%;
+right: 32.17%;
+top: 30.33%;
+bottom: 32.17%;
+
+background: #FFFFFF;
+
+
+/* Group 12 */
+
+width: 62px;
+height: 65px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 2;
+flex-grow: 0;
+
+
+/* Frame */
+
+box-sizing: border-box;
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+padding: 12px 14px;
+gap: 11px;
+
+position: absolute;
+width: 56px;
+height: 56px;
+left: 140px;
+top: 9px;
+
+background: #FAFAFA;
+border: 1px solid #19AAE6;
+border-radius: 8px;
+
+
+/* Photo */
+
+margin: 0 auto;
+width: 28px;
+height: 12px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 10px;
+line-height: 12px;
+letter-spacing: -0.01em;
+
+color: #111114;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* x 2 */
+
+box-sizing: border-box;
+
+position: absolute;
+width: 24px;
+height: 24px;
+left: 178px;
+top: 0px;
+
+background: #000000;
+border: 1px solid #111114;
+border-radius: 20px;
+
+
+/* Group 11 */
+
+position: absolute;
+width: 9px;
+height: 9px;
+left: 7.28px;
+top: 7.28px;
+
+
+
+/* Vector (Stroke) */
+
+position: absolute;
+left: 30.33%;
+right: 32.17%;
+top: 30.33%;
+bottom: 32.17%;
+
+background: #FFFFFF;
+
+
+/* Vector (Stroke) */
+
+position: absolute;
+left: 30.33%;
+right: 32.17%;
+top: 30.33%;
+bottom: 32.17%;
+
+background: #FFFFFF;
+
+
+/* Group 13 */
+
+width: 62px;
+height: 65px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 3;
+flex-grow: 0;
+
+
+/* Frame */
+
+box-sizing: border-box;
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+padding: 12px 14px;
+gap: 11px;
+
+position: absolute;
+width: 56px;
+height: 56px;
+left: 210px;
+top: 9px;
+
+background: #FAFAFA;
+border: 1px solid #19AAE6;
+border-radius: 8px;
+
+
+/* Photo */
+
+margin: 0 auto;
+width: 28px;
+height: 12px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 10px;
+line-height: 12px;
+letter-spacing: -0.01em;
+
+color: #111114;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* x 2 */
+
+box-sizing: border-box;
+
+position: absolute;
+width: 24px;
+height: 24px;
+left: 248px;
+top: 0px;
+
+background: #000000;
+border: 1px solid #111114;
+border-radius: 20px;
+
+
+/* Group 11 */
+
+position: absolute;
+width: 9px;
+height: 9px;
+left: 7.28px;
+top: 7.28px;
+
+
+
+/* Vector (Stroke) */
+
+position: absolute;
+left: 30.33%;
+right: 32.17%;
+top: 30.33%;
+bottom: 32.17%;
+
+background: #FFFFFF;
+
+
+/* Vector (Stroke) */
+
+position: absolute;
+left: 30.33%;
+right: 32.17%;
+top: 30.33%;
+bottom: 32.17%;
+
+background: #FFFFFF;
+
+
+/* Group 14 */
+
+width: 62px;
+height: 65px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 4;
+flex-grow: 0;
+
+
+/* Frame */
+
+box-sizing: border-box;
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+padding: 12px 14px;
+gap: 11px;
+
+position: absolute;
+width: 56px;
+height: 56px;
+left: 280px;
+top: 9px;
+
+background: #FAFAFA;
+border: 1px solid #19AAE6;
+border-radius: 8px;
+
+
+/* Photo */
+
+margin: 0 auto;
+width: 28px;
+height: 12px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 10px;
+line-height: 12px;
+letter-spacing: -0.01em;
+
+color: #111114;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* x 2 */
+
+box-sizing: border-box;
+
+position: absolute;
+width: 24px;
+height: 24px;
+left: 318px;
+top: 0px;
+
+background: #000000;
+border: 1px solid #111114;
+border-radius: 20px;
+
+
+/* Group 11 */
+
+position: absolute;
+width: 9px;
+height: 9px;
+left: 7.28px;
+top: 7.28px;
+
+
+
+/* Vector (Stroke) */
+
+position: absolute;
+left: 30.33%;
+right: 32.17%;
+top: 30.33%;
+bottom: 32.17%;
+
+background: #FFFFFF;
+
+
+/* Vector (Stroke) */
+
+position: absolute;
+left: 30.33%;
+right: 32.17%;
+top: 30.33%;
+bottom: 32.17%;
+
+background: #FFFFFF;
+
+
+/* btn / Share */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 24px 14px;
+
+width: 342px;
+height: 76px;
+min-height: 76px;
+
+background: #19AAE6;
+border-radius: 12px;
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Continue */
+
+width: 88px;
+height: 24px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 20px;
+line-height: 24px;
+letter-spacing: -0.02em;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* 02 Observation — Audio Captured */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 0px;
+
+position: relative;
+width: 390px;
+height: 844px;
+left: 1564px;
+top: 296px;
+
+background: #FFFFFF;
+
+
+/* Status Bar */
+
+width: 390px;
+height: 44px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Notch */
+
+position: absolute;
+height: 30px;
+left: 0px;
+right: 0px;
+top: 0px;
+
+
+
+/* Subtract */
+
+position: absolute;
+visibility: hidden;
+width: 44px;
+height: 30px;
+left: 77px;
+top: calc(50% - 30px/2);
+
+/* System Bg Dark Base / Primary */
+background: #000000;
+
+
+/* Rectangle 11 */
+
+position: absolute;
+visibility: hidden;
+left: 121px;
+right: 121px;
+top: 0%;
+bottom: 0%;
+
+/* System Bg Dark Base / Primary */
+background: #000000;
+
+
+/* Subtract */
+
+position: absolute;
+visibility: hidden;
+width: 44px;
+height: 30px;
+right: 77px;
+top: calc(50% - 30px/2);
+
+/* System Bg Dark Base / Primary */
+background: #000000;
+transform: matrix(-1, 0, 0, 1, 0, 0);
+
+
+/* Status Icons */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 4px;
+
+position: absolute;
+width: 69px;
+height: 14px;
+right: 14px;
+top: 16px;
+
+
+
+/* Network Signal / Light
+
+Network Signal Strength • Light
+*/
+
+width: 20px;
+height: 14px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Path */
+
+position: absolute;
+left: 55%;
+right: 30%;
+top: 28.57%;
+bottom: 14.29%;
+
+background: #D1D1D6;
+
+
+/* Path */
+
+position: absolute;
+left: 32.5%;
+right: 52.5%;
+top: 42.86%;
+bottom: 14.29%;
+
+background: #D1D1D6;
+
+
+/* Path */
+
+position: absolute;
+left: 10%;
+right: 75%;
+top: 53.57%;
+bottom: 14.29%;
+
+background: #D1D1D6;
+
+
+/* Empty Bar */
+
+position: absolute;
+left: 77.5%;
+right: 7.5%;
+top: 14.29%;
+bottom: 14.29%;
+
+background: rgba(60, 60, 67, 0.18);
+
+
+/* Path */
+
+position: absolute;
+left: 55%;
+right: 30%;
+top: 28.57%;
+bottom: 14.29%;
+
+background: #000000;
+
+
+/* Path */
+
+position: absolute;
+left: 32.5%;
+right: 52.5%;
+top: 42.86%;
+bottom: 14.29%;
+
+background: #000000;
+
+
+/* Path */
+
+position: absolute;
+left: 10%;
+right: 75%;
+top: 53.57%;
+bottom: 14.29%;
+
+background: #000000;
+
+
+/* Empty Bar */
+
+position: absolute;
+visibility: hidden;
+left: 77.5%;
+right: 7.5%;
+top: 14.29%;
+bottom: 14.29%;
+
+/* Label Light / Primary */
+background: #000000;
+
+
+/* WiFi Signal / Light */
+
+width: 16px;
+height: 14px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Path */
+
+position: absolute;
+left: 37.11%;
+right: 35.56%;
+top: 63.85%;
+bottom: 14.29%;
+
+background: #000000;
+
+
+/* Path */
+
+position: absolute;
+left: 21.66%;
+right: 20.1%;
+top: 39.07%;
+bottom: 37.26%;
+
+background: #000000;
+
+
+/* Path */
+
+position: absolute;
+left: 6.25%;
+right: 4.69%;
+top: 14.29%;
+bottom: 54.84%;
+
+background: #000000;
+
+
+/* Battery / Light */
+
+width: 25px;
+height: 14px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 2;
+flex-grow: 0;
+
+
+/* 􀋦 */
+
+position: absolute;
+visibility: hidden;
+width: 8px;
+height: 12px;
+left: 8px;
+top: 1px;
+
+/* Label Dark / Primary */
+background: #FFFFFF;
+
+
+/* Subtract */
+
+position: absolute;
+visibility: hidden;
+width: 23px;
+height: 12px;
+left: 0px;
+top: 1px;
+
+/* Label Dark / Tertiary */
+background: rgba(235, 235, 245, 0.3);
+
+
+/* Rectangle 23 */
+
+position: absolute;
+width: 1px;
+height: 4px;
+left: 24px;
+top: 5px;
+
+background: rgba(60, 60, 67, 0.6);
+
+
+/* Battery */
+
+position: absolute;
+visibility: hidden;
+width: 19px;
+height: 8px;
+left: 2px;
+top: 3px;
+
+
+
+/* 100 */
+
+position: absolute;
+width: 19px;
+height: 8px;
+left: 2px;
+top: 3px;
+
+/* Color Light / Green */
+background: #34C759;
+
+
+/* 50 */
+
+position: absolute;
+visibility: hidden;
+width: 8.45px;
+height: 8px;
+left: 2px;
+top: 3px;
+
+/* Color Light / Green */
+background: #34C759;
+
+
+/* 10 */
+
+position: absolute;
+visibility: hidden;
+width: 3px;
+height: 8px;
+left: 2px;
+top: 3px;
+
+/* Color Dark / Yellow */
+background: #FFD60A;
+
+
+/* Rectangle 21 (Stroke) */
+
+position: absolute;
+width: 23px;
+height: 12px;
+left: 0px;
+top: 1px;
+
+background: rgba(60, 60, 67, 0.6);
+
+
+/* Rectangle 20 */
+
+position: absolute;
+width: 19px;
+height: 8px;
+left: 2px;
+top: calc(50% - 8px/2);
+
+background: #000000;
+border-radius: 1px;
+
+
+/* Indicator
+
+Recording Indicator
+*/
+
+position: absolute;
+width: 6px;
+height: 6px;
+right: 71px;
+top: 8px;
+
+
+
+/* Indicator */
+
+position: absolute;
+visibility: hidden;
+left: 0%;
+right: 0%;
+top: 0%;
+bottom: 0%;
+
+/* SystemGreen / Light
+
+class var systemGreen: UIColor
+*/
+background: #34C759;
+
+
+/* Time / Light */
+
+position: absolute;
+width: 54px;
+height: 21px;
+left: 21px;
+top: 12px;
+
+border-radius: 20px;
+
+
+/* 9:41 */
+
+position: absolute;
+width: 33px;
+height: 15px;
+left: calc(50% - 33px/2 + 0.5px);
+top: calc(50% - 15px/2);
+
+
+
+/* 9:41 */
+
+position: absolute;
+width: 28.43px;
+height: 11.09px;
+left: calc(50% - 28.43px/2 - 0.29px);
+top: calc(50% - 11.09px/2 + 0.04px);
+
+background: #000000;
+
+
+/* Frame 4045 */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 8px 24px 0px;
+gap: 4px;
+
+width: 390px;
+height: 336px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Frame */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 0px;
+
+width: 342px;
+height: 328px;
+
+background: #16161A;
+border-radius: 12px;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* photo */
+
+width: 37px;
+height: 16px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 600;
+font-size: 13px;
+line-height: 16px;
+/* identical to box height */
+
+color: #5C5C61;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Frame */
+
+box-sizing: border-box;
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: flex-start;
+padding: 0px;
+
+width: 390px;
+height: 62px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 2;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Frame */
+
+box-sizing: border-box;
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+padding: 16px 12px 13px;
+
+width: 195px;
+height: 62px;
+
+border-bottom: 3px solid #19AAE6;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 1;
+
+
+/* PHOTO */
+
+width: 48px;
+height: 15px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 12.5px;
+line-height: 15px;
+letter-spacing: 0.06em;
+
+color: #111114;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Frame */
+
+box-sizing: border-box;
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+padding: 16px 12px 13px;
+
+width: 195px;
+height: 62px;
+
+border-bottom: 1px solid #D1D1D6;
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 1;
+
+
+/* VIDEO */
+
+width: 43px;
+height: 15px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 12.5px;
+line-height: 15px;
+letter-spacing: 0.06em;
+
+color: #9A9B9D;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Frame */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 16px 0px 0px;
+
+width: 390px;
+height: 90px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 3;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Frame */
+
+box-sizing: border-box;
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 20px 0px;
+gap: 16px;
+
+width: 342px;
+height: 64px;
+min-height: 64px;
+
+border: 2px solid #D1D1D6;
+border-radius: 12px;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Voice Note added */
+
+width: 134px;
+height: 19px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 16px;
+line-height: 19px;
+letter-spacing: -0.01em;
+
+color: #5F606B;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* x 2 */
+
+box-sizing: border-box;
+
+width: 24px;
+height: 24px;
+
+background: #000000;
+border: 1px solid #111114;
+border-radius: 20px;
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Group 11 */
+
+position: absolute;
+width: 9px;
+height: 9px;
+left: 7.28px;
+top: 7.28px;
+
+
+
+/* Vector (Stroke) */
+
+position: absolute;
+left: 30.33%;
+right: 32.17%;
+top: 30.33%;
+bottom: 32.17%;
+
+background: #FFFFFF;
+
+
+/* Vector (Stroke) */
+
+position: absolute;
+left: 30.33%;
+right: 32.17%;
+top: 30.33%;
+bottom: 32.17%;
+
+background: #FFFFFF;
+
+
+/* Frame 4043 */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+padding: 12px 0px 0px;
+gap: 8px;
+
+width: 141px;
+height: 130px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 4;
+flex-grow: 0;
+
+
+/* Frame */
+
+box-sizing: border-box;
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 0px;
+
+width: 82px;
+height: 82px;
+
+border: 4px solid #19AAE6;
+border-radius: 99px;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Ellipse */
+
+width: 60px;
+height: 60px;
+
+background: #19AAE6;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Frame 4047 */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 0px;
+gap: 16px;
+
+width: 342px;
+height: 157px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 5;
+flex-grow: 0;
+
+
+/* Frame 4047 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: flex-start;
+padding: 0px;
+gap: 8px;
+
+width: 342px;
+height: 65px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Group 7 */
+
+width: 62px;
+height: 65px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Frame */
+
+box-sizing: border-box;
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+padding: 12px 14px;
+gap: 11px;
+
+position: absolute;
+width: 56px;
+height: 56px;
+left: 0px;
+top: 9px;
+
+background: #FAFAFA;
+border: 1px solid #19AAE6;
+border-radius: 8px;
+
+
+/* Photo */
+
+margin: 0 auto;
+width: 28px;
+height: 12px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 10px;
+line-height: 12px;
+letter-spacing: -0.01em;
+
+color: #111114;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* x 2 */
+
+box-sizing: border-box;
+
+position: absolute;
+width: 24px;
+height: 24px;
+left: 38px;
+top: 0px;
+
+background: #000000;
+border: 1px solid #111114;
+border-radius: 20px;
+
+
+/* Group 11 */
+
+position: absolute;
+width: 9px;
+height: 9px;
+left: 7.28px;
+top: 7.28px;
+
+
+
+/* Vector (Stroke) */
+
+position: absolute;
+left: 30.33%;
+right: 32.17%;
+top: 30.33%;
+bottom: 32.17%;
+
+background: #FFFFFF;
+
+
+/* Vector (Stroke) */
+
+position: absolute;
+left: 30.33%;
+right: 32.17%;
+top: 30.33%;
+bottom: 32.17%;
+
+background: #FFFFFF;
+
+
+/* Group 11 */
+
+width: 62px;
+height: 65px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Frame */
+
+box-sizing: border-box;
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+padding: 12px 14px;
+gap: 11px;
+
+position: absolute;
+width: 56px;
+height: 56px;
+left: 70px;
+top: 9px;
+
+background: #FAFAFA;
+border: 1px solid #19AAE6;
+border-radius: 8px;
+
+
+/* Photo */
+
+margin: 0 auto;
+width: 28px;
+height: 12px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 10px;
+line-height: 12px;
+letter-spacing: -0.01em;
+
+color: #111114;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* x 2 */
+
+box-sizing: border-box;
+
+position: absolute;
+width: 24px;
+height: 24px;
+left: 108px;
+top: 0px;
+
+background: #000000;
+border: 1px solid #111114;
+border-radius: 20px;
+
+
+/* Group 11 */
+
+position: absolute;
+width: 9px;
+height: 9px;
+left: 7.28px;
+top: 7.28px;
+
+
+
+/* Vector (Stroke) */
+
+position: absolute;
+left: 30.33%;
+right: 32.17%;
+top: 30.33%;
+bottom: 32.17%;
+
+background: #FFFFFF;
+
+
+/* Vector (Stroke) */
+
+position: absolute;
+left: 30.33%;
+right: 32.17%;
+top: 30.33%;
+bottom: 32.17%;
+
+background: #FFFFFF;
+
+
+/* Group 12 */
+
+width: 62px;
+height: 65px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 2;
+flex-grow: 0;
+
+
+/* Frame */
+
+box-sizing: border-box;
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+padding: 12px 14px;
+gap: 11px;
+
+position: absolute;
+width: 56px;
+height: 56px;
+left: 140px;
+top: 9px;
+
+background: #FAFAFA;
+border: 1px solid #19AAE6;
+border-radius: 8px;
+
+
+/* Photo */
+
+margin: 0 auto;
+width: 28px;
+height: 12px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 10px;
+line-height: 12px;
+letter-spacing: -0.01em;
+
+color: #111114;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* x 2 */
+
+box-sizing: border-box;
+
+position: absolute;
+width: 24px;
+height: 24px;
+left: 178px;
+top: 0px;
+
+background: #000000;
+border: 1px solid #111114;
+border-radius: 20px;
+
+
+/* Group 11 */
+
+position: absolute;
+width: 9px;
+height: 9px;
+left: 7.28px;
+top: 7.28px;
+
+
+
+/* Vector (Stroke) */
+
+position: absolute;
+left: 30.33%;
+right: 32.17%;
+top: 30.33%;
+bottom: 32.17%;
+
+background: #FFFFFF;
+
+
+/* Vector (Stroke) */
+
+position: absolute;
+left: 30.33%;
+right: 32.17%;
+top: 30.33%;
+bottom: 32.17%;
+
+background: #FFFFFF;
+
+
+/* Group 13 */
+
+width: 62px;
+height: 65px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 3;
+flex-grow: 0;
+
+
+/* Frame */
+
+box-sizing: border-box;
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+padding: 12px 14px;
+gap: 11px;
+
+position: absolute;
+width: 56px;
+height: 56px;
+left: 210px;
+top: 9px;
+
+background: #FAFAFA;
+border: 1px solid #19AAE6;
+border-radius: 8px;
+
+
+/* Photo */
+
+margin: 0 auto;
+width: 28px;
+height: 12px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 10px;
+line-height: 12px;
+letter-spacing: -0.01em;
+
+color: #111114;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* x 2 */
+
+box-sizing: border-box;
+
+position: absolute;
+width: 24px;
+height: 24px;
+left: 248px;
+top: 0px;
+
+background: #000000;
+border: 1px solid #111114;
+border-radius: 20px;
+
+
+/* Group 11 */
+
+position: absolute;
+width: 9px;
+height: 9px;
+left: 7.28px;
+top: 7.28px;
+
+
+
+/* Vector (Stroke) */
+
+position: absolute;
+left: 30.33%;
+right: 32.17%;
+top: 30.33%;
+bottom: 32.17%;
+
+background: #FFFFFF;
+
+
+/* Vector (Stroke) */
+
+position: absolute;
+left: 30.33%;
+right: 32.17%;
+top: 30.33%;
+bottom: 32.17%;
+
+background: #FFFFFF;
+
+
+/* Group 14 */
+
+width: 62px;
+height: 65px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 4;
+flex-grow: 0;
+
+
+/* Frame */
+
+box-sizing: border-box;
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+padding: 12px 14px;
+gap: 11px;
+
+position: absolute;
+width: 56px;
+height: 56px;
+left: 280px;
+top: 9px;
+
+background: #FAFAFA;
+border: 1px solid #19AAE6;
+border-radius: 8px;
+
+
+/* Photo */
+
+margin: 0 auto;
+width: 28px;
+height: 12px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 10px;
+line-height: 12px;
+letter-spacing: -0.01em;
+
+color: #111114;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* x 2 */
+
+box-sizing: border-box;
+
+position: absolute;
+width: 24px;
+height: 24px;
+left: 318px;
+top: 0px;
+
+background: #000000;
+border: 1px solid #111114;
+border-radius: 20px;
+
+
+/* Group 11 */
+
+position: absolute;
+width: 9px;
+height: 9px;
+left: 7.28px;
+top: 7.28px;
+
+
+
+/* Vector (Stroke) */
+
+position: absolute;
+left: 30.33%;
+right: 32.17%;
+top: 30.33%;
+bottom: 32.17%;
+
+background: #FFFFFF;
+
+
+/* Vector (Stroke) */
+
+position: absolute;
+left: 30.33%;
+right: 32.17%;
+top: 30.33%;
+bottom: 32.17%;
+
+background: #FFFFFF;
+
+
+/* btn / Share */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 24px 14px;
+
+width: 342px;
+height: 76px;
+min-height: 76px;
+
+background: #19AAE6;
+border-radius: 12px;
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Continue */
+
+width: 88px;
+height: 24px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 20px;
+line-height: 24px;
+letter-spacing: -0.02em;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Capture observation using image or video, tabs to switch, preview */
+
+position: absolute;
+width: 375px;
+height: 54px;
+left: 179px;
+top: 1163px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 22px;
+line-height: 27px;
+letter-spacing: -0.01em;
+
+color: #111114;
+
+
+
+/* Capture observation using image or video, tabs to switch, preview */
+
+position: absolute;
+width: 375px;
+height: 54px;
+left: 1564px;
+top: 1163px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 22px;
+line-height: 27px;
+letter-spacing: -0.01em;
+
+color: #111114;
+
+
+
+/* Continue button enables when either a photo or video is taken. No voice note for video. */
+
+position: absolute;
+width: 407px;
+height: 81px;
+left: 1091px;
+top: 1163px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 22px;
+line-height: 27px;
+letter-spacing: -0.01em;
+
+color: #111114;
+
